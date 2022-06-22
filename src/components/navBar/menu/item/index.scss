@@ -1,0 +1,13 @@
+.nav-menu-list-item{
+  padding-left: 24px;
+  line-height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  &-name {
+    font-size: var(--font-size-middle);
+    margin-left: 4px;
+  }
+}
