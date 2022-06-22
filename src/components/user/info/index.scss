@@ -124,4 +124,62 @@
       }
     }
   }
+
+  &-other {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+    justify-content: space-around;
+    user-select: none;
+
+    &-github {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        background-image: url('src/assets/icon/github.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-qq {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        background-image: url('src/assets/icon/qq.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-wechat {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        background-image: url('src/assets/icon/wechat.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-email {
+      cursor: pointer;
+    }
+  }
 }

@@ -19,7 +19,9 @@ export default defineComponent({
       typeAmount: 4,
       tagAmount: 8,
       info:{
-        github: 'www.github.com/mecci1999'
+        github: 'https://www.github.com/mecci1999',
+        qq: 'http://wpa.qq.com/msgrd?v=3&uin=664751829&site=qq&menu=yes',
+        wechat: '',
       }
     }
 
