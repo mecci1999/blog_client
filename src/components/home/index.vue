@@ -12,8 +12,20 @@ export default defineComponent({
       document.getElementById('main').scrollIntoView({behavior: 'smooth'})
     }
 
+    const users = {
+      name: 'Mecci',
+      description: '学习永无止境',
+      blogAmount: 10,
+      typeAmount: 4,
+      tagAmount: 8,
+      info:{
+        github: 'www.github.com/mecci1999'
+      }
+    }
+
     return {
       onClickScrollDown,
+      users,
     };
   },
 
@@ -39,7 +51,7 @@ export default defineComponent({
     <div id="main" class="app-main">
       <div class="app-main-container">
         <div class="app-main-container-left">
-          <UserInfo />
+          <UserInfo :user="users" />
         </div>
         <div class="app-main-container-right">
           
