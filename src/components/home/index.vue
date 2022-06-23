@@ -3,6 +3,7 @@ import { defineComponent } from 'vue';
 import NavBar from '../navBar/index.vue';
 import AppIcon from '../common/app-icon/index.vue';
 import UserInfo from '../user/info/index.vue';
+import PostList from '../post/list/index.vue';
 
 export default defineComponent({
   name: "AppHome",
@@ -12,6 +13,7 @@ export default defineComponent({
       document.getElementById('main').scrollIntoView({behavior: 'smooth'})
     }
 
+    // 用户信息接口信息
     const users = {
       name: 'Mecci',
       description: '学习永无止境',
@@ -25,9 +27,47 @@ export default defineComponent({
       }
     }
 
+    // 博客信息接口
+    const posts = [
+      {
+        id: 3,
+        title: '独立开发个人博客',
+        description: '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+        content: '<h1>hello,world!</h1>',
+        wordAmount: '800',
+        readTime: '10min',
+        created: '2022-06-14 23:26:35',
+        commentAmount: 10,
+        accessAmount: 4000,
+      },
+      {
+        id: 2,
+        title: '独立开发个人博客',
+        description: '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+        content: '<h1>hello,world!</h1>',
+        wordAmount: '800',
+        readTime: '10min',
+        created: '2022-06-14 23:26:35',
+        commentAmount: 10,
+        accessAmount: 4000,
+      },
+      {
+        id: 1,
+        title: '独立开发个人博客',
+        description: '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+        content: '<h1>hello,world!</h1>',
+        wordAmount: '800',
+        readTime: '10min',
+        created: '2022-06-14 23:26:35',
+        commentAmount: 10,
+        accessAmount: 4000,
+      }
+    ]
+
     return {
       onClickScrollDown,
       users,
+      posts,
     };
   },
 
@@ -35,6 +75,7 @@ export default defineComponent({
     NavBar,
     AppIcon,
     UserInfo,
+    PostList,
   },
 });
 </script>
@@ -56,7 +97,7 @@ export default defineComponent({
           <UserInfo :user="users" />
         </div>
         <div class="app-main-container-right">
-          
+          <PostList :posts="posts" />
         </div>
       </div>
     </div>
