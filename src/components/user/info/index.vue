@@ -60,7 +60,7 @@ export default defineComponent({
       </el-tooltip>
       <el-tooltip effect="dark" placement="top" content="邮箱地址: mecci1999@163.com">
         <div class="user-info-other-email" title="email">
-          <AppIcon name="email" size="32" />
+          <AppIcon name="email" size="32" color="var(--secondary-text-color)" />
         </div>
       </el-tooltip>
         

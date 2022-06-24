@@ -140,6 +140,7 @@
       justify-content: center;
 
       &-icon {
+        color: var(--secondary-text-color);
         background-image: url('src/assets/icon/github.svg');
         background-size: 100% 100%;
         width: 32px;
@@ -155,6 +156,7 @@
       justify-content: center;
 
       &-icon {
+        color: var(--secondary-text-color);
         background-image: url('src/assets/icon/qq.svg');
         background-size: 100% 100%;
         width: 32px;
@@ -170,6 +172,7 @@
       justify-content: center;
 
       &-icon {
+        color: var(--secondary-text-color);
         background-image: url('src/assets/icon/wechat.svg');
         background-size: 100% 100%;
         width: 32px;

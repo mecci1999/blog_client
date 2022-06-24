@@ -24,9 +24,9 @@ export default defineComponent({
     <div class="post-list-item-content">
       <div class="post-list-item-content-title">{{item.title}}</div>
       <div class="post-list-item-content-data">
-        <div class="post-list-item-content-data-time">{{item.created}}</div>
-        <div class="post-list-item-content-data-comment">{{item.commentAmount}}</div>
-        <div class="post-list-item-content-data-access">{{item.accessAmount}}</div>
+        <div class="post-list-item-content-data-time">发表时间:{{item.created}}</div>
+        <div class="post-list-item-content-data-comment">评论量:{{item.commentAmount}}</div>
+        <div class="post-list-item-content-data-access">阅读量:{{item.accessAmount}}</div>
       </div>
       <div class="post-list-item-content-description">{{item.description}}</div>
       <div class="post-list-item-content-tag"></div>
