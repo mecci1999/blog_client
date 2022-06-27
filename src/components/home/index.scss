@@ -57,17 +57,18 @@
   }
 
   .app-main {
-    position: absolute;
+    position: relative;
     top: 100vh;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: auto;
     padding: 40px 15px;
     background-color: var(--primary-background);
 
     &-container {
+      
       width: 100%;
-      max-width: 1200px;
+      max-width: 70%;
       height: 100%;
       display: flex;
       margin: 0 auto;
@@ -75,7 +76,7 @@
       &-left{
         width: 25%;
         height: 100%;
-        padding-right: 15px;
+        padding-right: 30px;
       }
 
       &-right {

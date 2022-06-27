@@ -28,10 +28,54 @@
     &-title {
       font-size: var(--font-size-large);
       color: var(--primary-text-color);
+      line-height: 50px;
+      margin-bottom: 16px;
+      cursor: pointer;
     }
 
     &-data {
+      width: 100%;
       display: flex;
+      font-size: var(--font-size-normal);
+      color: var(--secondary-text-color);
+      line-height: 40px;
+      align-items: center;
+      justify-content: space-around;
+
+      &-time {
+        display: flex;
+        align-items: center;
+        position: relative;
+        &::after {
+          content: '';
+          display: block;
+          width: 1px;
+          height: 20px;
+          background: var(--secondary-text-color);
+          position: absolute;
+          right: -13px;
+        }
+      }
+
+      &-comment {
+        display: flex;
+        align-items: center;
+        position: relative;
+        &::after {
+          content: '';
+          display: block;
+          width: 1px;
+          height: 20px;
+          background: var(--secondary-text-color);
+          position: absolute;
+          right: -13px;
+        }
+      }
+    }
+
+    &-description {
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
     }
   }
 }
