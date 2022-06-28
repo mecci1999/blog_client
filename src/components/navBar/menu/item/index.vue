@@ -29,7 +29,6 @@ export default defineComponent({
       }else {
         console.log(1);
       }
-      
     }
 
     // 点击目录触发的方法
@@ -54,9 +53,15 @@ export default defineComponent({
       <AppIcon :name="item.icon" size="20" />
       <span class="nav-menu-list-item-name">{{ item.text}}</span>
       <div class="explore-menu" v-show="showExpolerMenu">
-        <div class="exlore-menu-list">分类</div>
-        <div class="exlore-menu-list">标签</div>
-        <div class="exlore-menu-list">归档</div>
+        <div class="explore-menu-list">
+          <span>分类</span>
+        </div>
+        <div class="explore-menu-list">
+          <span>标签</span>
+        </div>
+        <div class="explore-menu-list">
+          <span>归档</span>
+        </div>
       </div>
   </div>
 </template>

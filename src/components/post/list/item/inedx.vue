@@ -1,5 +1,7 @@
 <script lang="ts">
+import { log } from 'console';
 import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'PostListItem',
@@ -11,7 +13,14 @@ export default defineComponent({
   },
 
   setup() {
-    return {}
+    const router = useRouter();
+    const onClickPostListItem = (id:number) => {
+      router.push({path: `/post/${id}`});
+    }
+
+    return {
+      onClickPostListItem,
+    }
   },
 
   components: {},
@@ -20,9 +29,9 @@ export default defineComponent({
 
 <template>
   <div class="post-list-item">
-    <div class="post-list-item-media"></div>
+    <div class="post-list-item-media" @click="onClickPostListItem(item.id)"></div>
     <div class="post-list-item-content">
-      <div class="post-list-item-content-title">{{item.title}}</div>
+      <div class="post-list-item-content-title" @click="onClickPostListItem(item.id)">{{item.title}}</div>
       <div class="post-list-item-content-data">
         <div class="post-list-item-content-data-time">发表时间:{{item.created}}</div>
         <div class="post-list-item-content-separate"></div>

@@ -35,19 +35,32 @@
   }
 
   .explore-menu {
-    width: 94px;
+    width: 72px;
     padding: 4px;
     background: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 30px;
     top: 30px;
+    border-radius: 4px;
 
-    &-list {
+    .explore-menu-list {
+      width: 100%;
       color: var(--secondary-text-color);
       font-size: var(--font-size-normal);
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 4px;
+
+      &:hover {
+        background: #eee;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

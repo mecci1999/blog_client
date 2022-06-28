@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import appRoutes from './app/index';
+import postRoutes from './post/index';
 
 /**
  * 创建路由
@@ -7,7 +8,8 @@ import appRoutes from './app/index';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        ...appRoutes
+        ...appRoutes,
+        ...postRoutes,
     ],
 });
 
