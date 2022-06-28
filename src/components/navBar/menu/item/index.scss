@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   user-select: none;
+  position: relative;
 
   &:hover {
     color: var(--primary-text-hover-color);
@@ -23,7 +24,7 @@
         &::after {
           content: '';
           display: block;
-          height: 3px;
+          height: 2px;
           background-color: var(--primary-text-hover-color);
           position: absolute;
           bottom: -10px;
@@ -31,5 +32,22 @@
           left: -10px;
           transition: width 0.3s linear;
         }
+  }
+
+  .explore-menu {
+    width: 94px;
+    padding: 4px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+
+    &-list {
+      color: var(--secondary-text-color);
+      font-size: var(--font-size-normal);
+    }
   }
 }
