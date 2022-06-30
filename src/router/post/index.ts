@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import PostShow from '../../components/post/show/index.vue';
+import PostShow from '@/view/post/index.vue';
 
 
 /**
@@ -8,7 +8,7 @@ import PostShow from '../../components/post/show/index.vue';
 const routes:Array<RouteRecordRaw> = [
     {
         name: 'postShow',
-        path: '/post/:postId',
+        path: '/posts/:postId',
         component: PostShow,
         props: true,
     }

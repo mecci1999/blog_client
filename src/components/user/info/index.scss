@@ -49,8 +49,9 @@
       cursor: pointer;
 
       &:hover {
-        .user-info-directory-blog-title,.user-info-directory-blog-amount {
-            color: var(--primary-text-hover-color);
+        .user-info-directory-blog-title,
+        .user-info-directory-blog-amount {
+          color: var(--primary-text-hover-color);
         }
       }
 
@@ -77,9 +78,10 @@
       cursor: pointer;
 
       &:hover {
-          .user-info-directory-type-title,.user-info-directory-type-amount {
-              color: var(--primary-text-hover-color);
-          }
+        .user-info-directory-type-title,
+        .user-info-directory-type-amount {
+          color: var(--primary-text-hover-color);
+        }
       }
 
       &-title {
@@ -105,8 +107,9 @@
       cursor: pointer;
 
       &:hover {
-        .user-info-directory-tag-title,.user-info-directory-tag-amount {
-            color: var(--primary-text-hover-color);
+        .user-info-directory-tag-title,
+        .user-info-directory-tag-amount {
+          color: var(--primary-text-hover-color);
         }
       }
 
@@ -141,7 +144,7 @@
 
       &-icon {
         color: var(--secondary-text-color);
-        background-image: url('src/assets/icon/github.svg');
+        background-image: url('@/assets/icon/github.svg');
         background-size: 100% 100%;
         width: 32px;
         height: 32px;
@@ -157,7 +160,7 @@
 
       &-icon {
         color: var(--secondary-text-color);
-        background-image: url('src/assets/icon/qq.svg');
+        background-image: url('@/assets/icon/qq.svg');
         background-size: 100% 100%;
         width: 32px;
         height: 32px;
@@ -173,7 +176,7 @@
 
       &-icon {
         color: var(--secondary-text-color);
-        background-image: url('src/assets/icon/wechat.svg');
+        background-image: url('@/assets/icon/wechat.svg');
         background-size: 100% 100%;
         width: 32px;
         height: 32px;

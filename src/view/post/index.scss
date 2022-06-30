@@ -1,0 +1,12 @@
+.post-show {
+  &-header {
+    width: 100%;
+    height: 300px;
+  }
+
+  &-main {
+    &-left {
+      width: 300px;
+    }
+  }
+}

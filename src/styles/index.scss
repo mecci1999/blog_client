@@ -1,10 +1,10 @@
-@import "./normalize.scss";
-@import "./vars.scss";
-@import "./theme.scss";
+@import './normalize.scss';
+@import './vars.scss';
+@import './theme.scss';
 
 :root {
   // 字体
-  --font-family-base: "PingFangSC-Regular", "Microsoft YaHei", Arial, sans-serif;
+  --font-family-base: 'PingFangSC-Regular', 'Microsoft YaHei', Arial, sans-serif;
   --font-size-small: 12px;
   --font-size-normal: 14px;
   --font-size-middle: 16px;
@@ -23,6 +23,7 @@ html {
     margin: 0;
     font-family: var(--font-family-base);
     font-size: var(--font-size-normal);
+    background: var(--primary-background);
   }
 
   #root {

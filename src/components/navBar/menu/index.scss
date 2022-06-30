@@ -17,7 +17,7 @@
       user-select: none;
       &:hover {
         color: var(--primary-text-hover-color);
-        
+
         .nav-menu-list-item-name::after {
           width: 52px;
         }
@@ -27,12 +27,11 @@
         font-size: var(--font-size-middle);
         margin-left: 4px;
         position: relative;
-        
 
         &::after {
           content: '';
           display: block;
-          height: 3px;
+          height: 2px;
           background-color: var(--primary-text-hover-color);
           position: absolute;
           bottom: -10px;

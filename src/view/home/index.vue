@@ -6,12 +6,12 @@ import UserInfo from '@/components/user/info/index.vue';
 import PostList from '@/components/post/list/index.vue';
 
 export default defineComponent({
-  name: "AppHome",
+  name: 'AppHome',
 
   setup() {
     const onClickScrollDown = () => {
-      document.getElementById('main')?.scrollIntoView({behavior: 'smooth'})
-    }
+      document.getElementById('main')?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     // 用户信息接口信息
     const users = {
@@ -20,19 +20,20 @@ export default defineComponent({
       blogAmount: 10,
       typeAmount: 4,
       tagAmount: 8,
-      info:{
+      info: {
         github: 'https://www.github.com/mecci1999',
         qq: 'http://wpa.qq.com/msgrd?v=3&uin=664751829&site=qq&menu=yes',
         wechat: '',
-      }
-    }
+      },
+    };
 
     // 博客信息接口
     const posts = [
       {
         id: 3,
         title: '独立开发个人博客',
-        description: '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+        description:
+          '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
         content: '<h1>hello,world!</h1>',
         wordAmount: '800',
         readTime: '10min',
@@ -43,7 +44,8 @@ export default defineComponent({
       {
         id: 2,
         title: '独立开发个人博客',
-        description: '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+        description:
+          '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
         content: '<h1>hello,world!</h1>',
         wordAmount: '800',
         readTime: '10min',
@@ -54,15 +56,16 @@ export default defineComponent({
       {
         id: 1,
         title: '独立开发个人博客',
-        description: '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+        description:
+          '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
         content: '<h1>hello,world!</h1>',
         wordAmount: '800',
         readTime: '10min',
         created: '2022-06-14 23:26:35',
         commentAmount: 10,
         accessAmount: 4000,
-      }
-    ]
+      },
+    ];
 
     return {
       onClickScrollDown,

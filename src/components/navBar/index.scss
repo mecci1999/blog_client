@@ -5,10 +5,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  background-color: rgba(#FFFFFF, 0.8);
+  background-color: var(--primary-background);
+  opacity: 0.8;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 2;
+  color: var(--primary-text-color);
 
   &-left {
     display: flex;
@@ -24,7 +26,7 @@
         display: block;
         width: 2px;
         height: 24px;
-        background: #000;
+        background: var(--primary-text-color);
         margin: 0 6px;
       }
     }
