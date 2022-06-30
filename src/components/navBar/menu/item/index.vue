@@ -1,18 +1,20 @@
 <script lang="ts">
-import { defineComponent,ref } from 'vue';
+import { defineComponent, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'NavMenuItem',
 
-  props:{
+  props: {
     item: {
       type: Object,
-    }
+    },
   },
 
   setup() {
     const store = useStore();
+    const router = useRouter();
     // 定义切换主题方法
     const changeTheme = () => {
       const theme = store.getters['theme/theme'] === 'dark' ? 'light' : 'dark';
@@ -24,24 +26,33 @@ export default defineComponent({
     const showExpolerMenu = ref(false);
 
     const onClickMenuItem = (icon: string) => {
-      if(icon === 'explore') {
-        onClickExplore();
-      }else {
-        console.log(1);
+      switch (icon) {
+        case 'explore':
+          onClickExplore();
+          break;
+        case 'home':
+          router.push({ name: 'home' });
+          break;
+        case 'face':
+          router.push({ name: 'about' });
+          break;
+        case 'chat':
+          router.push({ name: 'comment' });
+          break;
       }
-    }
+    };
 
     // 点击目录触发的方法
     const onClickExplore = () => {
       showExpolerMenu.value = !showExpolerMenu.value;
-    }
+    };
 
     return {
       changeTheme,
       showExpolerMenu,
       onClickMenuItem,
       onClickExplore,
-    }
+    };
   },
 
   components: {},
@@ -50,19 +61,19 @@ export default defineComponent({
 
 <template>
   <div class="nav-menu-list-item" @click="onClickMenuItem(item.icon)">
-      <AppIcon :name="item.icon" size="20" />
-      <span class="nav-menu-list-item-name">{{ item.text}}</span>
-      <div class="explore-menu" v-show="showExpolerMenu">
-        <div class="explore-menu-list">
-          <span>分类</span>
-        </div>
-        <div class="explore-menu-list">
-          <span>标签</span>
-        </div>
-        <div class="explore-menu-list">
-          <span>归档</span>
-        </div>
+    <AppIcon :name="item.icon" size="20" />
+    <span class="nav-menu-list-item-name">{{ item.text }}</span>
+    <div class="explore-menu" v-if="showExpolerMenu">
+      <div class="explore-menu-list">
+        <span>分类</span>
       </div>
+      <div class="explore-menu-list">
+        <span>标签</span>
+      </div>
+      <div class="explore-menu-list">
+        <span>归档</span>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,14 +1,15 @@
 import { RouteRecordRaw } from 'vue-router';
-import AppHome from '@/view/home/index.vue';
+import AppAbout from '@/view/about/index.vue';
+
 
 /**
  * 定义路由
  */
 const routes:Array<RouteRecordRaw> = [
     {
-        name: 'home',
-        path: '/',
-        component: AppHome
+        name: 'about',
+        path: '/about',
+        component: AppAbout,
     }
 ]
 

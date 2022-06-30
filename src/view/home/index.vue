@@ -1,16 +1,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NavBar from '../navBar/index.vue';
-import AppIcon from '../common/app-icon/index.vue';
-import UserInfo from '../user/info/index.vue';
-import PostList from '../post/list/index.vue';
+import NavBar from '@/components/navBar/index.vue';
+import AppIcon from '@/components/common/app-icon/index.vue';
+import UserInfo from '@/components/user/info/index.vue';
+import PostList from '@/components/post/list/index.vue';
 
 export default defineComponent({
   name: "AppHome",
 
   setup() {
     const onClickScrollDown = () => {
-      document.getElementById('main').scrollIntoView({behavior: 'smooth'})
+      document.getElementById('main')?.scrollIntoView({behavior: 'smooth'})
     }
 
     // 用户信息接口信息
