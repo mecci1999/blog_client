@@ -13,11 +13,11 @@ export default defineComponent({
 
     return {
       name,
-    }
+    };
   },
 
   components: {
-    NavMenu
+    NavMenu,
   },
 });
 </script>

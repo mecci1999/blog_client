@@ -1,10 +1,12 @@
 import { createStore } from 'vuex';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
+import { userStoreModule, UserStoreState } from './modules/user';
 import { LocalStorageStroePlugin } from './plugins';
 
 export interface RootState {
   appName: string;
   theme: ThemeStoreState;
+  user: UserStoreState;
 }
 
 /**
@@ -15,12 +17,13 @@ const store = createStore({
     appName: 'Mecci',
   } as RootState,
 
-  modules:{
+  modules: {
     theme: themeStoreModule,
+    user: userStoreModule,
   },
-  
+
   // 插件
-  plugins:[LocalStorageStroePlugin],
+  plugins: [LocalStorageStroePlugin],
 });
 
 /**

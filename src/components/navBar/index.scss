@@ -20,6 +20,10 @@
     &-name {
       font-size: var(--font-size-large);
       display: flex;
+      cursor: pointer;
+      &:hover {
+        color: var(--primary-text-hover-color);
+      }
 
       &::after {
         content: '';
@@ -33,6 +37,10 @@
 
     &-title {
       font-size: var(--font-size-large);
+      cursor: pointer;
+      &:hover {
+        color: var(--primary-text-hover-color);
+      }
     }
   }
 
