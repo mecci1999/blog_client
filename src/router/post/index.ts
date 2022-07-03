@@ -1,18 +1,17 @@
 import { RouteRecordRaw } from 'vue-router';
 import PostShow from '@/view/post/index.vue';
 
-
 /**
  * 定义路由
  */
-const routes:Array<RouteRecordRaw> = [
-    {
-        name: 'postShow',
-        path: '/posts/:postId',
-        component: PostShow,
-        props: true,
-    }
-]
+const routes: Array<RouteRecordRaw> = [
+  {
+    name: 'postShow',
+    path: '/posts/:postId',
+    component: PostShow,
+    props: true,
+  },
+];
 
 /**
  * 默认导出

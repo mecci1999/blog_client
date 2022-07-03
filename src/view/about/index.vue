@@ -25,7 +25,12 @@ export default defineComponent({
 
     let name = ref('');
     let introduction = ref('');
-    let info = reactive({});
+    let info = reactive({
+      github: '',
+      qq: '',
+      wechat: '',
+      eMail: '',
+    });
 
     onMounted(async () => {
       await getUser();
@@ -34,7 +39,10 @@ export default defineComponent({
 
       name.value = user.value.name;
       introduction.value = user.value.introduction;
-      info = user.value.info;
+      info.github = user.value.info.github;
+      info.qq = user.value.info.qq;
+      info.wechat = user.value.info.wx;
+      info.eMail = user.value.info.eMail;
 
       date = setInterval(() => {
         time.value = getCurrnetTime();
