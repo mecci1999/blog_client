@@ -8,7 +8,8 @@ import {
 } from '@/utils/changeBackgroundImage';
 import PostShowInfo from '@/components/post/show/info/index.vue';
 import PostShowContent from '@/components/post/show/content/index.vue';
-
+import PostShowFooter from '@/components/post/show/footer/index.vue';
+import { useRoute } from 'vue-router';
 export default defineComponent({
   name: 'PostShow',
 
@@ -25,7 +26,7 @@ export default defineComponent({
       title: '为什么要写博客？',
       description:
         '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
-      content: `<h1 id="欢迎使用-cmd-markdown-编辑阅读器">欢迎使用 Cmd Markdown 编辑阅读器</h1>
+      content: `<h1>欢迎使用 Cmd Markdown 编辑阅读器</h1>
 <hr>
 <p>我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<strong>Cmd Markdown</strong> 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：</p>
 <blockquote>
@@ -45,7 +46,8 @@ export default defineComponent({
 <hr>
 <h2 id="什么是-markdown">什么是 Markdown</h2>
 <p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字，更棒的是，它还可以</p>
-<h3 id="1-制作一份待办事宜-todo-列表">1. 制作一份待办事宜 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-%E5%BE%85%E5%8A%9E%E4%BA%8B%E5%AE%9C-todo-%E5%88%97%E8%A1%A8">Todo 列表</a></h3>
+<h3 id="1-制作一份待办事宜-todo-列表">1. 制作一份待办事宜
+ <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-%E5%BE%85%E5%8A%9E%E4%BA%8B%E5%AE%9C-todo-%E5%88%97%E8%A1%A8">Todo 列表</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"> 支持以 PDF 格式导出文稿</li>
 <li><input disabled="" type="checkbox"> 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</li>
@@ -83,10 +85,14 @@ if __name__ == &#39;__main__&#39;:
       }, 1000);
     });
 
+    const route = useRoute();
+    const link = `http://localhost:8000${route.path}`;
+
     return {
       style,
       time,
       post,
+      link,
     };
   },
 
@@ -95,13 +101,14 @@ if __name__ == &#39;__main__&#39;:
     UserInfo,
     PostShowInfo,
     PostShowContent,
+    PostShowFooter,
   },
 });
 </script>
 
 <template>
-  <div class="post-show" :style="style">
-    <header class="post-show-header">
+  <div class="post-show">
+    <header class="post-show-header" :style="style">
       <NavBar />
       <div class="post-show-header-title">{{ post.title }}</div>
     </header>
@@ -109,11 +116,14 @@ if __name__ == &#39;__main__&#39;:
       <div class="post-show-main-header">
         <PostShowInfo :post="post" />
       </div>
-      <hr />
+      <div class="post-show-main-line"></div>
       <div class="post-show-main-container">
         <PostShowContent :post="post" />
       </div>
-      <div class="post-show-main-footer"></div>
+      <div class="post-show-main-line"></div>
+      <div class="post-show-main-footer">
+        <PostShowFooter :link="link" />
+      </div>
     </main>
   </div>
 </template>

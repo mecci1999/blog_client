@@ -5,11 +5,11 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    About: typeof import('./src/components/user/about/index.vue')['default']
     AppIcon: typeof import('./src/components/common/app-icon/index.vue')['default']
     Content: typeof import('./src/components/post/show/content/index.vue')['default']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
-    Home: typeof import('./src/components/home/index.vue')['default']
+    Footer: typeof import('./src/components/post/show/footer/index.vue')['default']
+    Idnex: typeof import('./src/components/post/show/footer/idnex.vue')['default']
     Inedx: typeof import('./src/components/post/list/item/inedx.vue')['default']
     Info: typeof import('./src/components/user/info/index.vue')['default']
     Item: typeof import('./src/components/navBar/menu/item/index.vue')['default']
@@ -18,7 +18,6 @@ declare module '@vue/runtime-core' {
     NavBar: typeof import('./src/components/navBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Show: typeof import('./src/components/post/show/index.vue')['default']
   }
 }
 

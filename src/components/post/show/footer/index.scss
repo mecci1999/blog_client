@@ -1,0 +1,73 @@
+.post-show-footer {
+  width: 100%;
+  margin-top: 32px;
+
+  &-info {
+    width: 100%;
+    height: max-content;
+    padding: 16px;
+    border: 1px solid var(--line-color);
+    color: var(--primary-text-blog-color);
+    font-weight: bold;
+
+    &-author {
+      width: 100%;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url('@/assets/icon/author.svg');
+        background-size: 100% 100%;
+        margin-right: 6px;
+      }
+
+      &-text {
+        color: #42b983;
+        font-weight: normal;
+        cursor: pointer;
+      }
+    }
+
+    &-link {
+      width: 100%;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url('@/assets/icon/link.svg');
+        background-size: 100% 100%;
+        margin-right: 6px;
+      }
+
+      &-text {
+        color: #42b983;
+        font-weight: normal;
+      }
+    }
+
+    &-transshipment {
+      width: 100%;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url('@/assets/icon/banquan.svg');
+        background-size: 100% 100%;
+        margin-right: 6px;
+      }
+
+      &-text {
+        font-weight: normal;
+      }
+    }
+  }
+}

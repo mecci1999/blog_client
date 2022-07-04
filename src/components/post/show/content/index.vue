@@ -24,7 +24,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="post-show-content" v-html="post.content"></div>
+  <div
+    id="post-show-content"
+    class="post-show-content"
+    v-html="post.content"
+  ></div>
 </template>
 
 <style lang="scss" scoped>
