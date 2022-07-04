@@ -33,16 +33,18 @@ export default defineComponent({
     });
 
     onMounted(async () => {
-      await getUser();
+      //   await getUser();
 
-      const user = computed(() => store.getters['user/user']);
+      //   const user = computed(() => store.getters['user/user']);
 
-      name.value = user.value.name;
-      introduction.value = user.value.introduction;
-      info.github = user.value.info.github;
-      info.qq = user.value.info.qq;
-      info.wechat = user.value.info.wx;
-      info.eMail = user.value.info.eMail;
+      //   name.value = user.value.name;
+      //   introduction.value = user.value.introduction;
+      //   info.github = user.value.info.github;
+      //   info.qq = user.value.info.qq;
+      //   info.wechat = user.value.info.wx;
+      //   info.eMail = user.value.info.eMail;
+      name.value = 'Mecci';
+      introduction.value = '趁现在还年轻';
 
       date = setInterval(() => {
         time.value = getCurrnetTime();

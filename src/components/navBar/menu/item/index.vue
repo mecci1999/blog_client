@@ -2,6 +2,7 @@
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+// import AppIcon from '@/components/common/app-icon.vue';
 
 export default defineComponent({
   name: 'NavMenuItem',
@@ -55,7 +56,9 @@ export default defineComponent({
     };
   },
 
-  components: {},
+  components: {
+    // AppIcon,
+  },
 });
 </script>
 

@@ -1,0 +1,121 @@
+.post-show-info {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-created {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/icon/created.svg');
+      background-size: 100% 100%;
+      //   color: var(--secondary-text-color) !important;
+    }
+
+    &-text {
+      margin-left: 4px;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &-updated {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/icon/updated.svg');
+      background-size: 100% 100%;
+      //   color: var(--secondary-text-color) !important;
+    }
+
+    &-text {
+      margin-left: 4px;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &-word {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/icon/word-amount.svg');
+      background-size: 100% 100%;
+      //   color: var(--secondary-text-color) !important;
+    }
+
+    &-text {
+      margin-left: 4px;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &-read {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/icon/read-time.svg');
+      background-size: 100% 100%;
+      //   color: var(--secondary-text-color) !important;
+    }
+
+    &-text {
+      margin-left: 4px;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &-access {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/icon/access-amount.svg');
+      background-size: 100% 100%;
+      //   color: var(--secondary-text-color) !important;
+    }
+
+    &-text {
+      margin-left: 4px;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &-comment {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &-icon {
+      width: 16px;
+      height: 16px;
+      background-image: url('@/assets/icon/comment-amount.svg');
+      background-size: 100% 100%;
+      //   color: var(--secondary-text-color) !important;
+    }
+
+    &-text {
+      margin-left: 4px;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+  }
+}
