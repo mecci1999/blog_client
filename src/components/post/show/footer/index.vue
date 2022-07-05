@@ -52,8 +52,20 @@ export default defineComponent({
         </span>
       </div>
     </div>
-    <div class="post-show-footer-share"></div>
-    <div class="post-show-footer-donate"></div>
+    <div class="post-show-footer-share">
+      <div class="post-show-footer-share-qq">
+        <i class="post-show-footer-share-qq-icon"></i>
+      </div>
+      <div class="post-show-footer-share-qq-space">
+        <i class="post-show-footer-share-qq-space-icon"></i>
+      </div>
+      <div class="post-show-footer-share-wechat">
+        <i class="post-show-footer-share-wechat-icon"></i>
+      </div>
+    </div>
+    <div class="post-show-footer-donate">
+      <div class="post-show-footer-donate-button">赏</div>
+    </div>
   </div>
 </template>
 
