@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
+import CommnetOperation from './operation/index.vue';
 
 export default defineComponent({
   name: 'CommentPanel',
@@ -8,12 +9,18 @@ export default defineComponent({
     return {};
   },
 
-  components: {},
+  components: {
+    CommnetOperation,
+  },
 });
 </script>
 
 <template>
-  <div class="comment-panel"></div>
+  <transition name="comment-panel">
+    <div class="comment-panel">
+      <CommnetOperation />
+    </div>
+  </transition>
 </template>
 
 <style lang="scss" scoped>

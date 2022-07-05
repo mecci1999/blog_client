@@ -7,3 +7,10 @@ import axios from 'axios';
 export const apiHttpClient = axios.create({
   baseURL: 'http://localhost:3000',
 });
+
+/**
+ * 封装的第三方tenapi.cn接口请求
+ */
+export const tenApiHttpRequest = axios.create({
+  baseURL: 'https://tenapi.cn/',
+});

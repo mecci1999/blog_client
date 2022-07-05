@@ -64,7 +64,9 @@ export default defineComponent({
       </div>
     </div>
     <div class="post-show-footer-donate">
-      <div class="post-show-footer-donate-button">赏</div>
+      <div class="post-show-footer-donate-button">
+        <span class="post-show-footer-donate-text">赏</span>
+      </div>
     </div>
   </div>
 </template>

@@ -169,7 +169,7 @@
       border-radius: 50%;
       background-color: #f44336;
       color: #fff;
-      font-size: var(--font-size-middle);
+      font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -181,6 +181,10 @@
       &:hover {
         box-shadow: 0 6px 12px rgb(0 0 0 / 20%), 0 5px 15px rgb(0 0 0 / 20%);
       }
+    }
+
+    &-text {
+      text-align: center;
     }
   }
 }

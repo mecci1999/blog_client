@@ -10,6 +10,8 @@ import PostShowInfo from '@/components/post/show/info/index.vue';
 import PostShowContent from '@/components/post/show/content/index.vue';
 import PostShowFooter from '@/components/post/show/footer/index.vue';
 import { useRoute } from 'vue-router';
+import CommentPanel from '@/components/comment/index.vue';
+
 export default defineComponent({
   name: 'PostShow',
 
@@ -102,6 +104,7 @@ if __name__ == &#39;__main__&#39;:
     PostShowInfo,
     PostShowContent,
     PostShowFooter,
+    CommentPanel,
   },
 });
 </script>
@@ -125,6 +128,7 @@ if __name__ == &#39;__main__&#39;:
         <PostShowFooter :link="link" />
       </div>
     </main>
+    <CommentPanel />
   </div>
 </template>
 
