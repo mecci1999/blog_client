@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppIcon: typeof import('./src/components/common/app-icon/index.vue')['default']
+    Comment: typeof import('./src/components/comment/index.vue')['default']
     Content: typeof import('./src/components/post/show/content/index.vue')['default']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Footer: typeof import('./src/components/post/show/footer/index.vue')['default']
@@ -16,8 +17,10 @@ declare module '@vue/runtime-core' {
     List: typeof import('./src/components/post/list/index.vue')['default']
     Menu: typeof import('./src/components/navBar/menu/index.vue')['default']
     NavBar: typeof import('./src/components/navBar/index.vue')['default']
+    Opration: typeof import('./src/components/comment/opration/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Show: typeof import('./src/components/comment/show/index.vue')['default']
   }
 }
 
