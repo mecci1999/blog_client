@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import { commentStoreModule, CommentStoreState } from './modules/comment';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
 import { userStoreModule, UserStoreState } from './modules/user';
 import { LocalStorageStroePlugin } from './plugins';
@@ -7,6 +8,7 @@ export interface RootState {
   appName: string;
   theme: ThemeStoreState;
   user: UserStoreState;
+  comment: CommentStoreState;
 }
 
 /**
@@ -20,6 +22,7 @@ const store = createStore({
   modules: {
     theme: themeStoreModule,
     user: userStoreModule,
+    comment: commentStoreModule,
   },
 
   // 插件
