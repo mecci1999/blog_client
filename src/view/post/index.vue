@@ -11,6 +11,7 @@ import PostShowContent from '@/components/post/show/content/index.vue';
 import PostShowFooter from '@/components/post/show/footer/index.vue';
 import { useRoute } from 'vue-router';
 import CommentPanel from '@/components/comment/index.vue';
+import { APP_CLIENT_BASE_URL } from '@/config';
 
 export default defineComponent({
   name: 'PostShow',
@@ -88,7 +89,7 @@ if __name__ == &#39;__main__&#39;:
     });
 
     const route = useRoute();
-    const link = `http://localhost:8000${route.path}`;
+    const link = APP_CLIENT_BASE_URL + route.path;
 
     return {
       style,

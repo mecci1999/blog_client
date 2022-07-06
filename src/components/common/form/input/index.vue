@@ -22,7 +22,7 @@ export default defineComponent({
   /**
    * 事件
    */
-  emits: ['update:modelValue', 'dirty'],
+  emits: ['update:modelValue', 'dirty', 'onBlur'],
 
   setup(props, ctx) {
     const vModel = ref(props.modelValue);
@@ -39,10 +39,15 @@ export default defineComponent({
       ctx.emit('update:modelValue', event.target.value.trim());
     };
 
+    const onBlur = () => {
+      ctx.emit('onBlur');
+    };
+
     return {
       ...props,
       onChangeText,
       vModel,
+      onBlur,
     };
   },
 
@@ -58,6 +63,7 @@ export default defineComponent({
       :value="vModel"
       :placeholder="placeholder"
       @input="onChangeText"
+      @blur="onBlur"
     />
   </div>
 </template>
