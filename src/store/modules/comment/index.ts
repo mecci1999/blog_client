@@ -55,8 +55,6 @@ export const commentStoreModule: Module<CommentStoreState, RootState> = {
       try {
         const response = await getQQUserInfo(id);
 
-        console.log(response);
-
         commit('setQQUserInfo', response.data);
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

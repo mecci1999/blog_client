@@ -25,7 +25,7 @@
 
   &-form {
     width: 100%;
-    height: 250px;
+    // height: 250px;
     border: 1px solid var(--line-color);
     border-radius: 6px;
     padding: 16px;
@@ -46,7 +46,10 @@
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          // color: #ccc;
+
+          &.default {
+            opacity: 0.3;
+          }
         }
       }
 

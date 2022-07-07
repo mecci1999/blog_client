@@ -1,8 +1,9 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 import InputField from '@/components/common/form/input/index.vue';
-import { checkIsQQNumber } from '@/utils/checkIsQQNumber';
+import { checkIsQQNumber, checkIsQQEmail } from '@/utils/checkIsQQNumber';
 import { useStore } from 'vuex';
+import TextareaField from '@/components/common/form/textarea/index.vue';
 
 export default defineComponent({
   name: 'CommnetOperation',
@@ -12,7 +13,18 @@ export default defineComponent({
 
     const name = ref('');
     const email = ref('');
+    const text = ref('');
     const avatarImgUrl = ref('../../../src/assets/icon/account-black-32px.svg');
+    const commentAvatarImgClasses = computed(() => {
+      return [
+        'comment-operation-form-header-avatar-img',
+        {
+          default:
+            avatarImgUrl.value ===
+            '../../../src/assets/icon/account-black-32px.svg',
+        },
+      ];
+    });
 
     // 用户QQ信息
     const qqUserInfo = computed(() => {
@@ -33,8 +45,6 @@ export default defineComponent({
       // 首先判断是否为QQ号
       if (!checkIsQQNumber(name.value)) return;
 
-      // 判断邮箱是否为空
-
       // 通过api获取用户QQ信息，并存储在store中
       // 判断store中是否用数据，如果store中有数据，就不用发送请求
       if (qqUserInfo.value.code === 200) {
@@ -49,10 +59,25 @@ export default defineComponent({
       }
     };
 
-    const onSendReqGetAvatarByQQEmail = () => {
+    const onSendReqGetAvatarByQQEmail = async () => {
       // 首先判断是否为QQ邮箱
-      console.log(email.value);
-      console.log(name.value);
+      if (!checkIsQQEmail(email.value)) return;
+
+      // 如果为qq邮箱就可以拿到qq去请求信息
+      const QQNumber = email.value.split('@')[0];
+
+      // 通过api获取用户QQ信息，并存储在store中
+      // 判断store中是否用数据，如果store中有数据，就不用发送请求
+      if (qqUserInfo.value.code === 200) {
+        avatarImgUrl.value = qqUserInfo.value.imgurl;
+        name.value = qqUserInfo.value.name;
+        email.value = qqUserInfo.value.mail;
+      } else {
+        await getQQInfo(QQNumber);
+        avatarImgUrl.value = qqUserInfo.value.imgurl;
+        name.value = qqUserInfo.value.name;
+        email.value = qqUserInfo.value.mail;
+      }
     };
 
     return {
@@ -63,11 +88,14 @@ export default defineComponent({
       onSendReqGetAvatarByQQEmail,
       getQQInfo,
       qqUserInfo,
+      commentAvatarImgClasses,
+      text,
     };
   },
 
   components: {
     InputField,
+    TextareaField,
   },
 });
 </script>
@@ -81,10 +109,7 @@ export default defineComponent({
     <div class="comment-operation-form">
       <div class="comment-operation-form-header">
         <div class="comment-operation-form-header-avatar">
-          <img
-            class="comment-operation-form-header-avatar-img"
-            :src="avatarImgUrl"
-          />
+          <img :class="commentAvatarImgClasses" :src="avatarImgUrl" />
         </div>
         <div class="comment-operation-form-header-input">
           <InputField
@@ -100,7 +125,14 @@ export default defineComponent({
         </div>
       </div>
       <div class="comment-operation-form-line"></div>
-      <div class="comment-operation-form-main"></div>
+      <div class="comment-operation-form-main">
+        <TextareaField
+          placeholder="友情提示：输入QQ号可以自动获取QQ头头像以及QQ邮箱"
+          v-model="text"
+          rows="7"
+        />
+        <div class="comment-operation-form-main-button"></div>
+      </div>
     </div>
   </div>
 </template>

@@ -61,13 +61,10 @@ export default defineComponent({
 <h3 id="2-书写一个质能守恒公式latex">2. 书写一个质能守恒公式[^LaTeX]</h3>
 <p>$$E=mc^2$$</p>
 <h3 id="3-高亮一段代码code">3. 高亮一段代码[^code]</h3>
-<pre><code class="language-python">@requires_authorization
-class SomeClass:
-    pass
-
-if __name__ == &#39;__main__&#39;:
-   # A comment
-  print &#39;hello world&#39;
+<pre ><code class="language-javasript">
+  export const test = () => {
+    console.log('Hello,World!);
+  }
 </code></pre>`,
       wordAmount: '800',
       readTime: '10min',
