@@ -1,6 +1,5 @@
 <script lang="ts">
-import { isValidDatePickType } from 'element-plus/lib/utils';
-import { defineComponent, onMounted, ref, watch } from 'vue';
+import { computed, defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
   name: 'InputField',
@@ -27,22 +26,22 @@ export default defineComponent({
 
   setup(props, ctx) {
     const vModel = ref('');
+    const propsModelValue = computed(() => props.modelValue);
 
-    const onChangeText = (event?: any, modelValue?: any) => {
-      const value = event.target.value.trim() || modelValue;
+    const onChangeText = (event?: any) => {
+      const value = event.target.value.trim();
 
-      if (vModel !== value) {
-        ctx.emit('dirty');
-      }
+      // if (vModel !== value) {
+      //   ctx.emit('dirty');
+      // }
 
       vModel.value = value;
-      console.log(vModel.value);
 
-      ctx.emit('update:modelValue', event.target.value.trim() || modelValue);
+      ctx.emit('update:modelValue', event.target.value.trim());
     };
 
-    watch(vModel, (value) => {
-      ctx.emit('update:modelValue', value);
+    watch(propsModelValue, (newValue: any) => {
+      vModel.value = newValue;
     });
 
     const onBlur = () => {
