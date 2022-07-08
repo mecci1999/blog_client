@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import AppComment from '@/view/comment/index.vue';
+import AppComment from '@/views/comment/index.vue';
 
 
 /**

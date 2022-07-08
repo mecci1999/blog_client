@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CommnetOperation from './operation/index.vue';
+import CommentShow from './show/index.vue';
 
 export default defineComponent({
   name: 'CommentPanel',
@@ -11,6 +12,7 @@ export default defineComponent({
 
   components: {
     CommnetOperation,
+    CommentShow,
   },
 });
 </script>
@@ -19,6 +21,7 @@ export default defineComponent({
   <transition name="comment-panel">
     <div class="comment-panel">
       <CommnetOperation />
+      <CommentShow />
     </div>
   </transition>
 </template>

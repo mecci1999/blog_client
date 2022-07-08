@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import PostShow from '@/view/post/index.vue';
+import PostShow from '@/views/post/index.vue';
 
 /**
  * 定义路由

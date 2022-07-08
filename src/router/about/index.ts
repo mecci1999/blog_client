@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import AppAbout from '@/view/about/index.vue';
+import AppAbout from '@/views/about/index.vue';
 
 
 /**

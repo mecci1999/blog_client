@@ -4,6 +4,7 @@ import InputField from '@/components/common/form/input/index.vue';
 import { checkIsQQNumber, checkIsQQEmail } from '@/utils/checkIsQQNumber';
 import { useStore } from 'vuex';
 import TextareaField from '@/components/common/form/textarea/index.vue';
+import ButtonField from '@/components/common/form/button/index.vue';
 
 export default defineComponent({
   name: 'CommnetOperation',
@@ -96,6 +97,7 @@ export default defineComponent({
   components: {
     InputField,
     TextareaField,
+    ButtonField,
   },
 });
 </script>
@@ -131,7 +133,9 @@ export default defineComponent({
           v-model="text"
           rows="7"
         />
-        <div class="comment-operation-form-main-button"></div>
+        <div class="comment-operation-form-main-button">
+          <ButtonField />
+        </div>
       </div>
     </div>
   </div>

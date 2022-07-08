@@ -6,8 +6,10 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppIcon: typeof import('./src/components/common/app-icon/index.vue')['default']
+    Button: typeof import('./src/components/common/form/button/index.vue')['default']
     Comment: typeof import('./src/components/comment/index.vue')['default']
     Content: typeof import('./src/components/post/show/content/index.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Footer: typeof import('./src/components/post/show/footer/index.vue')['default']
     Inedx: typeof import('./src/components/post/list/item/inedx.vue')['default']
