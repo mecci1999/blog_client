@@ -14,3 +14,7 @@ export const apiHttpClient = axios.create({
 export const tenApiHttpRequest = axios.create({
   baseURL: 'https://tenapi.cn/',
 });
+
+export const thirdQQHttpRequest = axios.create({
+  baseURL: 'https://thirdqq.qlogo.cn/',
+});

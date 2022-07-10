@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 export default defineComponent({
@@ -18,8 +18,16 @@ export default defineComponent({
       router.push({ name: 'about' });
     };
 
+    // 打开二维码收款页面
+    const showQRcode = ref(false);
+    const openQRcodePanel = () => {
+      showQRcode.value = !showQRcode.value;
+    };
+
     return {
       onClickToAbout,
+      openQRcodePanel,
+      showQRcode,
     };
   },
 
@@ -64,8 +72,34 @@ export default defineComponent({
       </div>
     </div>
     <div class="post-show-footer-donate">
-      <div class="post-show-footer-donate-button">
+      <div class="post-show-footer-donate-button" @click="openQRcodePanel">
         <span class="post-show-footer-donate-text">赏</span>
+      </div>
+      <div class="post-show-footer-donate-qrcode" v-show="showQRcode">
+        <div class="post-show-footer-donate-qrcode-wx">
+          <a
+            class="post-show-footer-donate-qrcode-wechat"
+            href="../../../../src/assets/image/wxpay.png"
+          >
+            <img
+              class="post-show-footer-donate-qrcode-wechat-img"
+              src="@/assets/image/wxpay.png"
+            />
+          </a>
+          <span class="post-show-footer-donate-qrcode-wx-text">微信</span>
+        </div>
+        <div class="post-show-footer-donate-qrcode-ali">
+          <a
+            class="post-show-footer-donate-qrcode-alipay"
+            href="../../../../src/assets/image/alipay.png"
+          >
+            <img
+              class="post-show-footer-donate-qrcode-alipay-img"
+              src="@/assets/image/alipay.png"
+            />
+          </a>
+          <span class="post-show-footer-donate-qrcode-ali-text">支付宝</span>
+        </div>
       </div>
     </div>
   </div>

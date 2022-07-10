@@ -1,19 +1,20 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { defineProps } from 'vue';
+import CommentListItem from './item/index.vue';
+import { CommentDataType } from '@/type/interface';
 
-export default defineComponent({
-  name: 'CommentList',
-
-  setup() {
-    return {};
+// 属性
+const props = defineProps({
+  list: {
+    type: Array<CommentDataType>,
   },
-
-  components: {},
 });
 </script>
 
 <template>
-  <div class="comment-list">CommentList</div>
+  <div class="comment-list">
+    <CommentListItem v-for="item in list" :key="item.id" :item="item" />
+  </div>
 </template>
 
 <style lang="scss" scoped>

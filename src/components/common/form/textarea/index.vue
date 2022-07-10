@@ -17,8 +17,8 @@ export default defineComponent({
     },
 
     rows: {
-      type: Number,
-      default: 2,
+      type: Number || String,
+      default: 2 || '2',
     },
   },
 

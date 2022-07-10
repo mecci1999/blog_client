@@ -55,8 +55,12 @@ export default defineComponent({
       } else {
         await getQQInfo(name.value);
         avatarImgUrl.value = qqUserInfo.value.imgurl;
-        name.value = qqUserInfo.value.name;
-        email.value = qqUserInfo.value.mail;
+        if (qqUserInfo.value.name) {
+          name.value = qqUserInfo.value.name;
+        }
+        if (qqUserInfo.value.mail) {
+          email.value = qqUserInfo.value.mail;
+        }
       }
     };
 

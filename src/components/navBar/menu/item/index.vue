@@ -63,9 +63,9 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="nav-menu-list-item" @click="onClickMenuItem(item.icon)">
-    <AppIcon :name="item.icon" size="20" />
-    <span class="nav-menu-list-item-name">{{ item.text }}</span>
+  <div class="nav-menu-list-item" @click="onClickMenuItem(item?.icon)">
+    <AppIcon :name="item?.icon" size="20" />
+    <span class="nav-menu-list-item-name">{{ item?.text }}</span>
     <div class="explore-menu" v-if="showExpolerMenu">
       <div class="explore-menu-list">
         <span>分类</span>
