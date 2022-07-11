@@ -11,7 +11,7 @@ declare module '@vue/runtime-core' {
     Content: typeof import('./src/components/post/show/content/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
-    Footer: typeof import('./src/components/post/show/footer/index.vue')['default']
+    Footer: typeof import('./src/components/footer/index.vue')['default']
     Inedx: typeof import('./src/components/post/list/item/inedx.vue')['default']
     Info: typeof import('./src/components/user/info/index.vue')['default']
     Input: typeof import('./src/components/common/form/input/index.vue')['default']

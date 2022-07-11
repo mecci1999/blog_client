@@ -12,6 +12,7 @@ import PostShowFooter from '@/components/post/show/footer/index.vue';
 import { useRoute } from 'vue-router';
 import CommentPanel from '@/components/comment/index.vue';
 import { APP_CLIENT_BASE_URL } from '@/config';
+import AppFooter from '@/components/footer/index.vue';
 
 export default defineComponent({
   name: 'PostShow',
@@ -103,6 +104,7 @@ export default defineComponent({
     PostShowContent,
     PostShowFooter,
     CommentPanel,
+    AppFooter,
   },
 });
 </script>
@@ -127,6 +129,7 @@ export default defineComponent({
       </div>
     </main>
     <CommentPanel />
+    <AppFooter />
   </div>
 </template>
 

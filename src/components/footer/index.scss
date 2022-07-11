@@ -1,0 +1,13 @@
+.app-footer {
+  width: 100%;
+  background-color: var(--code-background);
+  color: var(--secondary-text-color);
+
+  &-info {
+    margin: 0 auto;
+    padding: 24px;
+    &-text {
+      text-align: center;
+    }
+  }
+}

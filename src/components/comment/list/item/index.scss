@@ -43,7 +43,7 @@
 
       &-card {
         padding: 4px 8px;
-        background-color: rgba(#409eff, 0.7);
+        background-color: var(--primary-text-hover-color);
         color: #fff;
         border-radius: 4px;
         font-size: var(--font-size-small);
@@ -77,11 +77,17 @@
         margin-right: 8px;
         transform: scale(0.9);
         display: flex;
+        padding: 4px;
+        background: var(--comment-content-background);
+        border-radius: 4px;
       }
 
       &-browser {
         margin-right: 8px;
         transform: scale(0.9);
+        padding: 4px;
+        background: var(--comment-content-background);
+        border-radius: 4px;
       }
 
       &-address {
@@ -89,6 +95,9 @@
         transform: scale(0.9);
         display: flex;
         align-items: center;
+        padding: 4px;
+        background: var(--comment-content-background);
+        border-radius: 4px;
 
         &-icon {
           width: 10px;
