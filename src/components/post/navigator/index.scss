@@ -1,0 +1,18 @@
+.post-navigator {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  height: 150px;
+
+  &-forward {
+    flex: 1;
+    height: 100%;
+    margin-right: 4px;
+  }
+
+  &-back {
+    flex: 1;
+    height: 150%;
+  }
+}

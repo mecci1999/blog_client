@@ -27,6 +27,9 @@ export default defineComponent({
       ];
     });
 
+    // 行数
+    const row = 7;
+
     // 用户QQ信息
     const qqUserInfo = computed(() => {
       return store.getters['comment/qqUserInfo'];
@@ -95,6 +98,7 @@ export default defineComponent({
       qqUserInfo,
       commentAvatarImgClasses,
       text,
+      row,
     };
   },
 
@@ -135,7 +139,7 @@ export default defineComponent({
         <TextareaField
           placeholder="友情提示：输入QQ号可以自动获取QQ头头像以及QQ邮箱"
           v-model="text"
-          rows="7"
+          :rows="row"
         />
         <div class="comment-operation-form-main-button">
           <ButtonField />

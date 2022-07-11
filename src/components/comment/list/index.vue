@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import CommentListItem from './item/index.vue';
-import { CommentDataType } from '@/type/interface';
+import { CommentDataType } from '@/types/interface';
 
 // 属性
 const props = defineProps({

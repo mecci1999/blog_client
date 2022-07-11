@@ -4,17 +4,15 @@ import PostListItem from './item/inedx.vue';
 
 export default defineComponent({
   name: 'PostList',
-  
+
   props: {
     posts: {
       type: Array,
-    }
+    },
   },
 
   setup() {
-    return {
-
-    }
+    return {};
   },
 
   components: {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, defineProps, ref } from 'vue';
-import { CommentDataType } from '@/type/interface';
+import { CommentDataType } from '@/types/interface';
 
 const props = defineProps({
   item: {

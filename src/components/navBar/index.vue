@@ -1,5 +1,6 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import NavMenu from './menu/index.vue';
 
@@ -8,11 +9,18 @@ export default defineComponent({
 
   setup() {
     const store = useStore();
+    const router = useRouter();
     // appName
     const name = computed(() => store.state.appName);
 
+    const onJumpToHome = () => {
+      // 跳转到首页
+      router.push({ name: 'home' });
+    };
+
     return {
       name,
+      onJumpToHome,
     };
   },
 
@@ -25,8 +33,8 @@ export default defineComponent({
 <template>
   <div class="nav-bar">
     <div class="nav-bar-left">
-      <div class="nav-bar-left-name">{{ name }}</div>
-      <div class="nav-bar-left-title">个人博客</div>
+      <div class="nav-bar-left-name" @click="onJumpToHome">{{ name }}</div>
+      <div class="nav-bar-left-title" @click="onJumpToHome">个人博客</div>
     </div>
     <div class="nav-bar-right">
       <NavMenu />

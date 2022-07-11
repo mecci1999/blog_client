@@ -18,3 +18,20 @@ export interface CommentDataType {
   created?: string; // 发表时间
   updated?: string; // 更新时间
 }
+
+/**
+ * post博客内容接口
+ */
+export interface PostDataType {
+  id?: number;
+  bgImgUrl?: string; // 博客相关的封面地址
+  title?: string; // 标题
+  description?: string; // 描述
+  wordAmount?: string; // 字数
+  readTime?: string; // 时长
+  created?: string; // 发表时间
+  updated?: string; // 更新时间
+  commentAmount?: number; // 评论数量
+  accessAmount?: number; // 访问数量
+  content?: string; // 内容
+}
