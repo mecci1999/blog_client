@@ -32,12 +32,18 @@ export default defineComponent({
 
 <template>
   <div class="nav-bar">
-    <div class="nav-bar-left">
-      <div class="nav-bar-left-name" @click="onJumpToHome">{{ name }}</div>
-      <div class="nav-bar-left-title" @click="onJumpToHome">个人博客</div>
-    </div>
-    <div class="nav-bar-right">
-      <NavMenu />
+    <div class="nav-bar-container">
+      <div class="nav-bar-container-left">
+        <div class="nav-bar-container-left-name" @click="onJumpToHome">
+          {{ name }}
+        </div>
+        <div class="nav-bar-container-left-title" @click="onJumpToHome">
+          个人博客
+        </div>
+      </div>
+      <div class="nav-bar-container-right">
+        <NavMenu />
+      </div>
     </div>
   </div>
 </template>

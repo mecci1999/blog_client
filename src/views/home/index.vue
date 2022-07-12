@@ -1,9 +1,14 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, reactive, onMounted } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
 import PostList from '@/components/post/list/index.vue';
+import AppFooter from '@/components/footer/index.vue';
+import {
+  changeBackgroundImageByTime,
+  getCurrnetTime,
+} from '@/utils/changeBackgroundImage';
 
 export default defineComponent({
   name: 'AppHome',
@@ -12,6 +17,12 @@ export default defineComponent({
     const onClickScrollDown = () => {
       document.getElementById('main')?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    let time = ref('');
+    let date: any;
+    let style = reactive({
+      backgroundImage: '',
+    });
 
     // 用户信息接口信息
     const users = {
@@ -67,10 +78,22 @@ export default defineComponent({
       },
     ];
 
+    onMounted(async () => {
+      date = setInterval(() => {
+        time.value = getCurrnetTime();
+        style.backgroundImage = changeBackgroundImageByTime(
+          time.value.slice(0, 2),
+        );
+
+        clearInterval(date);
+      }, 1000);
+    });
+
     return {
       onClickScrollDown,
       users,
       posts,
+      style,
     };
   },
 
@@ -79,13 +102,15 @@ export default defineComponent({
     AppIcon,
     UserInfo,
     PostList,
+    AppFooter,
   },
 });
 </script>
 
 <template>
   <div class="app-home">
-    <div class="bg">
+    <NavBar />
+    <div class="bg" :style="style">
       <div class="bg-container">
         <span class="bg-container-title">趁现在还年轻</span>
         <div class="bg-container-scroll-down" @click="onClickScrollDown">
@@ -93,8 +118,7 @@ export default defineComponent({
         </div>
       </div>
     </div>
-    <NavBar />
-    <div id="main" class="app-main">
+    <main id="main" class="app-main">
       <div class="app-main-container">
         <div class="app-main-container-left">
           <UserInfo :user="users" />
@@ -103,7 +127,8 @@ export default defineComponent({
           <PostList :posts="posts" />
         </div>
       </div>
-    </div>
+    </main>
+    <AppFooter />
   </div>
 </template>
 
