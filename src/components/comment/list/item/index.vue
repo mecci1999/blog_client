@@ -40,7 +40,7 @@ const isAdmin = props.item?.userId === 1;
           {{ item?.name }}
         </div>
         <div class="comment-list-item-container-header-card" v-if="isAdmin">
-          博主
+          作者
         </div>
         <div class="comment-list-item-container-header-time">
           {{ item?.updated || item?.created }}

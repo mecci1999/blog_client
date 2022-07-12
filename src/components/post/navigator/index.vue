@@ -21,6 +21,7 @@ const onClickForwardJump = () => {
 const onClickBackJump = () => {
   // 跳转到后一篇博客
 };
+
 </script>
 
 <template>
@@ -29,11 +30,10 @@ const onClickBackJump = () => {
       class="post-navigator-forward"
       v-if="!currentIsFirstPost"
       @click="onClickForwardJump"
-      :style="{
-        backgroundImage: getForwardPost?.bgImgUrl,
-      }"
     >
+    <img class="post-navigator-forward-img" src="@/assets/image/git.png">
       <div class="post-navigator-forward-text">
+        
         <span class="post-navigator-forward-text-top">上一篇</span>
         <span class="post-navigator-forward-text-bottom">{{
           getForwardPost?.title
@@ -41,17 +41,15 @@ const onClickBackJump = () => {
       </div>
     </div>
     <div
-      class="post-nacigator-back"
+      class="post-navigator-back"
       v-if="!currentIsEndPost"
       @click="onClickBackJump"
-      :style="{
-        backgroundImage: getBackPost?.bgImgUrl,
-      }"
     >
+    <img class="post-navigator-back-img" src="@/assets/image/r_statistics.jpeg">
       <div class="post-navigator-back-text">
         <span class="post-navigator-back-text-top">下一篇</span>
         <span class="post-navigator-back-text-bottom">{{
-          getBackPost.title
+          getBackPost?.title
         }}</span>
       </div>
     </div>
