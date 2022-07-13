@@ -1,11 +1,13 @@
 .blog.light {
   /* Text */
   --primary-text-color: #000000;
-  --secondary-text-color: #585858;
-  --light-text-color: #adadad;
+  --secondary-text-color: #4c4948;
+  --light-text-color: #1f2d3d;
   --primary-text-hover-color: #425aef;
   --primary-text-blog-color: #34495e;
   --code-text-color: #525252;
+  --mecci-home-color: #363636;
+  --mecci-secondary-color: rgba(60, 60, 67, 0.6);
 
   /* Background */
   --primary-background: #ffffff;
@@ -38,11 +40,13 @@
 .blog.dark {
   /* Text */
   --primary-text-color: #b1b1b1;
-  --secondary-text-color: #585858;
-  --light-text-color: #656565;
-  --primary-text-hover-color: #425aef;
+  --secondary-text-color: rgba(255, 255, 255, 0.9);
+  --light-text-color: ##ff;
+  --primary-text-hover-color: #0084ff;
   --primary-text-blog-color: #b1b1b1;
   --code-text-color: rgb(201, 209, 217);
+  --mecci-home-color: #f7f7fa;
+  --mecci-secondary-color: #a1a2b8;
 
   /* Background */
   --primary-background: #222222;

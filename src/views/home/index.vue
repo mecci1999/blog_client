@@ -51,6 +51,30 @@ export default defineComponent({
         created: '2022-06-14 23:26:35',
         commentAmount: 10,
         accessAmount: 4000,
+        types: [
+          {
+            id: 1,
+            name: '前端技术',
+          },
+          {
+            id: 2,
+            name: '面经',
+          },
+        ],
+        tags: [
+          {
+            id: 1,
+            name: 'JavaScript',
+          },
+          {
+            id: 2,
+            name: '开发',
+          },
+          {
+            id: 3,
+            name: '日常',
+          },
+        ],
       },
       {
         id: 2,
@@ -63,6 +87,30 @@ export default defineComponent({
         created: '2022-06-14 23:26:35',
         commentAmount: 10,
         accessAmount: 4000,
+        types: [
+          {
+            id: 1,
+            name: '前端技术',
+          },
+          {
+            id: 2,
+            name: '面经',
+          },
+        ],
+        tags: [
+          {
+            id: 1,
+            name: 'JavaScript',
+          },
+          {
+            id: 2,
+            name: '开发',
+          },
+          {
+            id: 3,
+            name: '日常',
+          },
+        ],
       },
       {
         id: 1,
@@ -75,6 +123,30 @@ export default defineComponent({
         created: '2022-06-14 23:26:35',
         commentAmount: 10,
         accessAmount: 4000,
+        types: [
+          {
+            id: 1,
+            name: '前端技术',
+          },
+          {
+            id: 2,
+            name: '面经',
+          },
+        ],
+        tags: [
+          {
+            id: 1,
+            name: 'JavaScript',
+          },
+          {
+            id: 2,
+            name: '开发',
+          },
+          {
+            id: 3,
+            name: '日常',
+          },
+        ],
       },
     ];
 

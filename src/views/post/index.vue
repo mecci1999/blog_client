@@ -117,7 +117,10 @@ export default defineComponent({
       <NavBar />
       <div class="post-show-header-shadow"></div>
       <div class="post-show-header-info">
-        <div class="post-show-header-info-option"></div>
+        <div class="post-show-header-info-option">
+          <div class="post-show-header-info-option-type"></div>
+          <div class="post-show-header-info-option-tags"></div>
+        </div>
         <h1 class="post-show-header-info-title">{{ post.title }}</h1>
         <PostShowInfo :post="post" />
       </div>

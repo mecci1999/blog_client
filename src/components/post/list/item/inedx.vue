@@ -1,61 +1,44 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
+import PostTag from '@/components/post/tag/index.vue';
 
-export default defineComponent({
-  name: 'PostListItem',
-
-  props: {
-    item: {
-      type: Object,
-    },
+// 属性
+const props = defineProps({
+  item: {
+    type: Object,
   },
-
-  setup() {
-    const router = useRouter();
-    const onClickPostListItem = (id: number) => {
-      router.push({ name: 'postShow', params: { postId: id } });
-    };
-
-    return {
-      onClickPostListItem,
-    };
-  },
-
-  components: {},
 });
+
+const router = useRouter();
+const onClickPostListItem = (id: number) => {
+  router.push({ name: 'postShow', params: { postId: id } });
+};
 </script>
 
 <template>
-  <div class="post-list-item">
-    <div
-      class="post-list-item-media"
-      @click="onClickPostListItem(item.id)"
-    ></div>
+  <div class="post-list-item" @click="onClickPostListItem(item?.id)">
+    <div class="post-list-item-media">
+      <img
+        class="post-list-item-media-img"
+        src="../../../../../src/assets/image/post_media.png"
+      />
+    </div>
     <div class="post-list-item-content">
-      <div
-        class="post-list-item-content-title"
-        @click="onClickPostListItem(item.id)"
-      >
-        {{ item.title }}
-      </div>
-      <div class="post-list-item-content-data">
-        <div class="post-list-item-content-data-time">
-          发表时间:{{ item.created }}
+      <div class="post-list-item-content-main">
+        <div class="post-list-item-content-main-title">
+          {{ item?.title }}
         </div>
-        <div class="post-list-item-content-separate"></div>
-        <div class="post-list-item-content-data-comment">
-          评论量:{{ item.commentAmount }}
-        </div>
-        <div class="post-list-item-content-separate"></div>
-        <div class="post-list-item-content-data-access">
-          阅读量:{{ item.accessAmount }}
+        <div class="post-list-item-content-main-text">
+          {{ item?.description }}
         </div>
       </div>
-      <div class="post-list-item-content-description">
-        {{ item.description }}
+      <div class="post-list-item-content-bottom">
+        <div class="post-list-item-content-bottom-tags">
+          <PostTag v-for="tag in item?.tags" :key="tag.id" :item="tag" />
+        </div>
+        <div class="post-list-item-content-bottom-date">4天前</div>
       </div>
-      <div class="post-list-item-content-tag"></div>
     </div>
   </div>
 </template>

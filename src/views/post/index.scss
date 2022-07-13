@@ -12,7 +12,7 @@
     background-size: cover;
     background-position: center center;
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 
     &-shadow {
       background-color: #000000;
@@ -27,6 +27,8 @@
 
     &-info {
       top: 0;
+      left: 0;
+      right: 0;
       position: absolute;
       padding: 0 3rem;
       margin: 0 auto;
