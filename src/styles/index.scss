@@ -4,7 +4,8 @@
 
 :root {
   // 字体
-  --font-family-base: 'PingFangSC-Regular', 'Microsoft YaHei', Arial, sans-serif;
+  // --font-family-base: 'PingFangSC-Regular', 'Microsoft YaHei', Arial, sans-serif;
+  --font-family-base: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei';
   --font-size-small: 12px;
   --font-size-normal: 14px;
   --font-size-middle: 16px;
@@ -16,6 +17,8 @@
 }
 
 html {
+  font-size: 20px;
+
   body {
     position: relative;
     width: 100%;

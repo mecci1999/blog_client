@@ -22,7 +22,7 @@ export default defineComponent({
     let time = ref('');
     let date: any;
     let style = reactive({
-      backgroundImage: '',
+      backgroundImage: `url('../src/assets/image/post_bg_01.png')`,
     });
 
     // 博客数据
@@ -76,16 +76,16 @@ export default defineComponent({
       accessAmount: 4000,
     };
 
-    onMounted(async () => {
-      date = setInterval(() => {
-        time.value = getCurrnetTime();
-        style.backgroundImage = changeBackgroundImageByTime(
-          time.value.slice(0, 2),
-        );
+    // onMounted(async () => {
+    //   date = setInterval(() => {
+    //     time.value = getCurrnetTime();
+    //     style.backgroundImage = changeBackgroundImageByTime(
+    //       time.value.slice(0, 2),
+    //     );
 
-        clearInterval(date);
-      }, 1000);
-    });
+    //     clearInterval(date);
+    //   }, 1000);
+    // });
 
     const route = useRoute();
     const link = APP_CLIENT_BASE_URL + route.path;
@@ -115,13 +115,18 @@ export default defineComponent({
   <div class="post-show">
     <header class="post-show-header" :style="style">
       <NavBar />
-      <div class="post-show-header-title">{{ post.title }}</div>
-    </header>
-    <main class="post-show-main">
-      <div class="post-show-main-header">
+      <div class="post-show-header-shadow"></div>
+      <div class="post-show-header-info">
+        <div class="post-show-header-info-option"></div>
+        <h1 class="post-show-header-info-title">{{ post.title }}</h1>
         <PostShowInfo :post="post" />
       </div>
-      <div class="post-show-main-line"></div>
+    </header>
+    <main class="post-show-main">
+      <!-- <div class="post-show-main-header">
+        <PostShowInfo :post="post" />
+      </div>
+      <div class="post-show-main-line"></div> -->
       <div class="post-show-main-container">
         <PostShowContent :post="post" />
       </div>
