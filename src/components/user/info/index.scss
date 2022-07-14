@@ -1,16 +1,22 @@
 .user-info {
   width: 100%;
   height: 360px;
-  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+  box-shadow: var(--primary-background-shadow);
   border-radius: 8px;
   padding: 20px 24px;
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  &:hover {
-    box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
+  @media screen and (min-width: 900px) {
+    & {
+      min-height: 330px;
+    }
   }
+
+  // &:hover {
+  //   box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
+  // }
 
   &-avatar {
     width: 72px;

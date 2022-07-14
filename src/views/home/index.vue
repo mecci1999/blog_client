@@ -9,6 +9,9 @@ import {
   changeBackgroundImageByTime,
   getCurrnetTime,
 } from '@/utils/changeBackgroundImage';
+import PostTabBar from '@/components/post/tabs/index.vue';
+import { postType, tags } from '@/api/test/index.ts';
+import TagsList from '@/components/post/tag/list/index.vue';
 
 export default defineComponent({
   name: 'AppHome',
@@ -166,6 +169,8 @@ export default defineComponent({
       users,
       posts,
       style,
+      postType,
+      tags,
     };
   },
 
@@ -175,6 +180,8 @@ export default defineComponent({
     UserInfo,
     PostList,
     AppFooter,
+    PostTabBar,
+    TagsList,
   },
 });
 </script>
@@ -194,8 +201,10 @@ export default defineComponent({
       <div class="app-main-container">
         <div class="app-main-container-left">
           <UserInfo :user="users" />
+          <TagsList :tags="tags" />
         </div>
         <div class="app-main-container-right">
+          <PostTabBar :type="postType" />
           <PostList :posts="posts" />
         </div>
       </div>

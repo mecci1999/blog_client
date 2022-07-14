@@ -1,0 +1,37 @@
+.post-tab {
+  white-space: nowrap;
+  overflow-x: scroll;
+  display: flex;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &-item {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.1rem 0.5rem;
+    margin: 0px 0.25rem;
+    border-radius: 8px;
+    color: var(--primary-text-color);
+    font-size: var(--font-size-middle);
+
+    &:hover {
+      color: #fff;
+      background-color: var(--mecci-theme-color);
+    }
+
+    &.active {
+      color: #fff;
+      background-color: var(--mecci-theme-color);
+    }
+
+    // &-name {
+    //   font-weight: 700;
+    //   padding: 0.1rem 0.5rem;
+    //   margin: 0px 0.25rem;
+    //   border-radius: 8px;
+    //   color: var(--primary-text-color);
+    //   font-size: var(--font-size-middle);
+    // }
+  }
+}
