@@ -44,6 +44,46 @@
       justify-content: center;
       backdrop-filter: blur(5px);
 
+      &-option {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        white-space: nowrap;
+        line-height: 2;
+
+        &-type {
+          background: rgba(255, 255, 255, 0.2);
+          color: #fff;
+          padding: 0 0.5rem;
+          font-size: 0.7rem;
+          margin: auto;
+          border-radius: 8px;
+          margin-right: 0.5rem;
+          font-weight: 700;
+          height: 32px;
+          line-height: 32px;
+          transition: all 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--mecci-theme-color);
+            background: #fff;
+            border-radius: 8px;
+          }
+        }
+
+        &-tag {
+          color: #fff;
+          opacity: 0.4;
+          margin-left: 1rem;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+
       &-title {
         color: #ffffff;
         font-weight: 700;

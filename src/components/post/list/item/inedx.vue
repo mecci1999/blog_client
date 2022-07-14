@@ -24,6 +24,15 @@ const onClickPostListItem = (id: number) => {
         src="../../../../../src/assets/image/post_media.png"
       />
     </div>
+    <div class="post-list-item-types">
+      <div
+        class="post-list-item-types-item"
+        v-for="type in item?.types"
+        :key="type.id"
+      >
+        {{ type.name }}
+      </div>
+    </div>
     <div class="post-list-item-content">
       <div class="post-list-item-content-main">
         <div class="post-list-item-content-main-title">

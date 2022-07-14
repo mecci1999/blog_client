@@ -58,8 +58,20 @@ export default defineComponent({
       <div class="post-show-header-shadow"></div>
       <div class="post-show-header-info">
         <div class="post-show-header-info-option">
-          <div class="post-show-header-info-option-type"></div>
-          <div class="post-show-header-info-option-tags"></div>
+          <div
+            class="post-show-header-info-option-type"
+            v-for="type in post.types"
+            :key="type.id"
+          >
+            {{ type.name }}
+          </div>
+          <div
+            class="post-show-header-info-option-tag"
+            v-for="tag in post.tags"
+            :key="tag.id"
+          >
+            #{{ tag.name }}
+          </div>
         </div>
         <h1 class="post-show-header-info-title">{{ post.title }}</h1>
         <PostShowInfo :post="post" />
