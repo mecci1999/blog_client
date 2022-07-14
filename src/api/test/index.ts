@@ -177,3 +177,129 @@ export const postAmount = [
     count: 12,
   },
 ];
+
+// 博客信息接口
+export const posts = [
+  {
+    id: 3,
+    title: '独立开发个人博客',
+    description:
+      '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+    content: '<h1>hello,world!</h1>',
+    wordAmount: '800',
+    readTime: '10min',
+    created: '2022-06-14 23:26:35',
+    commentAmount: 10,
+    accessAmount: 4000,
+    types: [
+      {
+        id: 1,
+        name: '前端技术',
+      },
+      {
+        id: 2,
+        name: '面经',
+      },
+    ],
+    tags: [
+      {
+        id: 1,
+        name: 'JavaScript',
+      },
+      {
+        id: 2,
+        name: '开发',
+      },
+      {
+        id: 3,
+        name: '日常',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: '独立开发个人博客',
+    description:
+      '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+    content: '<h1>hello,world!</h1>',
+    wordAmount: '800',
+    readTime: '10min',
+    created: '2022-06-14 23:26:35',
+    commentAmount: 10,
+    accessAmount: 4000,
+    types: [
+      {
+        id: 1,
+        name: '前端技术',
+      },
+      {
+        id: 2,
+        name: '面经',
+      },
+    ],
+    tags: [
+      {
+        id: 1,
+        name: 'JavaScript',
+      },
+      {
+        id: 2,
+        name: '开发',
+      },
+      {
+        id: 3,
+        name: '日常',
+      },
+    ],
+  },
+  {
+    id: 1,
+    title: '独立开发个人博客',
+    description:
+      '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
+    content: '<h1>hello,world!</h1>',
+    wordAmount: '800',
+    readTime: '10min',
+    created: '2022-06-14 23:26:35',
+    commentAmount: 10,
+    accessAmount: 4000,
+    types: [
+      {
+        id: 1,
+        name: '前端技术',
+      },
+      {
+        id: 2,
+        name: '面经',
+      },
+    ],
+    tags: [
+      {
+        id: 1,
+        name: 'JavaScript',
+      },
+      {
+        id: 2,
+        name: '开发',
+      },
+      {
+        id: 3,
+        name: '日常',
+      },
+    ],
+  },
+];
+
+// 用户信息接口信息
+export const users = {
+  name: 'Mecci',
+  description: '学习永无止境',
+  blogAmount: 10,
+  typeAmount: 4,
+  tagAmount: 8,
+  info: {
+    github: 'https://www.github.com/mecci1999',
+    qq: 'http://wpa.qq.com/msgrd?v=3&uin=664751829&site=qq&menu=yes',
+    wechat: '',
+  },
+};

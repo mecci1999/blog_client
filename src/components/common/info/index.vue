@@ -17,19 +17,19 @@ const days = Math.floor(getAppDays(time));
     <div class="app-info-title">数据</div>
     <div class="app-info-post">
       <div class="app-info-post-title">文章总数：</div>
-      <div class="app-info-post-amount">{{ item?.postAmount }}</div>
+      <div class="app-info-post-amount">{{ item?.postAmount }}篇</div>
     </div>
     <div class="app-info-post">
       <div class="app-info-post-title">建站天数：</div>
-      <div class="app-info-post-amount">{{ days }}</div>
+      <div class="app-info-post-amount">{{ days }}天</div>
     </div>
     <div class="app-info-post">
       <div class="app-info-post-title">总字数：</div>
-      <div class="app-info-post-amount">{{ item?.wordAmount }}</div>
+      <div class="app-info-post-amount">{{ item?.wordAmount }}k</div>
     </div>
     <div class="app-info-post">
       <div class="app-info-post-title">总访问量：</div>
-      <div class="app-info-post-amount">{{ item?.accessAmount }}</div>
+      <div class="app-info-post-amount">{{ item?.accessAmount }}次</div>
     </div>
     <div class="app-info-post">
       <div class="app-info-post-title">上次更新时间：</div>

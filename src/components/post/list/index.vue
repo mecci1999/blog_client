@@ -23,7 +23,12 @@ export default defineComponent({
 
 <template>
   <div class="post-list">
-    <PostListItem v-for="post in posts" :key="post.id" :item="post" />
+    <div class="post-list-group">
+      <PostListItem v-for="post in posts" :key="post.id" :item="post" />
+    </div>
+    <div class="post-list-bottom-tip">
+      <span class="post-list-bottom-tip-text">已经到底啦~</span>
+    </div>
   </div>
 </template>
 

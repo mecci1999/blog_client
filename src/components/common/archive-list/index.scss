@@ -8,6 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  line-height: 2;
 
   &-item {
     width: 100%;
@@ -21,7 +22,7 @@
       flex-direction: column;
       align-content: space-between;
       border: 1px solid var(--line-color);
-      transition: all 0.5s;
+      transition: all 0.3s;
       padding: 0.15rem 0.5rem;
       width: 100%;
 
@@ -51,7 +52,7 @@
         font-size: 14px;
         opacity: 0.6;
         color: var(--secondary-text-color);
-        transition: all 0.5s;
+        transition: all 0.3s;
       }
 
       &-count {
@@ -59,7 +60,7 @@
         flex-direction: row;
         align-items: baseline;
         color: var(--mecci-home-color);
-        transition: all 0.5s;
+        transition: all 0.3s;
 
         &-amount {
           display: inline-block;
