@@ -8,6 +8,13 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 
+  &-title {
+    color: var(--mecci-theme-color);
+    font-size: var(--font-size-middle);
+    margin-bottom: 0.2rem;
+    width: 100%;
+  }
+
   &-item {
     font-size: var(--font-size-middle);
     color: var(--mecci-home-color);

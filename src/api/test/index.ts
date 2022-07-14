@@ -113,3 +113,67 @@ export const tags = [
     amount: 12,
   },
 ];
+
+/**
+ * 网站数据
+ */
+export const info = {
+  postAmount: 100,
+  wordAmount: 10,
+  accessAmount: 4000,
+  updatedTime: '4天前',
+};
+
+/**
+ * 博客发表统计数量根据月份
+ */
+export const postAmount = [
+  {
+    date: '01',
+    count: 10,
+  },
+  {
+    date: '02',
+    count: 30,
+  },
+  {
+    date: '03',
+    count: 20,
+  },
+  {
+    date: '04',
+    count: 15,
+  },
+  {
+    date: '05',
+    count: 12,
+  },
+  {
+    date: '06',
+    count: 9,
+  },
+  {
+    date: '07',
+    count: 16,
+  },
+  {
+    date: '08',
+    count: 15,
+  },
+  {
+    date: '09',
+    count: 14,
+  },
+  {
+    date: '10',
+    count: 18,
+  },
+  {
+    date: '11',
+    count: 14,
+  },
+  {
+    date: '12',
+    count: 12,
+  },
+];

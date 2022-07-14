@@ -8,6 +8,7 @@ const props = defineProps({
 
 <template>
   <div class="tags-list">
+    <div class="tags-list-title">标签</div>
     <div class="tags-list-item" v-for="tag in tags" :key="tag?.id">
       #{{ tag?.name }}
       <sup class="tags-list-item-amount">{{ tag?.amount }}</sup>
