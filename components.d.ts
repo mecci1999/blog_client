@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
     Tabs: typeof import('./src/components/post/tabs/index.vue')['default']
     Tag: typeof import('./src/components/post/tag/index.vue')['default']
     Textarea: typeof import('./src/components/common/form/textarea/index.vue')['default']
+    TimeLine: typeof import('./src/components/common/time-line/index.vue')['default']
   }
 }
 

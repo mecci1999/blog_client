@@ -1,146 +1,110 @@
 .app-about {
   width: 100%;
-  height: 75vh;
-  object-fit: cover;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-color: #cccccc;
+  position: relative;
 
-  &-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    flex-direction: column;
-    position: relative;
+  &-title {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    min-height: 60vh;
+    padding: 0 1rem !important;
 
-    &-title {
-      font-size: 32px;
-      line-height: 64px;
-      margin-bottom: 32px;
-      letter-spacing: 10px;
-      font-weight: 500;
-      position: absolute;
-      top: 20%;
-      user-select: none;
+    @media screen and (max-width: 769px) {
+      & {
+        min-height: 40vh;
+
+        &-header {
+          font-size: 2.5rem !important;
+        }
+
+        &-description {
+          font-size: 25px !important;
+        }
+      }
+    }
+
+    &-header {
+      width: 980px;
+      font-size: 5rem;
+      font-family: Helvetica;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: var(--mecci-font-color);
+
+      span {
+        color: var(--mecci-theme-color);
+      }
     }
 
     &-description {
-      font-size: var(--font-size-large);
-      position: absolute;
-      top: 35%;
-      user-select: none;
+      font-size: 2.5rem;
+      font-family: Helvetica;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--mecci-font-color);
+
+      &-coding {
+        background-image: linear-gradient(45deg, #18e198 50%, #0ec15d);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+
+      &-item {
+        background-image: linear-gradient(45deg, #0ecffe 50%, #07a6f1);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+
+      &-ideal {
+        background-image: linear-gradient(45deg, #fa7671 50%, #f45f7f);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &-container {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 1rem !important;
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 400;
+      margin: 1rem 0;
+      text-align: left;
+      letter-spacing: 0.6px;
+      color: var(--mecci-font-color);
     }
 
-    &-content {
-      width: 90%;
-      max-width: 1280px;
-      padding: 24px;
-      margin: 0 auto;
-      min-height: 586px;
-      background-color: #ffffff;
-      box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+    &-author {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
       border-radius: 8px;
-      position: absolute;
-      top: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
 
-      &-avatar {
-        width: 128px;
-        height: 128px;
-        border-radius: 50%;
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        background-color: #ffffff;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        transform: translateY(-50%);
-      }
-
-      &-name {
-        line-height: 40px;
+      &-title {
+        color: var(--mecci-theme-color);
         font-size: var(--font-size-large);
-        color: var(--primary-text-color);
-        position: absolute;
-        top: 80px;
-        z-index: 3;
-      }
-
-      &-introduction {
-        font-size: var(--font-size-normal);
-        color: var(--secondary-text-color);
-        position: absolute;
-        top: 120px;
-        z-index: 3;
-      }
-
-      &-info {
-        position: absolute;
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        right: 10%;
-        width: 200px;
-        justify-content: space-between;
-
-        &-github {
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-
-          &-icon {
-            color: var(--secondary-text-color);
-            background-image: url('@/assets/icon/github.svg');
-            background-size: 100% 100%;
-            width: 32px;
-            height: 32px;
-            background-repeat: no-repeat;
-          }
-        }
-
-        &-qq {
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-
-          &-icon {
-            color: var(--secondary-text-color);
-            background-image: url('@/assets/icon/qq.svg');
-            background-size: 100% 100%;
-            width: 32px;
-            height: 32px;
-            background-repeat: no-repeat;
-          }
-        }
-
-        &-wechat {
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-
-          &-icon {
-            color: var(--secondary-text-color);
-            background-image: url('@/assets/icon/wechat.svg');
-            background-size: 100% 100%;
-            width: 32px;
-            height: 32px;
-            background-repeat: no-repeat;
-          }
-        }
-
-        &-email {
-          cursor: pointer;
-        }
       }
     }
   }

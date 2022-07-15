@@ -6,6 +6,7 @@ import {
 } from '../../utils/changeBackgroundImage';
 import NavBar from '@/components/navBar/index.vue';
 import { useStore } from 'vuex';
+import AppFooter from '@/components/footer/index.vue';
 
 export default defineComponent({
   name: 'AppAbout',
@@ -32,29 +33,9 @@ export default defineComponent({
       eMail: '',
     });
 
-    onMounted(async () => {
-      //   await getUser();
+    // onMounted(async () => {
 
-      //   const user = computed(() => store.getters['user/user']);
-
-      //   name.value = user.value.name;
-      //   introduction.value = user.value.introduction;
-      //   info.github = user.value.info.github;
-      //   info.qq = user.value.info.qq;
-      //   info.wechat = user.value.info.wx;
-      //   info.eMail = user.value.info.eMail;
-      name.value = 'Mecci';
-      introduction.value = '趁现在还年轻';
-
-      date = setInterval(() => {
-        time.value = getCurrnetTime();
-        style.backgroundImage = changeBackgroundImageByTime(
-          time.value.slice(0, 2),
-        );
-
-        clearInterval(date);
-      }, 1000);
-    });
+    // });
 
     return {
       time,
@@ -67,74 +48,55 @@ export default defineComponent({
 
   components: {
     NavBar,
+    AppFooter,
   },
 });
 </script>
 
 <template>
-  <div class="app-about" :style="style">
-    <header class="app-about-header"><NavBar /></header>
-    <div class="app-about-container">
-      <div class="app-about-container-title">关于</div>
-      <div class="app-about-container-description">
-        纸上得来终觉浅，绝知此事要躬行。
+  <div class="app-about">
+    <NavBar />
+    <div class="app-about-title">
+      <h2 class="app-about-title-header">
+        源于
+        <br />
+        喜欢<span>分享</span>而创建
+      </h2>
+      <div class="app-about-title-description">
+        在这里你可以了解<span class="app-about-title-description-coding"
+          >技术</span
+        >、<span class="app-about-title-description-item">项目</span> 、<span
+          class="app-about-title-description-ideal"
+          >个人感想</span
+        >等。
+        <br />
+        我会分享一些我觉得有意思的东西，希望大家喜欢。
       </div>
-      <div class="app-about-container-content">
-        <div class="app-about-container-content-avatar"></div>
-        <div class="app-about-container-content-name">
-          {{ name }}
-        </div>
-        <div class="app-about-container-content-introduction">
-          {{ introduction }}
-        </div>
-        <div class="app-about-container-content-info">
-          <el-tooltip
-            effect="dark"
-            placement="top"
-            content="查看我的github仓库"
-          >
-            <a
-              :href="info.github"
-              class="app-about-container-content-info-github"
-              target="_blank"
-            >
-              <i class="app-about-container-content-info-github-icon"></i>
-            </a>
-          </el-tooltip>
-          <el-tooltip effect="dark" placement="top" content="QQ: 664751829">
-            <a
-              :href="info.qq"
-              class="app-about-container-content-info-qq"
-              target="_blank"
-            >
-              <i class="app-about-container-content-info-qq-icon"></i>
-            </a>
-          </el-tooltip>
-          <el-tooltip effect="dark" placement="top" content="微信号: mecci1999">
-            <a
-              :href="info.wechat"
-              class="app-about-container-content-info-wechat"
-              target="_blank"
-            >
-              <i class="app-about-container-content-info-wechat-icon"></i>
-            </a>
-          </el-tooltip>
-          <el-tooltip
-            effect="dark"
-            placement="top"
-            content="邮箱地址: mecci1999@163.com"
-          >
-            <div class="app-about-container-content-info-email" title="email">
-              <AppIcon
-                name="email"
-                size="32"
-                color="var(--secondary-text-color)"
-              />
-            </div>
-          </el-tooltip>
+    </div>
+    <div class="app-about-container">
+      <div class="app-about-container-text">
+        <p>
+          创建这个站的时候，想要就是能够有一个自己能够积累知识、积累兴趣的地方。和他人分享，会让这些成为积累和沉淀。如果能够帮助到更多的人，帮助更多人解决问题，那一定是非常棒的事情。
+        </p>
+        <p>
+          分享这件事我从很早就开始了，起初做的微信公众号，现在做的网站。因为我比较喜欢研究数码和软件，想要探究在互联网上的事物是如何被创造和发展。
+          网络给我带来了非常多的知识和眼界，我也想力所能及的分享一些我生活的琐碎知识。
+        </p>
+        <p>
+          与大多数垂直类的技术博客不同，这里的种类会非常的繁杂，有技能的教程干货、有生活上的吐槽和妙招、有话题上的思考和想法。一般我研究什么、发现了什么都会分享在这里。
+        </p>
+        <p>
+          这些就是创造这个小站的本意，也是我分享生活的方式。有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。
+        </p>
+      </div>
+      <div class="app-about-container-author">
+        <div class="app-about-container-author-title">关于本人</div>
+        <div class="app-about-container-author-description">
+          性别男、99年、可以吃辣但不太喜欢吃辣的江西人。目前在深圳某互联网公司从事前端开发工作。爱好足球和摄影，喜欢记录生活中有意思的事物。
         </div>
       </div>
     </div>
+    <AppFooter />
   </div>
 </template>
 
