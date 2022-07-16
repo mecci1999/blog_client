@@ -54,7 +54,7 @@ export const postType = [
 export const tags = [
   {
     id: 1,
-    name: 'AfterEffects',
+    name: 'JavaScript',
     amount: 11,
   },
   {
@@ -187,8 +187,10 @@ export const posts = [
       '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
     content: '<h1>hello,world!</h1>',
     wordAmount: '800',
+    bgImgUrl: '../src/assets/image/post_bg_03.png',
     readTime: '10min',
     created: '2022-06-14 23:26:35',
+    updated: '2022-06-14 23:26:35',
     commentAmount: 10,
     accessAmount: 4000,
     types: [
@@ -211,7 +213,7 @@ export const posts = [
         name: '开发',
       },
       {
-        id: 3,
+        id: 8,
         name: '日常',
       },
     ],
@@ -222,9 +224,11 @@ export const posts = [
     description:
       '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
     content: '<h1>hello,world!</h1>',
+    bgImgUrl: '../src/assets/image/post_bg_03.png',
     wordAmount: '800',
     readTime: '10min',
     created: '2022-06-14 23:26:35',
+    updated: '2022-06-14 23:26:35',
     commentAmount: 10,
     accessAmount: 4000,
     types: [
@@ -258,9 +262,11 @@ export const posts = [
     description:
       '从0到1独立完成搭建属于自己的个人博客网站，此次开发使用到的技术栈前端为vue3+vite+ts,后端的技术栈为express+mysql。',
     content: '<h1>hello,world!</h1>',
+    bgImgUrl: '../src/assets/image/post_bg_01.png',
     wordAmount: '800',
     readTime: '10min',
     created: '2022-06-14 23:26:35',
+    updated: '2022-06-14 23:26:35',
     commentAmount: 10,
     accessAmount: 4000,
     types: [

@@ -1,7 +1,10 @@
 <script lang="ts" setup>
+import { defineProps } from 'vue';
+import { TypesAndTagsDataType } from '@/types/interface'
+
 const props = defineProps({
   tags: {
-    type: Array,
+    type: Array<TypesAndTagsDataType>,
   },
 });
 </script>

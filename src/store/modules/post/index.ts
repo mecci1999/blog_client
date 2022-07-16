@@ -6,6 +6,7 @@ export interface PostStoreState {
   loading: boolean;
   post: PostDataType | null;
   posts: Array<PostDataType>;
+  currentPostTagId: string | number;
 }
 
 export const postStoreModule: Module<PostStoreState, RootState> = {
@@ -21,6 +22,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     loading: false,
     post: null,
     posts: [],
+    currentPostTagId: 1,
   } as PostStoreState,
 
   /**
@@ -73,6 +75,11 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       // 拿到前面的博客
       return state.posts[index + 1];
     },
+
+    // 获取当前标签ID
+    currentPostTagId(state) {
+      return state.currentPostTagId;
+    },
   },
 
   /**
@@ -89,6 +96,10 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
 
     setPosts(state, data) {
       state.posts = data;
+    },
+
+    setCurrentPostTagId(state, data) {
+      state.currentPostTagId = data;
     },
   },
 

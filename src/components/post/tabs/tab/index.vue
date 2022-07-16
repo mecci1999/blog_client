@@ -1,19 +1,20 @@
 <script lang="ts" setup>
-import { defineProps, reactive, ref, computed } from 'vue';
+import { defineProps, ref } from 'vue';
+import { TypesAndTagsDataType } from '@/types/interface'
 
 const props = defineProps({
   tabs: {
-    type: Array,
+    type: Array<TypesAndTagsDataType>,
   },
 });
 
 const isCurrentType = ref(1);
 
-const postTabItemClasses = (id) => {
+const postTabItemClasses = (id:any) => {
   return ['post-tab-item', { active: id === isCurrentType.value }];
 };
 
-const onClickPostTabItem = (id) => {
+const onClickPostTabItem = (id:any) => {
   isCurrentType.value = id;
 };
 </script>

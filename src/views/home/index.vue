@@ -17,7 +17,7 @@ import {
   postAmount,
   posts,
   users,
-} from '@/api/test/index.ts';
+} from '@/api/test/index';
 import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
 import ArchiveList from '@/components/common/archive-list/index.vue';

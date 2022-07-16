@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Footer: typeof import('./src/components/footer/index.vue')['default']
+    Index: typeof import('./src/components/post/index/index.vue')['default']
     Inedx: typeof import('./src/components/post/list/item/inedx.vue')['default']
     Info: typeof import('./src/components/common/info/index.vue')['default']
     Input: typeof import('./src/components/common/form/input/index.vue')['default']

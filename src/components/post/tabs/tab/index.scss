@@ -2,10 +2,35 @@
   white-space: nowrap;
   overflow-x: scroll;
   display: flex;
+  padding-bottom: 4px;
+
+  @media screen and (max-width: 768px) {
+    & {
+      padding-bottom: 0;
+    }
+  }
 
   &::-webkit-scrollbar {
-    display: none;
+    display: block;
+    cursor: pointer;
+    width: 5px;
+    height: 5px;
+
+    @media screen and (max-width: 768px) {
+      & {
+        display: none;
+      }
+    }
   }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1em;
+    background-color: rgba(50, 50, 50, 0.3);
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 1em;
+    background-color: rgba(50, 50, 50, 0.1);
+  }
+
   &-item {
     cursor: pointer;
     font-weight: 700;
@@ -14,6 +39,8 @@
     border-radius: 8px;
     color: var(--primary-text-color);
     font-size: var(--font-size-middle);
+    white-space: nowrap;
+    user-select: none;
 
     &:hover {
       color: #fff;

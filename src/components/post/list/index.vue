@@ -1,13 +1,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import PostListItem from './item/inedx.vue';
+import { PostDataType } from '@/types/interface'
 
 export default defineComponent({
   name: 'PostList',
 
   props: {
     posts: {
-      type: Array,
+      type: Array<PostDataType>,
     },
   },
 

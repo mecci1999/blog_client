@@ -34,6 +34,8 @@ export interface PostDataType {
   commentAmount?: number; // 评论数量
   accessAmount?: number; // 访问数量
   content?: string; // 内容
+  tags?: TypesAndTagsDataType; // 标签
+  types?: TypesAndTagsDataType; // 分类
 }
 
 /**
@@ -50,4 +52,13 @@ export interface AdwardInfoDataType {
   date?: string;
   name?: string;
   amount?: string;
+}
+
+/**
+ * 分类、标签类型数据
+ */
+export interface TypesAndTagsDataType {
+  id?: number; // id
+  name?: string; // 名字
+  amount?: number; //数量
 }

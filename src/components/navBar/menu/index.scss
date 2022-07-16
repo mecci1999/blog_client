@@ -23,6 +23,10 @@
         }
       }
 
+      & > .app-icon {
+        color: var(--primary-text-color) !important;
+      }
+
       &-name {
         font-size: var(--font-size-middle);
         margin-left: 4px;

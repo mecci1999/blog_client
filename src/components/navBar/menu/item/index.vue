@@ -2,7 +2,7 @@
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-// import AppIcon from '@/components/common/app-icon.vue';
+import AppIcon from '@/components/common/app-icon/index.vue';
 
 export default defineComponent({
   name: 'NavMenuItem',
@@ -48,16 +48,22 @@ export default defineComponent({
       showExpolerMenu.value = !showExpolerMenu.value;
     };
 
+    // 点击跳转路由
+    const onClickJumpRouter = (routes: string, params?: string | number) => {
+      router.push({ name: routes, params: { tagId: params } });
+    };
+
     return {
       changeTheme,
       showExpolerMenu,
       onClickMenuItem,
       onClickExplore,
+      onClickJumpRouter,
     };
   },
 
   components: {
-    // AppIcon,
+    AppIcon,
   },
 });
 </script>
@@ -67,14 +73,17 @@ export default defineComponent({
     <AppIcon :name="item?.icon" size="20" />
     <span class="nav-menu-list-item-name">{{ item?.text }}</span>
     <div class="explore-menu" v-if="showExpolerMenu">
-      <div class="explore-menu-list">
-        <span>分类</span>
+      <div class="explore-menu-list" @click="onClickJumpRouter('postIndex')">
+        <AppIcon name="import_contacts" size="16" />
+        <span>文章列表</span>
       </div>
-      <div class="explore-menu-list">
-        <span>标签</span>
+      <div class="explore-menu-list" @click="onClickJumpRouter('postTypes')">
+        <AppIcon name="dashboard" size="16" />
+        <span>全部分类</span>
       </div>
-      <div class="explore-menu-list">
-        <span>归档</span>
+      <div class="explore-menu-list" @click="onClickJumpRouter('postTags', 1)">
+        <AppIcon name="local_offer" size="16" />
+        <span>全部标签</span>
       </div>
     </div>
   </div>
