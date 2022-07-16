@@ -35,3 +35,19 @@ export interface PostDataType {
   accessAmount?: number; // 访问数量
   content?: string; // 内容
 }
+
+/**
+ * 时间线接口例如网站公告、更新日志、博客归档等数据
+ */
+export interface TimeLineDataType {
+  id?: number;
+  date?: string;
+  content?: string | Array<string>;
+}
+
+export interface AdwardInfoDataType {
+  id?: number;
+  date?: string;
+  name?: string;
+  amount?: string;
+}

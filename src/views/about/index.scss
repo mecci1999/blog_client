@@ -1,6 +1,8 @@
 .app-about {
   width: 100%;
   position: relative;
+  overflow: hidden;
+  background-color: var(--primary-background);
 
   &-title {
     // display: flex;
@@ -10,7 +12,7 @@
     width: 90%;
     max-width: 1500px;
     margin: 0 auto;
-    min-height: 60vh;
+    min-height: 50vh;
     padding: 0 1rem !important;
 
     @media screen and (max-width: 769px) {
@@ -36,7 +38,12 @@
       color: var(--mecci-font-color);
 
       span {
-        color: var(--mecci-theme-color);
+        background-image: linear-gradient(45deg, #8a7cfb 50%, #633e9c);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
       }
     }
 
@@ -105,6 +112,66 @@
       &-title {
         color: var(--mecci-theme-color);
         font-size: var(--font-size-large);
+      }
+
+      &-description {
+        padding: 0 1rem;
+      }
+    }
+
+    &-announcement {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+    }
+
+    &-log {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+    }
+
+    &-adward {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+
+      &-description {
+        padding: 0 1rem;
+      }
+
+      &-table {
+        padding: 0 1rem;
       }
     }
   }

@@ -1,12 +1,11 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, reactive, computed } from 'vue';
-import {
-  getCurrnetTime,
-  changeBackgroundImageByTime,
-} from '../../utils/changeBackgroundImage';
 import NavBar from '@/components/navBar/index.vue';
 import { useStore } from 'vuex';
 import AppFooter from '@/components/footer/index.vue';
+import { websiteInfo, updatedLog, adwardInfo } from '@/api/test/index';
+import TimeLine from '@/components/common/time-line/index.vue';
+// import TableField from '@/components/common/form/table/index.vue';
 
 export default defineComponent({
   name: 'AppAbout',
@@ -43,12 +42,17 @@ export default defineComponent({
       name,
       introduction,
       info,
+      websiteInfo,
+      updatedLog,
+      adwardInfo,
     };
   },
 
   components: {
     NavBar,
     AppFooter,
+    TimeLine,
+    // TableField,
   },
 });
 </script>
@@ -60,7 +64,7 @@ export default defineComponent({
       <h2 class="app-about-title-header">
         源于
         <br />
-        喜欢<span>分享</span>而创建
+        喜欢<span>分享</span>而创造
       </h2>
       <div class="app-about-title-description">
         在这里你可以了解<span class="app-about-title-description-coding"
@@ -88,6 +92,28 @@ export default defineComponent({
         <p>
           这些就是创造这个小站的本意，也是我分享生活的方式。有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。
         </p>
+      </div>
+      <div class="app-about-container-announcement">
+        <div class="app-about-container-announcement-title">网站公告</div>
+        <TimeLine :items="websiteInfo" />
+      </div>
+      <div class="app-about-container-log">
+        <div class="app-about-container-log-title">更新日志</div>
+        <TimeLine :items="updatedLog" />
+      </div>
+      <div class="app-about-container-adward">
+        <div class="app-about-container-adward-title">好心人名单</div>
+        <div class="app-about-container-adward-description">
+          在这里特别鸣谢下面这些好心人，正是因为有了你们的资助，让我感受到我写的博客能够给你们带来价值，
+          也让我有了信心接着在这条路上越走越远，最后再次衷心的感谢你们。
+        </div>
+        <div class="app-about-container-adward-table">
+          <el-table :data="adwardInfo" border style="width: 100%">
+            <el-table-column prop="date" label="日期" />
+            <el-table-column prop="name" label="昵称" />
+            <el-table-column prop="amount" label="金额" />
+          </el-table>
+        </div>
       </div>
       <div class="app-about-container-author">
         <div class="app-about-container-author-title">关于本人</div>

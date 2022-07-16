@@ -7,7 +7,7 @@
   padding: 0 32px;
   background-color: var(--primary-background);
   opacity: 0.9;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--primary-background-shadow);
   position: sticky;
   left: 0;
   top: 0;

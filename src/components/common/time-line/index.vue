@@ -1,27 +1,30 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
-const props = defineProps({
-  title: {
-    type: String,
-  },
+import { TimeLineDataType } from '@/types/interface';
 
+const props = defineProps({
   items: {
-    type: Array,
+    type: Array<TimeLineDataType>,
   },
 });
+
+const isArray = (item:any):boolean => Array.isArray(item);
 </script>
 
 <template>
   <div class="time-line">
-    <div class="time-line-title">{{ title }}</div>
-    <div class="time-line-container">
+    <div class="time-line-item" v-for="item in items" :key="item.id">
+      <div class="time-line-item-date">{{ item.date }}</div>
+      <div class="time-line-item-content" v-if="!isArray(item.content)">
+        {{ item.content }}
+      </div>
       <div
-        class="time-line-container-item"
-        v-for="item in itmes"
-        :key="item.id"
+        class="time-line-item-content"
+        v-if="isArray(item.content)"
+        v-for="(log, index) in item.content"
+        :key="index"
       >
-        <div class="time-line-container-item-title"></div>
-        <div class="time-line-container-item-content"></div>
+        {{ log }}
       </div>
     </div>
   </div>
