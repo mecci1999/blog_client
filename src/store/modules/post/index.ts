@@ -1,12 +1,13 @@
 import { Module } from 'vuex';
 import { RootState } from '../../index';
-import { PostDataType } from '@/types/interface';
+import { PostDataType, TypesAndTagsDataType } from '@/types/interface';
 
 export interface PostStoreState {
   loading: boolean;
   post: PostDataType | null;
   posts: Array<PostDataType>;
-  currentPostTagId: string | number;
+  currentPostTag: TypesAndTagsDataType | null;
+  currentPostType: TypesAndTagsDataType | null;
 }
 
 export const postStoreModule: Module<PostStoreState, RootState> = {
@@ -22,7 +23,8 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     loading: false,
     post: null,
     posts: [],
-    currentPostTagId: 1,
+    currentPostTag: null,
+    currentPostType: null,
   } as PostStoreState,
 
   /**
@@ -76,9 +78,14 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       return state.posts[index + 1];
     },
 
-    // 获取当前标签ID
-    currentPostTagId(state) {
-      return state.currentPostTagId;
+    // 获取当前标签
+    currentPostTag(state) {
+      return state.currentPostTag;
+    },
+
+    // 获取当前分类
+    currentPostType(state) {
+      return state.currentPostType;
     },
   },
 
@@ -98,8 +105,12 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       state.posts = data;
     },
 
-    setCurrentPostTagId(state, data) {
-      state.currentPostTagId = data;
+    setCurrentPostTag(state, data) {
+      state.currentPostTag = data;
+    },
+
+    setCurrentPostType(state, data) {
+      state.currentPostType = data;
     },
   },
 

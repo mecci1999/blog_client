@@ -96,7 +96,7 @@ export default defineComponent({
           <AppInfo :item="info" />
         </div>
         <div class="app-main-container-right">
-          <PostTabBar :type="postType" />
+          <PostTabBar :types="postType" />
           <PostList :posts="posts" />
         </div>
       </div>

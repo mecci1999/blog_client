@@ -3,17 +3,21 @@
   position: relative;
   // overflow-x: hidden;
   background-color: var(--primary-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &-container {
     width: 90%;
     max-width: 1500px;
-    margin: 0 auto;
+    margin: 1rem auto;
     padding: 1rem 2rem !important;
     box-shadow: var(--primary-background-shadow);
     color: var(--mecci-font-color);
     border-radius: 12px;
     background-color: var(--primary-background);
-    margin-top: 1rem;
+    overflow-y: auto;
+    flex: 1;
 
     &-header {
       display: flex;

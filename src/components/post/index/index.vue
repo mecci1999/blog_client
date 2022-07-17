@@ -3,6 +3,7 @@ import { defineProps } from 'vue';
 import { PostDataType } from '@/types/interface'
 import { useRouter } from 'vue-router'
 import {useStore} from 'vuex';
+import { tags } from '@/api/test/index';
 
   const props = defineProps({
     posts:{
@@ -21,7 +22,9 @@ import {useStore} from 'vuex';
   }
 
   const onClickChangeTag = (id:any) => {
-    store.commit('post/setCurrentPostTagId', id);
+    // 当前标签
+    const tag = tags.find((item) => item.id === id);
+    store.commit('post/setCurrentPostTag', tag);
     router.replace({name: 'postTags', params: {tagId: id}})
   }
 </script>
@@ -56,6 +59,9 @@ import {useStore} from 'vuex';
           </div>
           <div class="post-index-list-item-info-date">{{ post.updated }}</div>
         </div>
+      </div>
+      <div class="post-index-list-bottom-tip">
+        <span class="post-index-list-bottom-tip-text">已经到底啦~</span>
       </div>
     </div>
   </div>

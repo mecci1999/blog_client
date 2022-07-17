@@ -1,31 +1,37 @@
 <script lang="ts" setup>
-import { reactive, computed } from 'vue';
+import { computed } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
-import { tags } from '@/api/test/index';
 import PostIndex from '@/components/post/index/index.vue';
-import { posts } from '@/api/test/index';
+import { posts, tags } from '@/api/test/index';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import AppFooter from '@/components/footer/index.vue';
 
 const routes = useRoute();
 const router = useRouter();
 const store = useStore();
 
-// 当前标签id
-store.commit('post/setCurrentPostTagId', routes.params.tagId);
+// 当前标签
+const tag = tags.find(
+  (item) => item.id === parseInt(`${routes.params.tagId}`, 10),
+);
+store.commit('post/setCurrentPostTag', tag);
 
 const tagItemClasses = (id: any) => [
   'app-tags-container-header-item',
   { selected: id === parseInt(`${currentTagId.value}`, 10) },
 ];
 
-const currentTagId = computed(() => store.getters['post/currentPostTagId']);
-
-console.log(currentTagId.value);
+const currentTagId = computed(() => store.getters['post/currentPostTag'].id);
+const currentTagName = computed(
+  () => store.getters['post/currentPostTag'].name,
+);
 
 // 点击切换标签
 const onClickChangeTagId = (id: any) => {
-  store.commit('post/setCurrentPostTagId', id);
+  // 根据当前id获取当前标签数据
+  const tag = tags.find((item) => item.id === id);
+  store.commit('post/setCurrentPostTag', tag);
   router.replace({
     name: 'postTags',
     params: { tagId: `${currentTagId.value}` },
@@ -51,9 +57,10 @@ const onClickChangeTagId = (id: any) => {
         </div>
       </div>
       <div class="app-tags-container-index">
-        <PostIndex :posts="posts" title="设计报告" />
+        <PostIndex :posts="posts" :title="currentTagName" />
       </div>
     </div>
+    <AppFooter />
   </div>
 </template>
 

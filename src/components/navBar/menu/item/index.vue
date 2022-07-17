@@ -50,7 +50,14 @@ export default defineComponent({
 
     // 点击跳转路由
     const onClickJumpRouter = (routes: string, params?: string | number) => {
-      router.push({ name: routes, params: { tagId: params } });
+      switch (routes) {
+        case 'postTags':
+          router.push({ name: routes, params: { tagId: params } });
+          break;
+        case 'postCategory':
+          router.push({ name: routes, params: { typeId: params } });
+          break;
+      }
     };
 
     return {
@@ -77,11 +84,17 @@ export default defineComponent({
         <AppIcon name="import_contacts" size="16" />
         <span>文章列表</span>
       </div>
-      <div class="explore-menu-list" @click="onClickJumpRouter('postTypes')">
+      <div
+        class="explore-menu-list"
+        @click.stop="onClickJumpRouter('postCategory', 1)"
+      >
         <AppIcon name="dashboard" size="16" />
         <span>全部分类</span>
       </div>
-      <div class="explore-menu-list" @click="onClickJumpRouter('postTags', 1)">
+      <div
+        class="explore-menu-list"
+        @click.stop="onClickJumpRouter('postTags', 1)"
+      >
         <AppIcon name="local_offer" size="16" />
         <span>全部标签</span>
       </div>
