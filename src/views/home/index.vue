@@ -21,6 +21,7 @@ import {
 import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
 import ArchiveList from '@/components/common/archive-list/index.vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'AppHome',
@@ -37,6 +38,9 @@ export default defineComponent({
     let style = reactive({
       backgroundImage: '',
     });
+
+    const store = useStore();
+    store.commit('post/setCurrentPostType', { id: 1, name: '首页' });
 
     onMounted(async () => {
       date = setInterval(() => {

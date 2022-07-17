@@ -57,6 +57,9 @@ export default defineComponent({
         case 'postCategory':
           router.push({ name: routes, params: { typeId: params } });
           break;
+        case 'postArticle':
+          router.push({ name: routes });
+          break;
       }
     };
 
@@ -80,7 +83,7 @@ export default defineComponent({
     <AppIcon :name="item?.icon" size="20" />
     <span class="nav-menu-list-item-name">{{ item?.text }}</span>
     <div class="explore-menu" v-if="showExpolerMenu">
-      <div class="explore-menu-list" @click="onClickJumpRouter('postIndex')">
+      <div class="explore-menu-list" @click="onClickJumpRouter('postArticle')">
         <AppIcon name="import_contacts" size="16" />
         <span>文章列表</span>
       </div>

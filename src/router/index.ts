@@ -5,6 +5,7 @@ import aboutRoutes from './about/index';
 import commentRoutes from './comment/index';
 import tagsRoutes from './tags/index';
 import categoryRoutes from './category/index';
+import articleRoutes from './post/list/index';
 
 /**
  * 创建路由
@@ -18,6 +19,7 @@ const router = createRouter({
     ...commentRoutes,
     ...tagsRoutes,
     ...categoryRoutes,
+    ...articleRoutes,
   ],
 });
 
