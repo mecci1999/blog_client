@@ -2,10 +2,18 @@
 import { useStore } from 'vuex';
 import AppIcon from '../common/app-icon/index.vue';
 import { searchResultDataType } from '@/api/test/index';
+import { useRouter } from 'vue-router';
 
 const store = useStore();
+const router = useRouter();
 const onClickCloseSearchDialog = () =>
   store.commit('search/changeSearchDialogStatus');
+
+// 点击搜索内容跳转到对应博客
+const onClickJumpToPost = (id: number) => {
+  router.push({ name: 'postShow', params: { postId: id } });
+  store.commit('search/changeSearchDialogStatus');
+};
 </script>
 
 <template>
@@ -42,6 +50,7 @@ const onClickCloseSearchDialog = () =>
             class="app-search-dialog-search-result-hits-item"
             v-for="item in searchResultDataType"
             :key="item.postId"
+            @click="onClickJumpToPost(item.postId)"
           >
             <div class="app-search-dialog-search-result-hits-item-link">
               {{ item.title }}
