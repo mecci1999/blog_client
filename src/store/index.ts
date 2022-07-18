@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 import { commentStoreModule, CommentStoreState } from './modules/comment';
 import { postStoreModule, PostStoreState } from './modules/post';
+import { searchStoreModule, SearchStoreState } from './modules/search';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
 import { userStoreModule, UserStoreState } from './modules/user';
 import { LocalStorageStroePlugin } from './plugins';
@@ -11,6 +12,7 @@ export interface RootState {
   user: UserStoreState;
   comment: CommentStoreState;
   post: PostStoreState;
+  search: SearchStoreState;
 }
 
 /**
@@ -26,6 +28,7 @@ const store = createStore({
     user: userStoreModule,
     comment: commentStoreModule,
     post: postStoreModule,
+    search: searchStoreModule,
   },
 
   // 插件

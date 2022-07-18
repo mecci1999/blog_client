@@ -40,6 +40,10 @@ export default defineComponent({
         case 'chat':
           router.push({ name: 'comment' });
           break;
+        case 'search':
+          // 打开搜索框
+          store.commit('search/changeSearchDialogStatus', true);
+          break;
       }
     };
 

@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     Operation: typeof import('./src/components/comment/operation/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Search: typeof import('./src/components/search/index.vue')['default']
     Show: typeof import('./src/components/comment/show/index.vue')['default']
     Tab: typeof import('./src/components/post/tabs/tab/index.vue')['default']
     Table: typeof import('./src/components/common/form/table/index.vue')['default']

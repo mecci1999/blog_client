@@ -545,3 +545,33 @@ export const adwardInfo = [
     amount: '¥6.6',
   },
 ];
+
+/**
+ * 搜索接口测试数据
+ */
+export const searchResultDataType = [
+  {
+    postId: 1,
+    title: '独立开发个人博客',
+  },
+  {
+    postId: 2,
+    title: '独立开发个人博客',
+  },
+  {
+    postId: 3,
+    title: '独立开发个人博客',
+  },
+  {
+    postId: 1,
+    title: 'SwiftUI 学习笔记 34：项目 6-3 动画 挑战',
+  },
+  {
+    postId: 2,
+    title: 'SwiftUI 学习笔记 34：项目 6-3 动画 挑战',
+  },
+  {
+    postId: 3,
+    title: 'SwiftUI 学习笔记 34：项目 6-3 动画 挑战',
+  },
+];
