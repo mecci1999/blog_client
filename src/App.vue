@@ -9,12 +9,13 @@ export default defineComponent({
 
     const theme = computed(() => store.getters['theme/theme']);
 
-    const openSearchDialog = computed(
-      () => store.getters['search/openSearchDialog'],
+    const searchDialogStatus = computed(
+      () => store.getters['search/searchDialogStatus'],
     );
 
     return {
       theme,
+      searchDialogStatus,
     };
   },
 
@@ -27,7 +28,7 @@ export default defineComponent({
 <template>
   <div :class="['blog', theme]">
     <router-view />
-    <AppSearch v-if="openSearchDialog" />
+    <AppSearch v-if="searchDialogStatus" />
   </div>
 </template>
 

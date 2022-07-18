@@ -3,6 +3,7 @@ import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import AppIcon from '@/components/common/app-icon/index.vue';
+import { computed } from 'vue';
 
 export default defineComponent({
   name: 'NavMenuItem',
@@ -41,8 +42,12 @@ export default defineComponent({
           router.push({ name: 'comment' });
           break;
         case 'search':
-          // 打开搜索框
-          store.commit('search/changeSearchDialogStatus', true);
+          // 打开和关闭搜索框
+          const searchDialogStatus = computed(
+            () => store.getters['search/searchDialogStatus'],
+          );
+          store.commit('search/changeSearchDialogStatus');
+          console.log(searchDialogStatus.value);
           break;
       }
     };

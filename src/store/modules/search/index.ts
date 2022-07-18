@@ -2,7 +2,7 @@ import { Module } from 'vuex';
 import { RootState } from '../../index';
 
 export interface SearchStoreState {
-  openSearchDialog: boolean;
+  searchDialogStatus: boolean;
 }
 
 export const searchStoreModule: Module<SearchStoreState, RootState> = {
@@ -15,15 +15,15 @@ export const searchStoreModule: Module<SearchStoreState, RootState> = {
    * 数据
    */
   state: {
-    openSearchDialog: false,
+    searchDialogStatus: false,
   } as SearchStoreState,
 
   /**
    * 获取器
    */
   getters: {
-    openSearchDialog(state) {
-      return state.openSearchDialog;
+    searchDialogStatus(state) {
+      return state.searchDialogStatus;
     },
   },
 
@@ -31,8 +31,8 @@ export const searchStoreModule: Module<SearchStoreState, RootState> = {
    * 修改器
    */
   mutations: {
-    changeSearchDialogStatus(state, data) {
-      state.openSearchDialog = data;
+    changeSearchDialogStatus(state) {
+      state.searchDialogStatus = !state.searchDialogStatus;
     },
   },
 
