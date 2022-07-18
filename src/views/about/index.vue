@@ -116,7 +116,7 @@ export default defineComponent({
         </div>
       </div>
       <div class="app-about-container-author">
-        <div class="app-about-container-author-title">关于本人</div>
+        <div class="app-about-container-author-title">关于博主</div>
         <div class="app-about-container-author-description">
           性别男、99年、可以吃辣但不太喜欢吃辣的江西人。目前在深圳某互联网公司从事前端开发工作。爱好足球和摄影，喜欢记录生活中有意思的事物。
         </div>

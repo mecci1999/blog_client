@@ -1,20 +1,18 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'AppComment',
-
-  setup() {
-
-    return {}
-  },
-
-  components: {},
-});
+import CommentPanel from '@/components/comment/index.vue';
+import NavBar from '@/components/navBar/index.vue';
+import AppFooter from '@/components/footer/index.vue';
 </script>
 
 <template>
-  <div class="app-comment">AppComment</div>
+  <div class="app-comment">
+    <NavBar />
+    <div class="app-comment-container">
+      <CommentPanel />
+    </div>
+    <AppFooter />
+  </div>
 </template>
 
 <style lang="scss" scoped>
