@@ -17,5 +17,9 @@
     background-color: var(--primary-background);
     overflow-y: auto;
     flex: 1;
+
+    &-header {
+      margin-bottom: 24px;
+    }
   }
 }
