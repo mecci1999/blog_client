@@ -53,8 +53,8 @@ export default defineComponent({
 
 <template>
   <div class="post-show">
-    <NavBar />
     <header class="post-show-header" :style="style">
+      <NavBar />
       <div class="post-show-header-shadow"></div>
       <div class="post-show-header-info">
         <div class="post-show-header-info-option">
