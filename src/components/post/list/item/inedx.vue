@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
+import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import PostTag from '@/components/post/tag/index.vue';
+import { postType } from '@/api/test';
 
 // 属性
 const props = defineProps({
@@ -11,13 +13,26 @@ const props = defineProps({
 });
 
 const router = useRouter();
+const store = useStore();
+
 const onClickPostListItem = (id: number) => {
   router.push({ name: 'postShow', params: { postId: id } });
 };
+
+const onClickPostListTypeItem = (id:number) => {
+  // 当前分类
+const type = postType.find(
+  (item) => item.id === id,
+);
+
+store.commit('post/setCurrentPostType', type);
+
+router.push({name: 'postCategory', params: {typeId: id}})
+}
 </script>
 
 <template>
-  <div class="post-list-item" @click="onClickPostListItem(item?.id)">
+  <div class="post-list-item" @click.stop="onClickPostListItem(item?.id)">
     <div class="post-list-item-media">
       <img
         class="post-list-item-media-img"
@@ -29,6 +44,7 @@ const onClickPostListItem = (id: number) => {
         class="post-list-item-types-item"
         v-for="type in item?.types"
         :key="type.id"
+        @click.stop="onClickPostListTypeItem(type?.id)"
       >
         {{ type.name }}
       </div>

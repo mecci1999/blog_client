@@ -195,12 +195,12 @@ export const posts = [
     accessAmount: 4000,
     types: [
       {
-        id: 1,
+        id: 3,
         name: '前端技术',
       },
       {
-        id: 2,
-        name: '面经',
+        id: 10,
+        name: '其他',
       },
     ],
     tags: [
@@ -233,12 +233,12 @@ export const posts = [
     accessAmount: 4000,
     types: [
       {
-        id: 1,
+        id: 3,
         name: '前端技术',
       },
       {
-        id: 2,
-        name: '面经',
+        id: 10,
+        name: '其他',
       },
     ],
     tags: [
@@ -271,12 +271,12 @@ export const posts = [
     accessAmount: 4000,
     types: [
       {
-        id: 1,
+        id: 3,
         name: '前端技术',
       },
       {
-        id: 2,
-        name: '面经',
+        id: 10,
+        name: '其他',
       },
     ],
     tags: [
