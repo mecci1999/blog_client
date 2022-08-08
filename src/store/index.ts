@@ -3,6 +3,7 @@ import { commentStoreModule, CommentStoreState } from './modules/comment';
 import { postStoreModule, PostStoreState } from './modules/post';
 import { searchStoreModule, SearchStoreState } from './modules/search';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
+import { postTypeStoreModule, PostTypeStoreState } from './modules/type';
 import { userStoreModule, UserStoreState } from './modules/user';
 import { LocalStorageStroePlugin } from './plugins';
 
@@ -13,6 +14,7 @@ export interface RootState {
   comment: CommentStoreState;
   post: PostStoreState;
   search: SearchStoreState;
+  type: PostTypeStoreState;
 }
 
 /**
@@ -29,6 +31,7 @@ const store = createStore({
     comment: commentStoreModule,
     post: postStoreModule,
     search: searchStoreModule,
+    type: postTypeStoreModule,
   },
 
   // 插件

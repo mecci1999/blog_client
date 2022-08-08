@@ -2,25 +2,34 @@
 import { computed } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
-import { posts, postType } from '@/api/test/index';
+import { posts } from '@/api/test/index';
 import PostTabBar from '@/components/post/tabs/index.vue';
 import AppFooter from '@/components/footer/index.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { TypesAndTagsDataType } from '@/types/interface';
 
 const routes = useRoute();
 const router = useRouter();
 const store = useStore();
 
-// 当前分类
-const type = postType.find(
-  (item) => item.id === parseInt(`${routes.params.typeId}`, 10),
-);
-store.commit('post/setCurrentPostType', type);
+/**
+ * 获取当前分类
+ */
+store.dispatch('type/getPostTypes');
 
-const currentTypeId = computed(() => store.getters['post/currentPostType'].id);
+const postType = computed(() => store.getters['type/types']);
+
+// 当前分类
+store.commit(
+  'type/setCurrentPostType',
+  parseInt(`${routes.params.typeId}`, 10),
+);
+console.log(store.getters['type/currentPostType']);
+
+const currentTypeId = computed(() => store.getters['type/currentPostType'].id);
 const currentTypeName = computed(
-  () => store.getters['post/currentPostType'].name,
+  () => store.getters['type/currentPostType'].name,
 );
 
 // // 点击切换分类

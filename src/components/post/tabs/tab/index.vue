@@ -26,7 +26,6 @@ const onClickChangeType = (id: any) => {
   console.log(type);
 
   store.commit('post/setCurrentPostType', type);
-  console.log(currentTypeId.value);
 
   router.replace({
     name: 'postCategory',

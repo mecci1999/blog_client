@@ -19,16 +19,14 @@ const onClickPostListItem = (id: number) => {
   router.push({ name: 'postShow', params: { postId: id } });
 };
 
-const onClickPostListTypeItem = (id:number) => {
+const onClickPostListTypeItem = (id: number) => {
   // 当前分类
-const type = postType.find(
-  (item) => item.id === id,
-);
+  const type = postType.find((item) => item.id === id);
 
-store.commit('post/setCurrentPostType', type);
+  store.commit('post/setCurrentPostType', type);
 
-router.push({name: 'postCategory', params: {typeId: id}})
-}
+  router.push({ name: 'postCategory', params: { typeId: id } });
+};
 </script>
 
 <template>
@@ -38,6 +36,7 @@ router.push({name: 'postCategory', params: {typeId: id}})
         class="post-list-item-media-img"
         src="../../../../../src/assets/image/post_media.png"
       />
+      <!-- <img class="post-list-item-media-img" :src="item?.bgImgUrl" /> -->
     </div>
     <div class="post-list-item-types">
       <div

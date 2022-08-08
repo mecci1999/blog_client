@@ -393,7 +393,7 @@ export const websiteInfo = [
   {
     id: 7,
     date: '2022/12/14',
-    content: '用户发言前，请认真阅读评论协议',
+    content: '用户发言前，请认真阅读评论协议。',
   },
   {
     id: 6,

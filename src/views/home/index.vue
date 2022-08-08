@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, reactive, onMounted } from 'vue';
+import { defineComponent, ref, reactive, onMounted, computed } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
@@ -10,14 +10,7 @@ import {
   getCurrnetTime,
 } from '@/utils/changeBackgroundImage';
 import PostTabBar from '@/components/post/tabs/index.vue';
-import {
-  postType,
-  tags,
-  info,
-  postAmount,
-  posts,
-  users,
-} from '@/api/test/index';
+import { tags, info, postAmount } from '@/api/test/index';
 import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
 import ArchiveList from '@/components/common/archive-list/index.vue';
@@ -40,7 +33,20 @@ export default defineComponent({
     });
 
     const store = useStore();
-    store.commit('post/setCurrentPostType', { id: 1, name: '首页' });
+    store.commit('post/setCurrentPostType', { id: 1, name: '我的项目' });
+
+    //获取博客列表
+    store.dispatch('post/getPosts');
+    // 获取博主信息接口
+    store.dispatch('user/getUser');
+    const posts = computed(() => store.getters['post/posts']);
+    const user = computed(() => store.getters['user/user']);
+
+    /**
+     * 获取分类列表
+     */
+    store.dispatch('type/getPostTypes');
+    const types = computed(() => store.getters['type/types']);
 
     onMounted(async () => {
       date = setInterval(() => {
@@ -55,10 +61,10 @@ export default defineComponent({
 
     return {
       onClickScrollDown,
-      users,
+      user,
       posts,
       style,
-      postType,
+      types,
       tags,
       info,
       postAmount,
@@ -94,13 +100,13 @@ export default defineComponent({
     <main id="main" class="app-main">
       <div class="app-main-container">
         <div class="app-main-container-left">
-          <UserInfo :user="users" />
+          <UserInfo :user="user" />
           <TagsList :tags="tags" />
           <ArchiveList :items="postAmount" />
           <AppInfo :item="info" />
         </div>
         <div class="app-main-container-right">
-          <PostTabBar :types="postType" />
+          <PostTabBar :types="types" />
           <PostList :posts="posts" />
         </div>
       </div>

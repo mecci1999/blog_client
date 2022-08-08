@@ -12,6 +12,7 @@ export interface UserModel {
     wechat?: string;
     eMail?: string;
   };
+  avatar?: number;
 }
 
 export interface UserStoreState {

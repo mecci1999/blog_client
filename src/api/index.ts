@@ -36,3 +36,17 @@ export const getQQUserInfo = async (id: string) => {
     throw _error.response;
   }
 };
+
+/**
+ * 获取博客分类列表
+ */
+export const getTypesApi = async () => {
+  return await apiHttpClient.get('types/list');
+};
+
+/**
+ * 获取博客标签列表
+ */
+export const getTagsApi = async () => {
+  return await apiHttpClient.get('tags/list');
+};

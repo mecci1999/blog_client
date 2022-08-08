@@ -47,7 +47,7 @@ export default defineComponent({
             () => store.getters['search/searchDialogStatus'],
           );
           store.commit('search/changeSearchDialogStatus');
-          console.log(searchDialogStatus.value);
+          
           break;
       }
     };
