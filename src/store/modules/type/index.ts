@@ -1,4 +1,5 @@
 import { getTypesApi } from '@/api';
+import { postType } from '@/api/test';
 import { TypesAndTagsDataType } from '@/types/interface';
 import { Module } from 'vuex';
 import { RootState } from '../../index';
@@ -56,11 +57,14 @@ export const postTypeStoreModule: Module<PostTypeStoreState, RootState> = {
 
     setCurrentPostType(state, id: number) {
       let type: any;
-      if (id) {
+      if (state.types.length !== 0) {
         type = state.types.find((item) => item.id === id);
-        console.error(state.types);
+      } else {
+        type = postType.find((item) => item.id === id);
       }
-
+      if (id === 0) {
+        type = null;
+      }
       state.currentPostType = type;
     },
   },
@@ -76,6 +80,7 @@ export const postTypeStoreModule: Module<PostTypeStoreState, RootState> = {
         const response = await getTypesApi();
 
         commit('setTypes', response.data);
+
         commit('setLoading', false);
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

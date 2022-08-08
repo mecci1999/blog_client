@@ -8,42 +8,38 @@
 export const postType = [
   {
     id: 1,
-    name: '首页',
-  },
-  {
-    id: 2,
     name: '我的项目',
   },
   {
-    id: 3,
+    id: 2,
     name: '前端技术',
   },
   {
-    id: 4,
+    id: 3,
     name: '经验分享',
   },
   {
-    id: 5,
+    id: 4,
     name: '闲聊杂谈',
   },
   {
-    id: 6,
+    id: 5,
     name: '佳作推荐',
   },
   {
-    id: 7,
+    id: 6,
     name: '优质转载',
   },
   {
-    id: 8,
+    id: 7,
     name: '网站公告',
   },
   {
-    id: 9,
+    id: 8,
     name: '个人经历',
   },
   {
-    id: 10,
+    id: 9,
     name: '其他',
   },
 ];

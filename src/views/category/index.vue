@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
 import { posts } from '@/api/test/index';
@@ -25,12 +25,10 @@ store.commit(
   'type/setCurrentPostType',
   parseInt(`${routes.params.typeId}`, 10),
 );
-console.log(store.getters['type/currentPostType']);
 
-const currentTypeId = computed(() => store.getters['type/currentPostType'].id);
-const currentTypeName = computed(
-  () => store.getters['type/currentPostType'].name,
-);
+const currentType: any = computed(() => store.getters['type/currentPostType']);
+
+const currentTypeName = ref(currentType && currentType?.name);
 
 // // 点击切换分类
 // const onClickChangeType = (id: any) => {

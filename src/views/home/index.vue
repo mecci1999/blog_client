@@ -33,19 +33,18 @@ export default defineComponent({
     });
 
     const store = useStore();
-    store.commit('post/setCurrentPostType', { id: 1, name: '我的项目' });
+    // store.commit('type/setCurrentPostType', { id: 1, name: '我的项目' });
 
     //获取博客列表
     store.dispatch('post/getPosts');
     // 获取博主信息接口
     store.dispatch('user/getUser');
-    const posts = computed(() => store.getters['post/posts']);
-    const user = computed(() => store.getters['user/user']);
-
     /**
      * 获取分类列表
      */
     store.dispatch('type/getPostTypes');
+    const posts = computed(() => store.getters['post/posts']);
+    const user = computed(() => store.getters['user/user']);
     const types = computed(() => store.getters['type/types']);
 
     onMounted(async () => {

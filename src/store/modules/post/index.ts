@@ -5,6 +5,7 @@ import { PostDataType, TypesAndTagsDataType } from '@/types/interface';
 import { apiHttpClient } from '@/utils/apiHttpClient';
 import { queryStringProcess } from '@/utils/queryStringProcess';
 import { POSTS_PER_PAGE } from '@/config';
+import { filterProcess } from '@/utils/filterProcess';
 
 export interface PostStoreState {
   loading: boolean;
@@ -118,6 +119,20 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       } else {
         state.nextPage++;
       }
+    },
+
+    setFilter(state, data) {
+      const filter = filterProcess(data);
+
+      state.filter = filter;
+    },
+
+    clearFilter(state) {
+      state.filter = null;
+    },
+
+    setQueryString(state, data) {
+      state.queryString = data;
     },
   },
 
