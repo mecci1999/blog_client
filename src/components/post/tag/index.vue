@@ -13,16 +13,14 @@ const props = defineProps({
 // 点击标签后，跳转到对应的标签页
 const onClickJumpToTagPage = (id: number) => {
   // 当前分类
-  const tag = postType.find((item) => item.id === id);
-
-  store.commit('post/setCurrentPostTag', tag);
+  store.commit('tag/setCurrentPostTag', id);
 
   router.push({ name: 'postTags', params: { tagId: id } });
 };
 </script>
 
 <template>
-  <span class="post-tag"> #{{ item?.name }} </span>
+  <span class="post-tag" @click="onClickJumpToTagPage(item?.id)"> #{{ item?.name }} </span>
 </template>
 
 <style lang="scss" scoped>

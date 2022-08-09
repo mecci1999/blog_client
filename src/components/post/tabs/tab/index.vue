@@ -25,7 +25,7 @@ const onClickChangeType = (id: any) => {
 
   store.commit('type/setCurrentPostType', id);
 
-  // 获取当前标签的列表
+  // 获取当前分类的列表
   store.dispatch('post/getPosts', {filter: {'typeId': id}})
 };
 

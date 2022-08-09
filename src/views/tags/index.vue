@@ -1,41 +1,49 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
-import { posts, tags } from '@/api/test/index';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import AppFooter from '@/components/footer/index.vue';
 
 const routes = useRoute();
-const router = useRouter();
+// const router = useRouter();
 const store = useStore();
 
 // 当前标签
-const tag = tags.find(
-  (item) => item.id === parseInt(`${routes.params.tagId}`, 10),
+store.dispatch('type/getPostTags');
+const tags:any = computed(() => store.getters['tag/tags']);
+store.commit(
+  'tag/setCurrentPostTag',
+  parseInt(`${routes.params.tagId}`, 10),
 );
-store.commit('post/setCurrentPostTag', tag);
+
+// 获取当前标签的博客列表
+store.dispatch('post/getPosts', {filter: {'typeId': parseInt(`${routes.params.tagId}`, 10)}})
 
 const tagItemClasses = (id: any) => [
   'app-tags-container-header-item',
   { selected: id === parseInt(`${currentTagId.value}`, 10) },
 ];
 
-const currentTagId = computed(() => store.getters['post/currentPostTag'].id);
-const currentTagName = computed(
-  () => store.getters['post/currentPostTag'].name,
-);
+const currentTag = computed(() => store.getters['tag/currentPostTag']);
+const currentTagId = computed(() => currentTag.value && currentTag.value.id)
+const currentTagName = computed(() => currentTag.value && currentTag.value.name);
+const posts = computed(() => store.getters['post/posts']);
+
+// 监听currentTagId
+watch(currentTagId, (newValue) => {
+  store.dispatch('post/getPosts', {filter: {'typeId': newValue}})
+})
 
 // 点击切换标签
 const onClickChangeTagId = (id: any) => {
   // 根据当前id获取当前标签数据
-  const tag = tags.find((item) => item.id === id);
-  store.commit('post/setCurrentPostTag', tag);
-  router.replace({
-    name: 'postTags',
-    params: { tagId: `${currentTagId.value}` },
-  });
+  store.commit('post/setCurrentPostTag', id);
+  // router.replace({
+  //   name: 'postTags',
+  //   params: { tagId: `${currentTagId.value}` },
+  // });
 };
 </script>
 

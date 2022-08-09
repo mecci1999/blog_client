@@ -2,12 +2,10 @@
 import { computed, ref } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
-import { posts } from '@/api/test/index';
 import PostTabBar from '@/components/post/tabs/index.vue';
 import AppFooter from '@/components/footer/index.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import { TypesAndTagsDataType } from '@/types/interface';
 
 const routes = useRoute();
 const router = useRouter();
@@ -27,8 +25,8 @@ store.commit(
 );
 
 const currentType: any = computed(() => store.getters['type/currentPostType']);
-
-const currentTypeName = ref(currentType && currentType?.name);
+const posts = computed(() => store.getters['post/posts']);
+const currentTypeName = computed(() => currentType.value && currentType.value.name)
 
 // // 点击切换分类
 // const onClickChangeType = (id: any) => {
