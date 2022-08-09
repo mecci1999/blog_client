@@ -11,15 +11,14 @@ const routes = useRoute();
 const store = useStore();
 
 // 当前标签
-store.dispatch('type/getPostTags');
-const tags:any = computed(() => store.getters['tag/tags']);
-store.commit(
-  'tag/setCurrentPostTag',
-  parseInt(`${routes.params.tagId}`, 10),
-);
+store.dispatch('tag/getPostTags');
+const tags: any = computed(() => store.getters['tag/tags']);
+store.commit('tag/setCurrentPostTag', parseInt(`${routes.params.tagId}`, 10));
 
 // 获取当前标签的博客列表
-store.dispatch('post/getPosts', {filter: {'typeId': parseInt(`${routes.params.tagId}`, 10)}})
+store.dispatch('post/getPosts', {
+  filter: { typeId: parseInt(`${routes.params.tagId}`, 10) },
+});
 
 const tagItemClasses = (id: any) => [
   'app-tags-container-header-item',
@@ -27,19 +26,21 @@ const tagItemClasses = (id: any) => [
 ];
 
 const currentTag = computed(() => store.getters['tag/currentPostTag']);
-const currentTagId = computed(() => currentTag.value && currentTag.value.id)
-const currentTagName = computed(() => currentTag.value && currentTag.value.name);
+const currentTagId = computed(() => currentTag.value && currentTag.value.id);
+const currentTagName = computed(
+  () => currentTag.value && currentTag.value.name,
+);
 const posts = computed(() => store.getters['post/posts']);
 
 // 监听currentTagId
 watch(currentTagId, (newValue) => {
-  store.dispatch('post/getPosts', {filter: {'typeId': newValue}})
-})
+  store.dispatch('post/getPosts', { filter: { typeId: newValue } });
+});
 
 // 点击切换标签
 const onClickChangeTagId = (id: any) => {
   // 根据当前id获取当前标签数据
-  store.commit('post/setCurrentPostTag', id);
+  store.commit('tag/setCurrentPostTag', id);
   // router.replace({
   //   name: 'postTags',
   //   params: { tagId: `${currentTagId.value}` },

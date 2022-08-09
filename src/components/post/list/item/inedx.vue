@@ -23,7 +23,7 @@ const onClickPostListTypeItem = (id: number) => {
   // 当前分类
   const type = postType.find((item) => item.id === id);
 
-  store.commit('post/setCurrentPostType', type);
+  store.commit('type/setCurrentPostType', type);
 
   router.push({ name: 'postCategory', params: { typeId: id } });
 };

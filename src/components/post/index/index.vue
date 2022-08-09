@@ -3,7 +3,6 @@ import { defineProps } from 'vue';
 import { PostDataType } from '@/types/interface'
 import { useRouter } from 'vue-router'
 import {useStore} from 'vuex';
-import { tags } from '@/api/test/index';
 
   const props = defineProps({
     posts:{
@@ -23,9 +22,9 @@ import { tags } from '@/api/test/index';
 
   const onClickChangeTag = (id:any) => {
     // 当前标签
-    const tag = tags.find((item) => item.id === id);
-    store.commit('post/setCurrentPostTag', tag);
-    router.replace({name: 'postTags', params: {tagId: id}})
+    // const tag = tags.find((item) => item.id === id);
+    // store.commit('tag/setCurrentPostTag', tag);
+    router.push({name: 'postTags', params: {tagId: id}})
   }
 </script>
 

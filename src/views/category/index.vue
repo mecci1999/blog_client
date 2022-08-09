@@ -26,7 +26,9 @@ store.commit(
 
 const currentType: any = computed(() => store.getters['type/currentPostType']);
 const posts = computed(() => store.getters['post/posts']);
-const currentTypeName = computed(() => currentType.value && currentType.value.name)
+const currentTypeName = computed(
+  () => currentType.value && currentType.value.name,
+);
 
 // // 点击切换分类
 // const onClickChangeType = (id: any) => {

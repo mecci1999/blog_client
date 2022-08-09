@@ -16,7 +16,7 @@ export interface RootState {
   post: PostStoreState;
   search: SearchStoreState;
   type: PostTypeStoreState;
-  tag:PostTagStoreState;
+  tag: PostTagStoreState;
 }
 
 /**
@@ -24,7 +24,7 @@ export interface RootState {
  */
 const store = createStore({
   state: {
-    appName: 'Mecci',
+    appName: 'Darwin',
   } as RootState,
 
   modules: {
