@@ -27,6 +27,7 @@ const onClickChangeType = (id: any) => {
 
   // 获取当前分类的列表
   store.dispatch('post/getPosts', {filter: {'typeId': id}})
+  router.replace({ params: { typeId: id } });
 };
 
 const onClickFirstType = () => {
@@ -34,6 +35,7 @@ const onClickFirstType = () => {
   store.commit('post/setQueryString', '');
   store.commit('post/setNextPage',1);
   store.dispatch('post/getPosts');
+  router.replace({ params: { typeId: 0 } });
 }
 </script>
 

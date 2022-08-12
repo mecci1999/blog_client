@@ -1,40 +1,63 @@
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref } from 'vue';
+import { computed, defineComponent, onMounted, reactive, ref } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
 import PostShowInfo from '@/components/post/show/info/index.vue';
 import PostShowContent from '@/components/post/show/content/index.vue';
 import PostShowFooter from '@/components/post/show/footer/index.vue';
-import { useRoute } from 'vue-router';
+import { useStore } from 'vuex';
+import { useRoute, useRouter } from 'vue-router';
 import CommentPanel from '@/components/comment/index.vue';
 import { APP_CLIENT_BASE_URL } from '@/config';
 import AppFooter from '@/components/footer/index.vue';
 import PostNavigator from '@/components/post/navigator/index.vue';
-import { post } from '@/api/test/index';
-
+import router from '@/router';
 export default defineComponent({
   name: 'PostShow',
 
   setup() {
+    const store = useStore();
+    const route = useRoute();
+    const router = useRouter();
+    const link = APP_CLIENT_BASE_URL + route.path;
     let time = ref('');
     let date: any;
+
+    // 获取当前博客的内容
+    store.commit('post/setQueryString', '');
+    store.commit('post/setNextPage', 1);
+    store.dispatch('post/getPosts');
+    store.dispatch('post/getPostById', route.params.postId);
+
+    const post: any = computed(() => store.getters['post/post']);
+
     let style = reactive({
-      backgroundImage: `url(${post.bgImgUrl})`,
+      // backgroundImage: `url(${post.bgImgUrl})`,
+      backgroundImage: `url(../src/assets/image/post_bg_03.png)`,
     });
+
+    // 点击分类跳转至相关分类页面
+    const onClickJumpToType = (id: number) => {
+      router.push({ name: 'postCategory', params: { typeId: id } });
+    };
+
+    // 点击标签跳转至相关标签页面
+    const onClickJumpToTag = (id: number) => {
+      router.push({ name: 'postTags', params: { tagId: id } });
+    };
 
     // 挂载时置顶
     onMounted(() => {
       window.scrollTo({ top: 0 });
     });
 
-    const route = useRoute();
-    const link = APP_CLIENT_BASE_URL + route.path;
-
     return {
       style,
       time,
       post,
       link,
+      onClickJumpToType,
+      onClickJumpToTag,
     };
   },
 
@@ -62,6 +85,7 @@ export default defineComponent({
             class="post-show-header-info-option-type"
             v-for="type in post.types"
             :key="type.id"
+            @click="onClickJumpToType(type.id)"
           >
             {{ type.name }}
           </div>
@@ -69,6 +93,7 @@ export default defineComponent({
             class="post-show-header-info-option-tag"
             v-for="tag in post.tags"
             :key="tag.id"
+            @click="onClickJumpToTag(tag.id)"
           >
             #{{ tag.name }}
           </div>
@@ -79,7 +104,7 @@ export default defineComponent({
     </header>
     <main class="post-show-main">
       <div class="post-show-main-container">
-        <PostShowContent :post="post" />
+        <PostShowContent :content="post.content" />
       </div>
       <div class="post-show-main-line"></div>
       <div class="post-show-main-footer">

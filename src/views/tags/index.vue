@@ -7,44 +7,48 @@ import { useStore } from 'vuex';
 import AppFooter from '@/components/footer/index.vue';
 
 const routes = useRoute();
-// const router = useRouter();
+const router = useRouter();
 const store = useStore();
 
 // 当前标签
+// 首先获取相关标签列表
 store.dispatch('tag/getPostTags');
 const tags: any = computed(() => store.getters['tag/tags']);
-store.commit('tag/setCurrentPostTag', parseInt(`${routes.params.tagId}`, 10));
 
 // 获取当前标签的博客列表
+store.commit('tag/setCurrentPostTag', parseInt(`${routes.params.tagId}`, 10));
+
 store.dispatch('post/getPosts', {
-  filter: { typeId: parseInt(`${routes.params.tagId}`, 10) },
+  filter: { tagId: parseInt(`${routes.params.tagId}`, 10) },
 });
 
-const tagItemClasses = (id: any) => [
-  'app-tags-container-header-item',
-  { selected: id === parseInt(`${currentTagId.value}`, 10) },
-];
-
 const currentTag = computed(() => store.getters['tag/currentPostTag']);
+
 const currentTagId = computed(() => currentTag.value && currentTag.value.id);
 const currentTagName = computed(
   () => currentTag.value && currentTag.value.name,
 );
+const tagItemClasses = (id: any) => [
+  'app-tags-container-header-item',
+  {
+    selected:
+      id ===
+      (parseInt(`${currentTagId.value}`, 10) ||
+        parseInt(`${routes.params.tagId}`, 10)),
+  },
+];
 const posts = computed(() => store.getters['post/posts']);
 
 // 监听currentTagId
 watch(currentTagId, (newValue) => {
-  store.dispatch('post/getPosts', { filter: { typeId: newValue } });
+  store.dispatch('post/getPosts', { filter: { tagId: newValue } });
+  router.replace({ params: { tagId: newValue } });
 });
 
 // 点击切换标签
 const onClickChangeTagId = (id: any) => {
   // 根据当前id获取当前标签数据
   store.commit('tag/setCurrentPostTag', id);
-  // router.replace({
-  //   name: 'postTags',
-  //   params: { tagId: `${currentTagId.value}` },
-  // });
 };
 </script>
 

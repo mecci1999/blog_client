@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import { PostDataType } from '@/types/interface'
 import { useRouter } from 'vue-router'
 import {useStore} from 'vuex';
@@ -22,10 +22,11 @@ import {useStore} from 'vuex';
 
   const onClickChangeTag = (id:any) => {
     // 当前标签
-    // const tag = tags.find((item) => item.id === id);
-    // store.commit('tag/setCurrentPostTag', tag);
     router.push({name: 'postTags', params: {tagId: id}})
   }
+
+  // 提示相关文案
+  const commentTipText = computed(() => props.posts?.length !== 0 ? '已经到底啦~' : '抱歉，没有找到相关内容~')
 </script>
 
 <template>
@@ -60,7 +61,9 @@ import {useStore} from 'vuex';
         </div>
       </div>
       <div class="post-index-list-bottom-tip">
-        <span class="post-index-list-bottom-tip-text">已经到底啦~</span>
+        <span class="post-index-list-bottom-tip-text">{{
+          commentTipText
+        }}</span>
       </div>
     </div>
   </div>

@@ -1,20 +1,6 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
 import CommnetOperation from './operation/index.vue';
 import CommentShow from './show/index.vue';
-
-export default defineComponent({
-  name: 'CommentPanel',
-
-  setup() {
-    return {};
-  },
-
-  components: {
-    CommnetOperation,
-    CommentShow,
-  },
-});
 </script>
 
 <template>

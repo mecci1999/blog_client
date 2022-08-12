@@ -6,6 +6,7 @@ import { apiHttpClient } from '@/utils/apiHttpClient';
 import { queryStringProcess } from '@/utils/queryStringProcess';
 import { POSTS_PER_PAGE } from '@/config';
 import { filterProcess } from '@/utils/filterProcess';
+import { getPostByIdApi, getPostsApi } from '@/api';
 
 export interface PostStoreState {
   loading: boolean;
@@ -154,9 +155,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       const query = getPostsQueryString ? `&${getPostsQueryString}` : '';
 
       try {
-        const response = await apiHttpClient.get(
-          `/posts?page=${state.nextPage}${query}`,
-        );
+        const response = await getPostsApi(state.nextPage, query);
 
         dispatch('getPostsPostProcess', response);
 
@@ -208,6 +207,26 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       commit('setTotalPages', totalPages);
 
       commit('setNextPage');
+    },
+
+    // 根据博客id获取博客
+    async getPostById({ commit }, postId) {
+      commit('setLoading', true);
+
+      try {
+        const response = await getPostByIdApi(postId);
+        commit('setLoading', false);
+        commit('setPost', response.data);
+
+        return response;
+      } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const _error = error as any;
+
+        commit('setLoading', false);
+
+        throw _error.response;
+      }
     },
   },
 };

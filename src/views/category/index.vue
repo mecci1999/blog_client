@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, watch } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
 import PostTabBar from '@/components/post/tabs/index.vue';
@@ -29,17 +29,14 @@ const posts = computed(() => store.getters['post/posts']);
 const currentTypeName = computed(
   () => currentType.value && currentType.value.name,
 );
+const currentPostTypeId = computed(() => {
+  currentType.value && currentType.value.id;
+});
 
-// // 点击切换分类
-// const onClickChangeType = (id: any) => {
-//   // 根据当前id获取当前标签数据
-//   const type = postType.find((item) => item.id === id);
-//   store.commit('post/setCurrentPostTag', type);
-//   router.replace({
-//     name: 'postCategory',
-//     params: { typeId: `${currentTypeId.value}` },
-//   });
-// };
+// 监听currentTypeId
+watch(currentPostTypeId, (newValue: any) => {
+  router.replace({ params: { typeId: newValue } });
+});
 </script>
 
 <template>

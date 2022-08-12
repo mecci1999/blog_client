@@ -13,7 +13,6 @@ const props = defineProps({
 <template>
   <div class="post-tab-bar">
     <PostTab :tabs="types" />
-    <div class="post-tab-bar-more">更多</div>
   </div>
 </template>
 

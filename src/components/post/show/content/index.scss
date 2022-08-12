@@ -2,4 +2,12 @@
   width: 100%;
   height: max-content;
   color: var(--primary-text-color);
+  pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+  }
+  code.hljs {
+    padding: 3px 5px;
+  }
 }

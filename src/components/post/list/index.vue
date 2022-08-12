@@ -1,25 +1,16 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { computed, defineProps } from 'vue';
 import PostListItem from './item/inedx.vue';
 import { PostDataType } from '@/types/interface'
 
-export default defineComponent({
-  name: 'PostList',
-
-  props: {
+  const props = defineProps({
     posts: {
       type: Array<PostDataType>,
     },
-  },
+  })
 
-  setup() {
-    return {};
-  },
-
-  components: {
-    PostListItem,
-  },
-});
+  // 提示相关文案
+  const commentTipText = computed(() => props.posts?.length !== 0 ? '已经到底啦~' : '抱歉，没有找到相关内容~')
 </script>
 
 <template>
@@ -28,7 +19,7 @@ export default defineComponent({
       <PostListItem v-for="post in posts" :key="post.id" :item="post" />
     </div>
     <div class="post-list-bottom-tip">
-      <span class="post-list-bottom-tip-text">已经到底啦~</span>
+      <span class="post-list-bottom-tip-text">{{ commentTipText }}</span>
     </div>
   </div>
 </template>

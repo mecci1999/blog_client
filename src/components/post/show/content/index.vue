@@ -1,34 +1,18 @@
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useStore } from 'vuex';
+<script lang="ts" setup>
+import { computed, defineProps } from 'vue';
 
-export default defineComponent({
-  name: 'PostShowContent',
-
-  props: {
-    post: {
-      type: Object,
-    },
+const props = defineProps({
+  content: {
+    type: String,
   },
-
-  setup(props) {
-    const store = useStore();
-
-    return {
-      ...props,
-    };
-  },
-
-  components: {},
 });
+
+const reg = /\\/g;
+const str = computed(() => props.content?.replace(reg, ''));
 </script>
 
 <template>
-  <div
-    id="post-show-content"
-    class="post-show-content"
-    v-html="post.content"
-  ></div>
+  <div id="post-show-content" class="post-show-content" v-html="str"></div>
 </template>
 
 <style lang="scss" scoped>

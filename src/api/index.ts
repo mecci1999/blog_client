@@ -17,7 +17,6 @@ export const getUserInfo = async () => {
 export const getQQUserInfo = async (id: string) => {
   try {
     const response = await tenApiHttpRequest.get(`qqname/?qq=${id}`);
-
     // 失败
     if (response) {
       return response;
@@ -49,4 +48,18 @@ export const getTypesApi = async () => {
  */
 export const getTagsApi = async () => {
   return await apiHttpClient.get('tags/list');
+};
+
+/**
+ * 获取博客列表接口
+ */
+export const getPostsApi = async (page: number, query: string) => {
+  return await apiHttpClient.get(`/posts?page=${page}${query}`);
+};
+
+/**
+ * 获取单篇博客的信息
+ */
+export const getPostByIdApi = async (postId: number) => {
+  return await apiHttpClient.get(`/posts/${postId}`);
 };
