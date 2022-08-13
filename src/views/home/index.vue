@@ -10,7 +10,7 @@ import {
   getCurrnetTime,
 } from '@/utils/changeBackgroundImage';
 import PostTabBar from '@/components/post/tabs/index.vue';
-import { info, postAmount } from '@/api/test/index';
+import { postAmount } from '@/api/test/index';
 import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
 import ArchiveList from '@/components/common/archive-list/index.vue';
@@ -42,16 +42,23 @@ export default defineComponent({
 
     // 获取博主信息接口
     store.dispatch('user/getUser');
+
+    // 获取网站信息接口
+    store.dispatch('dashboard/getAppInfo');
+
     /**
      * 获取分类列表
      */
     store.dispatch('type/getPostTypes');
+
     // 获取标签列表
     store.dispatch('tag/getPostTags');
+
     const posts = computed(() => store.getters['post/posts']);
     const user = computed(() => store.getters['user/user']);
     const types = computed(() => store.getters['type/types']);
     const tags = computed(() => store.getters['tag/tags']);
+    const info = computed(() => store.getters['dashboard/appInfo']);
 
     onMounted(async () => {
       date = setInterval(() => {

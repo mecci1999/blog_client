@@ -62,3 +62,13 @@ export interface TypesAndTagsDataType {
   name?: string; // 名字
   amount?: number; //数量
 }
+
+/**
+ * 网站信息数据类型
+ */
+export interface AppInfoDataType {
+  postAmount?: number;
+  wordAmount?: number;
+  accessAmount?: number;
+  updateTime?: string;
+}

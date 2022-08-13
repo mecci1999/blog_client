@@ -63,3 +63,10 @@ export const getPostsApi = async (page: number, query: string) => {
 export const getPostByIdApi = async (postId: number) => {
   return await apiHttpClient.get(`/posts/${postId}`);
 };
+
+/**
+ * 获取网站信息接口
+ */
+export const getAppInfoApi = async () => {
+  return await apiHttpClient.get('dashboard/info');
+};
