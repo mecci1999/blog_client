@@ -1,28 +1,15 @@
-<script lang="ts">
-import { computed, defineComponent, reactive } from 'vue';
+<script lang="ts" setup>
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 import AppSearch from '@/components/search/index.vue';
 
-export default defineComponent({
-  setup() {
-    const store = useStore();
+const store = useStore();
 
-    const theme = computed(() => store.getters['theme/theme']);
+const theme = computed(() => store.getters['theme/theme']);
 
-    const searchDialogStatus = computed(
-      () => store.getters['search/searchDialogStatus'],
-    );
-
-    return {
-      theme,
-      searchDialogStatus,
-    };
-  },
-
-  components: {
-    AppSearch,
-  },
-});
+const searchDialogStatus = computed(
+  () => store.getters['search/searchDialogStatus'],
+);
 </script>
 
 <template>

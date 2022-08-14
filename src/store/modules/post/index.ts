@@ -1,8 +1,7 @@
 import { Module } from 'vuex';
 import { RootState } from '../../index';
 import { StringifiableRecord } from 'query-string';
-import { PostDataType, TypesAndTagsDataType } from '@/types/interface';
-import { apiHttpClient } from '@/utils/apiHttpClient';
+import { PostDataType } from '@/types/interface';
 import { queryStringProcess } from '@/utils/queryStringProcess';
 import { POSTS_PER_PAGE } from '@/config';
 import { filterProcess } from '@/utils/filterProcess';
@@ -122,6 +121,14 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       }
     },
 
+    setPrevPage(state, data) {
+      if (data) {
+        state.nextPage = data;
+      } else {
+        state.nextPage--;
+      }
+    },
+
     setFilter(state, data) {
       const filter = filterProcess(data);
 
@@ -191,22 +198,22 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     },
 
     getPostsPostProcess({ commit, state }, response) {
-      if (state.nextPage === 1) {
-        commit('setPosts', response.data);
-      } else {
-        commit('setPosts', [...state.posts, ...response.data]);
-      }
-
+      // if (state.nextPage === 1) {
+      //   commit('setPosts', response.data);
+      // } else {
+      //   commit('setPosts', [...state.posts, ...response.data]);
+      // }
+      commit('setPosts', response.data);
       commit('setLoading', false);
 
       const total =
         response.headers['X-Total-Count'] || response.headers['x-total-count'];
 
-      const totalPages = Math.ceil(total / POSTS_PER_PAGE);
+      const totalPages = Math.ceil(parseInt(total, 10) / POSTS_PER_PAGE);
 
       commit('setTotalPages', totalPages);
 
-      commit('setNextPage');
+      // commit('setNextPage');
     },
 
     // 根据博客id获取博客

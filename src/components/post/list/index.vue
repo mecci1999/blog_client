@@ -1,12 +1,23 @@
 <script lang="ts" setup>
-import { computed, defineProps } from 'vue';
+import { computed, defineProps,watch } from 'vue';
 import PostListItem from './item/inedx.vue';
+import AppPagination from '@/components/common/pagination/index.vue';
 import { PostDataType } from '@/types/interface'
+import store from '@/store';
 
   const props = defineProps({
     posts: {
       type: Array<PostDataType>,
     },
+  })
+
+  const totalPages = computed(() => store.state.post.totalPages);
+
+  const currentPage = computed(() => store.state.post.nextPage);
+
+  // 监听currentPage
+  watch(currentPage,(newValue) => {
+    store.dispatch('post/getPosts');
   })
 
   // 提示相关文案
@@ -18,9 +29,13 @@ import { PostDataType } from '@/types/interface'
     <div class="post-list-group">
       <PostListItem v-for="post in posts" :key="post.id" :item="post" />
     </div>
-    <div class="post-list-bottom-tip">
+    <div
+      class="post-list-bottom-tip"
+      v-if="posts?.length && posts?.length < 12"
+    >
       <span class="post-list-bottom-tip-text">{{ commentTipText }}</span>
     </div>
+    <AppPagination :currentPage="currentPage" :totalPages="totalPages" />
   </div>
 </template>
 

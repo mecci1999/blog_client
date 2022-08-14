@@ -1,0 +1,102 @@
+.app-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  &-prev {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: var(--primary-background-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--line-color);
+    &:hover {
+      border-color: var(--mecci-theme-color);
+
+      .app-icon {
+        color: var(--mecci-theme-color) !important;
+      }
+    }
+
+    &.disabled {
+      // pointer-events: ;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.3;
+      user-select: none;
+    }
+  }
+
+  &-next {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: var(--primary-background-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--line-color);
+    // color: var(--mecci-font-color) !important;
+    &:hover {
+      border-color: var(--mecci-theme-color);
+
+      .app-icon {
+        color: var(--mecci-theme-color) !important;
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  &-number {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-item {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      box-shadow: var(--primary-background-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.3rem;
+      cursor: pointer;
+      color: var(--mecci-font-color);
+      border: 1px solid var(--line-color);
+
+      &:hover {
+        color: var(--mecci-theme-color);
+        border-color: var(--mecci-theme-color);
+      }
+
+      &.active {
+        background-color: var(--mecci-theme-color);
+        color: #fff;
+      }
+    }
+
+    &-space {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.3rem;
+      color: var(--mecci-font-color);
+      user-select: none;
+    }
+  }
+}
