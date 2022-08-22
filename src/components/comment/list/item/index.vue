@@ -45,6 +45,7 @@ const isAdmin = props.item?.userId === 1;
         <div class="comment-list-item-container-header-time">
           {{ item?.updated || item?.created }}
         </div>
+        <div class="comment-list-item-container-header-reply">回复</div>
       </div>
       <div class="comment-list-item-container-content">
         <span class="comment-list-item-container-content-text">
@@ -65,10 +66,6 @@ const isAdmin = props.item?.userId === 1;
           {{ item?.browser }}
         </div>
       </div>
-    </div>
-    <div class="comment-list-item-tool">
-      <div class="comment-list-item-tool-reply"></div>
-      <div class="comment-list-item-tool-unfold"></div>
     </div>
   </div>
 </template>

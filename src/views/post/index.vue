@@ -1,5 +1,12 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, ref } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+} from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
 import PostShowInfo from '@/components/post/show/info/index.vue';
@@ -8,10 +15,9 @@ import PostShowFooter from '@/components/post/show/footer/index.vue';
 import { useStore } from 'vuex';
 import { useRoute, useRouter } from 'vue-router';
 import CommentPanel from '@/components/comment/index.vue';
-import { APP_CLIENT_BASE_URL } from '@/config';
+import { VITE_APP_CLIENT_BASE_URL } from '@/config';
 import AppFooter from '@/components/footer/index.vue';
 import PostNavigator from '@/components/post/navigator/index.vue';
-import router from '@/router';
 export default defineComponent({
   name: 'PostShow',
 
@@ -19,7 +25,7 @@ export default defineComponent({
     const store = useStore();
     const route = useRoute();
     const router = useRouter();
-    const link = APP_CLIENT_BASE_URL + route.path;
+    const link = VITE_APP_CLIENT_BASE_URL + route.path;
     let time = ref('');
     let date: any;
 
@@ -28,8 +34,10 @@ export default defineComponent({
     store.commit('post/setNextPage', 1);
     store.dispatch('post/getPosts');
     store.dispatch('post/getPostById', route.params.postId);
+    store.dispatch('comment/getComments', { postId: route.params.postId });
 
     const post: any = computed(() => store.getters['post/post']);
+    const comments: any = computed(() => store.getters['comment/comments']);
 
     let style = reactive({
       // backgroundImage: `url(${post.bgImgUrl})`,
@@ -58,6 +66,7 @@ export default defineComponent({
       link,
       onClickJumpToType,
       onClickJumpToTag,
+      comments,
     };
   },
 
@@ -76,8 +85,8 @@ export default defineComponent({
 
 <template>
   <div class="post-show">
+    <NavBar />
     <header class="post-show-header" :style="style">
-      <NavBar />
       <div class="post-show-header-shadow"></div>
       <div class="post-show-header-info">
         <div class="post-show-header-info-option">
@@ -111,7 +120,7 @@ export default defineComponent({
         <PostShowFooter :link="link" />
       </div>
     </main>
-    <CommentPanel />
+    <CommentPanel :comments="comments" />
     <PostNavigator />
     <AppFooter />
   </div>

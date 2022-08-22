@@ -107,16 +107,14 @@ html {
     font-family: Consolas;
     text-align: left;
     margin: 1em;
-    border-radius: 5px;
+    border-radius: 8px;
     counter-reset: line;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding: 1rem 1rem;
     width: 100%;
 
     code {

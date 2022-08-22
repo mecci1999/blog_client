@@ -8,18 +8,15 @@
     align-items: center;
     margin-bottom: 16px;
 
-    &-icon {
-      width: 30px;
-      height: 30px;
-      background-image: url('@/assets/icon/comment-amount.svg');
-      background-size: 100% 100%;
-      margin-right: 10px;
-    }
-
     &-text {
       color: var(--primary-text-blog-color);
       font-size: var(--font-size-middle);
       font-weight: bold;
+    }
+
+    .app-icon {
+      color: var(--primary-text-blog-color) !important;
+      margin-right: 8px;
     }
   }
 

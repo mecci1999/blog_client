@@ -26,16 +26,19 @@ import store from '@/store';
 
 <template>
   <div class="post-list">
-    <div class="post-list-group">
-      <PostListItem v-for="post in posts" :key="post.id" :item="post" />
+    <div class="post-list-container" v-if="posts && posts.length > 0">
+      <div class="post-list-group">
+        <PostListItem v-for="post in posts" :key="post.id" :item="post" />
+      </div>
+      <div
+        class="post-list-bottom-tip"
+        v-if="posts?.length && posts?.length < 12"
+      >
+        <span class="post-list-bottom-tip-text">{{ commentTipText }}</span>
+      </div>
+      <AppPagination :currentPage="currentPage" :totalPages="totalPages" />
     </div>
-    <div
-      class="post-list-bottom-tip"
-      v-if="posts?.length && posts?.length < 12"
-    >
-      <span class="post-list-bottom-tip-text">{{ commentTipText }}</span>
-    </div>
-    <AppPagination :currentPage="currentPage" :totalPages="totalPages" />
+    <div class="post-list-empty" v-else>抱歉，没有找到相关内容</div>
   </div>
 </template>
 

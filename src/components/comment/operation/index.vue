@@ -5,6 +5,7 @@ import { checkIsQQNumber, checkIsQQEmail } from '@/utils/checkIsQQNumber';
 import { useStore } from 'vuex';
 import TextareaField from '@/components/common/form/textarea/index.vue';
 import ButtonField from '@/components/common/form/button/index.vue';
+import AppIcon from '@/components/common/app-icon/index.vue';
 
 export default defineComponent({
   name: 'CommnetOperation',
@@ -106,6 +107,7 @@ export default defineComponent({
     InputField,
     TextareaField,
     ButtonField,
+    AppIcon,
   },
 });
 </script>
@@ -113,7 +115,7 @@ export default defineComponent({
 <template>
   <div class="comment-operation">
     <div class="comment-operation-title">
-      <i class="comment-operation-title-icon"></i>
+      <AppIcon size="30" name="sms" />
       <span class="comment-operation-title-text">写评论</span>
     </div>
     <div class="comment-operation-form">

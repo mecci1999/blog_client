@@ -18,18 +18,22 @@ const getBackPost = computed(() => store.getters['post/getBackPost']);
 
 const onClickForwardJump = () => {
   // 跳转到前一篇博客
-  router.replace({
+  router.push({
     name: 'postShow',
     params: { postId: getForwardPost.value.id },
   });
+  store.dispatch('post/getPostById', getForwardPost.value.id);
+  store.dispatch('comment/getComments', { postId: getForwardPost.value.id });
 };
 
 const onClickBackJump = () => {
   // 跳转到后一篇博客
-  router.replace({
+  router.push({
     name: 'postShow',
     params: { postId: getBackPost.value.id },
   });
+  store.dispatch('post/getPostById', getBackPost.value.id);
+  store.dispatch('comment/getComments', { postId: getBackPost.value.id });
 };
 </script>
 

@@ -1,6 +1,7 @@
 /**
  * 项目所有的接口api方法
  */
+import { CommentDataType } from '@/types/interface';
 import { apiHttpClient, tenApiHttpRequest } from '../utils/apiHttpClient';
 
 /**
@@ -54,14 +55,14 @@ export const getTagsApi = async () => {
  * 获取博客列表接口
  */
 export const getPostsApi = async (page: number, query: string) => {
-  return await apiHttpClient.get(`/posts?page=${page}${query}`);
+  return await apiHttpClient.get(`posts?page=${page}${query}`);
 };
 
 /**
  * 获取单篇博客的信息
  */
 export const getPostByIdApi = async (postId: number) => {
-  return await apiHttpClient.get(`/posts/${postId}`);
+  return await apiHttpClient.get(`posts/${postId}`);
 };
 
 /**
@@ -69,4 +70,45 @@ export const getPostByIdApi = async (postId: number) => {
  */
 export const getAppInfoApi = async () => {
   return await apiHttpClient.get('dashboard/info');
+};
+
+/**
+ * 获取评论列表接口
+ */
+export const getCommentsApi = async (postId: number, page: number) => {
+  return await apiHttpClient.get(`comments?post=${postId}&page=${page}`);
+};
+
+/**
+ * 回复评论列表
+ */
+export const getReplyCommentsApi = async (commentId: number) => {
+  return await apiHttpClient.get(`comments/${commentId}/replies}`);
+};
+
+/**
+ * 创建评论接口
+ */
+export const createCommentApi = async (comment: CommentDataType) => {
+  return await apiHttpClient.post(`comments}`, comment);
+};
+
+/**
+ * 创建回复评论接口
+ */
+export const createReplyCommentApi = async (
+  commentId: number,
+  replyComment: CommentDataType,
+) => {
+  return await apiHttpClient.post(`comments/${commentId}/reply}`, replyComment);
+};
+
+/**
+ * 更改评论审核状态接口
+ */
+export const updateCommentAuditStatusApi = async (
+  commentId: number,
+  status: string,
+) => {
+  return await apiHttpClient.patch(`comments/${commentId}`, status);
 };

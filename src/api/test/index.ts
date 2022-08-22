@@ -575,7 +575,7 @@ export const searchResultDataType = [
 /**
  * 评论列表接口
  */
-export const comment = [
+export const comments = [
   {
     id: 1,
     avatarImgUrl: '',

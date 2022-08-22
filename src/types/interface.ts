@@ -12,9 +12,11 @@ export interface CommentDataType {
   postId?: number; // 博客id
   parentId?: number | null; // 父级评论Id
   os?: string; // 操作系统类型
-  browser?: string; //浏览器类型
+  browser?: string; // 浏览器类型
   address?: string; // 所在省份
   status?: CommentStatus; // 评论状态
+  replyCommentList?: Array<CommentDataType>; // 回复评论列表
+  totalReplies?: number; // 总回复量
   created?: string; // 发表时间
   updated?: string; // 更新时间
 }

@@ -3,7 +3,7 @@ import { RootState } from '../../index';
 import { StringifiableRecord } from 'query-string';
 import { PostDataType } from '@/types/interface';
 import { queryStringProcess } from '@/utils/queryStringProcess';
-import { POSTS_PER_PAGE } from '@/config';
+import { VITE_POSTS_PER_PAGE } from '@/config';
 import { filterProcess } from '@/utils/filterProcess';
 import { getPostByIdApi, getPostsApi } from '@/api';
 
@@ -11,6 +11,7 @@ export interface PostStoreState {
   loading: boolean;
   post: PostDataType | null;
   posts: Array<PostDataType>;
+  allPosts: Array<PostDataType>;
   nextPage: number;
   totalPages: number;
   queryString: string;
@@ -39,6 +40,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     totalPages: 1,
     queryString: '',
     filter: null,
+    allPosts: [],
   } as PostStoreState,
 
   /**
@@ -60,14 +62,14 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
 
     // 判断当前博客是否为第一个
     currentIsFirstPost(state) {
-      return state.post?.id && state.post?.id === state.posts[0].id;
+      return state.post?.id && state.post?.id === state.allPosts[0].id;
     },
 
     // 判断当前博客是否为最后一个
     currentIsEndPost(state) {
-      const length = state.posts.length;
+      const length = state.allPosts.length;
 
-      return state.post?.id && state.post?.id === state.posts[length - 1].id;
+      return state.post?.id && state.post?.id === state.allPosts[length - 1].id;
     },
 
     // 获取当前博客前一个的博客内容
@@ -75,10 +77,12 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       // 获取当前博客所在位置
       if (getters.currentIsFirstPost) return;
 
-      const index = state.posts.findIndex((item) => item.id === state.post?.id);
+      const index = state.allPosts.findIndex(
+        (item) => item.id === state.post?.id,
+      );
 
       // 拿到前面的博客
-      return state.posts[index - 1];
+      return state.allPosts[index - 1];
     },
 
     // 获取当前博客后一个的博客内容
@@ -86,10 +90,12 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       // 获取当前博客所在位置
       if (getters.currentIsEndPost) return;
 
-      const index = state.posts.findIndex((item) => item.id === state.post?.id);
+      const index = state.allPosts.findIndex(
+        (item) => item.id === state.post?.id,
+      );
 
       // 拿到前面的博客
-      return state.posts[index + 1];
+      return state.allPosts[index + 1];
     },
   },
 
@@ -103,6 +109,10 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
 
     setPost(state, data) {
       state.post = data;
+    },
+
+    setAllPosts(state, data) {
+      state.allPosts = [...state.allPosts, ...data];
     },
 
     setPosts(state, data) {
@@ -198,18 +208,14 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     },
 
     getPostsPostProcess({ commit, state }, response) {
-      // if (state.nextPage === 1) {
-      //   commit('setPosts', response.data);
-      // } else {
-      //   commit('setPosts', [...state.posts, ...response.data]);
-      // }
+      commit('setAllPosts', response.data);
       commit('setPosts', response.data);
       commit('setLoading', false);
 
       const total =
         response.headers['X-Total-Count'] || response.headers['x-total-count'];
 
-      const totalPages = Math.ceil(parseInt(total, 10) / POSTS_PER_PAGE);
+      const totalPages = Math.ceil(parseInt(total, 10) / VITE_POSTS_PER_PAGE);
 
       commit('setTotalPages', totalPages);
 
