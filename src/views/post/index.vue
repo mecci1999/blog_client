@@ -120,7 +120,7 @@ export default defineComponent({
         <PostShowFooter :link="link" />
       </div>
     </main>
-    <CommentPanel :comments="comments" />
+    <CommentPanel :comments="comments" :postId="post.id" />
     <PostNavigator />
     <AppFooter />
   </div>

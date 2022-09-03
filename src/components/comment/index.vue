@@ -1,20 +1,23 @@
 <script lang="ts" setup>
 import CommnetOperation from './operation/index.vue';
 import CommentShow from './show/index.vue';
-import { defineProps } from 'vue'
+import { defineProps } from 'vue';
 import { CommentDataType } from '@/types/interface';
 
 const props = defineProps({
   comments: {
-    type: Array<CommentDataType>
-  }
-})
+    type: Array<CommentDataType>,
+  },
+  postId: {
+    type: Number,
+  },
+});
 </script>
 
 <template>
   <transition name="comment-panel">
     <div class="comment-panel">
-      <CommnetOperation />
+      <CommnetOperation :postId="postId" />
       <CommentShow :comments="comments" />
     </div>
   </transition>

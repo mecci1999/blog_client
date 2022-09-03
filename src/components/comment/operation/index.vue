@@ -1,115 +1,145 @@
-<script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+<script lang="ts" setup>
+import { computed, defineComponent, ref, defineProps } from 'vue';
 import InputField from '@/components/common/form/input/index.vue';
 import { checkIsQQNumber, checkIsQQEmail } from '@/utils/checkIsQQNumber';
 import { useStore } from 'vuex';
 import TextareaField from '@/components/common/form/textarea/index.vue';
-import ButtonField from '@/components/common/form/button/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
+import { createCommentApi } from '@/api/index';
+import { CommentStatus } from '@/types/enum';
+import { ElMessage } from 'element-plus';
 
-export default defineComponent({
-  name: 'CommnetOperation',
-
-  setup() {
-    const store = useStore();
-
-    const name = ref('');
-    const email = ref('');
-    const text = ref('');
-    const avatarImgUrl = ref('../../../src/assets/icon/account-black-32px.svg');
-    const commentAvatarImgClasses = computed(() => {
-      return [
-        'comment-operation-form-header-avatar-img',
-        {
-          default:
-            avatarImgUrl.value ===
-            '../../../src/assets/icon/account-black-32px.svg',
-        },
-      ];
-    });
-
-    // 行数
-    const row = 7;
-
-    // 用户QQ信息
-    const qqUserInfo = computed(() => {
-      return store.getters['comment/qqUserInfo'];
-    });
-
-    // 获取用户QQ信息接口
-    const getQQInfo = async (id: string) => {
-      await store.dispatch('comment/getQQUserInfo', id);
-    };
-
-    /**
-     * 当获取到字段的焦点时触发请求
-     * 并且触发请求的条件需要满足QQ号的正则匹配，才能够发送请求，其他情况一切return
-     * 查看store中是否存在数据，如果没有再发送请求。
-     */
-    const onSendReqGetAvatarByQQ = async () => {
-      // 首先判断是否为QQ号
-      if (!checkIsQQNumber(name.value)) return;
-
-      // 通过api获取用户QQ信息，并存储在store中
-      // 判断store中是否用数据，如果store中有数据，就不用发送请求
-      if (qqUserInfo.value.code === 200) {
-        avatarImgUrl.value = qqUserInfo.value.imgurl;
-        name.value = qqUserInfo.value.name;
-        email.value = qqUserInfo.value.mail;
-      } else {
-        await getQQInfo(name.value);
-        avatarImgUrl.value = qqUserInfo.value.imgurl;
-        if (qqUserInfo.value.name) {
-          name.value = qqUserInfo.value.name;
-        }
-        if (qqUserInfo.value.mail) {
-          email.value = qqUserInfo.value.mail;
-        }
-      }
-    };
-
-    const onSendReqGetAvatarByQQEmail = async () => {
-      // 首先判断是否为QQ邮箱
-      if (!checkIsQQEmail(email.value)) return;
-
-      // 如果为qq邮箱就可以拿到qq去请求信息
-      const QQNumber = email.value.split('@')[0];
-
-      // 通过api获取用户QQ信息，并存储在store中
-      // 判断store中是否用数据，如果store中有数据，就不用发送请求
-      if (qqUserInfo.value.code === 200) {
-        avatarImgUrl.value = qqUserInfo.value.imgurl;
-        name.value = qqUserInfo.value.name;
-        email.value = qqUserInfo.value.mail;
-      } else {
-        await getQQInfo(QQNumber);
-        avatarImgUrl.value = qqUserInfo.value.imgurl;
-        name.value = qqUserInfo.value.name;
-        email.value = qqUserInfo.value.mail;
-      }
-    };
-
-    return {
-      name,
-      email,
-      avatarImgUrl,
-      onSendReqGetAvatarByQQ,
-      onSendReqGetAvatarByQQEmail,
-      getQQInfo,
-      qqUserInfo,
-      commentAvatarImgClasses,
-      text,
-      row,
-    };
+const props = defineProps({
+  postId: {
+    type: Number,
   },
-
-  components: {
-    InputField,
-    TextareaField,
-    ButtonField,
-    AppIcon,
+  parentId: {
+    type: Number,
+    default: null,
   },
 });
+
+const store = useStore();
+
+const name = ref('');
+const email = ref('');
+const text = ref('');
+const avatarImgUrl = ref('../../../src/assets/icon/account-black-32px.svg');
+const commentAvatarImgClasses = computed(() => {
+  return [
+    'comment-operation-form-header-avatar-img',
+    {
+      default:
+        avatarImgUrl.value ===
+        '../../../src/assets/icon/account-black-32px.svg',
+    },
+  ];
+});
+
+// 行数
+const row = 7;
+
+// 用户QQ信息
+const qqUserInfo = computed(() => {
+  return store.getters['comment/qqUserInfo'];
+});
+
+// 获取用户QQ信息接口
+const getQQInfo = async (id: string) => {
+  await store.dispatch('comment/getQQUserInfo', id);
+};
+
+/**
+ * 当获取到字段的焦点时触发请求
+ * 并且触发请求的条件需要满足QQ号的正则匹配，才能够发送请求，其他情况一切return
+ * 查看store中是否存在数据，如果没有再发送请求。
+ */
+const onSendReqGetAvatarByQQ = async () => {
+  // 首先判断是否为QQ号
+  if (!checkIsQQNumber(name.value)) return;
+
+  // 通过api获取用户QQ信息，并存储在store中
+  // 判断store中是否用数据，如果store中有数据，就不用发送请求
+  // if (qqUserInfo.value.code === 200) {
+  //   avatarImgUrl.value = qqUserInfo.value.imgurl;
+  //   name.value = qqUserInfo.value.name;
+  //   email.value = qqUserInfo.value.mail;
+  // } else {
+  await getQQInfo(name.value);
+  avatarImgUrl.value = qqUserInfo.value.imgurl;
+  if (qqUserInfo.value.name) {
+    name.value = qqUserInfo.value.name;
+  }
+  if (qqUserInfo.value.mail) {
+    email.value = qqUserInfo.value.mail;
+  }
+  // }
+};
+
+const onSendReqGetAvatarByQQEmail = async () => {
+  // 首先判断是否为QQ邮箱
+  if (!checkIsQQEmail(email.value)) return;
+
+  // 如果为qq邮箱就可以拿到qq去请求信息
+  const QQNumber = email.value.split('@')[0];
+
+  // 通过api获取用户QQ信息，并存储在store中
+  // 判断store中是否用数据，如果store中有数据，就不用发送请求
+  // if (qqUserInfo.value.code === 200) {
+  //   avatarImgUrl.value = qqUserInfo.value.imgurl;
+  //   name.value = qqUserInfo.value.name;
+  //   email.value = qqUserInfo.value.mail;
+  // } else {
+  await getQQInfo(QQNumber);
+  avatarImgUrl.value = qqUserInfo.value.imgurl;
+  name.value = qqUserInfo.value.name;
+  email.value = qqUserInfo.value.mail;
+  // }
+};
+
+// 发表评论
+const handleSumbit = async () => {
+  if (name.value === '') {
+    ElMessage({ type: 'error', message: '昵称为空，请输入昵称' });
+    return;
+  }
+  if (email.value === '') {
+    ElMessage({ type: 'error', message: '邮箱为空，请输入邮箱' });
+    return;
+  }
+  if (text.value === '') {
+    ElMessage({ type: 'error', message: '评论内容为空，请输入内容' });
+    return;
+  }
+
+  try {
+    // 获取地址
+    await createCommentApi({
+      name: name.value,
+      eMail: email.value,
+      avatarImgUrl: avatarImgUrl.value,
+      content: text.value,
+      status: CommentStatus.pending,
+      postId: props.postId,
+    })
+      .then(
+        () => {
+          ElMessage.success('发送成功，等待博主审核');
+        },
+        () => {
+          ElMessage.error('发送失败，请重试');
+        },
+      )
+      .finally(() => {
+        name.value = '';
+        email.value = '';
+        text.value = '';
+        avatarImgUrl.value = '../../../src/assets/icon/account-black-32px.svg';
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
 </script>
 
 <template>
@@ -144,7 +174,7 @@ export default defineComponent({
           :rows="row"
         />
         <div class="comment-operation-form-main-button">
-          <ButtonField />
+          <el-button type="primary" @click="handleSumbit">发表</el-button>
         </div>
       </div>
     </div>

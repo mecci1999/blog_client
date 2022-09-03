@@ -34,9 +34,19 @@ export default (mode) => {
     },
     server: {
       proxy: {
-        '*': {
+        '/qqname': {
           target: 'https://tenapi.cn/',
           changeOrigin: true,
+        },
+        // '/cityApi': {
+        //   target: 'http://pv.sohu.com/cityjson',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/cityApi/, ''),
+        // },
+        '/baiduApi': {
+          target: 'https://api.map.baidu.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/baiduApi/, ''),
         },
         [`${loadEnv(mode, process.cwd())}`]: {
           target: loadEnv(mode, process.cwd()),

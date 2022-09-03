@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed, watch } from 'vue';
 
 export default defineComponent({
   name: 'TextareaField',
@@ -27,17 +27,19 @@ export default defineComponent({
   setup(props, ctx) {
     const vModel = ref('');
 
+    const propsModelValue = computed(() => props.modelValue);
+
     const onChangeTextarea = (event?: any) => {
       const value = event.target.value.trim();
-
-      // if (vModel !== value) {
-      //   ctx.emit('dirty');
-      // }
 
       vModel.value = value;
 
       ctx.emit('update:modelValue', event.target.value.trim());
     };
+
+    watch(propsModelValue, (newValue: any) => {
+      vModel.value = newValue;
+    });
 
     return {
       onChangeTextarea,

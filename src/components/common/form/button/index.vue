@@ -14,16 +14,20 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+
+    text: {
+      type: String,
+    },
   },
 
   /**
    * 事件
    */
-  emits: ['onClick'],
+  emits: ['click'],
 
   setup(props, ctx) {
     const onClick = (event: any) => {
-      ctx.emit('onClick', event);
+      ctx.emit('click', event);
     };
 
     return {
@@ -38,7 +42,9 @@ export default defineComponent({
 
 <template>
   <div class="button-field">
-    <el-button :type="type" :loading="loading" @click="onClick">发表</el-button>
+    <el-button :type="type" :loading="loading" @click="onClick">{{
+      text
+    }}</el-button>
   </div>
 </template>
 

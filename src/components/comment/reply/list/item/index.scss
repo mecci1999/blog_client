@@ -1,4 +1,4 @@
-.comment-list-item {
+.comment-reply-list-item {
   width: 100%;
   display: flex;
   word-break: break-all;
@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 16px;
+    padding-left: 16px;
 
     &-header {
       display: flex;
@@ -75,6 +75,15 @@
           line-height: 1.5rem;
           color: var(--secondary-text-color);
         }
+      }
+    }
+
+    &-parent {
+      font-size: 0.5rem;
+      color: var(--mecci-secondary-color);
+
+      &-name {
+        color: var(--mecci-home-color);
       }
     }
 

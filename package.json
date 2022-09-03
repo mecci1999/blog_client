@@ -6,13 +6,14 @@
   "author": "mecci",
   "license": "MIT",
   "scripts": {
-    "serve": "vite --port 8000",
+    "serve": "vite --port 8000 --host",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@fancyapps/ui": "^4.0.31",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "element-plus": "^2.2.5",
     "query-string": "^7.1.1",
     "showdown": "^2.1.0",

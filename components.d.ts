@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     Navigator: typeof import('./src/components/post/navigator/index.vue')['default']
     Operation: typeof import('./src/components/comment/operation/index.vue')['default']
     Pagination: typeof import('./src/components/common/pagination/index.vue')['default']
+    Reply: typeof import('./src/components/comment/reply/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./src/components/search/index.vue')['default']

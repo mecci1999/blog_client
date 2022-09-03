@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { computed, defineProps, ref } from 'vue';
-import { CommentDataType } from '@/types/interface';
+import AppIcon from '@/components/common/app-icon/index.vue';
+import CommentReply from '../../reply/index.vue';
+import dayjs from 'dayjs';
 
 const props = defineProps({
   item: {
@@ -16,7 +18,7 @@ const commentAvatarImgClasses = computed(() => {
     'comment-list-item-avatar-img',
     {
       default:
-        avatarImgUrl.value ===
+        props.item?.avatarImgUrl ===
         '../../../../src/assets/icon/account-black-32px.svg',
     },
   ];
@@ -40,12 +42,20 @@ const isAdmin = props.item?.userId === 1;
           {{ item?.name }}
         </div>
         <div class="comment-list-item-container-header-card" v-if="isAdmin">
-          作者
+          博主
         </div>
         <div class="comment-list-item-container-header-time">
-          {{ item?.updated || item?.created }}
+          {{
+            dayjs(item?.updated).format('YYYY-MM-DD') ||
+            dayjs(item?.created).format('YYYY-MM-DD')
+          }}
         </div>
-        <div class="comment-list-item-container-header-reply">回复</div>
+        <div class="comment-list-item-container-header-reply">
+          <AppIcon size="20" name="sms" />
+          <span class="comment-list-item-container-header-reply-amount">{{
+            item?.totalReplies
+          }}</span>
+        </div>
       </div>
       <div class="comment-list-item-container-content">
         <span class="comment-list-item-container-content-text">
@@ -55,7 +65,7 @@ const isAdmin = props.item?.userId === 1;
       <div class="comment-list-item-container-footer">
         <div class="comment-list-item-container-footer-address">
           <i class="comment-list-item-container-footer-address-icon"></i>
-          {{ item?.address }}
+          {{ item?.province }}
         </div>
         <div class="comment-list-item-container-footer-os">
           <i class="comment-list-item-container-footer-os-icon"></i
@@ -66,6 +76,7 @@ const isAdmin = props.item?.userId === 1;
           {{ item?.browser }}
         </div>
       </div>
+      <CommentReply :reply="item?.replyCommentList" :parentName="item?.name" />
     </div>
   </div>
 </template>

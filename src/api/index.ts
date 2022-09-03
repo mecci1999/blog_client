@@ -2,6 +2,7 @@
  * 项目所有的接口api方法
  */
 import { CommentDataType } from '@/types/interface';
+import axios from 'axios';
 import { apiHttpClient, tenApiHttpRequest } from '../utils/apiHttpClient';
 
 /**
@@ -90,7 +91,7 @@ export const getReplyCommentsApi = async (commentId: number) => {
  * 创建评论接口
  */
 export const createCommentApi = async (comment: CommentDataType) => {
-  return await apiHttpClient.post(`comments}`, comment);
+  return await apiHttpClient.post(`comments`, comment);
 };
 
 /**

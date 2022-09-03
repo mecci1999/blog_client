@@ -31,10 +31,6 @@ export default defineComponent({
     const onChangeText = (event?: any) => {
       const value = event.target.value.trim();
 
-      // if (vModel !== value) {
-      //   ctx.emit('dirty');
-      // }
-
       vModel.value = value;
 
       ctx.emit('update:modelValue', event.target.value.trim());
