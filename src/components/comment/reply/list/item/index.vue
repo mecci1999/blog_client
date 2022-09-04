@@ -2,6 +2,8 @@
 import { computed, defineProps, ref } from 'vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import dayjs from 'dayjs';
+import CommentOption from '@/components/comment/operation/index.vue';
+import { useRoute } from 'vue-router';
 
 const props = defineProps({
   item: {
@@ -11,7 +13,21 @@ const props = defineProps({
   parentName: {
     type: String,
   },
+
+  showMoreComment: {
+    type: Boolean,
+    default: false,
+  },
+
+  handleFoldMore: {
+    type: Function,
+    default: () => {},
+  },
 });
+
+const route = useRoute();
+
+const postId = parseInt(`${route.params.postId}`, 10);
 
 // 默认头像地址
 const avatarImgUrl = ref('../../../../src/assets/icon/account-black-32px.svg');
@@ -21,7 +37,7 @@ const commentAvatarImgClasses = computed(() => {
     'comment-reply-list-item-avatar-img',
     {
       default:
-        avatarImgUrl.value ===
+        props.item?.avatarImgUrl.value ===
         '../../../../src/assets/icon/account-black-32px.svg',
     },
   ];
@@ -29,6 +45,13 @@ const commentAvatarImgClasses = computed(() => {
 
 // 判断当前评论的作者是否为博主
 const isAdmin = props.item?.userId === 1;
+
+const showCommentOperation = ref(false);
+
+// 显示评论栏
+const handleReplyComment = () => {
+  showCommentOperation.value = !showCommentOperation.value;
+};
 </script>
 
 <template>
@@ -56,7 +79,10 @@ const isAdmin = props.item?.userId === 1;
             dayjs(item?.created).format('YYYY-MM-DD')
           }}
         </div>
-        <div class="comment-reply-list-item-container-header-reply">
+        <div
+          class="comment-reply-list-item-container-header-reply"
+          @click.stop="handleReplyComment"
+        >
           <AppIcon size="20" name="sms" />
           <span class="comment-reply-list-item-container-header-reply-amount">{{
             item?.totalReplies
@@ -88,6 +114,20 @@ const isAdmin = props.item?.userId === 1;
           {{ item?.browser }}
         </div>
       </div>
+
+      <div
+        class="comment-reply-list-item-more"
+        v-if="item?.totalReplies > 0"
+        @click="handleFoldMore(item?.id, item?.name)"
+      >
+        {{ showMoreComment ? '收起' : '更多' }}
+      </div>
+      <CommentOption
+        :hiddenTitle="true"
+        v-show="showCommentOperation"
+        :parentId="item?.id"
+        :postId="postId"
+      />
     </div>
   </div>
 </template>

@@ -53,16 +53,17 @@
       }
 
       &-time {
+        flex: 1;
         color: var(--secondary-text-color);
         font-size: 0.8rem;
       }
 
       &-reply {
-        flex: 1;
         display: flex;
         align-items: center;
         justify-content: flex-end;
         cursor: pointer;
+        user-select: none;
 
         .app-icon {
           color: var(--secondary-text-color) !important;
@@ -149,6 +150,25 @@
           opacity: 0.3;
         }
       }
+    }
+  }
+
+  &-more {
+    width: 100%;
+    cursor: pointer;
+    padding: 0.75em;
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid var(--mecci-card-border);
+    // box-shadow: var(--secondary-background-shadow);
+    border-radius: 12px;
+    word-break: break-all;
+    margin-bottom: 8px;
+    font-size: 0.75em;
+    color: var(--secondary-text-color);
+    &:hover {
+      background-color: var(--mecci-theme-color);
+      color: #fff;
     }
   }
 

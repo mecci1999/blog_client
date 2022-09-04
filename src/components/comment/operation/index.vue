@@ -5,7 +5,7 @@ import { checkIsQQNumber, checkIsQQEmail } from '@/utils/checkIsQQNumber';
 import { useStore } from 'vuex';
 import TextareaField from '@/components/common/form/textarea/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
-import { createCommentApi } from '@/api/index';
+import { createCommentApi, createReplyCommentApi } from '@/api/index';
 import { CommentStatus } from '@/types/enum';
 import { ElMessage } from 'element-plus';
 
@@ -13,9 +13,15 @@ const props = defineProps({
   postId: {
     type: Number,
   },
+
   parentId: {
     type: Number,
     default: null,
+  },
+
+  hiddenTitle: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -113,29 +119,58 @@ const handleSumbit = async () => {
   }
 
   try {
-    // 获取地址
-    await createCommentApi({
-      name: name.value,
-      eMail: email.value,
-      avatarImgUrl: avatarImgUrl.value,
-      content: text.value,
-      status: CommentStatus.pending,
-      postId: props.postId,
-    })
-      .then(
-        () => {
-          ElMessage.success('发送成功，等待博主审核');
-        },
-        () => {
-          ElMessage.error('发送失败，请重试');
-        },
-      )
-      .finally(() => {
-        name.value = '';
-        email.value = '';
-        text.value = '';
-        avatarImgUrl.value = '../../../src/assets/icon/account-black-32px.svg';
-      });
+    // 发表评论
+    if (!props.hiddenTitle) {
+      // 获取地址
+      await createCommentApi({
+        name: name.value,
+        eMail: email.value,
+        avatarImgUrl: avatarImgUrl.value,
+        content: text.value,
+        status: CommentStatus.pending,
+        postId: props.postId,
+      })
+        .then(
+          () => {
+            ElMessage.success('发送成功，等待博主审核');
+          },
+          () => {
+            ElMessage.error('发送失败，请重试');
+          },
+        )
+        .finally(() => {
+          name.value = '';
+          email.value = '';
+          text.value = '';
+          avatarImgUrl.value =
+            '../../../src/assets/icon/account-black-32px.svg';
+        });
+    } else {
+      // 发表回复评论
+      await createReplyCommentApi(props.parentId, {
+        name: name.value,
+        eMail: email.value,
+        avatarImgUrl: avatarImgUrl.value,
+        content: text.value,
+        status: CommentStatus.pending,
+        postId: props.postId,
+      })
+        .then(
+          () => {
+            ElMessage.success('发送成功，等待博主审核');
+          },
+          () => {
+            ElMessage.error('发送失败，请重试');
+          },
+        )
+        .finally(() => {
+          name.value = '';
+          email.value = '';
+          text.value = '';
+          avatarImgUrl.value =
+            '../../../src/assets/icon/account-black-32px.svg';
+        });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -144,7 +179,7 @@ const handleSumbit = async () => {
 
 <template>
   <div class="comment-operation">
-    <div class="comment-operation-title">
+    <div class="comment-operation-title" v-if="!hiddenTitle">
       <AppIcon size="30" name="sms" />
       <span class="comment-operation-title-text">写评论</span>
     </div>

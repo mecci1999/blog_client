@@ -2,7 +2,10 @@
 import { computed, defineProps, ref } from 'vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import CommentReply from '../../reply/index.vue';
+import CommentOption from '../../operation/index.vue';
 import dayjs from 'dayjs';
+import { useRoute } from 'vue-router';
+import { useComment } from '../../hooks/useComment';
 
 const props = defineProps({
   item: {
@@ -12,6 +15,12 @@ const props = defineProps({
 
 // 默认头像地址
 const avatarImgUrl = ref('../../../../src/assets/icon/account-black-32px.svg');
+
+const route = useRoute();
+
+const { showMoreComment, list, parentName, handleFoldMore } = useComment();
+
+const postId = parseInt(`${route.params.postId}`, 10);
 
 const commentAvatarImgClasses = computed(() => {
   return [
@@ -26,6 +35,13 @@ const commentAvatarImgClasses = computed(() => {
 
 // 判断当前评论的作者是否为博主
 const isAdmin = props.item?.userId === 1;
+
+const showCommentOperation = ref(false);
+
+// 显示评论栏
+const handleReplyComment = () => {
+  showCommentOperation.value = !showCommentOperation.value;
+};
 </script>
 
 <template>
@@ -50,7 +66,10 @@ const isAdmin = props.item?.userId === 1;
             dayjs(item?.created).format('YYYY-MM-DD')
           }}
         </div>
-        <div class="comment-list-item-container-header-reply">
+        <div
+          class="comment-list-item-container-header-reply"
+          @click.stop="handleReplyComment"
+        >
           <AppIcon size="20" name="sms" />
           <span class="comment-list-item-container-header-reply-amount">{{
             item?.totalReplies
@@ -76,7 +95,25 @@ const isAdmin = props.item?.userId === 1;
           {{ item?.browser }}
         </div>
       </div>
-      <CommentReply :reply="item?.replyCommentList" :parentName="item?.name" />
+      <CommentReply
+        :reply="item?.replyCommentList"
+        :parentName="item?.name"
+        :showMoreComment="showMoreComment"
+        :handleFoldMore="handleFoldMore"
+      />
+      <CommentReply
+        :reply="list"
+        v-show="showMoreComment"
+        :parentName="parentName"
+        :showMoreComment="showMoreComment"
+        :handleFoldMore="handleFoldMore"
+      />
+      <CommentOption
+        :hiddenTitle="true"
+        v-show="showCommentOperation"
+        :parentId="item?.id"
+        :postId="postId"
+      />
     </div>
   </div>
 </template>

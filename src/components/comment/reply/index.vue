@@ -10,12 +10,26 @@ const props = defineProps({
   parentName: {
     type: String,
   },
+
+  showMoreComment: {
+    type: Boolean,
+    default: false,
+  },
+
+  handleFoldMore: {
+    type: Function,
+  },
 });
 </script>
 
 <template>
   <div class="comment-reply">
-    <CommentReplyList :list="reply" :parentName="parentName" />
+    <CommentReplyList
+      :list="reply"
+      :parentName="parentName"
+      :showMoreComment="showMoreComment"
+      :handleFoldMore="handleFoldMore"
+    />
   </div>
 </template>
 

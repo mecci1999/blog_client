@@ -84,7 +84,7 @@ export const getCommentsApi = async (postId: number, page: number) => {
  * 回复评论列表
  */
 export const getReplyCommentsApi = async (commentId: number) => {
-  return await apiHttpClient.get(`comments/${commentId}/replies}`);
+  return await apiHttpClient.get(`comments/${commentId}/replies`);
 };
 
 /**
@@ -101,7 +101,7 @@ export const createReplyCommentApi = async (
   commentId: number,
   replyComment: CommentDataType,
 ) => {
-  return await apiHttpClient.post(`comments/${commentId}/reply}`, replyComment);
+  return await apiHttpClient.post(`comments/${commentId}/reply`, replyComment);
 };
 
 /**

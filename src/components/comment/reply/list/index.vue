@@ -12,6 +12,15 @@ const props = defineProps({
   parentName: {
     type: String,
   },
+
+  showMoreComment: {
+    type: Boolean,
+    default: false,
+  },
+
+  handleFoldMore: {
+    type: Function,
+  },
 });
 </script>
 
@@ -22,6 +31,8 @@ const props = defineProps({
       :key="item.id"
       :item="item"
       :parentName="parentName"
+      :showMoreComment="showMoreComment"
+      :handleFoldMore="handleFoldMore"
     />
   </div>
 </template>
