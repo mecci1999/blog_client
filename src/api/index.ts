@@ -1,7 +1,7 @@
 /**
  * 项目所有的接口api方法
  */
-import { CommentDataType } from '@/types/interface';
+import { CommentDataType, SearchResultType } from '@/types/interface';
 import axios from 'axios';
 import { apiHttpClient, tenApiHttpRequest } from '../utils/apiHttpClient';
 
@@ -112,4 +112,11 @@ export const updateCommentAuditStatusApi = async (
   status: string,
 ) => {
   return await apiHttpClient.patch(`comments/${commentId}`, status);
+};
+
+/**
+ * 搜索关键词接口
+ */
+export const searchApi = async (keyword: string): Promise<any> => {
+  return await apiHttpClient.get(`search?name=${keyword}`);
 };

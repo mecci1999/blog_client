@@ -1,17 +1,31 @@
 <script lang="ts" setup>
 import { useStore } from 'vuex';
 import AppIcon from '../common/app-icon/index.vue';
-import { searchResultDataType } from '@/api/test/index';
 import { useRouter } from 'vue-router';
+import { useSearch } from './hooks/useSearch';
+import { highLight } from '@/utils/highlight';
 
 const store = useStore();
 const router = useRouter();
+
+const {
+  keyword,
+  isShowHistory,
+  historyList,
+  resultList,
+  showEmptyText,
+  onSearch,
+  deleteOneRecord,
+  jumpToDetail,
+  onClickHistoryItem,
+} = useSearch();
+
 const onClickCloseSearchDialog = () =>
   store.commit('search/changeSearchDialogStatus');
 
 // 点击搜索内容跳转到对应博客
 const onClickJumpToPost = (id: number) => {
-  router.push({ name: 'postShow', params: { postId: id } });
+  jumpToDetail(id);
   store.commit('search/changeSearchDialogStatus');
 };
 </script>
@@ -31,35 +45,77 @@ const onClickJumpToPost = (id: number) => {
       <div class="app-search-dialog-panel">
         <div class="app-search-dialog-panel-input">
           <div class="app-search-dialog-panel-input-box">
-            <input
-              type="text"
+            <el-input
+              v-model="keyword"
               placeholder="输入关键词快速查找"
-              role="textbox"
-              autocomplete="off"
-              autocorrect="off"
-              autocapitalize="off"
-              spellcheck="false"
-              class="input-field"
+              @change="onSearch"
             />
           </div>
         </div>
       </div>
       <div class="app-search-dialog-search-result">
-        <div class="app-search-dialog-search-result-hits">
+        <div
+          class="app-search-dialog-search-result-hits"
+          v-show="resultList.length > 0"
+        >
           <div
             class="app-search-dialog-search-result-hits-item"
-            v-for="item in searchResultDataType"
+            v-for="item in resultList"
             :key="item.postId"
             @click="onClickJumpToPost(item.postId)"
           >
-            <div class="app-search-dialog-search-result-hits-item-link">
-              {{ item.title }}
-            </div>
+            <div
+              class="app-search-dialog-search-result-hits-item-link"
+              v-html="highLight(item.title, keyword)"
+            ></div>
           </div>
         </div>
-        <div class="app-search-dialog-search-result-pagination"></div>
-        <div class="app-search-dialog-search-result-status">
-          找到 22 条结果，用时 5 毫秒
+        <!-- <div class="app-search-dialog-search-result-pagination"></div> -->
+        <div
+          class="app-search-dialog-search-result-status"
+          v-show="resultList.length > 0"
+        >
+          找到 {{ resultList.length }} 条结果
+        </div>
+        <div
+          class="app-search-dialog-search-result-empty"
+          v-show="showEmptyText"
+        >
+          抱歉，没有找到相关文章
+        </div>
+      </div>
+      <div
+        class="app-search-dialog-search-history"
+        v-show="
+          historyList.length > 0 &&
+          !isShowHistory &&
+          resultList.length === 0 &&
+          !showEmptyText
+        "
+      >
+        <div
+          class="app-search-dialog-search-history-item"
+          v-for="(item, index) in historyList"
+          :key="index"
+          @click="onClickHistoryItem(item)"
+        >
+          <span class="app-search-dialog-search-history-item-text">{{
+            item
+          }}</span>
+          <div
+            class="app-search-dialog-search-history-item-close"
+            @click.stop="deleteOneRecord(item)"
+          >
+            <AppIcon name="clear" size="16" />
+          </div>
+        </div>
+        <div
+          class="app-search-dialog-search-history-tip"
+          v-show="
+            historyList.length > 0 && !isShowHistory && resultList.length === 0
+          "
+        >
+          历史记录
         </div>
       </div>
     </div>
@@ -67,6 +123,6 @@ const onClickJumpToPost = (id: number) => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

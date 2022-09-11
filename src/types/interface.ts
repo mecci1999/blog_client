@@ -75,3 +75,11 @@ export interface AppInfoDataType {
   accessAmount?: number;
   updateTime?: string;
 }
+
+/**
+ * 搜索关键词返回的类型
+ */
+export interface SearchResultType {
+  postId: number;
+  title: string;
+}

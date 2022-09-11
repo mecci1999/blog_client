@@ -42,7 +42,7 @@
           max-width: 100%;
           position: relative;
 
-          .input-field {
+          .el-input {
             border-radius: 8px !important;
             border: 1px solid var(--line-color);
             padding: 0.25rem 0.7rem;
@@ -56,6 +56,18 @@
             font-size: 100%;
             line-height: 1.15;
             margin: 0;
+            &:focus {
+              border-color: var(--mecci-font-color);
+            }
+
+            .el-input__wrapper {
+              background-color: var(--search-input-background);
+              padding: 0;
+              box-shadow: none;
+            }
+            .el-input__inner {
+              height: max-content;
+            }
           }
         }
       }
@@ -75,6 +87,10 @@
           &:hover {
             background-color: var(--mecci-theme-color);
             color: #fff;
+
+            b {
+              color: #fff;
+            }
           }
 
           &-link {
@@ -85,6 +101,9 @@
             overflow: hidden;
             cursor: pointer;
             // transition: all 0.3s;
+            b {
+              color: var(--mecci-theme-color);
+            }
           }
         }
       }
@@ -92,6 +111,52 @@
       &-status {
         color: var(--mecci-font-color);
         line-height: 2;
+      }
+    }
+
+    &-search-history {
+      padding-top: 8px;
+
+      &-tip {
+        color: var(--mecci-font-color);
+        line-height: 2;
+      }
+
+      &-item {
+        padding: 8px 4px;
+        font-weight: 700;
+        color: var(--mecci-font-color);
+        position: relative;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          background-color: var(--mecci-theme-color);
+          color: #fff;
+        }
+
+        &-text {
+          width: auto;
+          max-width: 100%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          cursor: pointer;
+          flex: 1;
+        }
+
+        &-close {
+          width: 16px;
+          height: 16px;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          i:hover {
+            color: #fff !important;
+          }
+        }
       }
     }
   }
