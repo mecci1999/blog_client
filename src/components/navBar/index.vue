@@ -34,11 +34,11 @@ export default defineComponent({
   <div class="nav-bar">
     <div class="nav-bar-container">
       <div class="nav-bar-container-left">
-        <div class="nav-bar-container-left-name" @click="onJumpToHome">
-          {{ name }}
-        </div>
+        <!-- <div class="nav-bar-container-left-name" @click="onJumpToHome">
+          云分享
+        </div> -->
         <div class="nav-bar-container-left-title" @click="onJumpToHome">
-          个人博客
+          云分享
         </div>
       </div>
       <div class="nav-bar-container-right">

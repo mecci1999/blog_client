@@ -76,6 +76,11 @@
     &-search-result {
       padding-top: 8px;
 
+      &-empty {
+        color: var(--mecci-font-color);
+        line-height: 2;
+      }
+
       &-hits {
         &-item {
           padding: 8px 4px;

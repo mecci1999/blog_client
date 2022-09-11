@@ -127,9 +127,10 @@
       line-height: 2;
       font-size: var(--font-size-middle);
       padding: 1rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       max-height: 600px;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
 
       &-title {
         color: var(--mecci-theme-color);
@@ -145,9 +146,10 @@
       line-height: 2;
       font-size: var(--font-size-middle);
       padding: 1rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       max-height: 600px;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
 
       &-title {
         color: var(--mecci-theme-color);
@@ -163,9 +165,10 @@
       line-height: 2;
       font-size: var(--font-size-middle);
       padding: 1rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       max-height: 600px;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
 
       &-title {
         color: var(--mecci-theme-color);
