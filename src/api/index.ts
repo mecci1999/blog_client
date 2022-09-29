@@ -55,7 +55,7 @@ export const getTagsApi = async () => {
 /**
  * 获取博客列表接口
  */
-export const getPostsApi = async (page: number, query: string) => {
+export const getPostsApi = async (page: number, query?: string) => {
   return await apiHttpClient.get(`posts?page=${page}${query}`);
 };
 
@@ -120,3 +120,9 @@ export const updateCommentAuditStatusApi = async (
 export const searchApi = async (keyword: string): Promise<any> => {
   return await apiHttpClient.get(`search?name=${keyword}`);
 };
+
+/**
+ * 登录接口
+ */
+export const loginApi = async (data: any) =>
+  await apiHttpClient.post('/login', data);

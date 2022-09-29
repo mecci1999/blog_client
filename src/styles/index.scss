@@ -129,4 +129,120 @@ html {
         sans-serif !important;
     }
   }
+
+  .button {
+    font-size: 18px;
+    color: #fff;
+    background: var(--primary-button-background);
+    padding: 8px 24px;
+    border: 2px solid var(--outline-button-color);
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .button:active {
+    opacity: 0.8;
+  }
+
+  .button.large {
+    padding: 14px 40px;
+  }
+
+  .button.outline {
+    background: none;
+    color: var(--primary-text-color);
+  }
+
+  .button.basic {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .button.block {
+    display: block;
+    width: 100%;
+  }
+
+  .button.lowkey {
+    background: var(--lowkey-button-background);
+    border-color: var(--lowkey-button-background);
+    color: var(--lowkey-button-text);
+  }
+
+  .button.pill {
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-right: 8px;
+    color: var(--light-text-color);
+    background: var(--skeleton-background);
+    border-color: var(--skeleton-background);
+    border-radius: 3px;
+  }
+
+  .button.red {
+    background: #c62828;
+    border-color: #c62828;
+    color: #fff;
+  }
+
+  .button.red.outline {
+    background: none;
+    color: #c62828;
+  }
+
+  .button.circle {
+    display: flex;
+    padding: 2px;
+    background: #ffffff20;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+  }
+
+  .button.circle:active {
+    opacity: 0.4;
+  }
+
+  .button.circle.active {
+    opacity: 0.8;
+  }
+
+  .button.outline.green {
+    color: #1bbb1f;
+    border-color: #1bbb1f;
+  }
+
+  .button.circle.large {
+    opacity: 1;
+    padding: 8px;
+    background: none;
+  }
+
+  .button.circle.large:active {
+    opacity: 0.8;
+  }
+
+  .button.icon.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button.icon.text > .icon {
+    line-height: 0;
+  }
+
+  .button.icon.text > .text {
+    margin-left: 8px;
+  }
+
+  .button.large.relaxed {
+    padding: 24px 48px;
+  }
+
+  .button.fluid {
+    width: 100%;
+  }
 }

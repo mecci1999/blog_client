@@ -1,37 +1,44 @@
 <script lang="ts" setup>
 import { computed, defineProps } from 'vue';
-import { PostDataType } from '@/types/interface'
-import { useRouter } from 'vue-router'
-import {useStore} from 'vuex';
+import { PostDataType } from '@/types/interface';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
-  const props = defineProps({
-    posts:{
-      type: Array<PostDataType>
-    },
-    title: {
-      type:String
-    }
-  })
+const props = defineProps({
+  posts: {
+    type: Array<PostDataType>,
+  },
+  title: {
+    type: String,
+  },
+  amount: {
+    type: Number,
+  },
+});
 
-  const router = useRouter();
-  const store = useStore();
+const router = useRouter();
+const store = useStore();
 
-  const onClickJumpPost = (id:any) => {
-    router.push({name: 'postShow', params: {postId: id}})
-  }
+const onClickJumpPost = (id: any) => {
+  router.push({ name: 'postShow', params: { postId: id } });
+};
 
-  const onClickChangeTag = (id:any) => {
-    // 当前标签
-    router.push({name: 'postTags', params: {tagId: id}})
-  }
+const onClickChangeTag = (id: any) => {
+  // 当前标签
+  router.push({ name: 'postTags', params: { tagId: id } });
+};
 
-  // 提示相关文案
-  const commentTipText = computed(() => props.posts?.length !== 0 ? '已经到底啦~' : '抱歉，没有找到相关内容~')
+// 提示相关文案
+const commentTipText = computed(() =>
+  props.posts?.length !== 0 ? '已经到底啦~' : '抱歉，没有找到相关内容~',
+);
 </script>
 
 <template>
   <div class="post-index">
-    <div class="post-index-title">{{ title }}</div>
+    <div class="post-index-title">
+      {{ title }}<span v-if="amount">{{ amount }}</span>
+    </div>
     <div class="post-index-list">
       <div class="post-index-list-item" v-for="post in posts" :key="post.id">
         <div

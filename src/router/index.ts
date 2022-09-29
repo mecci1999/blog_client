@@ -6,6 +6,8 @@ import commentRoutes from './comment/index';
 import tagsRoutes from './tags/index';
 import categoryRoutes from './category/index';
 import articleRoutes from './post/list/index';
+import loginRoutes from './login/index';
+import manageRoutes from './manage/index';
 
 /**
  * 创建路由
@@ -20,6 +22,8 @@ const router = createRouter({
     ...tagsRoutes,
     ...categoryRoutes,
     ...articleRoutes,
+    ...loginRoutes,
+    ...manageRoutes,
   ],
 });
 

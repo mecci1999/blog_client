@@ -1,0 +1,12 @@
+.app-menu {
+  height: 100%;
+
+  &__main {
+    height: 100%;
+    display: block;
+
+    .el-menu {
+      height: 100%;
+    }
+  }
+}

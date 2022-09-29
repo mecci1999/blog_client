@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 import { commentStoreModule, CommentStoreState } from './modules/comment';
 import { dashboardStoreModule, DashboardStoreState } from './modules/dashboard';
+import { loginStoreModule, LoginStoreState } from './modules/login';
 import { postStoreModule, PostStoreState } from './modules/post';
 import { searchStoreModule, SearchStoreState } from './modules/search';
 import { postTagStoreModule, PostTagStoreState } from './modules/tag';
@@ -19,6 +20,7 @@ export interface RootState {
   type: PostTypeStoreState;
   tag: PostTagStoreState;
   dashboard: DashboardStoreState;
+  login: LoginStoreState;
 }
 
 /**
@@ -38,6 +40,7 @@ const store = createStore({
     type: postTypeStoreModule,
     tag: postTagStoreModule,
     dashboard: dashboardStoreModule,
+    login: loginStoreModule,
   },
 
   // 插件

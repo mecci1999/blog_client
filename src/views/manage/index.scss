@@ -1,0 +1,56 @@
+.app-management {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 66px auto;
+  min-height: 100vh;
+  grid-template-areas:
+    'a h'
+    'a m';
+
+  &__header {
+    grid-area: h;
+    display: flex;
+    padding: 8px 32px;
+    position: sticky;
+    // position: -webkit-sticky;
+    top: 0;
+    z-index: 9999;
+
+    // background: var(--page-header-background);
+    transition: box-shadow 1s;
+  }
+
+  &__shadow {
+    box-shadow: 20px 30px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__aside {
+    grid-area: a;
+    // display: flex;
+    justify-content: center;
+    // padding: 32px;
+    box-sizing: border-box;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 9999;
+    background: var(--page-aside-background);
+  }
+
+  &__main {
+    grid-area: m;
+    padding: 32px;
+    padding-bottom: 0;
+    background: var(--primary-background);
+    /* min-height: 100vh; */
+  }
+}
