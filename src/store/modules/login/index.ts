@@ -26,6 +26,9 @@ export const loginStoreModule: Module<LoginStoreState, RootState> = {
     isLoggedIn(state) {
       return state.token ? true : false;
     },
+    token(state) {
+      return state.token;
+    },
   },
 
   /**

@@ -43,7 +43,7 @@ export default defineComponent({
       <img class="user-info-avatar-img" :src="userAvatarSource" />
     </div>
     <div class="user-info-name">{{ user?.name }}</div>
-    <div class="user-info-description">{{ user?.description }}</div>
+    <div class="user-info-description">{{ user?.introduction }}</div>
     <div class="user-info-directory">
       <div class="user-info-directory-blog">
         <span class="user-info-directory-blog-title">博客</span>

@@ -114,7 +114,7 @@ export default defineComponent({
         <div class="app-main-container-left">
           <UserInfo :user="user" />
           <TagsList :tags="tags" />
-          <ArchiveList :items="postAmount" />
+          <!-- <ArchiveList :items="postAmount" /> -->
           <AppInfo :item="info" />
         </div>
         <div class="app-main-container-right">

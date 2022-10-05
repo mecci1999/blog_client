@@ -32,10 +32,7 @@ const onClickPostListTypeItem = (id: number) => {
 <template>
   <div class="post-list-item" @click.stop="onClickPostListItem(item?.id)">
     <div class="post-list-item-media">
-      <img
-        class="post-list-item-media-img"
-        src="../../../../../src/assets/image/post_media.png"
-      />
+      <img class="post-list-item-media-img" :src="`http://${item?.bgImgUrl}`" />
       <!-- <img class="post-list-item-media-img" :src="item?.bgImgUrl" /> -->
     </div>
     <div class="post-list-item-types">

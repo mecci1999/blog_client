@@ -66,6 +66,8 @@ export interface TypesAndTagsDataType {
   amount?: number; //数量
 }
 
+export type TypesAndTagsData = Array<TypesAndTagsData>;
+
 /**
  * 网站信息数据类型
  */

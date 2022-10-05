@@ -1,23 +1,28 @@
 .app-management {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 64px 1fr;
   grid-template-rows: 66px auto;
   min-height: 100vh;
   grid-template-areas:
-    'a h'
+    'a m'
     'a m';
+  transition: all 1s;
 
-  &__header {
-    grid-area: h;
-    display: flex;
-    padding: 8px 32px;
-    position: sticky;
-    // position: -webkit-sticky;
-    top: 0;
-    z-index: 9999;
+  // &__header {
+  //   grid-area: h;
+  //   display: flex;
+  //   padding: 8px 32px;
+  //   position: sticky;
+  //   // position: -webkit-sticky;
+  //   top: 0;
+  //   z-index: 9999;
 
-    // background: var(--page-header-background);
-    transition: box-shadow 1s;
+  //   // background: var(--page-header-background);
+  //   transition: box-shadow 1s;
+  // }
+
+  &.expand {
+    grid-template-columns: 200px 1fr;
   }
 
   &__shadow {
@@ -42,7 +47,7 @@
     position: -webkit-sticky;
     top: 0;
     height: 100vh;
-    z-index: 9999;
+    z-index: 2;
     background: var(--page-aside-background);
   }
 

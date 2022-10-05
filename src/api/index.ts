@@ -1,7 +1,11 @@
 /**
  * 项目所有的接口api方法
  */
-import { CommentDataType, SearchResultType } from '@/types/interface';
+import {
+  CommentDataType,
+  PostDataType,
+  SearchResultType,
+} from '@/types/interface';
 import axios from 'axios';
 import { apiHttpClient, tenApiHttpRequest } from '../utils/apiHttpClient';
 
@@ -125,4 +129,33 @@ export const searchApi = async (keyword: string): Promise<any> => {
  * 登录接口
  */
 export const loginApi = async (data: any) =>
-  await apiHttpClient.post('/login', data);
+  await apiHttpClient.post('login', data);
+
+/**
+ * 修改博客状态接口
+ */
+export const updatePostApi = async (postId: number, data: any) =>
+  await apiHttpClient.post(`posts/update/${postId}`, data);
+/**
+ * 删除博客状态接口
+ */
+export const deletePostApi = async (postId: number) =>
+  await apiHttpClient.delete(`post/${postId}`);
+
+/**
+ * 创建博客
+ */
+export const createPostApi = async (post: PostDataType) =>
+  await apiHttpClient.post('/posts/create', post);
+
+/**
+ * 给博客添加分类
+ */
+export const addPostType = async (postId: number, data: any) =>
+  await apiHttpClient.post(`/posts/${postId}/type`, data);
+
+/**
+ * 给博客添加分类
+ */
+export const addPostTags = async (postId: number, data: any) =>
+  await apiHttpClient.post(`/posts/${postId}/tag`, data);
