@@ -1,18 +1,18 @@
 /**
  * 分类相关的hooks
  */
-import { deleteCategoryApi, getTypesApi, updateCategoryApi } from '@/api';
+import { getTagsApi, updateTagsApi, deleteTagsApi } from '@/api';
 import { onMounted, ref, watch } from 'vue';
 import { ElMessage } from 'element-plus';
 
-export const useCategoryData = () => {
-  const categoryList = ref([]);
+export const useTagsData = () => {
+  const tagsList = ref([]);
 
   // 处理后的分类列表
   const processList = ref([]);
 
   watch(
-    () => categoryList.value,
+    () => tagsList.value,
     (list: any) => {
       processList.value = list.map((item: any) => {
         return {
@@ -28,41 +28,39 @@ export const useCategoryData = () => {
   );
 
   // 获取分类列表
-  const getCategoryData = async () => {
+  const getTagsData = async () => {
     try {
-      const res = await getTypesApi();
-      categoryList.value = res.data;
+      const res = await getTagsApi();
+      tagsList.value = res.data;
     } catch (error) {
       console.log(error);
     }
   };
 
   // 更新分类
-  const updateCategoryData = async (id: number, name: string) => {
+  const updateTagsData = async (id: number, name: string) => {
     try {
-      await updateCategoryApi({ name: name, typeId: id });
-      await getCategoryData();
-    } catch (error: any) {
+      await updateTagsApi({ name: name, tagId: id });
+      await getTagsData();
+    } catch (error) {
       console.log(error);
-      ElMessage.error(error.response.data.message);
     }
   };
 
   onMounted(() => {
-    getCategoryData();
+    getTagsData();
   });
 
   return {
-    categoryList,
+    tagsList,
     processList,
-    getCategoryData,
-    updateCategoryData,
+    getTagsData,
+    updateTagsData,
   };
 };
 
-export const useCategory = () => {
-  const { categoryList, processList, getCategoryData, updateCategoryData } =
-    useCategoryData();
+export const useTags = () => {
+  const { tagsList, processList, getTagsData, updateTagsData } = useTagsData();
 
   // 输入框值
   const inputValue = ref('');
@@ -78,8 +76,8 @@ export const useCategory = () => {
   const handleClose = async (id: number) => {
     // 删除分类
     try {
-      await deleteCategoryApi(id);
-      await getCategoryData();
+      await deleteTagsApi(id);
+      await getTagsData();
       ElMessage.success('删除分类成功');
     } catch (error: any) {
       console.log(error);
@@ -97,7 +95,7 @@ export const useCategory = () => {
     ) {
       // 发送请求,更新分类
       try {
-        await updateCategoryData(id, inputValue.value);
+        await updateTagsData(id, inputValue.value);
         ElMessage.success('更新分类成功');
       } catch (error: any) {
         console.log(error);
@@ -116,8 +114,8 @@ export const useCategory = () => {
   const onInputClear = async (id: number) => {
     isInputClear.value = true;
     try {
-      await deleteCategoryApi(id);
-      await getCategoryData();
+      await deleteTagsApi(id);
+      await getTagsData();
       ElMessage.success('删除分类成功');
     } catch (error: any) {
       console.log(error);
@@ -129,13 +127,13 @@ export const useCategory = () => {
 
   return {
     processList,
-    categoryList,
+    tagsList,
     inputValue,
     handleClose,
     onInputBlur,
     clearInputValue,
-    getCategoryData,
-    updateCategoryData,
+    getTagsData,
+    updateTagsData,
     onInputClear,
   };
 };

@@ -159,3 +159,39 @@ export const addPostType = async (postId: number, data: any) =>
  */
 export const addPostTags = async (postId: number, data: any) =>
   await apiHttpClient.post(`/posts/${postId}/tag`, data);
+
+/**
+ * 更新分类
+ */
+export const updateCategoryApi = async (data: any) =>
+  await apiHttpClient.post(`/types/update`, data);
+
+/**
+ * 创建分类
+ */
+export const createCategoryApi = async (data: any) =>
+  await apiHttpClient.post(`/types`, data);
+
+/**
+ * 删除分类
+ */
+export const deleteCategoryApi = async (typeId: number) =>
+  await apiHttpClient.get(`/types/${typeId}/delete`);
+
+/**
+ * 更新标签
+ */
+export const updateTagsApi = async (data: any) =>
+  await apiHttpClient.post(`/tags/update`, data);
+
+/**
+ * 创建标签
+ */
+export const createTagsApi = async (data: any) =>
+  await apiHttpClient.post(`/tags`, data);
+
+/**
+ * 删除标签
+ */
+export const deleteTagsApi = async (tagId: number) =>
+  await apiHttpClient.get(`/tags/${tagId}/delete`);
