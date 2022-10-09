@@ -2,12 +2,16 @@
   transition: all 0.2s;
   overflow-wrap: break-word;
   margin-right: 4px;
-  padding: 0 0.2rem;
+  padding-right: 0.2rem;
   font-size: var(--font-size-normal);
   color: var(--mecci-home-color);
   border-radius: 4px;
   line-height: 2;
-  font-weight: 600;
+  font-weight: 400;
+
+  &-split {
+    opacity: 0.6;
+  }
 
   &:hover {
     color: var(--primary-text-hover-color);

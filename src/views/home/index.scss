@@ -114,6 +114,31 @@
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    & {
+      background-color: var(--mobile-background) !important;
+
+      .bg {
+        display: none;
+      }
+
+      .app-main {
+        background-color: var(--mobile-background) !important;
+        padding: 0 !important;
+
+        &-container {
+          &-left {
+            display: none;
+          }
+
+          &-right {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes movement {
