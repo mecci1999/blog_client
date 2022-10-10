@@ -45,7 +45,7 @@
             </el-menu-item>
             <el-menu-item index="/manage/image/avatar">
               <el-icon :size="16"><Avatar /></el-icon>
-              <span class="app-menu__main-2rdTitle">头像</span>
+              <span class="app-menu__main-2rdTitle">头像管理</span>
             </el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>

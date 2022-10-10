@@ -127,6 +127,9 @@ export const usePublished = () => {
     }
   };
 
+  // 处理上传图片
+  const handleUploadImages = (res: any, file: any, files: any) => {};
+
   return {
     form,
     curStep,
@@ -144,5 +147,6 @@ export const usePublished = () => {
     getTypesList,
     getTagsList,
     handleUploadBgImg,
+    handleUploadImages,
   };
 };

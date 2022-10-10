@@ -119,6 +119,22 @@
             </div>
           </el-upload>
         </el-form-item>
+        <el-form-item label="博客相关图片" prop="content">
+          <el-upload
+            class="upload-demo"
+            drag
+            :action="uploadImagesUrl"
+            name="image"
+            :headers="headers"
+            :on-success="handleUploadImages"
+            list-type="picture-card"
+          >
+            <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+            <div class="el-upload__text">
+              拖拽至此处上传图片或者<em>点击上传图片</em>
+            </div>
+          </el-upload>
+        </el-form-item>
       </el-form>
       <div class="app-management__blog-publish__button">
         <!-- <el-button type="primary" @click="handlePreview">预览</el-button> -->
@@ -171,6 +187,7 @@ const {
   getTypesList,
   getTagsList,
   handleUploadBgImg,
+  handleUploadImages,
 } = usePublished();
 
 const rules = reactive<FormRules>({
@@ -224,6 +241,11 @@ const uploadContentUrl = `http://localhost:3000/getHtml`;
 // 上传封面的url
 const uploadBgImgUrl = computed(
   () => `http://localhost:3000/posts/${postId.value}/bgImg`,
+);
+
+// 上传博客相关的图片url
+const uploadImagesUrl = computed(
+  () => `http://localhost:3000/images/upload?post=${postId.value}`,
 );
 
 // 请求头部

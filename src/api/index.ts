@@ -195,3 +195,21 @@ export const createTagsApi = async (data: any) =>
  */
 export const deleteTagsApi = async (tagId: number) =>
   await apiHttpClient.get(`/tags/${tagId}/delete`);
+
+/**
+ * 获取图片列表方法
+ */
+export const getImageCommonList = async () =>
+  await apiHttpClient.get(`/images`);
+
+/**
+ * 获取评论列表
+ */
+export const getComments = async (action: string, page: number) =>
+  await apiHttpClient.get(`/comments?action=${action}&page=${page}`);
+
+/**
+ * 修改评论状态
+ */
+export const updateCommentStatus = async (commentId: number, data: any) =>
+  await apiHttpClient.patch(`/comments/${commentId}`, data);

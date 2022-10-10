@@ -4,6 +4,9 @@ import AppManagementBlogList from '@/views/manage/blog/list/index.vue';
 import AppManagementBlogPublish from '@/views/manage/blog/publish/index.vue';
 import AppManagementBlogCategory from '@/views/manage/blog/category/index.vue';
 import AppManagementBlogTags from '@/views/manage/blog/tags/index.vue';
+import AppManagementImageCommon from '@/views/manage/image/common/index.vue';
+import AppManagementImageAvatar from '@/views/manage/image/avatar/index.vue';
+import AppManagementComment from '@/views/manage/comment/index.vue';
 
 /**
  * 定义路由
@@ -47,6 +50,30 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementBlogTags,
         meta: {
           title: '标签管理',
+        },
+      },
+      {
+        name: 'manage.image.common',
+        path: '/manage/image/common',
+        component: AppManagementImageCommon,
+        meta: {
+          title: '图片池',
+        },
+      },
+      {
+        name: 'manage.image.avatar',
+        path: '/manage/image/avatar',
+        component: AppManagementImageAvatar,
+        meta: {
+          title: '头像管理',
+        },
+      },
+      {
+        name: 'manage.comment',
+        path: '/manage/comment',
+        component: AppManagementComment,
+        meta: {
+          title: '评论管理',
         },
       },
     ],
