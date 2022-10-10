@@ -17,8 +17,12 @@ const days = Math.floor(getAppDays(time));
         本站已经安全的运行了<b>{{ days }}</b
         >天
       </div>
-      <div class="app-footer-info-text">
-        Copyright &copy 2021 - {{ year }} Mecci All Rights Reserved
+      <div class="app-footer-info-text">&copy 2022 - {{ year }} By Darwin</div>
+      <div class="app-footer-info__banner">
+        <router-link :to="{ name: 'about' }">关于</router-link>
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"
+          >赣ICP备2022008398号</a
+        >
       </div>
       <div class="app-footer-info-record"></div>
     </div>

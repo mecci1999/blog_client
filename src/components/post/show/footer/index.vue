@@ -9,6 +9,9 @@ export default defineComponent({
     link: {
       type: String,
     },
+    post: {
+      type: Object,
+    },
   },
 
   setup() {
@@ -38,24 +41,27 @@ export default defineComponent({
 <template>
   <div class="post-show-footer">
     <div class="post-show-footer-info">
+      <div class="post-show-footer-info__content">{{ post?.title }}</div>
       <div class="post-show-footer-info-author">
         <i class="post-show-footer-info-author-icon"></i>
-        文章作者：
+        <span class="post-show-footer-info__title"> 文章作者：</span>
         <span class="post-show-footer-info-author-text" @click="onClickToAbout"
           >Mecci</span
         >
       </div>
       <div class="post-show-footer-info-link">
         <i class="post-show-footer-info-link-icon"></i>
-        文章链接：<a class="post-show-footer-info-link-text">{{ link }}</a>
+        <span class="post-show-footer-info__title"> 文章链接：</span>
+        <a class="post-show-footer-info-link-text">{{ link }}</a>
       </div>
       <div class="post-show-footer-info-transshipment">
         <i class="post-show-footer-info-transshipment-icon"></i>
-        版权声明：<span class="post-show-footer-info-transshipment-text">
+        <span class="post-show-footer-info__title"> 版权声明：</span>
+        <span class="post-show-footer-info-transshipment-text">
           本博客所有文章除特别声明外，转载时请注明来源<span
             class="post-show-footer-info-author-text"
             @click="onClickToAbout"
-            >Mecci</span
+            >云分享</span
           >，谢谢。
         </span>
       </div>
@@ -73,7 +79,7 @@ export default defineComponent({
     </div>
     <div class="post-show-footer-donate">
       <div class="post-show-footer-donate-button" @click="openQRcodePanel">
-        <span class="post-show-footer-donate-text">赏</span>
+        <span class="post-show-footer-donate-text">打赏作者</span>
       </div>
       <div class="post-show-footer-donate-qrcode" v-show="showQRcode">
         <div class="post-show-footer-donate-qrcode-wx">

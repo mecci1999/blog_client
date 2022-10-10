@@ -25,11 +25,49 @@
         color: var(--primary-text-hover-color);
       }
     }
+
+    &__banner {
+      display: flex;
+      align-items: center;
+      margin-top: 16px;
+      justify-content: center;
+
+      a {
+        margin-right: 1rem;
+        color: var(--primary-font-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        white-space: nowrap;
+        text-decoration: none;
+        transition: all 0.2s ease 0s;
+        overflow-wrap: break-word;
+      }
+    }
   }
 
   @media screen and (max-width: 768px) {
     & {
       background-color: var(--mobile-secondary-background);
+
+      &-info {
+        &-text {
+          text-align: left;
+        }
+
+        &-time {
+          color: var(--primary-font-color);
+          text-align: left;
+
+          b {
+            color: var(--primary-font-color);
+            font-weight: 700;
+          }
+        }
+
+        &__banner {
+          justify-content: flex-start;
+        }
+      }
     }
   }
 }

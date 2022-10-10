@@ -64,10 +64,10 @@ const onClickBackJump = () => {
       />
       <div class="post-navigator-back-shadow"></div>
       <div class="post-navigator-back-text">
-        <span class="post-navigator-back-text-top">下一篇</span>
-        <span class="post-navigator-back-text-bottom">{{
-          getBackPost?.title
-        }}</span>
+        <div class="post-navigator-back-text-top">下一篇</div>
+        <div class="post-navigator-back-text-bottom">
+          {{ getBackPost?.title }}
+        </div>
       </div>
     </div>
   </div>

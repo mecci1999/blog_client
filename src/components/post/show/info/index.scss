@@ -12,6 +12,16 @@
   line-height: 2;
   transform: translateY(2rem);
 
+  &__mobile {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    &__mobile {
+      display: none;
+    }
+  }
+
   &-created {
     height: 100%;
     display: flex;

@@ -16,4 +16,10 @@
       border: 1px solid var(--highlight-line-color);
     }
   }
+
+  @media screen and (max-width: 768px) {
+    & > .input {
+      background-color: var(--mobile-background);
+    }
+  }
 }

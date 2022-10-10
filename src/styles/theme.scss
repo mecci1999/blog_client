@@ -9,6 +9,7 @@
   --mecci-home-color: #363636;
   --mecci-secondary-color: rgba(60, 60, 67, 0.6);
   --mecci-font-color: #4c4948;
+  --primary-font-color: #363636;
 
   /* Background */
   --primary-background: #ffffff;
@@ -22,7 +23,7 @@
   --search-input-background: #f6f8ff;
   --search-mask-background: rgba(255, 255, 255, 0.6);
   --mobile-background: #f7f9fe;
-  --mobile-secondary-background:#f1f3f8;
+  --mobile-secondary-background: #f1f3f8;
   --mecci-card-background: #ffffff;
 
   /* Line */
@@ -137,6 +138,7 @@
   --mecci-home-color: #f7f7fa;
   --mecci-secondary-color: #a1a2b8;
   --mecci-font-color: rgba(255, 255, 255, 0.9);
+  --primary-font-color: #f7f7fa;
 
   /* Background */
   --primary-background: #222222;
@@ -150,7 +152,7 @@
   --search-input-background: #1e1e1e;
   --search-mask-background: rgba(0, 0, 0, 0.6);
   --mobile-background: #18171d;
-  --mobile-secondary-background:#30343f;
+  --mobile-secondary-background: #30343f;
   --mecci-card-background: #1d1e22;
 
   /* Line */
@@ -171,7 +173,7 @@
   /* Shadow */
   --primary-background-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
   --secondary-background-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-  --mecci-shadow: 0 8px 16px -4px #00000050;;
+  --mecci-shadow: 0 8px 16px -4px #00000050;
 
   /* theme */
   --mecci-theme-color: #0084ff;

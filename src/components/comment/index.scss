@@ -7,6 +7,16 @@
   background-color: var(--primary-background);
   box-shadow: var(--secondary-background-shadow);
   border-radius: 8px;
+
+  @media screen and (max-width: 768px) {
+    & {
+      background-color: var(--mobile-background);
+      box-shadow: none;
+      width: 100%;
+      padding: 1rem;
+      margin: 0;
+    }
+  }
 }
 
 .comment-panel-enter-active {

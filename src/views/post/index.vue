@@ -118,7 +118,7 @@ export default defineComponent({
       </div>
       <div class="post-show-main-line"></div>
       <div class="post-show-main-footer">
-        <PostShowFooter :link="link" />
+        <PostShowFooter :link="link" :post="post" />
       </div>
     </main>
     <CommentPanel :comments="comments" :postId="post.id" />
