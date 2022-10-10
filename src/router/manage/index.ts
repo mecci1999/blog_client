@@ -19,6 +19,9 @@ const routes: Array<RouteRecordRaw> = [
     redirect: {
       name: 'manage.blog.list',
     },
+    meta: {
+      requireAuth: true,
+    },
     children: [
       {
         name: 'manage.blog.list',
@@ -26,6 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementBlogList,
         meta: {
           title: '博客列表',
+          requireAuth: true,
         },
       },
       {
@@ -34,6 +38,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementBlogPublish,
         meta: {
           title: '发布博客',
+          requireAuth: true,
         },
       },
       {
@@ -42,6 +47,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementBlogCategory,
         meta: {
           title: '分类管理',
+          requireAuth: true,
         },
       },
       {
@@ -50,6 +56,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementBlogTags,
         meta: {
           title: '标签管理',
+          requireAuth: true,
         },
       },
       {
@@ -58,6 +65,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementImageCommon,
         meta: {
           title: '图片池',
+          requireAuth: true,
         },
       },
       {
@@ -66,6 +74,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementImageAvatar,
         meta: {
           title: '头像管理',
+          requireAuth: true,
         },
       },
       {
@@ -74,6 +83,7 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementComment,
         meta: {
           title: '评论管理',
+          requireAuth: true,
         },
       },
     ],

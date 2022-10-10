@@ -8,6 +8,7 @@ import categoryRoutes from './category/index';
 import articleRoutes from './post/list/index';
 import loginRoutes from './login/index';
 import manageRoutes from './manage/index';
+import { authGuard } from './router.guard';
 
 /**
  * 创建路由
@@ -26,6 +27,11 @@ const router = createRouter({
     ...manageRoutes,
   ],
 });
+
+/**
+ * 路由守卫
+ */
+router.beforeEach(authGuard);
 
 /**
  * 默认导出
