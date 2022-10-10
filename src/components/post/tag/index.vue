@@ -20,7 +20,7 @@ const onClickJumpToTagPage = (id: number) => {
 
 <template>
   <span class="post-tag" @click.stop="onClickJumpToTagPage(item?.id)">
-    #{{ item?.name }}
+    <span class="post-tag-split">#</span>{{ item?.name }}
   </span>
 </template>
 

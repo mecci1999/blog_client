@@ -29,4 +29,10 @@
     font-size: var(--font-size-middle);
     color: var(--mecci-home-color);
   }
+
+  @media screen and (max-width: 768px) {
+    & {
+      background-color: var(--mobile-background);
+    }
+  }
 }

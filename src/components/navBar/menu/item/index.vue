@@ -47,7 +47,6 @@ export default defineComponent({
             () => store.getters['search/searchDialogStatus'],
           );
           store.commit('search/changeSearchDialogStatus');
-          
           break;
       }
     };
@@ -88,7 +87,13 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="nav-menu-list-item" @click="onClickMenuItem(item?.icon)">
+  <div
+    :class="[
+      'nav-menu-list-item',
+      { home: item?.icon === 'home', explore: item?.icon === 'explore' },
+    ]"
+    @click="onClickMenuItem(item?.icon)"
+  >
     <AppIcon :name="item?.icon" size="20" />
     <span class="nav-menu-list-item-name">{{ item?.text }}</span>
     <div class="explore-menu" v-if="showExpolerMenu">

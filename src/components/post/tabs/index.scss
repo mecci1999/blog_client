@@ -24,10 +24,26 @@
   //   cursor: pointer;
   //   color: var(--primary-text-color);
   // }
-}
 
-@media screen and (min-width: 1300px) {
-  .post-tab-bar {
-    margin-bottom: 0.25rem;
+  @media screen and (max-width: 768px) {
+    & {
+      background-color: var(--mobile-background);
+      margin-bottom: 0;
+      border-radius: 0;
+      box-shadow: none;
+      position: sticky;
+      top: 60px;
+      z-index: 1;
+      padding: 0px 1rem 0px 16px;
+      height: 50px;
+      margin-top: 0px;
+      align-items: center;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    & {
+      margin-bottom: 0.25rem;
+    }
   }
 }

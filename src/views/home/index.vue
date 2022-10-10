@@ -15,6 +15,7 @@ import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
 import ArchiveList from '@/components/common/archive-list/index.vue';
 import { useStore } from 'vuex';
+import { posts } from '@/api/test/index';
 
 export default defineComponent({
   name: 'AppHome',
@@ -54,7 +55,7 @@ export default defineComponent({
     // 获取标签列表
     store.dispatch('tag/getPostTags');
 
-    const posts = computed(() => store.getters['post/posts']);
+    // const posts = computed(() => store.getters['post/posts']);
     const user = computed(() => store.getters['user/user']);
     const types = computed(() => store.getters['type/types']);
     const tags = computed(() => store.getters['tag/tags']);
