@@ -7,12 +7,15 @@
   padding: 0 32px;
   background-color: var(--primary-background);
   opacity: 0.9;
-  box-shadow: var(--primary-background-shadow);
   position: sticky;
   left: 0;
   top: 0;
   z-index: 11;
   color: var(--primary-text-color);
+
+  &.shadow {
+    box-shadow: var(--primary-background-shadow);
+  }
 
   &-container {
     width: 90%;
@@ -47,6 +50,7 @@
 
       &-title {
         font-size: var(--font-size-large);
+        font-weight: 700;
         cursor: pointer;
         &:hover {
           color: var(--primary-text-hover-color);
@@ -60,7 +64,6 @@
       align-items: center;
     }
   }
-
 
   @media screen and (max-width: 768px) {
     & {

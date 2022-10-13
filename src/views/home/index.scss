@@ -118,6 +118,10 @@
   @media screen and (max-width: 768px) {
     & {
       background-color: var(--mobile-background) !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
 
       .bg {
         display: none;
@@ -126,6 +130,8 @@
       .app-main {
         background-color: var(--mobile-background) !important;
         padding: 0 !important;
+        flex: 1;
+        align-items: flex-start !important;
 
         &-container {
           &-left {

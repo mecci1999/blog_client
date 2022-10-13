@@ -14,6 +14,7 @@ export interface PostStoreState {
   allPosts: Array<PostDataType>;
   nextPage: number;
   totalPages: number;
+  totalCount: number;
   queryString: string;
   filter: { [name: string]: string } | null;
 }
@@ -38,6 +39,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     posts: [],
     nextPage: 1,
     totalPages: 1,
+    totalCount: 0,
     queryString: '',
     filter: null,
     allPosts: [],
@@ -58,6 +60,18 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
 
     posts(state) {
       return state.posts;
+    },
+
+    nextPage(state) {
+      return state.nextPage;
+    },
+
+    totalCount(state) {
+      return state.totalCount;
+    },
+
+    totalPages(state) {
+      return state.totalPages;
     },
 
     // 判断当前博客是否为第一个
@@ -121,6 +135,10 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
 
     setTotalPages(state, data) {
       state.totalPages = data;
+    },
+
+    setTotalCount(state, data) {
+      state.totalCount = data;
     },
 
     setNextPage(state, data) {
@@ -216,7 +234,8 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
         response.headers['X-Total-Count'] || response.headers['x-total-count'];
 
       const totalPages = Math.ceil(parseInt(total, 10) / VITE_POSTS_PER_PAGE);
-
+      if (totalPages === 0) return;
+      commit('setTotalCount', total);
       commit('setTotalPages', totalPages);
 
       // commit('setNextPage');

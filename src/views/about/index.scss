@@ -4,38 +4,108 @@
   overflow: hidden;
   background-color: var(--primary-background);
 
+  &-main {
+    padding: 50px 40px;
+  }
+
+  &-header {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    color: var(--mecci-font-color);
+    text-align: center;
+  }
+
+  &-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  &-tip {
+    opacity: 0.8;
+    font-size: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-author {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--mecci-font-color);
+    width: 59%;
+    background-color: var(--mecci-card-background);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--line-color);
+    border-radius: 24px;
+    box-shadow: var(--mecci-shadow);
+    padding: 1rem 2rem;
+
+    & > .title1 {
+      opacity: 0.8;
+      line-height: 1.3;
+      font-size: 16px;
+    }
+
+    & > .title2 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0.5rem 0px;
+    }
+
+    .inline-word {
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+  }
+
+  &-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 39%;
+    border-radius: 24px;
+    background: var(--mecci-card-background);
+    border: 1px solid var(--line-color);
+    box-shadow: var(--mecci-shadow);
+    position: relative;
+    padding: 1rem 2rem;
+    overflow: hidden;
+  }
+
   &-title {
     // display: flex;
     // flex-direction: column;
     // justify-content: center;
     // align-items: center;
-    width: 90%;
+    width: 100%;
     max-width: 1500px;
-    margin: 0 auto;
-    min-height: 50vh;
-    padding: 0 1rem !important;
-
-    @media screen and (max-width: 769px) {
-      & {
-        min-height: 40vh;
-
-        &-header {
-          font-size: 2.5rem !important;
-        }
-
-        &-description {
-          font-size: 25px !important;
-        }
-      }
-    }
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 24px;
+    background: var(--mecci-card-background);
+    border: 1px solid var(--line-color);
+    box-shadow: var(--mecci-shadow);
+    position: relative;
+    padding: 1rem 2rem;
+    overflow: hidden;
 
     &-header {
-      width: 980px;
-      font-size: 5rem;
+      font-size: 36px;
       font-family: Helvetica;
       line-height: 1.06;
       letter-spacing: -0.02em;
       color: var(--mecci-font-color);
+      margin-right: auto;
+      margin-top: 0px;
 
       span {
         background-image: linear-gradient(45deg, #8a7cfb 50%, #633e9c);
@@ -84,13 +154,30 @@
   }
 
   &-container {
-    width: 90%;
+    width: 100%;
     max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 1rem !important;
+
+    &-text {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 24px;
+      background: var(--mecci-card-background);
+      border: 1px solid var(--line-color);
+      box-shadow: var(--mecci-shadow);
+      position: relative;
+      padding: 1rem 2rem;
+      overflow: hidden;
+
+      &-title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--mecci-font-color);
+      }
+    }
 
     p {
-      font-size: 0.9rem;
+      font-size: 16px;
       line-height: 1.7;
       font-weight: 400;
       margin: 1rem 0;
@@ -101,18 +188,13 @@
 
     &-author {
       width: 100%;
-      box-shadow: var(--primary-background-shadow);
+      box-shadow: var(--mecci-shadow);
       color: var(--mecci-font-color);
       border-radius: 8px;
       line-height: 2;
       font-size: var(--font-size-middle);
       padding: 1rem;
       margin: 1rem 0;
-
-      &-title {
-        color: var(--mecci-theme-color);
-        font-size: var(--font-size-large);
-      }
 
       &-description {
         padding: 0 1rem;
@@ -121,28 +203,26 @@
 
     &-announcement {
       width: 100%;
-      box-shadow: var(--primary-background-shadow);
+      background-color: var(--mecci-card-background);
+      box-shadow: var(--mecci-shadow);
       color: var(--mecci-font-color);
-      border-radius: 8px;
+      border-radius: 24px;
       line-height: 2;
+      border: 1px solid var(--line-color);
       font-size: var(--font-size-middle);
       padding: 1rem;
       margin: 1.5rem 0;
       max-height: 600px;
       overflow-y: auto;
       overflow-x: hidden;
-
-      &-title {
-        color: var(--mecci-theme-color);
-        font-size: var(--font-size-large);
-      }
     }
 
     &-log {
       width: 100%;
-      box-shadow: var(--primary-background-shadow);
+      background-color: var(--mecci-card-background);
+      box-shadow: var(--mecci-shadow);
       color: var(--mecci-font-color);
-      border-radius: 8px;
+      border-radius: 24px;
       line-height: 2;
       font-size: var(--font-size-middle);
       padding: 1rem;
@@ -159,29 +239,140 @@
 
     &-adward {
       width: 100%;
-      box-shadow: var(--primary-background-shadow);
+      background-color: var(--mecci-card-background);
+      box-shadow: var(--mecci-shadow);
       color: var(--mecci-font-color);
-      border-radius: 8px;
+      border-radius: 24px;
       line-height: 2;
       font-size: var(--font-size-middle);
       padding: 1rem;
       margin: 1.5rem 0;
-      max-height: 600px;
-      overflow-y: auto;
-      overflow-x: hidden;
+      // max-height: 600px;
+      // overflow-y: auto;
+      // overflow-x: hidden;
 
       &-title {
-        color: var(--mecci-theme-color);
-        font-size: var(--font-size-large);
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--mecci-font-color);
       }
 
       &-description {
+        // padding: 0 1rem;
+      }
+
+      &-list {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 1rem -0.25rem 0.5rem;
+        color: var(--mecci-font-color);
+
+        &-item {
+          padding: 1rem;
+          border-radius: 12px;
+          border: 1px solid var(--line-color);
+          width: calc(16.6667% - 0.5rem);
+          margin: 0px 0.25rem 0.5rem;
+          box-shadow: var(--mecci-shadow);
+
+          &__name {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+          }
+
+          &__bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &-money {
+              padding: 4px;
+              background: var(--mecci-font-color);
+              color: var(--mecci-card-background);
+              font-size: 12px;
+              line-height: 1;
+              border-radius: 4px;
+              margin-right: 4px;
+              white-space: nowrap;
+
+              &.vip {
+                background: #e5a80d;
+              }
+            }
+
+            &-time {
+              font-size: 12px;
+              color: var(--mecci-secondary-color);
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      background-color: var(--mobile-background);
+      z-index: 10;
+
+      &-main {
         padding: 0 1rem;
       }
 
-      &-table {
-        padding: 0 1rem;
+      &-author {
+        margin-top: 1rem;
+        padding: 1rem;
+        width: 100% !important;
       }
+
+      &-info {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 1rem;
+      }
+
+      &-title {
+        width: 100%;
+        padding: 1rem;
+
+        &-header {
+          font-size: 36px;
+        }
+
+        &-description {
+          font-size: 36px;
+          font-weight: 700;
+        }
+      }
+
+      &-container {
+        &-text {
+          width: 100%;
+          padding: 1rem;
+        }
+
+        &-adward-list {
+          &-item {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    &--container-adward-list-item {
+      width: calc(50% - 0.5rem);
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    &--container-adward-list-item {
+      width: calc(25% - 0.5rem);
     }
   }
 }

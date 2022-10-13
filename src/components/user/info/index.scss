@@ -14,6 +14,43 @@
     }
   }
 
+  @media screen and (max-width: 768px) {
+    & {
+      padding: 0;
+      height: auto;
+      box-shadow: none;
+
+      &-avatar {
+        margin-bottom: 16px !important;
+      }
+
+      &-name {
+        margin-bottom: 8px !important;
+      }
+
+      &-description {
+        margin-bottom: 8px !important;
+      }
+
+      &-other {
+        justify-content: center !important;
+        margin-top: 8px !important;
+
+        &-qq {
+          margin-left: 32px;
+        }
+
+        &-wechat {
+          display: none !important;
+        }
+
+        &-email {
+          display: none;
+        }
+      }
+    }
+  }
+
   // &:hover {
   //   box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
   // }
@@ -33,14 +70,14 @@
   }
 
   &-name {
-    color: var(--primary-text-color);
+    color: var(--mecci-font-color);
     font-size: var(--font-size-large);
     font-weight: 500;
     margin-bottom: 16px;
   }
 
   &-description {
-    color: var(--secondary-text-color);
+    color: var(--mecci-secondary-color);
     font-size: var(--font-size-normal);
     font-weight: 400;
     margin-bottom: 32px;
@@ -69,15 +106,15 @@
 
       &-title {
         line-height: 32px;
-        color: var(--primary-text-color);
+        color: var(--mecci-font-color);
         margin-bottom: 8px;
         font-size: var(--font-size-middle);
       }
 
       &-amount {
-        font-size: var(--font-size-large);
-        font-weight: 200;
-        color: var(--secondary-text-color);
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--primary-text-color);
       }
     }
 
@@ -98,15 +135,15 @@
 
       &-title {
         line-height: 32px;
-        color: var(--primary-text-color);
+        color: var(--mecci-font-color);
         margin-bottom: 8px;
         font-size: var(--font-size-middle);
       }
 
       &-amount {
-        font-size: var(--font-size-large);
-        font-weight: 200;
-        color: var(--secondary-text-color);
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--primary-text-color);
       }
     }
 
@@ -127,15 +164,15 @@
 
       &-title {
         line-height: 32px;
-        color: var(--primary-text-color);
+        color: var(--mecci-font-color);
         margin-bottom: 8px;
         font-size: var(--font-size-middle);
       }
 
       &-amount {
-        font-size: var(--font-size-large);
-        font-weight: 200;
-        color: var(--secondary-text-color);
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--primary-text-color);
       }
     }
   }

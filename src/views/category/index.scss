@@ -1,25 +1,54 @@
 .app-category {
   width: 100%;
   position: relative;
-  background-color: var(--primary-background);
+  background-color: var(--mobile-background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
+  &-main {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    flex: 1;
+  }
 
   &-container {
-    width: 90%;
+    width: 100%;
     max-width: 1500px;
+    padding: 1rem 2rem;
     margin: 1rem auto;
     padding: 1rem 2rem !important;
-    box-shadow: var(--primary-background-shadow);
+    box-shadow: var(--mecci-shadow);
     color: var(--mecci-font-color);
     border-radius: 12px;
-    background-color: var(--primary-background);
+    border: 1px solid var(--line-color);
+    background-color: var(--mecci-card-background);
     overflow-y: auto;
     flex: 1;
 
     &-header {
       margin-bottom: 24px;
+
+      & > .post-tab-bar {
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      &-main {
+        padding: 0;
+      }
+
+      &-container {
+        border-radius: 0px;
+        background: var(--mobile-background);
+        padding: 0px 1rem !important;
+        box-shadow: none !important;
+        border: none;
+      }
     }
   }
 }

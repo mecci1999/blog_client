@@ -1,26 +1,27 @@
 <script lang="ts" setup>
-import { computed, watch } from 'vue';
+import { computed, watch, onMounted } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import AppFooter from '@/components/footer/index.vue';
+import AppPagination from '@/components/common/pagination/index.vue';
 
 const routes = useRoute();
 const router = useRouter();
 const store = useStore();
 
-// 当前标签
-// 首先获取相关标签列表
-store.dispatch('tag/getPostTags');
-const tags: any = computed(() => store.getters['tag/tags']);
+// 当前页数
+const currentPage = computed(() => store.getters['post/nextPage']);
 
+// 总页数
+const totalPages = computed(() => store.getters['post/totalPages']);
+
+// 当前标签
 // 获取当前标签的博客列表
 store.commit('tag/setCurrentPostTag', parseInt(`${routes.params.tagId}`, 10));
 
-store.dispatch('post/getPosts', {
-  filter: { tagId: parseInt(`${routes.params.tagId}`, 10) },
-});
+const tags: any = computed(() => store.getters['tag/tags']);
 
 const currentTag = computed(() => store.getters['tag/currentPostTag']);
 
@@ -50,27 +51,40 @@ const onClickChangeTagId = (id: any) => {
   // 根据当前id获取当前标签数据
   store.commit('tag/setCurrentPostTag', id);
 };
+
+onMounted(() => {
+  // 首先获取相关标签列表
+  store.dispatch('tag/getPostTags');
+
+  store.dispatch('post/getPosts', {
+    filter: { tagId: parseInt(`${routes.params.tagId}`, 10) },
+  });
+});
 </script>
 
 <template>
   <div class="app-tags">
     <NavBar />
-    <div class="app-tags-container">
-      <div class="app-tags-container-header">
-        <div
-          :class="tagItemClasses(tag.id)"
-          v-for="tag in tags"
-          :key="tag.id"
-          @click.stop="onClickChangeTagId(tag.id)"
-        >
-          {{ tag.name }}
-          <sup class="app-tags-container-header-item-amount">{{
-            tag.amount
-          }}</sup>
+    <div class="app-tags-main">
+      <div class="app-tags-container">
+        <div class="app-tags-container-header">
+          <div
+            :class="tagItemClasses(tag.id)"
+            v-for="tag in tags"
+            :key="tag.id"
+            @click.stop="onClickChangeTagId(tag.id)"
+          >
+            <span class="app-tags-container-header-item-tip">#</span>
+            {{ tag.name }}
+            <span class="app-tags-container-header-item-amount">{{
+              tag.amount
+            }}</span>
+          </div>
         </div>
-      </div>
-      <div class="app-tags-container-index">
-        <PostIndex :posts="posts" :title="currentTagName" />
+        <div class="app-tags-container-index">
+          <PostIndex :posts="posts" :title="currentTagName" />
+        </div>
+        <AppPagination :currentPage="currentPage" :totalPages="totalPages" />
       </div>
     </div>
     <AppFooter />

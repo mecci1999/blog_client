@@ -54,6 +54,12 @@ export default defineComponent({
       router.push({ name: 'postTags', params: { tagId: id } });
     };
 
+    watch(post, (val) => {
+      if (val) {
+        window.scrollTo({ top: 0 });
+      }
+    });
+
     // 挂载时置顶
     onMounted(() => {
       window.scrollTo({ top: 0 });

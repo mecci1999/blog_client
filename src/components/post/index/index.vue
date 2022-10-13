@@ -3,6 +3,7 @@ import { computed, defineProps } from 'vue';
 import { PostDataType } from '@/types/interface';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { Picture } from '@element-plus/icons-vue';
 
 const props = defineProps({
   posts: {
@@ -40,12 +41,30 @@ const commentTipText = computed(() =>
       {{ title }}<span v-if="amount">{{ amount }}</span>
     </div>
     <div class="post-index-list">
-      <div class="post-index-list-item" v-for="post in posts" :key="post.id">
+      <div
+        class="post-index-list-item"
+        v-for="post in (posts as any)"
+        :key="post.id"
+      >
         <div
           class="post-index-list-item-media"
           @click.stop="onClickJumpPost(post?.id)"
         >
-          <img class="post-index-list-item-media-img" :src="post.bgImgUrl" />
+          <el-image
+            style="width: 100%; height: 100%"
+            :src="`http://${post?.bgImgUrl}`"
+            fit="cover"
+          >
+            <template #error>
+              <div class="image-slot">
+                <el-icon><Picture /></el-icon>
+              </div>
+            </template>
+          </el-image>
+          <img
+            class="post-index-list-item-media-img"
+            :src="`http://${post.bgImgUrl}`"
+          />
         </div>
         <div class="post-index-list-item-info">
           <div
@@ -61,13 +80,25 @@ const commentTipText = computed(() =>
               :key="tag?.id"
               @click.stop="onClickChangeTag(tag?.id)"
             >
-              #{{ tag?.name }}
+              #<span class="post-index-list-item-info-tags-item-name">
+                {{ tag?.name }} </span
+              >#
             </div>
           </div>
-          <div class="post-index-list-item-info-date">{{ post.updated }}</div>
+          <div class="post-index-list-item-info-date">
+            {{ post.updated.split(' ')[0] }}
+          </div>
         </div>
       </div>
-      <div class="post-index-list-bottom-tip">
+      <div
+        class="post-index-list-bottom-tip"
+        v-if="posts?.length && posts?.length <= 12"
+      >
+        <span class="post-index-list-bottom-tip-text">{{
+          commentTipText
+        }}</span>
+      </div>
+      <div class="post-index-list-bottom-empty" v-else>
         <span class="post-index-list-bottom-tip-text">{{
           commentTipText
         }}</span>
@@ -76,6 +107,6 @@ const commentTipText = computed(() =>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

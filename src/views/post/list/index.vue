@@ -2,38 +2,60 @@
 import NavBar from '@/components/navBar/index.vue';
 import AppFooter from '@/components/footer/index.vue';
 import PostIndex from '@/components/post/index/index.vue';
-import { getPostsApi } from '@/api/index'
-import { onMounted,ref,watch } from 'vue';
-import AppPagination from '@/components/common/pagination/index.vue'
+import { computed, onMounted, ref, watch } from 'vue';
+import { useStore } from 'vuex';
+import AppPagination from '@/components/common/pagination/index.vue';
+
+const store = useStore();
 
 // 当前页数
-const curPage = ref(1)
+const currentPage = computed(() => store.getters['post/nextPage']);
 // 总数
-const totalCount = ref(0)
+const totalCount = computed(() => store.getters['post/totalCount']);
+
+// 监听currentPage
+watch(currentPage, (newValue) => {
+  if (newValue) {
+    store.dispatch('post/getPosts');
+  }
+});
 
 // 总页数
-const totalPages = ref(1)
+const totalPages = computed(() => store.getters['post/totalPages']);
 
-// 当前posts
-const posts = ref([])
+// const posts = ref([]);
+const posts = computed(() => store.getters['post/posts']);
 
-watch(() => curPage.value,async (val) => {
-  if(val) {
-    const response =  await getPostsApi(val)
-    posts.value = response.data
-    totalCount.value = parseInt(`${response.headers['X-Total-Count'] || response.headers['x-total-count']}`, 10)
-    totalPages.value = Math.ceil(totalCount.value / 10)
-  }
-}, {
-  immediate:false
-})
+// watch(
+//   () => curPage.value,
+//   async (val) => {
+//     if (val) {
+//       const response = await getPostsApi(val);
+//       posts.value = response.data;
+//       totalCount.value = parseInt(
+//         `${
+//           response.headers['X-Total-Count'] || response.headers['x-total-count']
+//         }`,
+//         10,
+//       );
+//       totalPages.value = Math.ceil(totalCount.value / 10);
+//     }
+//   },
+//   {
+//     immediate: false,
+//   },
+// );
 
-onMounted(async() => {
- const response = await getPostsApi(curPage.value)
- posts.value = response.data
- totalCount.value = parseInt(`${response.headers['X-Total-Count'] || response.headers['x-total-count']}`, 10)
- totalPages.value = Math.ceil(totalCount.value / 10)
-})
+onMounted(async () => {
+  store.dispatch('post/getPosts');
+  // const response = await getPostsApi(curPage.value);
+  // posts.value = response.data;
+  // totalCount.value = parseInt(
+  //   `${response.headers['X-Total-Count'] || response.headers['x-total-count']}`,
+  //   10,
+  // );
+  // totalPages.value = Math.ceil(totalCount.value / 10);
+});
 </script>
 
 <template>
@@ -42,7 +64,7 @@ onMounted(async() => {
     <div class="post-article-container">
       <PostIndex :posts="posts" title="文章 - " :amount="totalCount" />
     </div>
-    <AppPagination :currentPage="curPage" :totalPages="totalPages" />
+    <AppPagination :currentPage="currentPage" :totalPages="totalPages" />
     <AppFooter />
   </div>
 </template>

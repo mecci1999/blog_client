@@ -55,11 +55,13 @@ const onClickNumberItem = (number: number) => {
 // 点击下一页图标
 const onClickNextPage = () => {
   store.commit('post/setNextPage');
+  window.scrollTo({ top: 0 });
 };
 
 // 点击上一页图标
 const onClickPrevPage = () => {
   store.commit('post/setPrevPage');
+  window.scrollTo({ top: 0 });
 };
 </script>
 
@@ -70,6 +72,7 @@ const onClickPrevPage = () => {
       @click="onClickPrevPage"
     >
       <AppIcon name="keyboard_arrow_left" size="24" />
+      <div class="app-pagination-prev-mobile">上页</div>
     </div>
     <div class="app-pagination-number">
       <div
@@ -175,6 +178,7 @@ const onClickPrevPage = () => {
       @click="onClickNextPage"
     >
       <AppIcon name="keyboard_arrow_right" size="24" />
+      <div class="app-pagination-next-mobile">下页</div>
     </div>
   </div>
 </template>

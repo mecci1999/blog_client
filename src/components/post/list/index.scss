@@ -33,6 +33,10 @@
   @media screen and (max-width: 768px) {
     & {
       background-color: var(--mobile-background);
+
+      &-bottom-tip {
+        padding: 0;
+      }
     }
   }
 }

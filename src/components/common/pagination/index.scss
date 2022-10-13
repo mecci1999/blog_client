@@ -1,8 +1,8 @@
 .app-pagination {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 16px;
+  justify-content: center;
+  margin: 16px;
 
   &-prev {
     width: 32px;
@@ -28,6 +28,10 @@
       pointer-events: none;
       opacity: 0.3;
       user-select: none;
+    }
+
+    &-mobile {
+      display: none;
     }
   }
 
@@ -56,13 +60,18 @@
       user-select: none;
       pointer-events: none;
     }
+
+    &-mobile {
+      display: none;
+    }
   }
 
   &-number {
-    flex: 1;
+    // flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 32px;
 
     &-item {
       width: 32px;
@@ -97,6 +106,66 @@
       margin: 0 0.3rem;
       color: var(--mecci-font-color);
       user-select: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &-prev {
+      width: 100%;
+      height: 2.5rem;
+      margin: 0.2rem 1rem 1rem 1rem;
+      border-radius: 12px;
+      line-height: 2.5rem;
+      background: var(--mecci-card-background);
+      border: 1px solid var(--line-color);
+      box-shadow: var(--mecci-shadow);
+
+      & > .app-icon {
+        display: none;
+      }
+
+      &-mobile {
+        display: block;
+        // width: 100%;
+        // height: 2.5rem;
+        // margin: 0.2rem 1rem 1rem 1rem;
+        // border-radius: 12px;
+        // line-height: 2.5rem;
+        // background: var(--mecci-card-background);
+        // border: 1px solid var(--line-color);
+        // box-shadow: var(--mecci-shadow);
+      }
+
+      &.disabled {
+        display: none;
+      }
+    }
+
+    &-next {
+      width: 100%;
+      height: 2.5rem;
+      margin: 0.2rem 1rem 1rem 1rem;
+      border-radius: 12px;
+      line-height: 2.5rem;
+      background: var(--mecci-card-background);
+      border: 1px solid var(--line-color);
+      box-shadow: var(--mecci-shadow);
+
+      & > .app-icon {
+        display: none;
+      }
+
+      &-mobile {
+        display: block;
+      }
+
+      &.disabled {
+        display: none;
+      }
+    }
+
+    &-number {
+      display: none;
     }
   }
 }

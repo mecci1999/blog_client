@@ -24,13 +24,39 @@
       -webkit-box-align: center;
       align-items: center;
       transition: all 0.3s ease-in-out;
-      box-shadow: var(--primary-background-shadow);
+      // box-shadow: var(--primary-background-shadow);
       padding: 0.5rem;
+
+      .el-image {
+        // width: 40%;
+        // height: 100%;
+        cursor: pointer;
+        // // border: 1px solid var(--primary-text-color);
+        // border-radius: 12px 0 0 12px;
+        // overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--skeleton-background);
+
+        &__inner {
+          max-width: 100%;
+          object-fit: cover;
+          width: 100%;
+          -webkit-backface-visibility: hidden;
+          -webkit-transform-style: preserve-3d;
+          transition: 0.5s ease-in-out;
+          height: 100%;
+          overflow: hidden;
+          // border-radius: 12px 0 0 12px;
+          border-radius: 0;
+        }
+      }
 
       &-media {
         border-radius: 12px;
         min-width: 150px;
-        min-height: 80px px;
+        min-height: 80px;
         background: var(--skeleton-background);
         -webkit-mask-image: -webkit-radial-gradient(center, #fff, #000);
         overflow: hidden;
@@ -70,8 +96,8 @@
           font-weight: 700;
           line-height: 1.3;
           -webkit-line-clamp: 1;
-          color: var(--mecci-home-color);
-          font-size: 1.1em;
+          color: var(--mecci-font-color);
+          font-size: 18px;
           -webkit-transition: all 0.3s;
           -moz-transition: all 0.3s;
           -o-transition: all 0.3s;
@@ -117,6 +143,10 @@
             font-size: 12px;
             cursor: pointer;
 
+            &-name {
+              color: var(--mecci-font-color);
+            }
+
             &:hover {
               color: var(--mecci-theme-color);
             }
@@ -130,6 +160,32 @@
       padding: 2rem 0;
       font-size: var(--font-size-middle);
       color: var(--mecci-home-color);
+    }
+
+    &-bottom-empty {
+      text-align: center;
+      padding: 2.5rem 0;
+      font-size: var(--font-size-middle);
+      color: var(--mecci-home-color);
+      // height: calc(100vh - 450px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &-list-item-media {
+      min-width: 80px;
+      overflow: hidden;
+      width: 80px;
+      height: 80px;
+    }
+
+    &-list-item-info {
+      white-space: inherit !important;
+    }
+
+    &-list-bottom-tip {
+      // height: calc(100vh - 365px);
+      padding: 0;
     }
   }
 }

@@ -4,6 +4,7 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import PostTag from '@/components/post/tag/index.vue';
 import { postType } from '@/api/test';
+import { Picture } from '@element-plus/icons-vue';
 
 // 属性
 const props = defineProps({
@@ -32,7 +33,18 @@ const onClickPostListTypeItem = (id: number) => {
 <template>
   <div class="post-list-item" @click.stop="onClickPostListItem(item?.id)">
     <div class="post-list-item-media">
-      <img class="post-list-item-media-img" :src="`http://${item?.bgImgUrl}`" />
+      <!-- <img class="post-list-item-media-img" :src="`http://${item?.bgImgUrl}`" /> -->
+      <el-image
+        style="width: 100%; height: 100%"
+        :src="`http://${item?.bgImgUrl}`"
+        fit="cover"
+      >
+        <template #error>
+          <div class="image-slot">
+            <el-icon><Picture /></el-icon>
+          </div>
+        </template>
+      </el-image>
       <!-- <img class="post-list-item-media-img" :src="item?.bgImgUrl" /> -->
     </div>
     <div class="post-list-item-types">
@@ -64,6 +76,6 @@ const onClickPostListTypeItem = (id: number) => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './index.scss';
 </style>

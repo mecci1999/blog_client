@@ -60,7 +60,7 @@ export const getTagsApi = async () => {
  * 获取博客列表接口
  */
 export const getPostsApi = async (page: number, query?: string) => {
-  return await apiHttpClient.get(`posts?page=${page}${query}`);
+  return await apiHttpClient.get(`posts?page=${page}${query || ''}`);
 };
 
 /**
@@ -213,3 +213,38 @@ export const getComments = async (action: string, page: number) =>
  */
 export const updateCommentStatus = async (commentId: number, data: any) =>
   await apiHttpClient.patch(`/comments/${commentId}`, data);
+
+/**
+ * 获取捐赠者名单
+ */
+export const getRewardListApi = async () => await apiHttpClient.get(`/reward`);
+
+/**
+ * 创建捐赠者
+ */
+export const addRewardApi = async (data: any) =>
+  await apiHttpClient.post(`/reward/add`, data);
+
+/**
+ * 获取捐赠者名单
+ */
+export const getAnnounceListApi = async () =>
+  await apiHttpClient.get(`/announce`);
+
+/**
+ * 创建捐赠者
+ */
+export const addAnnounceApi = async (data: any) =>
+  await apiHttpClient.post(`/announce/add`, data);
+
+/**
+ * 获取捐赠者名单
+ */
+export const getUpdateLogListApi = async () =>
+  await apiHttpClient.get(`/updateLog`);
+
+/**
+ * 创建捐赠者
+ */
+export const addUpdateLogApi = async (data: any) =>
+  await apiHttpClient.post(`/updateLog/add`, data);

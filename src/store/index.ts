@@ -5,6 +5,7 @@ import { loginStoreModule, LoginStoreState } from './modules/login';
 import { manageStoreModule, ManageStoreState } from './modules/manage';
 import { postStoreModule, PostStoreState } from './modules/post';
 import { searchStoreModule, SearchStoreState } from './modules/search';
+import { sidebarStoreModule, SidebarStoreState } from './modules/sidebar';
 import { postTagStoreModule, PostTagStoreState } from './modules/tag';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
 import { postTypeStoreModule, PostTypeStoreState } from './modules/type';
@@ -23,6 +24,7 @@ export interface RootState {
   dashboard: DashboardStoreState;
   login: LoginStoreState;
   manage: ManageStoreState;
+  sidebar: SidebarStoreState;
 }
 
 /**
@@ -44,6 +46,7 @@ const store = createStore({
     dashboard: dashboardStoreModule,
     login: loginStoreModule,
     manage: manageStoreModule,
+    sidebar: sidebarStoreModule,
   },
 
   // 插件

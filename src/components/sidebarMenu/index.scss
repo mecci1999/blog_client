@@ -1,0 +1,50 @@
+.sidebar-menu {
+  & > .el-overlay.menu-mask {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  & > .el-overlay {
+    .el-drawer {
+      background-color: var(--sidebar-menu-background);
+
+      &__header {
+        margin-bottom: 0;
+      }
+
+      &__body {
+        padding: 0;
+      }
+    }
+  }
+
+  &-main {
+    .menus {
+      padding: 0 0.5rem 2rem;
+      margin-top: 16px;
+
+      &-list {
+        &-title {
+          position: relative;
+          padding: 0.3rem 1.5rem;
+          color: var(--mecci-font-color);
+          font-size: 0.9rem;
+        }
+
+        &-item {
+          margin-left: 1rem;
+          display: flex;
+          align-items: center;
+          padding: 0.3rem 1.5rem;
+
+          span {
+            position: relative;
+            color: var(--mecci-font-color);
+            font-size: 0.9rem;
+            margin-left: 32px;
+            line-height: 48px;
+          }
+        }
+      }
+    }
+  }
+}

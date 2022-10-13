@@ -41,12 +41,13 @@
 
     &-content {
       padding: 0.5rem 1rem;
-      box-shadow: var(--primary-background-shadow);
-      border-radius: 4px;
-      color: var(--mecci-home-color);
-      background-color: var(--skeleton-background);
+      box-shadow: var(--mecci-shadow);
+      border-radius: 12px;
+      color: var(--mecci-font-color);
+      background-color: var(--mecci-card-background);
       transition: all 0.3s;
       margin: 0.3rem 0;
+      border: 1px solid var(--line-color);
     }
   }
 }
