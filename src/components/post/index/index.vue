@@ -61,10 +61,10 @@ const commentTipText = computed(() =>
               </div>
             </template>
           </el-image>
-          <img
+          <!-- <img
             class="post-index-list-item-media-img"
             :src="`http://${post.bgImgUrl}`"
-          />
+          /> -->
         </div>
         <div class="post-index-list-item-info">
           <div

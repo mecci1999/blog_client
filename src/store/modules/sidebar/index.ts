@@ -3,6 +3,9 @@ import { RootState } from '../../index';
 
 export interface SidebarStoreState {
   sidebarMenuStatus: boolean;
+  imageViewerStatus: boolean;
+  currentImageIndex: number;
+  imageUrlList: Array<string>;
 }
 
 export const sidebarStoreModule: Module<SidebarStoreState, RootState> = {
@@ -16,6 +19,9 @@ export const sidebarStoreModule: Module<SidebarStoreState, RootState> = {
    */
   state: {
     sidebarMenuStatus: false,
+    imageViewerStatus: false,
+    currentImageIndex: 0,
+    imageUrlList: [],
   } as SidebarStoreState,
 
   /**
@@ -24,6 +30,18 @@ export const sidebarStoreModule: Module<SidebarStoreState, RootState> = {
   getters: {
     sidebarMenuStatus(state) {
       return state.sidebarMenuStatus;
+    },
+
+    imageViewerStatus(state) {
+      return state.imageViewerStatus;
+    },
+
+    currentImageIndex(state) {
+      return state.currentImageIndex;
+    },
+
+    imageUrlList(state) {
+      return state.imageUrlList;
     },
   },
 
@@ -37,6 +55,22 @@ export const sidebarStoreModule: Module<SidebarStoreState, RootState> = {
 
     closeSidebarMenu(state) {
       state.sidebarMenuStatus = false;
+    },
+
+    openImageViewer(state) {
+      state.imageViewerStatus = true;
+    },
+
+    closeImageViewer(state) {
+      state.imageViewerStatus = false;
+    },
+
+    setCurrentImageIndex(state, data) {
+      state.currentImageIndex = data;
+    },
+
+    setImageUrlList(state, data) {
+      state.imageUrlList = data;
     },
   },
 

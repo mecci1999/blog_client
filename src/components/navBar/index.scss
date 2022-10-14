@@ -70,6 +70,14 @@
       background: var(--mobile-background) !important;
 
       padding: 0 12px;
+
+      &-container-left-title {
+        cursor: auto !important;
+        transition: all 0.8s ease;
+        &:active {
+          color: var(--primary-text-hover-color);
+        }
+      }
     }
   }
 }
