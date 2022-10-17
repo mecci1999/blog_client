@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'comment',
     path: '/comment',
     component: AppComment,
-    meta: { tittle: '树洞 | 云分享' },
+    meta: { title: '树洞 | 云分享' },
   },
 ];
 

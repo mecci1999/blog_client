@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'privacy',
     path: '/privacy',
     component: AppPrivacy,
-    meta: { tittle: '隐私政策 | 云分享' },
+    meta: { title: '隐私政策 | 云分享' },
   },
 ];
 

@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'about',
     path: '/about',
     component: AppAbout,
-    meta: { tittle: '关于博客 | 云分享' },
+    meta: { title: '关于博客 | 云分享' },
   },
 ];
 
