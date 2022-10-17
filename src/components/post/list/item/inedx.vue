@@ -5,6 +5,8 @@ import { useRouter } from 'vue-router';
 import PostTag from '@/components/post/tag/index.vue';
 import { postType } from '@/api/test';
 import { Picture } from '@element-plus/icons-vue';
+import { time } from '@/utils/time';
+import { setSessionStroage } from '@/utils/localStorage';
 
 // 属性
 const props = defineProps({
@@ -17,14 +19,19 @@ const router = useRouter();
 const store = useStore();
 
 const onClickPostListItem = (id: number) => {
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', props.item?.title);
   router.push({ name: 'postShow', params: { postId: id } });
 };
 
-const onClickPostListTypeItem = (id: number) => {
+const onClickPostListTypeItem = (id: number, title?: string) => {
   // 当前分类
   const type = postType.find((item) => item.id === id);
 
   store.commit('type/setCurrentPostType', type);
+
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', title);
 
   router.push({ name: 'postCategory', params: { typeId: id } });
 };
@@ -52,7 +59,7 @@ const onClickPostListTypeItem = (id: number) => {
         class="post-list-item-types-item"
         v-for="type in item?.types"
         :key="type.id"
-        @click.stop="onClickPostListTypeItem(type?.id)"
+        @click.stop="onClickPostListTypeItem(type?.id, type?.name)"
       >
         {{ type.name }}
       </div>
@@ -70,7 +77,9 @@ const onClickPostListTypeItem = (id: number) => {
         <div class="post-list-item-content-bottom-tags">
           <PostTag v-for="tag in item?.tags" :key="tag.id" :item="tag" />
         </div>
-        <div class="post-list-item-content-bottom-date">4天前</div>
+        <div class="post-list-item-content-bottom-date">
+          {{ time(item?.created) }}
+        </div>
       </div>
     </div>
   </div>

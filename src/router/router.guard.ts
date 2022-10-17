@@ -13,6 +13,15 @@ export const authGuard = (
   from: RouteLocationNormalized,
   next: NavigationGuardNext,
 ) => {
+  // 判断标题
+  if (to.meta.title) {
+    document.title = `${to.meta.title}`;
+  } else {
+    document.title = appStore.getters['app/title']
+      ? `${appStore.getters['app/title']} | 云分享`
+      : '云分享';
+  }
+
   // 进行判断，路由是否需要身份验证
   if (to.matched.some((record) => record.meta.requireAuth)) {
     // 判断当前用户是否登录

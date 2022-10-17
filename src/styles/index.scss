@@ -85,11 +85,39 @@ html {
     letter-spacing: 0.6px;
   }
 
+  ul {
+    padding: 0;
+    display: block;
+    position: relative;
+  }
+
   li {
-    list-style: decimal;
+    list-style: none;
+    display: block;
     color: var(--secondary-text-color);
     line-height: 28px;
     font-size: 0.9rem;
+    padding: 0.2em 0.2em 0.2em 1.4em;
+    margin: 0.2rem 0px;
+    position: relative;
+
+    &::before {
+      top: 0.7em;
+      left: 0.2em;
+      width: 0.2em;
+      height: 0.2em;
+      border: 0.21em solid var(--mecci-theme-color);
+      border-radius: 50%;
+      background: 0px 0px;
+      content: '';
+      line-height: 0.42em;
+      background-color: var(--mecci-theme-color);
+      position: absolute;
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+      transition: all 0.3s ease-out 0s;
+      display: block;
+    }
   }
 
   a {
@@ -131,19 +159,20 @@ html {
     line-height: 1.5;
     padding: 1rem 1rem;
     width: 100%;
+  }
 
-    code {
-      display: block;
-      white-space: pre-wrap !important;
-      padding: 2.2em 5px;
-      line-height: inherit;
-      margin: 0 2px;
-      max-width: inherit;
-      overflow: inherit;
-      font-size: 0.8rem;
-      font-family: 'consolas', 'Menlo', 'PingFang SC', 'Microsoft YaHei',
-        sans-serif !important;
-    }
+  code {
+    display: inline-block;
+    white-space: pre-wrap !important;
+    padding: 2.2em 5px;
+    line-height: inherit;
+    margin: 0 2px;
+    max-width: inherit;
+    overflow: inherit;
+    font-size: 0.8rem;
+    font-family: 'consolas', 'Menlo', 'PingFang SC', 'Microsoft YaHei',
+      sans-serif !important;
+    color: var(--mecci-theme-color);
   }
 
   .button {
@@ -261,6 +290,10 @@ html {
   .button.fluid {
     width: 100%;
   }
+
+  b {
+    margin: 0 8px;
+  }
 }
 
 // @media screen and (min-width: 375px) {
@@ -313,12 +346,12 @@ html {
       padding: 1rem 1rem;
       border-radius: 12px;
       border: 1px solid var(--line-color);
+    }
 
-      code {
-        padding: 0;
-        margin: 0;
-        font-size: 0.8rem;
-      }
+    code {
+      padding: 0;
+      margin: 0;
+      font-size: 0.8rem;
     }
 
     .button {

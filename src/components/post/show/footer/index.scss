@@ -71,6 +71,12 @@
 
       &-text {
         font-weight: normal;
+        position: relative;
+
+        &-cc {
+          position: absolute;
+          right: 0;
+        }
       }
     }
   }

@@ -8,6 +8,8 @@ import categoryRoutes from './category/index';
 import articleRoutes from './post/list/index';
 import loginRoutes from './login/index';
 import manageRoutes from './manage/index';
+import privacyRoutes from './privacy/index';
+import copyrightRoutes from './copyright/index';
 import { authGuard } from './router.guard';
 
 /**
@@ -25,6 +27,8 @@ const router = createRouter({
     ...articleRoutes,
     ...loginRoutes,
     ...manageRoutes,
+    ...privacyRoutes,
+    ...copyrightRoutes,
   ],
 });
 

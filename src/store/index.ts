@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import { appStoreModule, AppStoreState } from './modules/app';
 import { commentStoreModule, CommentStoreState } from './modules/comment';
 import { dashboardStoreModule, DashboardStoreState } from './modules/dashboard';
 import { loginStoreModule, LoginStoreState } from './modules/login';
@@ -25,6 +26,7 @@ export interface RootState {
   login: LoginStoreState;
   manage: ManageStoreState;
   sidebar: SidebarStoreState;
+  app: AppStoreState;
 }
 
 /**
@@ -47,6 +49,7 @@ const store = createStore({
     login: loginStoreModule,
     manage: manageStoreModule,
     sidebar: sidebarStoreModule,
+    app: appStoreModule,
   },
 
   // 插件

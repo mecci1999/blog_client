@@ -43,6 +43,38 @@
         overflow-wrap: break-word;
       }
     }
+
+    &-cc {
+      display: flex;
+      margin-top: 16px;
+    }
+
+    &-copyright {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('../../assets/icon/copyright.svg');
+
+      &.dark {
+        background-image: url('../../assets/icon/copyright_dark.svg');
+      }
+    }
+
+    &-person {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+      background-image: url('../../assets/icon/person.svg');
+
+      &.dark {
+        background-image: url('../../assets/icon/person_dark.svg');
+      }
+    }
   }
 
   @media screen and (max-width: 768px) {

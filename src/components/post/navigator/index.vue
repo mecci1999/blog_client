@@ -18,6 +18,8 @@ const getBackPost = computed(() => store.getters['post/getBackPost']);
 
 const onClickForwardJump = () => {
   // 跳转到前一篇博客
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', getForwardPost.value.title);
   router.push({
     name: 'postShow',
     params: { postId: getForwardPost.value.id },
@@ -28,6 +30,8 @@ const onClickForwardJump = () => {
 
 const onClickBackJump = () => {
   // 跳转到后一篇博客
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', getBackPost.value.title);
   router.push({
     name: 'postShow',
     params: { postId: getBackPost.value.id },

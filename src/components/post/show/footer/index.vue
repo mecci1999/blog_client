@@ -1,41 +1,27 @@
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script lang="ts" setup>
+import { defineProps, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-export default defineComponent({
-  name: 'PostShowFooter',
-
-  props: {
-    link: {
-      type: String,
-    },
-    post: {
-      type: Object,
-    },
+const props = defineProps({
+  link: {
+    type: String,
   },
-
-  setup() {
-    const router = useRouter();
-
-    const onClickToAbout = () => {
-      router.push({ name: 'about' });
-    };
-
-    // 打开二维码收款页面
-    const showQRcode = ref(false);
-    const openQRcodePanel = () => {
-      showQRcode.value = !showQRcode.value;
-    };
-
-    return {
-      onClickToAbout,
-      openQRcodePanel,
-      showQRcode,
-    };
+  post: {
+    type: Object,
   },
-
-  components: {},
 });
+
+const router = useRouter();
+
+const onClickToAbout = () => {
+  router.push({ name: 'about' });
+};
+
+// 打开二维码收款页面
+const showQRcode = ref(false);
+const openQRcodePanel = () => {
+  showQRcode.value = !showQRcode.value;
+};
 </script>
 
 <template>
@@ -62,12 +48,16 @@ export default defineComponent({
             class="post-show-footer-info-author-text"
             @click="onClickToAbout"
             >云分享</span
-          >，谢谢。
+          >，谢谢。<router-link
+            class="post-show-footer-info-transshipment-text-cc"
+            :to="{ name: 'copyright' }"
+            >版权协议</router-link
+          >
         </span>
       </div>
     </div>
     <div class="post-show-footer-share">
-      <div class="post-show-footer-share-qq">
+      <!-- <div class="post-show-footer-share-qq">
         <i class="post-show-footer-share-qq-icon"></i>
       </div>
       <div class="post-show-footer-share-qq-space">
@@ -75,7 +65,7 @@ export default defineComponent({
       </div>
       <div class="post-show-footer-share-wechat">
         <i class="post-show-footer-share-wechat-icon"></i>
-      </div>
+      </div> -->
     </div>
     <div class="post-show-footer-donate">
       <div class="post-show-footer-donate-button" @click="openQRcodePanel">

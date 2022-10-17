@@ -13,6 +13,7 @@ if (theme) {
   store.commit('theme/setTheme', theme);
 }
 const themeIcon = computed(() => store.getters['theme/themeIcon']);
+const themeValue = computed(() => store.getters['theme/theme']);
 
 const MenuList = [
   {
@@ -44,7 +45,7 @@ const MenuList = [
 
 // 定义切换主题方法
 const changeTheme = () => {
-  const theme = store.getters['theme/theme'] === 'dark' ? 'light' : 'dark';
+  const theme = themeValue.value === 'dark' ? 'light' : 'dark';
 
   store.commit('theme/setTheme', theme);
 };

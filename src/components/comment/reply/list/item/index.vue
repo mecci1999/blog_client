@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, defineProps, ref } from 'vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
-import dayjs from 'dayjs';
 import CommentOption from '@/components/comment/operation/index.vue';
 import { useRoute } from 'vue-router';
+import { time } from '@/utils/time';
 
 const props = defineProps({
   item: {
@@ -74,10 +74,7 @@ const handleReplyComment = () => {
           博主
         </div>
         <div class="comment-reply-list-item-container-header-time">
-          {{
-            dayjs(item?.updated).format('YYYY-MM-DD') ||
-            dayjs(item?.created).format('YYYY-MM-DD')
-          }}
+          {{ time(item?.updated) || time(item?.created) }}
         </div>
         <div
           class="comment-reply-list-item-container-header-reply"

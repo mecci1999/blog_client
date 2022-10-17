@@ -9,6 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'login',
     path: '/login',
     component: AppLogin,
+    meta: { tittle: '秘密登录 | 云分享' },
   },
 ];
 

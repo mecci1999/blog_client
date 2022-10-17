@@ -21,6 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     meta: {
       requireAuth: true,
+      title: '博客管理 | 云分享后台',
     },
     children: [
       {
@@ -28,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/blog/list',
         component: AppManagementBlogList,
         meta: {
-          title: '博客列表',
+          title: '博客列表 | 云分享后台',
           requireAuth: true,
         },
       },
@@ -37,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/blog/publish',
         component: AppManagementBlogPublish,
         meta: {
-          title: '发布博客',
+          title: '发布博客 | 云分享后台',
           requireAuth: true,
         },
       },
@@ -46,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/blog/category',
         component: AppManagementBlogCategory,
         meta: {
-          title: '分类管理',
+          title: '分类管理 | 云分享后台',
           requireAuth: true,
         },
       },
@@ -55,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/blog/tags',
         component: AppManagementBlogTags,
         meta: {
-          title: '标签管理',
+          title: '标签管理 | 云分享后台',
           requireAuth: true,
         },
       },
@@ -64,7 +65,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/image/common',
         component: AppManagementImageCommon,
         meta: {
-          title: '图片池',
+          title: '图片池 | 云分享后台',
           requireAuth: true,
         },
       },
@@ -73,7 +74,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/image/avatar',
         component: AppManagementImageAvatar,
         meta: {
-          title: '头像管理',
+          title: '头像管理 | 云分享后台',
           requireAuth: true,
         },
       },
@@ -82,7 +83,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/manage/comment',
         component: AppManagementComment,
         meta: {
-          title: '评论管理',
+          title: '评论管理 | 云分享后台',
           requireAuth: true,
         },
       },

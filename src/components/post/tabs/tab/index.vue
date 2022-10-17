@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, ref,computed } from 'vue';
+import { defineProps, ref, computed } from 'vue';
 import { TypesAndTagsDataType } from '@/types/interface';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
@@ -13,30 +13,34 @@ const props = defineProps({
   },
 });
 
-const postTabItemClasses = (id:any) => {
-  return ['post-tab-item', { active: currentTypeId && id === currentTypeId.value }];
+const postTabItemClasses = (id: any) => {
+  return [
+    'post-tab-item',
+    { active: currentTypeId && id === currentTypeId.value },
+  ];
 };
-const currentType:any = computed(() => store.getters['type/currentPostType']);
+const currentType: any = computed(() => store.getters['type/currentPostType']);
 const currentTypeId = computed(() => currentType.value && currentType.value.id);
 
 // 点击切换分类
-const onClickChangeType = (id: any) => {
+const onClickChangeType = (tab: any) => {
   // 根据当前id获取当前标签数据
-
-  store.commit('type/setCurrentPostType', id);
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', tab.name);
+  store.commit('type/setCurrentPostType', tab.id);
 
   // 获取当前分类的列表
-  store.dispatch('post/getPosts', {filter: {'typeId': id}})
-  router.replace({ params: { typeId: id } });
+  store.dispatch('post/getPosts', { filter: { typeId: tab.id } });
+  router.replace({ params: { typeId: tab.id } });
 };
 
 const onClickFirstType = () => {
   store.commit('type/setCurrentPostType', 0);
   store.commit('post/setQueryString', '');
-  store.commit('post/setNextPage',1);
+  store.commit('post/setNextPage', 1);
   store.dispatch('post/getPosts');
   router.replace({ params: { typeId: 0 } });
-}
+};
 </script>
 
 <template>
@@ -51,7 +55,7 @@ const onClickFirstType = () => {
       :class="postTabItemClasses(tab?.id)"
       v-for="tab in tabs"
       :key="tab?.id"
-      @click="onClickChangeType(tab?.id)"
+      @click="onClickChangeType(tab)"
     >
       <div class="post-tab-item-name">{{ tab?.name }}</div>
     </div>

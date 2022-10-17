@@ -45,13 +45,17 @@ export default defineComponent({
     });
 
     // 点击分类跳转至相关分类页面
-    const onClickJumpToType = (id: number) => {
-      router.push({ name: 'postCategory', params: { typeId: id } });
+    const onClickJumpToType = (type: any) => {
+      // 将博客标题存储到store中
+      store.commit('app/setTitle', type.name);
+      router.push({ name: 'postCategory', params: { typeId: type.id } });
     };
 
     // 点击标签跳转至相关标签页面
-    const onClickJumpToTag = (id: number) => {
-      router.push({ name: 'postTags', params: { tagId: id } });
+    const onClickJumpToTag = (tag: any) => {
+      // 将博客标题存储到store中
+      store.commit('app/setTitle', tag.name);
+      router.push({ name: 'postTags', params: { tagId: tag.id } });
     };
 
     watch(post, (val) => {
@@ -101,7 +105,7 @@ export default defineComponent({
             class="post-show-header-info-option-type"
             v-for="type in post.types"
             :key="type.id"
-            @click="onClickJumpToType(type.id)"
+            @click="onClickJumpToType(type)"
           >
             {{ type.name }}
           </div>
@@ -109,7 +113,7 @@ export default defineComponent({
             class="post-show-header-info-option-tag"
             v-for="tag in post.tags"
             :key="tag.id"
-            @click="onClickJumpToTag(tag.id)"
+            @click="onClickJumpToTag(tag)"
           >
             #{{ tag.name }}
           </div>

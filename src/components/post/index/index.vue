@@ -20,7 +20,9 @@ const props = defineProps({
 const router = useRouter();
 const store = useStore();
 
-const onClickJumpPost = (id: any) => {
+const onClickJumpPost = (id: any, title?: string) => {
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', title);
   router.push({ name: 'postShow', params: { postId: id } });
 };
 
@@ -69,7 +71,7 @@ const commentTipText = computed(() =>
         <div class="post-index-list-item-info">
           <div
             class="post-index-list-item-info-title"
-            @click.stop="onClickJumpPost(post?.id)"
+            @click.stop="onClickJumpPost(post?.id, post.title)"
           >
             {{ post.title }}
           </div>

@@ -47,9 +47,11 @@ watch(currentTagId, (newValue) => {
 });
 
 // 点击切换标签
-const onClickChangeTagId = (id: any) => {
+const onClickChangeTagId = (tag: any) => {
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', tag.name);
   // 根据当前id获取当前标签数据
-  store.commit('tag/setCurrentPostTag', id);
+  store.commit('tag/setCurrentPostTag', tag.id);
 };
 
 onMounted(() => {
@@ -72,7 +74,7 @@ onMounted(() => {
             :class="tagItemClasses(tag.id)"
             v-for="tag in tags"
             :key="tag.id"
-            @click.stop="onClickChangeTagId(tag.id)"
+            @click.stop="onClickChangeTagId(tag)"
           >
             <span class="app-tags-container-header-item-tip">#</span>
             {{ tag.name }}

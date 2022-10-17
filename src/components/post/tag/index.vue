@@ -11,15 +11,20 @@ const props = defineProps({
 });
 
 // 点击标签后，跳转到对应的标签页
-const onClickJumpToTagPage = (id: number) => {
-  // 当前分类
+const onClickJumpToTagPage = (id: number, title?: string) => {
+  // 当前标签
   store.commit('tag/setCurrentPostTag', id);
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', title);
   router.push({ name: 'postTags', params: { tagId: id } });
 };
 </script>
 
 <template>
-  <span class="post-tag" @click.stop="onClickJumpToTagPage(item?.id)">
+  <span
+    class="post-tag"
+    @click.stop="onClickJumpToTagPage(item?.id, item?.name)"
+  >
     <span class="post-tag-split">#</span>{{ item?.name }}
   </span>
 </template>

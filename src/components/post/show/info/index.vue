@@ -1,25 +1,11 @@
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useStore } from 'vuex';
+<script lang="ts" setup>
+import { defineProps } from 'vue';
+import { time } from '@/utils/time';
 
-export default defineComponent({
-  name: 'PostShowInfo',
-
-  props: {
-    post: {
-      type: Object,
-    },
+const props = defineProps({
+  post: {
+    type: Object,
   },
-
-  setup(props) {
-    const store = useStore();
-
-    return {
-      ...props,
-    };
-  },
-
-  components: {},
 });
 </script>
 
@@ -31,14 +17,14 @@ export default defineComponent({
       <i class="post-show-info-created-icon"></i>
       <span class="post-show-info-created-text"
         ><span class="post-show-info__mobile">发布日期：</span>
-        {{ post?.created }}</span
+        {{ time(post?.created) }}</span
       >
     </div>
     <div class="post-show-info-updated">
       <i class="post-show-info-updated-icon"></i>
       <span class="post-show-info-updated-text"
         ><span class="post-show-info__mobile">更新日期：</span>
-        {{ post?.updated }}</span
+        {{ time(post?.updated) }}</span
       >
     </div>
     <div class="post-show-info-word">
