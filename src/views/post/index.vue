@@ -67,6 +67,8 @@ export default defineComponent({
     // 挂载时置顶
     onMounted(() => {
       window.scrollTo({ top: 0 });
+      debugger;
+      store.commit('app/setLoading', true);
     });
 
     return {

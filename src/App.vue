@@ -4,6 +4,7 @@ import { useStore } from 'vuex';
 import AppSearch from '@/components/search/index.vue';
 import SidebarMenu from '@/components/sidebarMenu/index.vue';
 import { ElImageViewer } from 'element-plus';
+import AppLoading from '@/components/common/loading/index.vue';
 
 const store = useStore();
 
@@ -39,6 +40,7 @@ const handleCloseImageViewer = () => {
 <template>
   <div :class="['blog', theme]">
     <router-view />
+    <AppLoading />
     <AppSearch v-show="searchDialogStatus" />
     <SidebarMenu v-show="sidebarMenuStatus" />
     <ElImageViewer

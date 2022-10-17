@@ -199,12 +199,14 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const _error = error as any;
         commit('setLoading', false);
+        commit('app/setLoading', false, { root: true });
         throw _error.response;
       }
     },
 
     getPostsPreProcess({ commit, state }, options: GetPostsOptions) {
       commit('setLoading', true);
+      commit('app/setLoading', true, { root: true });
       commit('setFilter', options.filter);
 
       const { sort } = options;
@@ -229,6 +231,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       commit('setAllPosts', response.data);
       commit('setPosts', response.data);
       commit('setLoading', false);
+      commit('app/setLoading', false, { root: true });
 
       const total =
         response.headers['X-Total-Count'] || response.headers['x-total-count'];
@@ -244,10 +247,12 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     // 根据博客id获取博客
     async getPostById({ commit }, postId) {
       commit('setLoading', true);
+      commit('app/setLoading', true, { root: true });
 
       try {
         const response = await getPostByIdApi(postId);
         commit('setLoading', false);
+        commit('app/setLoading', false, { root: true });
         commit('setPost', response.data);
 
         return response;
@@ -256,7 +261,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
         const _error = error as any;
 
         commit('setLoading', false);
-
+        commit('app/setLoading', false, { root: true });
         throw _error.response;
       }
     },

@@ -3,6 +3,7 @@ import { RootState } from '../../index';
 
 export interface AppStoreState {
   title: string;
+  loading: boolean; // 请求加载
 }
 
 export const appStoreModule: Module<AppStoreState, RootState> = {
@@ -16,6 +17,7 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
    */
   state: {
     title: '',
+    loading: false,
   } as AppStoreState,
 
   /**
@@ -25,6 +27,9 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
     title(state) {
       return state.title;
     },
+    loading(state) {
+      return state.loading;
+    },
   },
 
   /**
@@ -33,6 +38,9 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
   mutations: {
     setTitle(state, data) {
       state.title = data;
+    },
+    setLoading(state, data) {
+      state.loading = data;
     },
   },
 

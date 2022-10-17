@@ -1,0 +1,35 @@
+.app-loading {
+  width: 100vw;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--mobile-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-container {
+    color: var(--mecci-font-color);
+    font-weight: 700;
+    color: 16px;
+  }
+
+  &-enter-active {
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  &-enter-to {
+    opacity: 1;
+  }
+
+  &-leave-active {
+    opacity: 1;
+    transition: 0.5s;
+  }
+
+  &-leave-to {
+    opacity: 0;
+  }
+}
