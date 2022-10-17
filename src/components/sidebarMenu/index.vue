@@ -67,10 +67,12 @@ const onClickJumpRouter = (routes: string, params?: string | number) => {
   switch (routes) {
     case 'postTags':
       handleClose();
+      store.commit('app/setTitle', '博客标签');
       router.push({ name: routes, params: { tagId: params } });
       break;
     case 'postCategory':
       handleClose();
+      store.commit('app/setTitle', '博客分类');
       router.push({ name: routes, params: { typeId: params } });
       break;
     case 'postArticle':

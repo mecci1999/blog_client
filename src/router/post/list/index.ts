@@ -9,6 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'postArticle',
     path: '/article',
     component: PostArticle,
+    meta: { title: '文章列表 | 云分享' },
   },
 ];
 

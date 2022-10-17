@@ -26,7 +26,9 @@ const onClickJumpPost = (id: any, title?: string) => {
   router.push({ name: 'postShow', params: { postId: id } });
 };
 
-const onClickChangeTag = (id: any) => {
+const onClickChangeTag = (id: any, title?: string) => {
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', title);
   // 当前标签
   router.push({ name: 'postTags', params: { tagId: id } });
 };
@@ -80,7 +82,7 @@ const commentTipText = computed(() =>
               class="post-index-list-item-info-tags-item"
               v-for="tag in post.tags"
               :key="tag?.id"
-              @click.stop="onClickChangeTag(tag?.id)"
+              @click.stop="onClickChangeTag(tag?.id, tag?.name)"
             >
               #<span class="post-index-list-item-info-tags-item-name">
                 {{ tag?.name }} </span
