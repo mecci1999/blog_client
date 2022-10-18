@@ -179,7 +179,6 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     // 获取
     async getPosts({ commit, dispatch, state }, options: GetPostsOptions = {}) {
       let getPostsQueryString = '';
-
       // 进行判断，参数是否为空对象时，做出相应的处理
       if (Object.keys(options).length) {
         getPostsQueryString = await dispatch('getPostsPreProcess', options);
@@ -188,12 +187,12 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       }
 
       const query = getPostsQueryString ? `&${getPostsQueryString}` : '';
-
+      commit('app/setLoading', true, { root: true });
       try {
         const response = await getPostsApi(state.nextPage, query);
 
         dispatch('getPostsPostProcess', response);
-
+        commit('app/setLoading', false, { root: true });
         return response;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -231,7 +230,6 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
       commit('setAllPosts', response.data);
       commit('setPosts', response.data);
       commit('setLoading', false);
-      commit('app/setLoading', false, { root: true });
 
       const total =
         response.headers['X-Total-Count'] || response.headers['x-total-count'];
@@ -248,13 +246,11 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
     async getPostById({ commit }, postId) {
       commit('setLoading', true);
       commit('app/setLoading', true, { root: true });
-
       try {
         const response = await getPostByIdApi(postId);
         commit('setLoading', false);
-        commit('app/setLoading', false, { root: true });
         commit('setPost', response.data);
-
+        commit('app/setLoading', false, { root: true });
         return response;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

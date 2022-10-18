@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useStore } from 'vuex';
 import AppSearch from '@/components/search/index.vue';
 import SidebarMenu from '@/components/sidebarMenu/index.vue';
@@ -9,6 +9,13 @@ import AppLoading from '@/components/common/loading/index.vue';
 const store = useStore();
 
 const theme = computed(() => store.getters['theme/theme']);
+
+// 加载页
+const loading = computed(() => store.getters['app/loading']);
+
+watch(loading, (val) => {
+  // console.log(val);
+});
 
 // 搜索弹窗
 const searchDialogStatus = computed(
@@ -40,7 +47,7 @@ const handleCloseImageViewer = () => {
 <template>
   <div :class="['blog', theme]">
     <router-view />
-    <AppLoading />
+    <AppLoading v-show="loading" />
     <AppSearch v-show="searchDialogStatus" />
     <SidebarMenu v-show="sidebarMenuStatus" />
     <ElImageViewer

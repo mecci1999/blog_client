@@ -42,7 +42,7 @@ declare module '@vue/runtime-core' {
     Input: typeof import('./src/components/common/form/input/index.vue')['default']
     Item: typeof import('./src/components/comment/list/item/index.vue')['default']
     List: typeof import('./src/components/comment/list/index.vue')['default']
-    Loading: typeof import('element-plus/es')['ElLoadingDirective']
+    Loading: typeof import('./src/components/common/loading/index.vue')['default']
     Main: typeof import('./src/components/layout/main/index.vue')['default']
     Menu: typeof import('./src/components/layout/menu/index.vue')['default']
     NavBar: typeof import('./src/components/navBar/index.vue')['default']
