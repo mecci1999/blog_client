@@ -38,7 +38,9 @@ const commentTipText = computed(() =>
         class="post-list-bottom-tip"
         v-if="posts?.length && posts?.length <= 12"
       >
-        <span class="post-list-bottom-tip-text">{{ commentTipText }}</span>
+        <span class="post-list-bottom-tip-text" v-if="posts.length !== 12">{{
+          commentTipText
+        }}</span>
       </div>
       <AppPagination :currentPage="currentPage" :totalPages="totalPages" />
     </div>
