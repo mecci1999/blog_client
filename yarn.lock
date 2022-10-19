@@ -22,11 +22,6 @@
   resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-2.0.5.tgz#8eb4143a7b5e4d8468d2e72af99eefee446f5ea0"
   integrity sha512-jvNWyKcdvPvMDLTWjghrPY+bYHKqh7hbAFIPe+HWR073zilzt33csREzmKx3VwhdlJUW5u0nCqN+0rwI8jlH+w==
 
-"@fancyapps/ui@^4.0.31":
-  version "4.0.31"
-  resolved "https://registry.yarnpkg.com/@fancyapps/ui/-/ui-4.0.31.tgz#cf187b0ffe41ec1f44fd2ba2c2237f5cf7914619"
-  integrity sha512-D7+PMIloxSOFJyY+lXcNlVDhmssOmDT6PT5fqQUIiws2hT7PH29r0EKZxERmACSQpm6qrFkP7rSguzXWvRJduQ==
-
 "@floating-ui/core@^0.7.3":
   version "0.7.3"
   resolved "https://registry.npmmirror.com/@floating-ui/core/-/core-0.7.3.tgz#d274116678ffae87f6b60e90f88cc4083eefab86"

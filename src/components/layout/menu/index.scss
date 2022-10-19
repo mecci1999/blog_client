@@ -10,6 +10,27 @@
 
     .el-menu {
       height: 100%;
+
+      &-item {
+        padding: 0;
+        &-group {
+          padding: 0;
+          &::before {
+          display: none;
+        }
+        }
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    .el-sub-menu {
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
     }
 
     &-title {
