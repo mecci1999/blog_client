@@ -1,6 +1,7 @@
 .app-home {
   width: 100%;
   height: 100%;
+  background-color: var(--mobile-background);
 
   .bg {
     width: 100%;
@@ -91,7 +92,7 @@
   .app-main {
     width: 100%;
     padding: 1rem 1.5rem;
-    background-color: var(--primary-background);
+    background-color: var(--mobile-background);
     display: flex;
     align-items: center;
     justify-content: center;

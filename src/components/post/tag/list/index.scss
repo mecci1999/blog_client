@@ -1,6 +1,7 @@
 .tags-list {
   width: 100%;
-  box-shadow: var(--primary-background-shadow);
+  box-shadow: var(--mecci-shadow);
+  border: 1px solid var(--line-color);
   border-radius: 8px;
   padding: 20px 24px;
   margin-top: 16px;

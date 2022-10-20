@@ -1,7 +1,8 @@
 .user-info {
   width: 100%;
   height: 360px;
-  box-shadow: var(--primary-background-shadow);
+  box-shadow: var(--mecci-shadow);
+  border: 1px solid var(--line-color);
   border-radius: 8px;
   padding: 20px 24px;
   display: flex;

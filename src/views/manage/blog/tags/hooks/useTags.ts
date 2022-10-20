@@ -78,7 +78,7 @@ export const useTags = () => {
     try {
       await deleteTagsApi(id);
       await getTagsData();
-      ElMessage.success('删除分类成功');
+      ElMessage.success('删除标签成功');
     } catch (error: any) {
       console.log(error);
       ElMessage.error(error.response.data.message);
@@ -96,7 +96,7 @@ export const useTags = () => {
       // 发送请求,更新分类
       try {
         await updateTagsData(id, inputValue.value);
-        ElMessage.success('更新分类成功');
+        ElMessage.success('更新标签成功');
       } catch (error: any) {
         console.log(error);
         ElMessage.error(error.response.data.message);
@@ -116,7 +116,7 @@ export const useTags = () => {
     try {
       await deleteTagsApi(id);
       await getTagsData();
-      ElMessage.success('删除分类成功');
+      ElMessage.success('删除标签成功');
     } catch (error: any) {
       console.log(error);
       ElMessage.error(error.response.data.message);

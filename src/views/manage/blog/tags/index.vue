@@ -93,11 +93,11 @@ const handleInputConfirm = async () => {
     // 新增分类
     try {
       await createTagsApi({ name: inputValue.value });
-      ElMessage.success('新增分类成功');
+      ElMessage.success('新增标签成功');
       await getTagsData();
     } catch (error) {
       console.log(error);
-      ElMessage.error('新增分类失败');
+      ElMessage.error('新增标签失败');
     }
     inputVisible.value = false;
     clearInputValue();

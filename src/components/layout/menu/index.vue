@@ -49,6 +49,27 @@
             </el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
+        <el-sub-menu index="/manage/operation">
+          <template #title>
+            <el-icon :size="18"><Reading /></el-icon>
+            <span class="app-menu__main-title">运营管理</span>
+          </template>
+          <el-menu-item-group>
+            <template #title><span>运营管理</span></template>
+            <el-menu-item index="/manage/operation/announce">
+              <el-icon :size="16"><List /></el-icon>
+              <span class="app-menu__main-2rdTitle">网站公告</span>
+            </el-menu-item>
+            <el-menu-item index="/manage/operation/updateLog">
+              <el-icon :size="16"><DocumentAdd /></el-icon>
+              <span class="app-menu__main-2rdTitle">更新日志</span>
+            </el-menu-item>
+            <el-menu-item index="/manage/operation/rewardList">
+              <el-icon :size="16"><CollectionTag /></el-icon>
+              <span class="app-menu__main-2rdTitle">好心人名单</span>
+            </el-menu-item>
+          </el-menu-item-group>
+        </el-sub-menu>
         <el-menu-item index="/manage/account">
           <el-icon :size="18"><User /></el-icon>
           <template #title>

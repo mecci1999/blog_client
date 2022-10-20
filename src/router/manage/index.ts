@@ -7,6 +7,10 @@ import AppManagementBlogTags from '@/views/manage/blog/tags/index.vue';
 import AppManagementImageCommon from '@/views/manage/image/common/index.vue';
 import AppManagementImageAvatar from '@/views/manage/image/avatar/index.vue';
 import AppManagementComment from '@/views/manage/comment/index.vue';
+import AppManagementOperationAnnounce from '@/views/manage/operation/announce/index.vue';
+import AppManagementOperationUpdateLog from '@/views/manage/operation/updateLog/index.vue';
+import AppManagementOperationRewardList from '@/views/manage/operation/rewardList/index.vue';
+import AppManagementAccount from '@/views/manage/account/index.vue';
 
 /**
  * 定义路由
@@ -84,6 +88,42 @@ const routes: Array<RouteRecordRaw> = [
         component: AppManagementComment,
         meta: {
           title: '评论管理 | 云分享后台',
+          requireAuth: true,
+        },
+      },
+      {
+        name: 'manage.account',
+        path: '/manage/account',
+        component: AppManagementAccount,
+        meta: {
+          title: '评论管理 | 云分享后台',
+          requireAuth: true,
+        },
+      },
+      {
+        name: 'manage.operation.announce',
+        path: '/manage/operation/announce',
+        component: AppManagementOperationAnnounce,
+        meta: {
+          title: '网站公告 | 云分享后台',
+          requireAuth: true,
+        },
+      },
+      {
+        name: 'manage.operation.updateLog',
+        path: '/manage/operation/updateLog',
+        component: AppManagementOperationUpdateLog,
+        meta: {
+          title: '更新日志 | 云分享后台',
+          requireAuth: true,
+        },
+      },
+      {
+        name: 'manage.operation.rewardList',
+        path: '/manage/operation/rewardList',
+        component: AppManagementOperationRewardList,
+        meta: {
+          title: '好心人名单 | 云分享后台',
           requireAuth: true,
         },
       },
