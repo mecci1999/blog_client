@@ -64,7 +64,7 @@ const openSideMenu = () => {
         <AppIcon :name="themeIcon" size="20" />
         <span class="nav-menu-list-item-name">主题</span>
       </div>
-      <div :class="['nav-menu-list-item', 'menu']" @click="openSideMenu">
+      <div :class="['nav-menu-list-item', 'menu']" @click.stop="openSideMenu">
         <AppIcon name="menu" size="20" />
       </div>
     </div>

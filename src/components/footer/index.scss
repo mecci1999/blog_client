@@ -47,6 +47,8 @@
     &-cc {
       display: flex;
       margin-top: 16px;
+      justify-content: center;
+      align-items: center;
     }
 
     &-copyright {
@@ -97,6 +99,10 @@
         }
 
         &__banner {
+          justify-content: flex-start;
+        }
+
+        &-cc {
           justify-content: flex-start;
         }
       }
