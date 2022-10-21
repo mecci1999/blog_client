@@ -1,5 +1,7 @@
 <template>
-  <div class="app-management__announce">网站公告</div>
+  <div class="app-management__announce">
+    <div class="app-management__announce-main"></div>
+  </div>
 </template>
 
 <script lang="ts" setup>

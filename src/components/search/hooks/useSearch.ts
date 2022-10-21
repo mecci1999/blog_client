@@ -26,8 +26,7 @@ export const useSearch = () => {
 
   // 挂载时获取历史记录
   onMounted(() => {
-    const list = JSON.parse(localStorage.getItem('history') || '');
-
+    const list = JSON.parse(`${localStorage.getItem('history')}`);
     if (list) {
       historyList.value = list;
     }

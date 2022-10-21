@@ -6,7 +6,6 @@ import PostTag from '@/components/post/tag/index.vue';
 import { postType } from '@/api/test';
 import { Picture } from '@element-plus/icons-vue';
 import { time } from '@/utils/time';
-import { setSessionStroage } from '@/utils/localStorage';
 
 // 属性
 const props = defineProps({

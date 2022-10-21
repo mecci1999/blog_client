@@ -29,11 +29,11 @@ export const authGuard = (
       ElMessage.error('抱歉，您没有权限访问！');
 
       // 跳转到登录页面
-      next({ name: 'home' });
+      return next({ name: 'home' });
     }
 
     // 下一步
-    next();
+    return next();
   }
 
   // 下一步

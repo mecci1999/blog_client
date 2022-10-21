@@ -1,36 +1,45 @@
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
-  import TextField from '@/components/common/form/input/index.vue'
-  import ButtonField from '@/components/common/form/button/index.vue'
-  import { loginApi } from '@/api/index'
-  import { useStore } from 'vuex'
-  import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue';
+import TextField from '@/components/common/form/input/index.vue';
+import ButtonField from '@/components/common/form/button/index.vue';
+import { loginApi } from '@/api/index';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { setSessionStroage } from '@/utils/localStorage';
 
-  const store = useStore()
-  const router = useRouter()
+const store = useStore();
+const router = useRouter();
 
-  const name = ref('')
-  const password = ref('')
-  const isLoggedIn = computed(() => store.getters['login/isLoggedIn'])
+const name = ref('');
+const password = ref('');
+const isLoggedIn = computed(() => store.getters['login/isLoggedIn']);
 
-  // 登录
-  const onClickLoginButton = async () => {
-    try {
-      const res = await loginApi({
-        name: name.value,
-        password: password.value
-      })
-      store.commit('login/setToken', res.data.token)
-      store.dispatch('login/configApiHttpClientAuthHeader', res.data.token, {root: true})
-      if(isLoggedIn) {
-        router.replace({name: 'manage'})
-      }
-    } catch (error) {
-      console.log(error);
+// 登录
+const onClickLoginButton = async () => {
+  try {
+    const res = await loginApi({
+      name: name.value,
+      password: password.value,
+    });
+    // 将token存入store中
+    store.commit('login/setToken', res.data.token);
+    // 将token存入session中
+    setSessionStroage('token', res.data.token);
+    // 将token添加到请求体头部中
+    store.dispatch('login/configApiHttpClientAuthHeader', res.data.token, {
+      root: true,
+    });
+    if (isLoggedIn) {
+      router.replace({ name: 'manage' });
     }
+  } catch (error) {
+    console.log(error);
   }
+};
 
-  const loginButtonType = computed(() => name.value && password.value ? '' : 'outline')
+const loginButtonType = computed(() =>
+  name.value && password.value ? '' : 'outline',
+);
 </script>
 
 <template>

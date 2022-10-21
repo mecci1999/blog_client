@@ -1,0 +1,16 @@
+.app-management__announce {
+  width: 100%;
+  position: relative;
+  // overflow-x: hidden;
+  background-color: var(--primary-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &-main {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    flex: 1;
+  }
+}

@@ -51,21 +51,21 @@
         </el-sub-menu>
         <el-sub-menu index="/manage/operation">
           <template #title>
-            <el-icon :size="18"><Reading /></el-icon>
+            <el-icon :size="18"><DataLine /></el-icon>
             <span class="app-menu__main-title">运营管理</span>
           </template>
           <el-menu-item-group>
             <template #title><span>运营管理</span></template>
             <el-menu-item index="/manage/operation/announce">
-              <el-icon :size="16"><List /></el-icon>
+              <el-icon :size="16"><Notification /></el-icon>
               <span class="app-menu__main-2rdTitle">网站公告</span>
             </el-menu-item>
             <el-menu-item index="/manage/operation/updateLog">
-              <el-icon :size="16"><DocumentAdd /></el-icon>
+              <el-icon :size="16"><ChatLineSquare /></el-icon>
               <span class="app-menu__main-2rdTitle">更新日志</span>
             </el-menu-item>
             <el-menu-item index="/manage/operation/rewardList">
-              <el-icon :size="16"><CollectionTag /></el-icon>
+              <el-icon :size="16"><Money /></el-icon>
               <span class="app-menu__main-2rdTitle">好心人名单</span>
             </el-menu-item>
           </el-menu-item-group>
@@ -109,6 +109,7 @@ import {
   List,
   DocumentAdd,
   DataAnalysis,
+  DataLine,
   User,
   ChatDotRound,
   Picture,
@@ -116,6 +117,9 @@ import {
   Avatar,
   PriceTag,
   CollectionTag,
+  Money,
+  ChatLineSquare,
+  Notification,
 } from '@element-plus/icons-vue';
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';

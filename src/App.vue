@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed, watch } from 'vue';
+import { computed, watch, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import AppSearch from '@/components/search/index.vue';
 import SidebarMenu from '@/components/sidebarMenu/index.vue';
 import { ElImageViewer } from 'element-plus';
 import AppLoading from '@/components/common/loading/index.vue';
+import { getSessionStroage } from '@/utils/localStorage';
 
 const store = useStore();
 
@@ -42,6 +43,19 @@ const currentImageIndex = computed(
 const handleCloseImageViewer = () => {
   store.commit('sidebar/closeImageViewer');
 };
+
+// 挂载时
+onMounted(() => {
+  // 如果session中有token
+  const token = getSessionStroage('token');
+  if (token) {
+    store.commit('login/setToken', token);
+    // 将token添加到请求体头部中
+    store.dispatch('login/configApiHttpClientAuthHeader', token, {
+      root: true,
+    });
+  }
+});
 </script>
 
 <template>

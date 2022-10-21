@@ -20,13 +20,13 @@ const {
   onClickHistoryItem,
 } = useSearch();
 
-const onClickCloseSearchDialog = () =>
-  store.commit('search/changeSearchDialogStatus');
+const onClickCloseSearchDialog = async () =>
+  await store.commit('search/closeSearchDialog');
 
 // 点击搜索内容跳转到对应博客
-const onClickJumpToPost = (id: number) => {
+const onClickJumpToPost = async (id: number) => {
   jumpToDetail(id);
-  store.commit('search/changeSearchDialogStatus');
+  await store.commit('search/closeSearchDialog');
 };
 </script>
 
@@ -60,7 +60,7 @@ const onClickJumpToPost = (id: number) => {
         >
           <div
             class="app-search-dialog-search-result-hits-item"
-            v-for="item in resultList"
+            v-for="item in (resultList as any)"
             :key="item.postId"
             @click="onClickJumpToPost(item.postId)"
           >

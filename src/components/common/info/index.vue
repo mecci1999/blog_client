@@ -1,9 +1,6 @@
 <script lang="ts" setup>
-import {
-  dateTransferShow,
-  getAppDays,
-  getCurrentDays,
-} from '@/utils/getAppDays';
+import { getAppDays, getCurrentDays } from '@/utils/getAppDays';
+import { time } from '@/utils/time';
 
 const props = defineProps({
   item: {
@@ -11,11 +8,9 @@ const props = defineProps({
   },
 });
 
-const time = getCurrentDays();
+const day = getCurrentDays();
 
-const days = Math.floor(getAppDays(time));
-
-const updateTime = dateTransferShow(props.item?.updateTime);
+const days = Math.floor(getAppDays(day));
 </script>
 
 <template>
@@ -39,7 +34,7 @@ const updateTime = dateTransferShow(props.item?.updateTime);
     </div>
     <div class="app-info-post">
       <div class="app-info-post-title">上次更新时间：</div>
-      <div class="app-info-post-amount">{{ updateTime }}</div>
+      <div class="app-info-post-amount">{{ time(item?.updateTime) }}</div>
     </div>
     <div class="app-info-day"></div>
   </div>

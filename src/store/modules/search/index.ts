@@ -22,17 +22,19 @@ export const searchStoreModule: Module<SearchStoreState, RootState> = {
    * 获取器
    */
   getters: {
-    searchDialogStatus(state) {
-      return state.searchDialogStatus;
-    },
+    searchDialogStatus: (state) => state.searchDialogStatus,
   },
 
   /**
    * 修改器
    */
   mutations: {
-    changeSearchDialogStatus(state) {
-      state.searchDialogStatus = !state.searchDialogStatus;
+    openSearchDialog: async (state) => {
+      state.searchDialogStatus = true;
+    },
+
+    closeSearchDialog: async (state) => {
+      state.searchDialogStatus = false;
     },
   },
 

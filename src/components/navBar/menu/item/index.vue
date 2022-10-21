@@ -43,10 +43,7 @@ export default defineComponent({
           break;
         case 'search':
           // 打开和关闭搜索框
-          const searchDialogStatus = computed(
-            () => store.getters['search/searchDialogStatus'],
-          );
-          store.commit('search/changeSearchDialogStatus');
+          store.commit('search/openSearchDialog');
           break;
       }
     };
