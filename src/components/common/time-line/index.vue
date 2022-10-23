@@ -1,14 +1,28 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import { computed, defineProps, onMounted } from 'vue';
 import { TimeLineDataType } from '@/types/interface';
 
 const props = defineProps({
   items: {
     type: Array<TimeLineDataType>,
   },
+
+  updatelog: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const isArray = (item:any):boolean => Array.isArray(item);
+const isArray = (item: any): boolean => Array.isArray(item);
+
+onMounted(() => {
+  if (props.updatelog) {
+    props.items?.forEach((item: any) => {
+      item.content = item.content?.split('|');
+      return item;
+    });
+  }
+});
 </script>
 
 <template>

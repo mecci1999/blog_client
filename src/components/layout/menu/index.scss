@@ -12,12 +12,13 @@
       height: 100%;
 
       &-item {
+        display: flex;
         padding: 0;
         &-group {
           padding: 0;
           &::before {
-          display: none;
-        }
+            display: none;
+          }
         }
         &::before {
           display: none;

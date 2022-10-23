@@ -28,7 +28,7 @@
         @handleDelete="handleDelete"
       />
     </div>
-    <div class="app-management__blog-list__pagination">
+    <div class="app-management__blog-list__pagination" v-if="list.length > 0">
       <el-pagination
         v-model:currentPage="pageIndex"
         layout="prev, pager, next, total"
@@ -37,6 +37,7 @@
         @current-change="handleCurrentChange"
       />
     </div>
+    <el-empty v-else description="暂无内容" />
   </div>
 </template>
 

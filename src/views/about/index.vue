@@ -117,7 +117,7 @@ onMounted(async () => {
         </div>
         <div class="app-about-container-log" v-if="updateLogList.length >= 1">
           <div class="app-about-tip">更新日志</div>
-          <TimeLine :items="updateLogList" />
+          <TimeLine :items="updateLogList" :updatelog="true" />
         </div>
         <!-- <div class="app-about-container-">
 

@@ -2,21 +2,19 @@
   width: 100%;
   height: 13em;
   display: flex;
-  box-shadow: var(--primary-background-shadow);
-  border-radius: 8px;
+  box-shadow: var(--mecci-shadow);
+  border-radius: 12px;
+  border: 1px solid var(--line-color);
   margin-bottom: 16px;
   cursor: pointer;
   overflow: hidden;
   position: relative;
 
   &:hover {
-    box-shadow: var(--secondary-background-shadow);
-    // border: 1px solid var(--primary-text-hover-color);
-
     .post-list-item-media {
-      transform: scale(1.05);
+      // transform: scale(1.05);
       transition: all 0.5s ease-in-out;
-      filter: brightness(0.85);
+      filter: brightness(0.6);
       overflow: hidden;
     }
 
@@ -257,7 +255,7 @@
 
       &:hover {
         .post-list-item-media {
-          transform: scale(1.03);
+          // transform: scale(1.03);
           transition: all 1s ease-in-out;
         }
 

@@ -1,6 +1,9 @@
 <template>
   <div class="app-management__image-common">
-    <div class="app-management__image-common__list">
+    <div
+      class="app-management__image-common__list"
+      v-if="imagesList.length > 0"
+    >
       <div
         class="app-management__image-common__list-item"
         v-for="(item, index) in imagesList"
@@ -20,6 +23,7 @@
         </div>
       </div>
     </div>
+    <el-empty v-else description="暂无内容" />
   </div>
 </template>
 

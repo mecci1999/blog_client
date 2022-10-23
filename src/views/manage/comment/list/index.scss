@@ -6,7 +6,8 @@
     width: 250px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--line-color);
+    box-shadow: var(--mecci-shadow);
     margin: 8px 10px;
     border-radius: 8px;
     padding: 16px;

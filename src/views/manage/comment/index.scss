@@ -13,6 +13,12 @@
       justify-content: flex-end;
     }
 
+    li {
+      &::before {
+        display: none;
+      }
+    }
+
     margin: 16px 0;
   }
 }

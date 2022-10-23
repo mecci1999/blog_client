@@ -67,7 +67,7 @@
               @visible-change="getTypesList"
             >
               <el-option
-                v-for="item in typesList"
+                v-for="item in (typesList as any)"
                 :key="item?.id"
                 :label="item?.name"
                 :value="item?.name"
@@ -86,7 +86,7 @@
               @visible-change="getTagsList"
             >
               <el-option
-                v-for="item in tagsList"
+                v-for="item in (tagsList as any)"
                 :key="item?.id"
                 :label="item?.name"
                 :value="item?.name"

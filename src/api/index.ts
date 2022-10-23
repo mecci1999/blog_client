@@ -226,25 +226,43 @@ export const addRewardApi = async (data: any) =>
   await apiHttpClient.post(`/reward/add`, data);
 
 /**
- * 获取捐赠者名单
+ * 删除网站公告
+ */
+export const deleteRewardApi = async (id: number) =>
+  await apiHttpClient.delete(`/reward/${id}`);
+
+/**
+ * 获取网站公告
  */
 export const getAnnounceListApi = async () =>
   await apiHttpClient.get(`/announce`);
 
 /**
- * 创建捐赠者
+ * 创建网站公告
  */
 export const addAnnounceApi = async (data: any) =>
   await apiHttpClient.post(`/announce/add`, data);
 
 /**
- * 获取捐赠者名单
+ * 删除网站公告
+ */
+export const deleteAnnounceApi = async (id: number) =>
+  await apiHttpClient.delete(`/announce/${id}`);
+
+/**
+ * 获取更新日志
  */
 export const getUpdateLogListApi = async () =>
   await apiHttpClient.get(`/updateLog`);
 
 /**
- * 创建捐赠者
+ * 创建更新日志
  */
 export const addUpdateLogApi = async (data: any) =>
   await apiHttpClient.post(`/updateLog/add`, data);
+
+/**
+ * 删除网站公告
+ */
+export const deleteUpdateLogApi = async (id: number) =>
+  await apiHttpClient.delete(`/updateLog/${id}`);
