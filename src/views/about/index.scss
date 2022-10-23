@@ -317,6 +317,92 @@
         }
       }
     }
+
+    &-data {
+      width: 100%;
+      min-height: 400px;
+      background-color: var(--mecci-card-background);
+      background-image: url('@/assets/image/data.jpeg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: var(--mecci-shadow);
+      color: #fff;
+      border-radius: 24px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      display: none;
+      position: relative;
+
+      &__container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      & .app-about-tip {
+        color: #fff;
+        opacity: 0.8;
+      }
+
+      &-title {
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      &__main {
+        font-size: 16px;
+        border-radius: 15px;
+        width: 100%;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        // margin-bottom: 2rem;
+
+        &-item {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          width: 50%;
+          margin-bottom: 0.5rem;
+
+          &-title {
+            opacity: 0.8;
+            font-size: 0.6rem;
+          }
+
+          &-amount {
+            font-weight: 700;
+            font-size: 34px;
+            line-height: 1;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      &::after {
+        box-shadow: 0 -159px 173px 71px #0f1114 inset;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 24px;
+      }
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -364,6 +450,10 @@
           &-item {
             width: 100%;
           }
+        }
+
+        &-data {
+          display: block;
         }
       }
     }

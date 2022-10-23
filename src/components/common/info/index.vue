@@ -25,8 +25,12 @@ const days = Math.floor(getAppDays(day));
       <div class="app-info-post-amount">{{ days }}天</div>
     </div>
     <div class="app-info-post">
-      <div class="app-info-post-title">总字数：</div>
+      <div class="app-info-post-title">文章总字数：</div>
       <div class="app-info-post-amount">{{ item?.wordAmount }}</div>
+    </div>
+    <div class="app-info-post">
+      <div class="app-info-post-title">今日访问量：</div>
+      <div class="app-info-post-amount">{{ item?.todayAccessAmount }}次</div>
     </div>
     <div class="app-info-post">
       <div class="app-info-post-title">总访问量：</div>

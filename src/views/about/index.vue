@@ -9,6 +9,8 @@ import {
   getUpdateLogListApi,
 } from '@/api/index';
 import TimeLine from '@/components/common/time-line/index.vue';
+import { getAppDays, getCurrentDays } from '@/utils/getAppDays';
+import { time } from '@/utils/time';
 
 const store = useStore();
 // 获取用户信息
@@ -31,6 +33,13 @@ const announceList = ref([]) as any;
 
 // 更新日志
 const updateLogList = ref([]) as any;
+
+// 更新日志
+const data = computed(() => store.getters['dashboard/appInfo']);
+
+const day = getCurrentDays();
+
+const days = Math.floor(getAppDays(day));
 
 // 捐赠者名单更新时间
 const updateDate = computed(() => rewardList.value[0].date);
@@ -119,9 +128,6 @@ onMounted(async () => {
           <div class="app-about-tip">更新日志</div>
           <TimeLine :items="updateLogList" :updatelog="true" />
         </div>
-        <!-- <div class="app-about-container-">
-
-        </div> -->
         <div class="app-about-container-adward" v-if="rewardList.length >= 1">
           <div class="app-about-tip">致谢</div>
           <span class="app-about-container-adward-title">好心人名单</span>
@@ -148,9 +154,65 @@ onMounted(async () => {
                   {{ item.amount }}
                 </div>
                 <div class="app-about-container-adward-list-item__bottom-time">
-                  {{ item?.date }}
+                  {{ time(item?.date) }}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-about-container-data">
+          <div class="app-about-container-data__container">
+            <div class="app-about-tip">数据</div>
+            <span class="app-about-container-data-title">网站数据</span>
+            <div class="app-about-container-data__main">
+              <div class="app-about-container-data__main-item">
+                <span class="app-about-container-data__main-item-title"
+                  >文章总数</span
+                >
+                <span class="app-about-container-data__main-item-amount">{{
+                  data?.postAmount
+                }}</span>
+              </div>
+              <div class="app-about-container-data__main-item">
+                <span class="app-about-container-data__main-item-title"
+                  >文章总字数</span
+                >
+                <span class="app-about-container-data__main-item-amount">{{
+                  data?.wordAmount
+                }}</span>
+              </div>
+              <div class="app-about-container-data__main-item">
+                <span class="app-about-container-data__main-item-title"
+                  >今日访问量</span
+                >
+                <span class="app-about-container-data__main-item-amount">{{
+                  data?.todayAccessAmount
+                }}</span>
+              </div>
+              <div class="app-about-container-data__main-item">
+                <span class="app-about-container-data__main-item-title"
+                  >总访问量</span
+                >
+                <span class="app-about-container-data__main-item-amount">{{
+                  data?.accessAmount
+                }}</span>
+              </div>
+              <div class="app-about-container-data__main-item">
+                <span class="app-about-container-data__main-item-title"
+                  >建站天数</span
+                >
+                <span class="app-about-container-data__main-item-amount">{{
+                  days
+                }}</span>
+              </div>
+            </div>
+            <div class="app-about-container-data__main-item">
+              <span class="app-about-container-data__main-item-title"
+                >上次更新时间</span
+              >
+              <span class="app-about-container-data__main-item-amount">{{
+                time(data?.updateTime)
+              }}</span>
             </div>
           </div>
         </div>
