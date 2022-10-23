@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     Button: typeof import('./src/components/common/form/button/index.vue')['default']
     Comment: typeof import('./src/components/comment/index.vue')['default']
     Content: typeof import('./src/components/post/show/content/index.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
