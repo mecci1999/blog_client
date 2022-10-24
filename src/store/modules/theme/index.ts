@@ -29,7 +29,7 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
     },
 
     themeIcon(state) {
-      return state.theme === 'dark' ? 'brightness_2' : 'wb_sunny';
+      return state.theme === 'dark' ? 'wb_sunny' : 'brightness_2';
     },
   },
 

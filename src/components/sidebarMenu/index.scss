@@ -18,6 +18,10 @@
   }
 
   &-main {
+    & > .user-info {
+      background-color: var(--mobile-background);
+    }
+
     .menus {
       padding: 0 0.5rem 2rem;
       margin-top: 16px;

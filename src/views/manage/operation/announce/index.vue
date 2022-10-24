@@ -23,11 +23,6 @@
             background
             @current-change="handleCurrentChange"
           />
-           <el-carousel height="150px" :interval=5000 indicator-position="none" arrow="never">
-              <el-carousel-item v-for="item in ['12312','3332133','1413243','6786']" :key="item">
-                <h3 class="small justify-center" text="2xl">{{ item }}</h3>
-              </el-carousel-item>
-          </el-carousel>
         </div> -->
         </el-tab-pane>
         <el-tab-pane label="发布" name="publish">
