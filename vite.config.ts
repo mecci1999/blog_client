@@ -7,15 +7,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 // https://vitejs.dev/config/
 export default (mode) => {
   return defineConfig({
-    pwa: {
-      iconPaths: {
-        favicon32: 'favicon.ico',
-        favicon16: 'favicon.ico',
-        appleTouchIcon: 'favicon.ico',
-        maskIcon: 'favicon.ico',
-        msTileImage: 'favicon.ico',
-      },
-    },
     plugins: [
       vue(),
       AutoImport({
@@ -25,6 +16,7 @@ export default (mode) => {
         resolvers: [ElementPlusResolver()],
       }),
     ],
+    base: './',
     resolve: {
       alias: {
         '@': '/src',

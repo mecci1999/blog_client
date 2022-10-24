@@ -20,7 +20,7 @@
     <div class="app-management__blog-tags__list">
       <div
         class="app-management__blog-tags__list-item"
-        v-for="(item, index) in processList"
+        v-for="(item, index) in (processList as any)"
         :key="item.id"
       >
         <el-tag
@@ -77,8 +77,8 @@ const {
   onInputClear,
 } = useTags();
 
-const InputRef = ref(null);
-const InputRefList = ref(null);
+const InputRef = ref(null) as any;
+const InputRefList = ref(null) as any;
 const inputVisible = ref(false);
 
 const showInput = () => {

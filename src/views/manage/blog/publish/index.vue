@@ -236,16 +236,16 @@ const rules = reactive<FormRules>({
 const token = computed(() => store.getters['login/token']);
 
 // 上传正文的url
-const uploadContentUrl = `http://localhost:3000/getHtml`;
+const uploadContentUrl = `${API_BASE_URL()}/getHtml`;
 
 // 上传封面的url
 const uploadBgImgUrl = computed(
-  () => `http://localhost:3000/posts/${postId.value}/bgImg`,
+  () => `${API_BASE_URL()}/posts/${postId.value}/bgImg`,
 );
 
 // 上传博客相关的图片url
 const uploadImagesUrl = computed(
-  () => `http://localhost:3000/images/upload?post=${postId.value}`,
+  () => `${API_BASE_URL()}/images/upload?post=${postId.value}`,
 );
 
 // 请求头部

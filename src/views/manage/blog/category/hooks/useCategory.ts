@@ -9,7 +9,7 @@ export const useCategoryData = () => {
   const categoryList = ref([]);
 
   // 处理后的分类列表
-  const processList = ref([]);
+  const processList = ref([]) as any;
 
   watch(
     () => categoryList.value,

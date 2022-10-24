@@ -1,6 +1,7 @@
 import { ref, onMounted } from 'vue';
 import { ElMessage, UploadProps, UploadUserFile } from 'element-plus';
 import { getImageCommonList } from '@/api';
+import { API_BASE_URL } from '@/config';
 
 export const useImageCommon = () => {
   // 图片列表
@@ -30,7 +31,7 @@ export const useImageCommon = () => {
         imagesList.value = list.map((item: any) => {
           return {
             name: item.originalname,
-            url: `http://localhost:3000/images/serve?name=${item.originalname}`,
+            url: `${API_BASE_URL()}/images/serve?name=${item.originalname}`,
           };
         });
       },
