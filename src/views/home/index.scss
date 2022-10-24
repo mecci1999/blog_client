@@ -146,6 +146,23 @@
       }
     }
   }
+
+  @media screen and (max-width: 1024px) {
+     
+
+      .app-main {
+
+        &-container {
+          &-left {
+            width: 30%;
+          }
+
+          &-right {
+            width: 70%;
+          }
+        }
+      }
+  }
 }
 
 @keyframes movement {

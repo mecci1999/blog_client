@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { computed, defineProps } from 'vue';
-import AppIcon from '../../../components/common/app-icon/index.vue';
 import { ElTooltip } from 'element-plus';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
@@ -13,6 +12,8 @@ const props = defineProps({
 
 const router = useRouter();
 const store = useStore();
+
+const theme = computed(() => store.getters['theme/theme']);
 
 const userAvatarSource = computed(() => {
   let avatarSource;
@@ -79,7 +80,9 @@ const handleJumpToTag = () => {
           class="user-info-other-github"
           target="_blank"
         >
-          <i class="user-info-other-github-icon"></i>
+          <i
+            :class="['user-info-other-github-icon', { dark: theme === 'dark' }]"
+          ></i>
         </a>
       </el-tooltip>
       <el-tooltip effect="dark" placement="top" content="QQ: 664751829">
@@ -88,7 +91,9 @@ const handleJumpToTag = () => {
           class="user-info-other-qq"
           target="_blank"
         >
-          <i class="user-info-other-qq-icon"></i>
+          <i
+            :class="['user-info-other-qq-icon', { dark: theme === 'dark' }]"
+          ></i>
         </a>
       </el-tooltip>
       <el-tooltip effect="dark" placement="top" content="微信号: mecci1999">
@@ -97,7 +102,9 @@ const handleJumpToTag = () => {
           class="user-info-other-wechat"
           target="_blank"
         >
-          <i class="user-info-other-wechat-icon"></i>
+          <i
+            :class="['user-info-other-wechat-icon', { dark: theme === 'dark' }]"
+          ></i>
         </a>
       </el-tooltip>
       <el-tooltip
@@ -106,7 +113,9 @@ const handleJumpToTag = () => {
         content="邮箱地址: mecci1999@163.com"
       >
         <div class="user-info-other-email" title="email">
-          <AppIcon name="email" size="32" color="var(--secondary-text-color)" />
+          <i
+            :class="['user-info-other-email-icon', { dark: theme === 'dark' }]"
+          ></i>
         </div>
       </el-tooltip>
     </div>

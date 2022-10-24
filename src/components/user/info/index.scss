@@ -201,6 +201,9 @@
         width: 32px;
         height: 32px;
         background-repeat: no-repeat;
+        &.dark {
+          background-image: url('@/assets/icon/github_dark.svg');
+        }
       }
     }
 
@@ -217,6 +220,9 @@
         width: 32px;
         height: 32px;
         background-repeat: no-repeat;
+        &.dark {
+          background-image: url('@/assets/icon/qq_dark.svg');
+        }
       }
     }
 
@@ -233,11 +239,31 @@
         width: 32px;
         height: 32px;
         background-repeat: no-repeat;
+        &.dark {
+          background-image: url('@/assets/icon/wechat_dark.svg');
+        }
       }
     }
 
     &-email {
       cursor: pointer;
+      width: 32px;
+      height: 32px;
+
+      &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary-text-color);
+        background-image: url('@/assets/icon/email.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        &.dark {
+          background-image: url('@/assets/icon/email_dark.svg');
+        }
+      }
     }
   }
 }
