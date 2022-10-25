@@ -19,9 +19,9 @@ const userAvatarSource = computed(() => {
   let avatarSource;
 
   if (props.user && props.user.avatar) {
-    avatarSource = `http://api.darwin.fun/users/1/avatar`;
+    avatarSource = `https://api.darwin.fun/users/1/avatar`;
   } else {
-    avatarSource = '../../../src/assets/icon/account-black-32px.svg';
+    avatarSource = '@/assets/icon/logo.svg';
   }
 
   return avatarSource;

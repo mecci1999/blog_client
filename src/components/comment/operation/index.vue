@@ -30,14 +30,12 @@ const store = useStore();
 const name = ref('');
 const email = ref('');
 const text = ref('');
-const avatarImgUrl = ref('../../../src/assets/icon/account-black-32px.svg');
+const avatarImgUrl = ref('@/assets/icon/logo.svg');
 const commentAvatarImgClasses = computed(() => {
   return [
     'comment-operation-form-header-avatar-img',
     {
-      default:
-        avatarImgUrl.value ===
-        '../../../src/assets/icon/account-black-32px.svg',
+      default: avatarImgUrl.value === '@/assets/icon/logo.svg',
     },
   ];
 });
@@ -142,8 +140,7 @@ const handleSumbit = async () => {
           name.value = '';
           email.value = '';
           text.value = '';
-          avatarImgUrl.value =
-            '../../../src/assets/icon/account-black-32px.svg';
+          avatarImgUrl.value = '@/assets/icon/logo.svg';
         });
     } else {
       // 发表回复评论
@@ -167,8 +164,7 @@ const handleSumbit = async () => {
           name.value = '';
           email.value = '';
           text.value = '';
-          avatarImgUrl.value =
-            '../../../src/assets/icon/account-black-32px.svg';
+          avatarImgUrl.value = '@/assets/icon/logo.svg';
         });
     }
   } catch (error) {

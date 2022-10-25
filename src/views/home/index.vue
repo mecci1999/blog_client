@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineComponent, ref, reactive, onMounted, computed } from 'vue';
+import { onBeforeMount, ref, reactive, onMounted, computed } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
@@ -10,7 +10,6 @@ import {
   getCurrnetTime,
 } from '@/utils/changeBackgroundImage';
 import PostTabBar from '@/components/post/tabs/index.vue';
-import { postAmount } from '@/api/test/index';
 import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
 // import ArchiveList from '@/components/common/archive-list/index.vue';
@@ -53,13 +52,15 @@ store.dispatch('type/getPostTypes');
 // 获取标签列表
 store.dispatch('tag/getPostTags');
 
+const imgUrl = ref('');
+
 const posts = computed(() => store.getters['post/posts']);
 const user = computed(() => store.getters['user/user']);
 const types = computed(() => store.getters['type/types']);
 const tags = computed(() => store.getters['tag/tags']);
 const info = computed(() => store.getters['dashboard/appInfo']);
 
-onMounted(async () => {
+onBeforeMount(async () => {
   // 获取公告
   store.commit('app/loading', true);
   try {
@@ -73,7 +74,7 @@ onMounted(async () => {
 
   date = setInterval(() => {
     time.value = getCurrnetTime();
-    style.backgroundImage = changeBackgroundImageByTime(time.value.slice(0, 2));
+    imgUrl.value = changeBackgroundImageByTime(time.value.slice(0, 2));
 
     clearInterval(date);
   }, 1000);
@@ -83,7 +84,20 @@ onMounted(async () => {
 <template>
   <div class="app-home">
     <NavBar />
-    <div class="bg" :style="style">
+    <div
+      :class="[
+        'bg',
+        {
+          image_4_6: imgUrl === 'image_4_6',
+          image_6_8: imgUrl === 'image_6_8',
+          image_8_16: imgUrl === 'image_8_16',
+          image_16_18: imgUrl === 'image_16_18',
+          image_18_20: imgUrl === 'image_18_20',
+          image_20_24: imgUrl === 'image_20_24',
+          image_24_4: imgUrl === 'image_24_4',
+        },
+      ]"
+    >
       <div class="bg-container">
         <span class="bg-container-title">趁现在还年轻</span>
         <div class="bg-container-scroll-down" @click="onClickScrollDown">

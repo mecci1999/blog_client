@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import appRoutes from './app/index';
 import postRoutes from './post/index';
 import aboutRoutes from './about/index';
@@ -16,7 +16,7 @@ import { authGuard } from './router.guard';
  * 创建路由
  */
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     ...appRoutes,
     ...postRoutes,

@@ -3,7 +3,7 @@
  * @param day 当前时间
  */
 export const getAppDays = (day: string) => {
-  const createdTime = Date.parse('2021-07-11');
+  const createdTime = Date.parse('2022-10-24');
 
   const nowTime = Date.parse(day);
 
