@@ -2,13 +2,13 @@
   <div class="app-management__image-common">
     <el-form label-width="120px" class="avatar-ruleForm" status-icon>
       <el-form-item label="当前头像" prop="content">
-        <el-avatar :size="128" src="http://localhost:3000/users/1/avatar" />
+        <el-avatar :size="128" src="http://api.darwin.fun/users/1/avatar" />
       </el-form-item>
       <el-form-item label="上传头像" prop="content" fit="cover">
         <el-upload
           class="upload-demo"
           drag
-          action="http://localhost:3000/avatar"
+          action="http://api.darwin.fun/avatar"
           name="avatar"
           :headers="headers"
           :on-success="handleUploadAvatar"

@@ -14,7 +14,7 @@ const props = defineProps({
 });
 
 // 默认头像地址
-const avatarImgUrl = ref('../../../../src/assets/icon/account-black-32px.svg');
+const avatarImgUrl = ref('@/assets/icon/logo.svg');
 
 const route = useRoute();
 
@@ -26,9 +26,7 @@ const commentAvatarImgClasses = computed(() => {
   return [
     'comment-list-item-avatar-img',
     {
-      default:
-        props.item?.avatarImgUrl ===
-        '../../../../src/assets/icon/account-black-32px.svg',
+      default: props.item?.avatarImgUrl === '@/assets/icon/logo.svg',
     },
   ];
 });

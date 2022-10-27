@@ -8,7 +8,11 @@ const props = defineProps({
 
 <template>
   <div class="archive-list">
-    <div class="archive-list-item" v-for="item in items" :key="item?.date">
+    <div
+      class="archive-list-item"
+      v-for="item in (items as any)"
+      :key="item?.date"
+    >
       <div class="archive-list-item-link">
         <div class="archive-list-item-link-date">{{ item?.date }}</div>
         <div class="archive-list-item-link-count">

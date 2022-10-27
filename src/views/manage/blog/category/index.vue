@@ -77,8 +77,8 @@ const {
   onInputClear,
 } = useCategory();
 
-const InputRef = ref(null);
-const InputRefList = ref(null);
+const InputRef = ref(null) as any;
+const InputRefList = ref(null) as any;
 const inputVisible = ref(false);
 
 const showInput = () => {

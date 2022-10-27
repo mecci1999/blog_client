@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "serve": "vite --port 8000 --host",
+    "start": "vite --port 8000 --host --mode production",
     "build": "vue-tsc --noEmit && vite build",
+    "build:dev":"vue-tsc --noEmit && vite build --mode development",
+    "build:prod":"vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -40,8 +40,8 @@ export default defineComponent({
     const comments: any = computed(() => store.getters['comment/comments']);
 
     let style = reactive({
-      // backgroundImage: `url(${post.bgImgUrl})`,
-      backgroundImage: `url(localhost:3000/posts/26/bgImg)`,
+      backgroundImage: `url(${post.bgImgUrl})`,
+      // backgroundImage: `url(localhost:3000/posts/26/bgImg)`,
     });
 
     // 点击分类跳转至相关分类页面

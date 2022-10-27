@@ -1,5 +1,5 @@
-<script lang="ts">
-import { defineComponent, ref, reactive, onMounted, computed } from 'vue';
+<script lang="ts" setup>
+import { onBeforeMount, ref, reactive, onMounted, computed } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
@@ -10,98 +10,94 @@ import {
   getCurrnetTime,
 } from '@/utils/changeBackgroundImage';
 import PostTabBar from '@/components/post/tabs/index.vue';
-import { postAmount } from '@/api/test/index';
 import TagsList from '@/components/post/tag/list/index.vue';
 import AppInfo from '@/components/common/info/index.vue';
-import ArchiveList from '@/components/common/archive-list/index.vue';
+// import ArchiveList from '@/components/common/archive-list/index.vue';
+import MarqueeNotice from '@/components/common/marquee-notice/index.vue';
 import { useStore } from 'vuex';
-// import { posts } from '@/api/test/index';
+import { getAnnounceListApi } from '@/api';
 
-export default defineComponent({
-  name: 'AppHome',
+const onClickScrollDown = () => {
+  document.getElementById('positon')?.scrollIntoView({ behavior: 'smooth' });
+};
 
-  setup() {
-    const onClickScrollDown = () => {
-      document
-        .getElementById('positon')
-        ?.scrollIntoView({ behavior: 'smooth' });
-    };
+let time = ref('');
+let date: any;
+let style = reactive({
+  backgroundImage: '',
+});
 
-    let time = ref('');
-    let date: any;
-    let style = reactive({
-      backgroundImage: '',
-    });
+const store = useStore();
+// store.commit('type/setCurrentPostType', { id: 1, name: '我的项目' });
 
-    const store = useStore();
-    // store.commit('type/setCurrentPostType', { id: 1, name: '我的项目' });
+// 公告列表
+const announceList = ref([]);
 
-    //获取博客列表
-    store.commit('post/setQueryString', '');
-    store.commit('post/setNextPage', 1);
-    store.dispatch('post/getPosts');
+//获取博客列表
+store.commit('post/setQueryString', '');
+store.commit('post/setNextPage', 1);
+store.dispatch('post/getPosts');
 
-    // 获取博主信息接口
-    store.dispatch('user/getUser');
+// 获取博主信息接口
+store.dispatch('user/getUser');
 
-    // 获取网站信息接口
-    store.dispatch('dashboard/getAppInfo');
+// 获取网站信息接口
+store.dispatch('dashboard/getAppInfo');
 
-    /**
-     * 获取分类列表
-     */
-    store.dispatch('type/getPostTypes');
+/**
+ * 获取分类列表
+ */
+store.dispatch('type/getPostTypes');
 
-    // 获取标签列表
-    store.dispatch('tag/getPostTags');
+// 获取标签列表
+store.dispatch('tag/getPostTags');
 
-    const posts = computed(() => store.getters['post/posts']);
-    const user = computed(() => store.getters['user/user']);
-    const types = computed(() => store.getters['type/types']);
-    const tags = computed(() => store.getters['tag/tags']);
-    const info = computed(() => store.getters['dashboard/appInfo']);
+const imgUrl = ref('');
 
-    onMounted(async () => {
-      date = setInterval(() => {
-        time.value = getCurrnetTime();
-        style.backgroundImage = changeBackgroundImageByTime(
-          time.value.slice(0, 2),
-        );
+const posts = computed(() => store.getters['post/posts']);
+const user = computed(() => store.getters['user/user']);
+const types = computed(() => store.getters['type/types']);
+const tags = computed(() => store.getters['tag/tags']);
+const info = computed(() => store.getters['dashboard/appInfo']);
 
-        clearInterval(date);
-      }, 1000);
-    });
+onBeforeMount(async () => {
+  // 获取公告
+  store.commit('app/loading', true);
+  try {
+    const res = await getAnnounceListApi();
+    announceList.value = res.data;
+    store.commit('app/loading', false);
+  } catch (error) {
+    console.log(error);
+    store.commit('app/loading', false);
+  }
 
-    return {
-      onClickScrollDown,
-      user,
-      posts,
-      style,
-      types,
-      tags,
-      info,
-      postAmount,
-    };
-  },
+  date = setInterval(() => {
+    time.value = getCurrnetTime();
+    imgUrl.value = changeBackgroundImageByTime(time.value.slice(0, 2));
 
-  components: {
-    NavBar,
-    AppIcon,
-    UserInfo,
-    PostList,
-    AppFooter,
-    PostTabBar,
-    TagsList,
-    AppInfo,
-    ArchiveList,
-  },
+    clearInterval(date);
+  }, 1000);
 });
 </script>
 
 <template>
   <div class="app-home">
     <NavBar />
-    <div class="bg" :style="style">
+    <div
+      :class="[
+        'bg',
+        {
+          image_4_6: imgUrl === 'image_4_6',
+          image_6_8: imgUrl === 'image_6_8',
+          image_8_16: imgUrl === 'image_8_16',
+          image_16_18: imgUrl === 'image_16_18',
+          image_18_20: imgUrl === 'image_18_20',
+          image_20_24: imgUrl === 'image_20_24',
+          image_24_4: imgUrl === 'image_24_4',
+        },
+      ]"
+    >
       <div class="bg-container">
         <span class="bg-container-title">趁现在还年轻</span>
         <div class="bg-container-scroll-down" @click="onClickScrollDown">
@@ -111,6 +107,7 @@ export default defineComponent({
     </div>
     <div id="positon"></div>
     <main id="main" class="app-main">
+      <MarqueeNotice :item="announceList[0]" />
       <div class="app-main-container">
         <div class="app-main-container-left">
           <UserInfo :user="user" />

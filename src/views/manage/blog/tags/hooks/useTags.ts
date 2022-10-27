@@ -9,7 +9,7 @@ export const useTagsData = () => {
   const tagsList = ref([]);
 
   // 处理后的分类列表
-  const processList = ref([]);
+  const processList = ref([]) as any;
 
   watch(
     () => tagsList.value,

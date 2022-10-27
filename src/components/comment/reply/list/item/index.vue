@@ -30,15 +30,13 @@ const route = useRoute();
 const postId = parseInt(`${route.params.postId}`, 10);
 
 // 默认头像地址
-const avatarImgUrl = ref('../../../../src/assets/icon/account-black-32px.svg');
+const avatarImgUrl = ref('@/assets/icon/logo.svg');
 
 const commentAvatarImgClasses = computed(() => {
   return [
     'comment-reply-list-item-avatar-img',
     {
-      default:
-        props.item?.avatarImgUrl.value ===
-        '../../../../src/assets/icon/account-black-32px.svg',
+      default: props.item?.avatarImgUrl.value === '@/assets/icon/logo.svg',
     },
   ];
 });

@@ -23,27 +23,27 @@ export const getCurrnetTime = (): string => {
 /**
  * 随着时间更换壁纸方法
  */
-export const changeBackgroundImageByTime = (date: string): string => {
+export const changeBackgroundImageByTime = (date: string): any => {
   // 返回URL
+  let imgUrl;
   const hour = parseInt(date, 10);
-  let style;
-  if (4 <= hour && hour < 6) {
-    style = `url('../src/assets/image/4-6.jpeg')`;
-  } else if (6 <= hour && hour < 8) {
-    style = `url('../src/assets/image/6-8.jpeg')`;
-  } else if (8 <= hour && hour < 16) {
-    style = `url('../src/assets/image/8-16.jpeg')`;
+  if (6 <= hour && hour < 8) {
+    imgUrl = 'image_4_6';
+  } else if (8 <= hour && hour < 10) {
+    imgUrl = 'image_6_8';
+  } else if (10 <= hour && hour < 16) {
+    imgUrl = 'image_8_16';
   } else if (16 <= hour && hour < 18) {
-    style = `url('../src/assets/image/16-18.jpeg')`;
+    imgUrl = 'image_16_18';
   } else if (18 <= hour && hour < 20) {
-    style = `url('../src/assets/image/18-20.jpeg')`;
+    imgUrl = 'image_18_20';
   } else if (20 <= hour && hour < 24) {
-    style = `url('../src/assets/image/20-24.jpeg')`;
-  } else if (0 <= hour && hour < 4) {
-    style = `url('../src/assets/image/24-4.jpeg')`;
+    imgUrl = 'image_20_24';
+  } else if (0 <= hour && hour < 6) {
+    imgUrl = 'image_24_4';
   } else {
-    style = `url('../src/assets/image/8-16.jpeg')`;
+    imgUrl = 'image_8_16';
   }
 
-  return style;
+  return imgUrl;
 };
