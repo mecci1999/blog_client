@@ -17,7 +17,10 @@
       border-radius: 50%;
 
       &.default {
-        opacity: 0.3;
+        background-image: url('@/assets/image/logo.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        object-fit: cover;
       }
     }
   }

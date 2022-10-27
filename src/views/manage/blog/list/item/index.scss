@@ -168,6 +168,7 @@
         line-height: 2;
         font-weight: 600;
         cursor: pointer;
+        white-space: nowrap;
 
         &:hover {
           color: var(--primary-text-hover-color);

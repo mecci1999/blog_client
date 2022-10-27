@@ -156,8 +156,9 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, computed } from 'vue';
+import { onMounted, reactive, computed, onBeforeMount, ref } from 'vue';
 import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
 import { usePublished } from './hooks/usePublish';
 import type { FormRules } from 'element-plus';
 import {
@@ -169,6 +170,7 @@ import {
 import { API_BASE_URL } from '@/config';
 
 const store = useStore();
+const route = useRoute();
 
 const {
   form,
@@ -233,19 +235,26 @@ const rules = reactive<FormRules>({
   ],
 });
 
+// 编辑状态
+const isEditStatus = ref(false);
+
 const token = computed(() => store.getters['login/token']);
 
 // 上传正文的url
 const uploadContentUrl = `${API_BASE_URL()}/getHtml`;
 
 // 上传封面的url
-const uploadBgImgUrl = computed(
-  () => `${API_BASE_URL()}/posts/${postId.value}/bgImg`,
+const uploadBgImgUrl = computed(() =>
+  isEditStatus.value
+    ? `${API_BASE_URL()}/posts/${route.params.postId}/bgImg`
+    : `${API_BASE_URL()}/posts/${postId.value}/bgImg`,
 );
 
 // 上传博客相关的图片url
-const uploadImagesUrl = computed(
-  () => `${API_BASE_URL()}/images/upload?post=${postId.value}`,
+const uploadImagesUrl = computed(() =>
+  isEditStatus.value
+    ? `${API_BASE_URL()}/images/upload?post=${route.params.postId}`
+    : `${API_BASE_URL()}/images/upload?post=${postId.value}`,
 );
 
 // 请求头部
@@ -255,14 +264,25 @@ const headers = computed(() => {
   };
 });
 
-onMounted(() => {
+onBeforeMount(() => {
   // 挂载时增加tab
-  const tab = {
-    name: 'manage.blog.publish',
-    title: '发布博客',
-  };
-  store.commit('manage/addTab', tab);
-  store.commit('manage/setCurrentTab', tab.name);
+  if (route.params && route.params.postId) {
+    const tab = {
+      name: 'manage.blog.edit',
+      title: '编辑博客',
+    };
+    isEditStatus.value = true;
+    curStep.value = 3;
+    store.commit('manage/addTab', tab);
+    store.commit('manage/setCurrentTab', tab.name);
+  } else {
+    const tab = {
+      name: 'manage.blog.publish',
+      title: '发布博客',
+    };
+    store.commit('manage/addTab', tab);
+    store.commit('manage/setCurrentTab', tab.name);
+  }
 });
 </script>
 

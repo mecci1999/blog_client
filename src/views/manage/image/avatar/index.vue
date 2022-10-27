@@ -2,13 +2,13 @@
   <div class="app-management__image-common">
     <el-form label-width="120px" class="avatar-ruleForm" status-icon>
       <el-form-item label="当前头像" prop="content">
-        <el-avatar :size="128" src="http://api.darwin.fun/users/1/avatar" />
+        <el-avatar :size="128" :src="avatarImageUrl" />
       </el-form-item>
       <el-form-item label="上传头像" prop="content" fit="cover">
         <el-upload
           class="upload-demo"
           drag
-          action="http://api.darwin.fun/avatar"
+          :action="uploadAvatarImageUrl"
           name="avatar"
           :headers="headers"
           :on-success="handleUploadAvatar"
@@ -28,6 +28,7 @@
 import { onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
 import { ElMessage } from 'element-plus';
+import { API_BASE_URL } from '@/config';
 
 const store = useStore();
 
@@ -38,6 +39,12 @@ const headers = computed(() => {
     Authorization: 'Bearer ' + token.value,
   };
 });
+
+// 头像url
+const avatarImageUrl = computed(() => `${API_BASE_URL()}/users/1/avatar`);
+
+// 上传头像url
+const uploadAvatarImageUrl = computed(() => `${API_BASE_URL()}/users/1/avatar`);
 
 // 处理上传封面
 const handleUploadAvatar = (res: any, file: any, files: any) => {

@@ -15,7 +15,10 @@
           <div
             class="app-management__blog-list-item__media-header__tools-stick"
           ></div>
-          <div class="app-management__blog-list-item__media-header__tools-edit">
+          <div
+            class="app-management__blog-list-item__media-header__tools-edit"
+            @click.stop="handleEdit(post?.id)"
+          >
             <el-icon><Edit /></el-icon>
           </div>
           <div
@@ -85,7 +88,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['handleChangeStatus', 'handleDelete']);
+const emit = defineEmits(['handleChangeStatus', 'handleDelete', 'handleEdit']);
 
 const handlePostStatus = (status: string, postId: number) => {
   emit('handleChangeStatus', status, postId);
@@ -93,6 +96,11 @@ const handlePostStatus = (status: string, postId: number) => {
 
 const handleDelete = (postId: number) => {
   emit('handleDelete', postId);
+};
+
+const handleEdit = (postId: number) => {
+  emit('handleEdit', postId);
+  debugger;
 };
 </script>
 

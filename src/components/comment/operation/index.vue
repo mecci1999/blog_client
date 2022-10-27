@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, defineComponent, ref, defineProps } from 'vue';
+import { computed, ref, defineProps } from 'vue';
 import InputField from '@/components/common/form/input/index.vue';
 import { checkIsQQNumber, checkIsQQEmail } from '@/utils/checkIsQQNumber';
 import { useStore } from 'vuex';
@@ -30,15 +30,7 @@ const store = useStore();
 const name = ref('');
 const email = ref('');
 const text = ref('');
-const avatarImgUrl = ref('@/assets/icon/logo.svg');
-const commentAvatarImgClasses = computed(() => {
-  return [
-    'comment-operation-form-header-avatar-img',
-    {
-      default: avatarImgUrl.value === '@/assets/icon/logo.svg',
-    },
-  ];
-});
+const avatarImgUrl = ref('');
 
 // 行数
 const row = 7;
@@ -140,7 +132,7 @@ const handleSumbit = async () => {
           name.value = '';
           email.value = '';
           text.value = '';
-          avatarImgUrl.value = '@/assets/icon/logo.svg';
+          avatarImgUrl.value = '';
         });
     } else {
       // 发表回复评论
@@ -164,7 +156,7 @@ const handleSumbit = async () => {
           name.value = '';
           email.value = '';
           text.value = '';
-          avatarImgUrl.value = '@/assets/icon/logo.svg';
+          avatarImgUrl.value = '';
         });
     }
   } catch (error) {
@@ -182,7 +174,15 @@ const handleSumbit = async () => {
     <div class="comment-operation-form">
       <div class="comment-operation-form-header">
         <div class="comment-operation-form-header-avatar">
-          <img :class="commentAvatarImgClasses" :src="avatarImgUrl" />
+          <img
+            v-if="avatarImgUrl !== ''"
+            class="comment-operation-form-header-avatar-img"
+            :src="avatarImgUrl"
+          />
+          <div
+            v-else
+            :class="['comment-operation-form-header-avatar-img', 'default']"
+          ></div>
         </div>
         <div class="comment-operation-form-header-input">
           <InputField

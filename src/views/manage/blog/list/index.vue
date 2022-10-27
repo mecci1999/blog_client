@@ -26,6 +26,7 @@
         v-loading="loading"
         @handleChangeStatus="handleChangeStatus"
         @handleDelete="handleDelete"
+        @handleEdit="handleEdit"
       />
     </div>
     <div class="app-management__blog-list__pagination" v-if="list.length > 0">
@@ -59,6 +60,7 @@ const {
   handleCurrentChange,
   handleChangeStatus,
   handleDelete,
+  handleEdit,
 } = useBlogList();
 
 onMounted(() => {

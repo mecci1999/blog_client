@@ -140,7 +140,7 @@ export const updatePostApi = async (postId: number, data: any) =>
  * 删除博客状态接口
  */
 export const deletePostApi = async (postId: number) =>
-  await apiHttpClient.delete(`post/${postId}`);
+  await apiHttpClient.delete(`posts/${postId}`);
 
 /**
  * 创建博客

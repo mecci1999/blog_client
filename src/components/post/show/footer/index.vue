@@ -32,7 +32,7 @@ const openQRcodePanel = () => {
         <i class="post-show-footer-info-author-icon"></i>
         <span class="post-show-footer-info__title"> 文章作者：</span>
         <span class="post-show-footer-info-author-text" @click="onClickToAbout"
-          >Mecci</span
+          >Darwin</span
         >
       </div>
       <div class="post-show-footer-info-link">
@@ -76,11 +76,9 @@ const openQRcodePanel = () => {
           <a
             class="post-show-footer-donate-qrcode-wechat"
             href="../../../../src/assets/image/wxpay.png"
+            target="_blank"
           >
-            <img
-              class="post-show-footer-donate-qrcode-wechat-img"
-              src="@/assets/image/wxpay.png"
-            />
+            <div class="post-show-footer-donate-qrcode-wechat-img"></div>
           </a>
           <span class="post-show-footer-donate-qrcode-wx-text">微信</span>
         </div>
@@ -88,11 +86,9 @@ const openQRcodePanel = () => {
           <a
             class="post-show-footer-donate-qrcode-alipay"
             href="../../../../src/assets/image/alipay.png"
+            target="_blank"
           >
-            <img
-              class="post-show-footer-donate-qrcode-alipay-img"
-              src="@/assets/image/alipay.png"
-            />
+            <div class="post-show-footer-donate-qrcode-alipay-img"></div>
           </a>
           <span class="post-show-footer-donate-qrcode-ali-text">支付宝</span>
         </div>

@@ -4,9 +4,12 @@
 import { deletePostApi, getPostsApi, updatePostApi } from '@/api';
 import { ref, onMounted } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
+import { useRouter } from 'vue-router';
 
 export const useBlogList = () => {
   const { list, pageIndex, pageSide, total, loading } = useGetBlogList();
+
+  const router = useRouter();
 
   const handleCurrentChange = () => {
     try {
@@ -65,6 +68,11 @@ export const useBlogList = () => {
     }
   };
 
+  // 修改博客
+  const handleEdit = (postId: number) => {
+    router.push({ name: 'manage.blog.edit', params: { postId: postId } });
+  };
+
   return {
     list,
     pageIndex,
@@ -74,6 +82,7 @@ export const useBlogList = () => {
     handleCurrentChange,
     handleChangeStatus,
     handleDelete,
+    handleEdit,
   };
 };
 

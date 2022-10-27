@@ -29,18 +29,6 @@ const route = useRoute();
 
 const postId = parseInt(`${route.params.postId}`, 10);
 
-// 默认头像地址
-const avatarImgUrl = ref('@/assets/icon/logo.svg');
-
-const commentAvatarImgClasses = computed(() => {
-  return [
-    'comment-reply-list-item-avatar-img',
-    {
-      default: props.item?.avatarImgUrl.value === '@/assets/icon/logo.svg',
-    },
-  ];
-});
-
 // 判断当前评论的作者是否为博主
 const isAdmin = props.item?.userId === 1;
 
@@ -56,9 +44,14 @@ const handleReplyComment = () => {
   <div class="comment-reply-list-item">
     <div class="comment-reply-list-item-avatar">
       <img
-        :class="commentAvatarImgClasses"
-        :src="item?.avatarImgUrl || avatarImgUrl"
+        v-if="item?.avatarImgUrl !== ''"
+        class="comment-reply-list-item-avatar-img"
+        :src="item?.avatarImgUrl"
       />
+      <div
+        v-else
+        :class="['comment-reply-list-item-avatar-img', 'default']"
+      ></div>
     </div>
     <div class="comment-reply-list-item-container">
       <div class="comment-reply-list-item-container-header">

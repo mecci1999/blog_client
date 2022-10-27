@@ -47,6 +47,15 @@ const routes: Array<RouteRecordRaw> = [
         },
       },
       {
+        name: 'manage.blog.edit',
+        path: '/manage/blog/edit/:postId',
+        component: AppManagementBlogPublish,
+        meta: {
+          title: '编辑博客 | 云分享后台',
+          requireAuth: true,
+        },
+      },
+      {
         name: 'manage.blog.category',
         path: '/manage/blog/category',
         component: AppManagementBlogCategory,

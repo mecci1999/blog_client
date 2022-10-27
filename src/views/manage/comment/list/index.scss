@@ -17,7 +17,7 @@
       height: 120px;
       margin-bottom: 8px;
       border-bottom: 1px solid var(--line-color);
-      overflow: hidden;
+      overflow: auto;
 
       &-reply {
         margin-top: 8px;
@@ -46,6 +46,13 @@
           height: 100%;
           object-fit: cover;
           border-radius: 50%;
+
+          &.default {
+            background-image: url('@/assets/image/logo.png');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            object-fit: cover;
+          }
         }
       }
 

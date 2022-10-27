@@ -12,7 +12,13 @@ export const API_BASE_URL = () => {
 /**
  * 客户端域名
  */
-export const VITE_APP_CLIENT_BASE_URL = 'http://localhost:8000';
+export const VITE_APP_CLIENT_BASE_URL = () => {
+  if (process.env.NODE_DEV === 'development') {
+    return import.meta.env.VITE_APP_CLIENT_BASE_URL;
+  } else {
+    return import.meta.env.VITE_APP_CLIENT_BASE_URL;
+  }
+};
 
 /**
  * 内容分页

@@ -3,6 +3,7 @@ import { computed, defineProps } from 'vue';
 import { ElTooltip } from 'element-plus';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { API_BASE_URL } from '@/config';
 
 const props = defineProps({
   user: {
@@ -15,13 +16,16 @@ const store = useStore();
 
 const theme = computed(() => store.getters['theme/theme']);
 
+// 头像url
+const avatarImageUrl = computed(() => `${API_BASE_URL()}/users/1/avatar`);
+
 const userAvatarSource = computed(() => {
   let avatarSource;
 
   if (props.user && props.user.avatar) {
-    avatarSource = `https://api.darwin.fun/users/1/avatar`;
+    avatarSource = avatarImageUrl.value;
   } else {
-    avatarSource = '@/assets/icon/logo.svg';
+    avatarSource = '@/assets/icon/logo.png';
   }
 
   return avatarSource;

@@ -1,12 +1,5 @@
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  watch,
-} from 'vue';
+<script lang="ts" setup>
+import { computed, onMounted, reactive, ref, watch, nextTick } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
 import PostShowInfo from '@/components/post/show/info/index.vue';
@@ -18,78 +11,52 @@ import CommentPanel from '@/components/comment/index.vue';
 import { VITE_APP_CLIENT_BASE_URL } from '@/config';
 import AppFooter from '@/components/footer/index.vue';
 import PostNavigator from '@/components/post/navigator/index.vue';
-export default defineComponent({
-  name: 'PostShow',
+import { API_BASE_URL } from '@/config';
 
-  setup() {
-    const store = useStore();
-    const route = useRoute();
-    const router = useRouter();
-    const link = VITE_APP_CLIENT_BASE_URL + route.path;
-    let time = ref('');
-    let date: any;
+const store = useStore();
+const route = useRoute();
+const router = useRouter();
+const link = VITE_APP_CLIENT_BASE_URL() + route.path;
+let time = ref('');
+let date: any;
 
-    // 获取当前博客的内容
-    store.commit('post/setQueryString', '');
-    store.commit('post/setNextPage', 1);
-    store.dispatch('post/getPosts');
-    store.dispatch('post/getPostById', route.params.postId);
-    store.dispatch('comment/getComments', { postId: route.params.postId });
+// 获取当前博客的内容
+store.commit('post/setQueryString', '');
+store.commit('post/setNextPage', 1);
+store.dispatch('post/getPosts');
+store.dispatch('post/getPostById', route.params.postId);
+store.dispatch('comment/getComments', { postId: route.params.postId });
 
-    const post: any = computed(() => store.getters['post/post']);
-    const comments: any = computed(() => store.getters['comment/comments']);
+const post: any = computed(() => store.getters['post/post']);
+const comments: any = computed(() => store.getters['comment/comments']);
 
-    let style = reactive({
-      backgroundImage: `url(${post.bgImgUrl})`,
-      // backgroundImage: `url(localhost:3000/posts/26/bgImg)`,
-    });
+let style = reactive({
+  backgroundImage: `url(${post.bgImgUrl})`,
+});
 
-    // 点击分类跳转至相关分类页面
-    const onClickJumpToType = (type: any) => {
-      // 将博客标题存储到store中
-      store.commit('app/setTitle', type.name);
-      router.push({ name: 'postCategory', params: { typeId: type.id } });
-    };
+// 点击分类跳转至相关分类页面
+const onClickJumpToType = (type: any) => {
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', type.name);
+  router.push({ name: 'postCategory', params: { typeId: type.id } });
+};
 
-    // 点击标签跳转至相关标签页面
-    const onClickJumpToTag = (tag: any) => {
-      // 将博客标题存储到store中
-      store.commit('app/setTitle', tag.name);
-      router.push({ name: 'postTags', params: { tagId: tag.id } });
-    };
+// 点击标签跳转至相关标签页面
+const onClickJumpToTag = (tag: any) => {
+  // 将博客标题存储到store中
+  store.commit('app/setTitle', tag.name);
+  router.push({ name: 'postTags', params: { tagId: tag.id } });
+};
 
-    watch(post, (val) => {
-      if (val) {
-        window.scrollTo({ top: 0 });
-      }
-    });
+watch(post, (val) => {
+  if (val) {
+    window.scrollTo({ top: 0 });
+  }
+});
 
-    // 挂载时置顶
-    onMounted(() => {
-      window.scrollTo({ top: 0 });
-    });
-
-    return {
-      style,
-      time,
-      post,
-      link,
-      onClickJumpToType,
-      onClickJumpToTag,
-      comments,
-    };
-  },
-
-  components: {
-    NavBar,
-    UserInfo,
-    PostShowInfo,
-    PostShowContent,
-    PostShowFooter,
-    CommentPanel,
-    AppFooter,
-    PostNavigator,
-  },
+// 挂载时置顶
+onMounted(() => {
+  window.scrollTo({ top: 0 });
 });
 </script>
 
@@ -97,7 +64,14 @@ export default defineComponent({
   <div class="post-show">
     <NavBar />
     <header class="post-show-header">
-      <img class="post-show-header-image" :src="`http://${post?.bgImgUrl}`" />
+      <img
+        class="post-show-header-image"
+        :src="
+          API_BASE_URL() === 'http://localhost:3000'
+            ? `http://${post?.bgImgUrl}`
+            : `https://${post?.bgImgUrl}`
+        "
+      />
       <div class="post-show-header-shadow"></div>
       <div class="post-show-header-info">
         <div class="post-show-header-info-option">

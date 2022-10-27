@@ -19,9 +19,17 @@
       <div class="app-management__comment-list-item__info">
         <div class="app-management__comment-list-item__info-avatar">
           <img
+            v-if="comment.avatarImgUrl !== ''"
             class="app-management__comment-list-item__info-avatar-image"
             :src="comment.avatarImgUrl"
           />
+          <div
+            v-else
+            :class="[
+              'app-management__comment-list-item__info-avatar-image',
+              'default',
+            ]"
+          ></div>
         </div>
         <div class="app-management__comment-list-item__info-content">
           <div class="app-management__comment-list-item__info-name">
