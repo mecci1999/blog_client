@@ -32,15 +32,15 @@ export const postType = [
   },
   {
     id: 7,
-    name: '网站公告',
+    name: '生活日常',
   },
   {
     id: 8,
-    name: '个人经历',
+    name: '有趣故事',
   },
   {
     id: 9,
-    name: '其他',
+    name: '其他内容',
   },
 ];
 

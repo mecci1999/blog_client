@@ -1,5 +1,4 @@
 import { getTagsApi } from '@/api';
-// import { postType } from '@/api/test';
 import { TypesAndTagsDataType } from '@/types/interface';
 import { Module } from 'vuex';
 import { RootState } from '../../index';
@@ -33,7 +32,7 @@ export const postTagStoreModule: Module<PostTagStoreState, RootState> = {
       return state.tags;
     },
 
-    loading(state){
+    loading(state) {
       return state.loading;
     },
 

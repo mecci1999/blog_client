@@ -1,3 +1,6 @@
+import { getIpAddressBySohuApi } from '@/api';
+import { apiHttpClient } from '@/utils/apiHttpClient';
+import { getSessionStroage, setSessionStroage } from '@/utils/localStorage';
 import { Module } from 'vuex';
 import { RootState } from '../../index';
 
@@ -47,5 +50,31 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
   /**
    * 动作
    */
-  actions: {},
+  actions: {
+    // 获取IP地址动作
+    async getIpAddressAction() {
+      // 发送一条sohu请求得到IP地址，存储到Session中，并封装到请求头部中
+      const ip = getSessionStroage('ip');
+      if (ip) {
+        // 封装到请求头部中
+        apiHttpClient.defaults.headers.common['Ip'] = `${ip}`;
+      } else {
+        try {
+          const res = await getIpAddressBySohuApi();
+
+          const object = res.data.split('=')[1].trim().slice(0, -1);
+
+          const { cip } = JSON.parse(object);
+
+          // 存储到sessionStorage中
+          setSessionStroage('ip', cip);
+
+          // 封装到请求头部中
+          apiHttpClient.defaults.headers.common['Ip'] = `${cip}`;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+  },
 };

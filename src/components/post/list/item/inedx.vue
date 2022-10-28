@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import { computed, defineProps } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import PostTag from '@/components/post/tag/index.vue';
-import { postType } from '@/api/test';
 import { Picture } from '@element-plus/icons-vue';
 import { time } from '@/utils/time';
 
@@ -17,6 +16,8 @@ const props = defineProps({
 const router = useRouter();
 const store = useStore();
 
+const types = computed(() => store.getters['type/types']);
+
 const onClickPostListItem = (id: number) => {
   // 将博客标题存储到store中
   store.commit('app/setTitle', props.item?.title);
@@ -25,7 +26,7 @@ const onClickPostListItem = (id: number) => {
 
 const onClickPostListTypeItem = (id: number, title?: string) => {
   // 当前分类
-  const type = postType.find((item) => item.id === id);
+  const type = types.value.find((item: any) => item.id === id);
 
   store.commit('type/setCurrentPostType', type);
 

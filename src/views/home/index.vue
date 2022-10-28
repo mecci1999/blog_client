@@ -15,7 +15,18 @@ import AppInfo from '@/components/common/info/index.vue';
 // import ArchiveList from '@/components/common/archive-list/index.vue';
 import MarqueeNotice from '@/components/common/marquee-notice/index.vue';
 import { useStore } from 'vuex';
-import { getAnnounceListApi } from '@/api';
+import {
+  getAnnounceListApi,
+  getIpAddressBySohuApi,
+  getRealAddressByBaiduMapApi,
+} from '@/api';
+import {
+  getSessionStroage,
+  getStroage,
+  setSessionStroage,
+  setStroage,
+} from '@/utils/localStorage';
+import { apiHttpClient } from '@/utils/apiHttpClient';
 
 const onClickScrollDown = () => {
   document.getElementById('positon')?.scrollIntoView({ behavior: 'smooth' });
@@ -32,6 +43,9 @@ const store = useStore();
 
 // 公告列表
 const announceList = ref([]);
+
+// 获取ip地址
+store.dispatch('app/getIpAddressAction');
 
 //获取博客列表
 store.commit('post/setQueryString', '');
@@ -62,22 +76,47 @@ const info = computed(() => store.getters['dashboard/appInfo']);
 
 onBeforeMount(async () => {
   // 获取公告
-  store.commit('app/loading', true);
+  store.commit('app/setLoading', true);
   try {
     const res = await getAnnounceListApi();
     announceList.value = res.data;
-    store.commit('app/loading', false);
+
+    // store.commit('app/setLoading', false);
   } catch (error) {
     console.log(error);
-    store.commit('app/loading', false);
+    store.commit('app/setLoading', false);
   }
 
+  // 拿到当前时间段的壁纸
   date = setInterval(() => {
     time.value = getCurrnetTime();
     imgUrl.value = changeBackgroundImageByTime(time.value.slice(0, 2));
 
     clearInterval(date);
   }, 1000);
+
+  store.commit('app/setLoading', false);
+});
+
+onMounted(async () => {
+  // 发送百度地图API请求获取真实地址，存储到LocalSession中
+  // 发送一条sohu请求得到IP地址，存储到Session中，并封装到请求头部中
+  const address = getStroage('address');
+  if (!address) {
+    try {
+      const res = await getRealAddressByBaiduMapApi(getSessionStroage('ip'));
+
+      const province = res.data.content.address_detail.province;
+      const city = res.data.content.address_detail.city;
+
+      // 存储到sessionStorage中
+      setStroage('address', { province: province, city: city });
+
+      // 封装到请求头部中
+    } catch (error) {
+      console.log(error);
+    }
+  }
 });
 </script>
 

@@ -6,8 +6,12 @@ import {
   PostDataType,
   SearchResultType,
 } from '@/types/interface';
-import axios from 'axios';
-import { apiHttpClient, tenApiHttpRequest } from '../utils/apiHttpClient';
+import {
+  apiHttpClient,
+  baiduMapHttpRequest,
+  sohuHttpRequest,
+  tenApiHttpRequest,
+} from '../utils/apiHttpClient';
 
 /**
  * 获取博主信息接口
@@ -22,9 +26,9 @@ export const getUserInfo = async () => {
  */
 export const getQQUserInfo = async (id: string) => {
   try {
-    const response = await tenApiHttpRequest.get(`qqname/?qq=${id}`);
+    const response = await tenApiHttpRequest.get(`/qqname/?qq=${id}`);
     // 失败
-    if (response) {
+    if (response && response.data) {
       return response;
     } else {
       // 失败直接输出头像地址
@@ -266,3 +270,17 @@ export const addUpdateLogApi = async (data: any) =>
  */
 export const deleteUpdateLogApi = async (id: number) =>
   await apiHttpClient.delete(`/updateLog/${id}`);
+
+/**
+ * 获取ip地址，通过sohu接口
+ */
+export const getIpAddressBySohuApi = async () =>
+  await sohuHttpRequest.get(`/cityjson?ie=utf-8`);
+
+/**
+ * 获取物理地址，通过百度地图接口
+ */
+export const getRealAddressByBaiduMapApi = async (ip: string) =>
+  await baiduMapHttpRequest.get(
+    `/location/ip?ak=N8aHMjLP374THnPfPyB89BPKK7TImh2z&ip=${ip}&coor=bd09ll`,
+  );

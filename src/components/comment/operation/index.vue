@@ -8,6 +8,7 @@ import AppIcon from '@/components/common/app-icon/index.vue';
 import { createCommentApi, createReplyCommentApi } from '@/api/index';
 import { CommentStatus } from '@/types/enum';
 import { ElMessage } from 'element-plus';
+import { getStroage } from '@/utils/localStorage';
 
 const props = defineProps({
   postId: {
@@ -95,22 +96,19 @@ const onSendReqGetAvatarByQQEmail = async () => {
 
 // 发表评论
 const handleSumbit = async () => {
-  if (name.value === '') {
-    ElMessage({ type: 'error', message: '昵称为空，请输入昵称' });
-    return;
-  }
-  if (email.value === '') {
-    ElMessage({ type: 'error', message: '邮箱为空，请输入邮箱' });
-    return;
-  }
-  if (text.value === '') {
-    ElMessage({ type: 'error', message: '评论内容为空，请输入内容' });
-    return;
-  }
+  if (name.value === '')
+    return ElMessage({ type: 'error', message: '昵称为空，请输入昵称' });
+  if (email.value === '')
+    return ElMessage({ type: 'error', message: '邮箱为空，请输入邮箱' });
+  if (text.value === '')
+    return ElMessage({ type: 'error', message: '评论内容为空，请输入内容' });
 
   try {
     // 发表评论
     if (!props.hiddenTitle) {
+      // 获取真实地址
+      const address = getStroage('address');
+
       // 获取地址
       await createCommentApi({
         name: name.value,
@@ -119,6 +117,8 @@ const handleSumbit = async () => {
         content: text.value,
         status: CommentStatus.pending,
         postId: props.postId,
+        province: address.province,
+        city: address.city,
       })
         .then(
           () => {

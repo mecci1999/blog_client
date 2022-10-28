@@ -35,19 +35,25 @@ export default (mode) => {
     },
     server: {
       proxy: {
-        '/qqname': {
-          target: 'https://tenapi.cn/',
+        '/tenApi': {
+          target: 'https://tenapi.cn',
           changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/tenApi/, ''),
         },
-        // '/cityApi': {
-        //   target: 'http://pv.sohu.com/cityjson',
-        //   changeOrigin: true,
-        //   rewrite: (path) => path.replace(/^\/cityApi/, ''),
-        // },
-        '/baiduApi': {
+        '/thirdqqApi': {
+          target: 'https://thirdqq.qlogo.cn',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/thirdqqApi/, ''),
+        },
+        '/sohuApi': {
+          target: 'http://pv.sohu.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/sohuApi/, ''),
+        },
+        '/baiduMapApi': {
           target: 'https://api.map.baidu.com',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/baiduApi/, ''),
+          rewrite: (path) => path.replace(/^\/baiduMapApi/, ''),
         },
         [`${loadEnv(mode, process.cwd())}`]: {
           target: loadEnv(mode, process.cwd()),

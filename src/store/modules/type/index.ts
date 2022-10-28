@@ -1,5 +1,5 @@
 import { getTypesApi } from '@/api';
-import { postType } from '@/api/test';
+import { postType } from '@/api/mock';
 import { TypesAndTagsDataType } from '@/types/interface';
 import { Module } from 'vuex';
 import { RootState } from '../../index';
