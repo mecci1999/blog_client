@@ -21,7 +21,14 @@ const props = defineProps({
     <!-- <el-carousel-item v-for="item in (list as any)" :key="item.id"> -->
     <div class="marquee-notice__container">
       <div class="marquee-notice__title">公告</div>
-      <div class="marquee-notice__content">
+      <div
+        class="marquee-notice__content"
+        :style="{
+          animationDuration: `${
+            item?.content.length < 20 ? 5 : item?.content.length * 0.3 || 10
+          }s`,
+        }"
+      >
         <span>{{ item?.content }}</span>
       </div>
       <div class="marquee-notice__date">{{ time(item?.date) }}</div>
