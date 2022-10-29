@@ -1,8 +1,9 @@
-import { getIpAddressBySohuApi } from '@/api';
+import { watch } from 'vue';
 import { apiHttpClient } from '@/utils/apiHttpClient';
 import { getSessionStroage, setSessionStroage } from '@/utils/localStorage';
 import { Module } from 'vuex';
 import { RootState } from '../../index';
+import { jsonp } from '@/utils/jsonp';
 
 export interface AppStoreState {
   title: string;
@@ -52,7 +53,7 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
    */
   actions: {
     // 获取IP地址动作
-    async getIpAddressAction() {
+    getIpAddressAction() {
       // 发送一条sohu请求得到IP地址，存储到Session中，并封装到请求头部中
       const ip = getSessionStroage('ip');
       if (ip) {
@@ -60,17 +61,56 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
         apiHttpClient.defaults.headers.common['Ip'] = `${ip}`;
       } else {
         try {
-          const res = await getIpAddressBySohuApi();
+          const api = 'http://pv.sohu.com/cityjson';
 
-          const object = res.data.split('=')[1].trim().slice(0, -1);
+          jsonp({
+            url: api,
+            callback: (res: any) => {},
+          });
 
-          const { cip } = JSON.parse(object);
+          watch(
+            () => window,
+            (value: any) => {
+              if (value && value.returnCitySN) {
+                setSessionStroage('ip', value.returnCitySN.cip);
+                // 封装到请求头部中
+                apiHttpClient.defaults.headers.common['Ip'] = `${ip}`;
+              }
+            },
+            {
+              immediate: true,
+            },
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
 
-          // 存储到sessionStorage中
-          setSessionStroage('ip', cip);
+    // 获取真实地址
+    getRealAddressAction() {
+      // 发送百度地图API请求获取真实地址，存储到Session中
+      const address = getSessionStroage('address');
+      const ip = getSessionStroage('ip');
+      if (!address) {
+        try {
+          const api = 'https://api.map.baidu.com/location/ip';
 
-          // 封装到请求头部中
-          apiHttpClient.defaults.headers.common['Ip'] = `${cip}`;
+          jsonp({
+            url: api,
+            data: {
+              ak: 'N8aHMjLP374THnPfPyB89BPKK7TImh2z',
+              ip: ip,
+              coor: 'bd09ll',
+            },
+            callback: (res: any) => {
+              // 存储到sessionStorage中
+              setSessionStroage('address', {
+                province: res.content.address_detail.province,
+                city: res.content.address_detail.city,
+              });
+            },
+          });
         } catch (error) {
           console.log(error);
         }

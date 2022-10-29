@@ -8,7 +8,7 @@ import AppIcon from '@/components/common/app-icon/index.vue';
 import { createCommentApi, createReplyCommentApi } from '@/api/index';
 import { CommentStatus } from '@/types/enum';
 import { ElMessage } from 'element-plus';
-import { getStroage } from '@/utils/localStorage';
+import { getSessionStroage } from '@/utils/localStorage';
 
 const props = defineProps({
   postId: {
@@ -107,7 +107,7 @@ const handleSumbit = async () => {
     // 发表评论
     if (!props.hiddenTitle) {
       // 获取真实地址
-      const address = getStroage('address');
+      const address = getSessionStroage('address');
 
       // 获取地址
       await createCommentApi({

@@ -6,6 +6,10 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default (mode) => {
+  // 配置打包主路径
+  const root = process.cwd();
+  const env = loadEnv(mode, root);
+
   return defineConfig({
     plugins: [
       vue(),
@@ -16,7 +20,7 @@ export default (mode) => {
         resolvers: [ElementPlusResolver()],
       }),
     ],
-    base: './',
+    base: env.VITE_PUBLIC_PATH,
     resolve: {
       alias: {
         '@': '/src',
@@ -39,21 +43,25 @@ export default (mode) => {
           target: 'https://tenapi.cn',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/tenApi/, ''),
+          secure: true,
         },
         '/thirdqqApi': {
           target: 'https://thirdqq.qlogo.cn',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/thirdqqApi/, ''),
+          secure: true,
         },
         '/sohuApi': {
-          target: 'http://pv.sohu.com',
+          target: 'https://pv.sohu.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/sohuApi/, ''),
+          secure: true,
         },
         '/baiduMapApi': {
           target: 'https://api.map.baidu.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/baiduMapApi/, ''),
+          secure: true,
         },
         [`${loadEnv(mode, process.cwd())}`]: {
           target: loadEnv(mode, process.cwd()),

@@ -1,6 +1,10 @@
 import { Module } from 'vuex';
 import { RootState } from '../../index';
-import { getCommentsApi, getQQUserInfo } from '@/api/index';
+import {
+  getCommentsApi,
+  getQQUserInfoDev,
+  getQQUserInfoPrd,
+} from '@/api/index';
 import { CommentDataType } from '@/types/interface';
 import { VITE_COMMENTS_PER_PAGE } from '@/config';
 
@@ -123,7 +127,7 @@ export const commentStoreModule: Module<CommentStoreState, RootState> = {
   actions: {
     async getQQUserInfo({ commit }, id: string) {
       try {
-        const response = await getQQUserInfo(id);
+        const response = await getQQUserInfoPrd(id);
 
         commit('setQQUserInfo', response.data);
       } catch (error) {

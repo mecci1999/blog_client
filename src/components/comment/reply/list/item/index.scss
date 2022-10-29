@@ -44,6 +44,7 @@
         font-weight: bolder;
         line-height: 32px;
         margin-right: 16px;
+        white-space: nowrap;
       }
 
       &-card {
@@ -53,12 +54,14 @@
         border-radius: 4px;
         font-size: var(--font-size-small);
         margin-right: 16px;
+        white-space: nowrap;
       }
 
       &-time {
         flex: 1;
         color: var(--mecci-secondary-color);
         font-size: 0.8rem;
+        white-space: nowrap;
       }
 
       &-reply {

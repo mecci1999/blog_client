@@ -6,12 +6,14 @@ import {
   PostDataType,
   SearchResultType,
 } from '@/types/interface';
+import axios from 'axios';
 import {
   apiHttpClient,
   baiduMapHttpRequest,
   sohuHttpRequest,
   tenApiHttpRequest,
 } from '../utils/apiHttpClient';
+import { jsonp } from '@/utils/jsonp';
 
 /**
  * 获取博主信息接口
@@ -22,12 +24,48 @@ export const getUserInfo = async () => {
 };
 
 /**
- * 获取用户的QQ头像以及昵称，使用的他人的api接口，注意是否会挂掉的问题,该接口已经挂掉
+ * 获取用户的QQ头像以及昵称，使用的他人的api接口，注意是否会挂掉的问题,该接口已经挂掉(开发环境)
  */
-export const getQQUserInfo = async (id: string) => {
+export const getQQUserInfoDev = async (id: string) => {
   try {
     const response = await tenApiHttpRequest.get(`/qqname/?qq=${id}`);
     // 失败
+    if (response && response.data) {
+      return response;
+    } else {
+      // 失败直接输出头像地址
+      return {
+        data: {
+          imgurl: `https://thirdqq.qlogo.cn/g?b=sdk&nk=${id}&s=140`,
+        },
+      };
+    }
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const _error = error as any;
+
+    throw _error.response;
+  }
+};
+
+/**
+ * 获取用户的QQ头像以及昵称，使用的他人的api接口，注意是否会挂掉的问题,该接口已经挂掉(开发环境)
+ */
+export const getQQUserInfoPrd = async (id: string) => {
+  try {
+    const api = 'https://tenapi.cn/qqname';
+    let response: any;
+    jsonp({
+      url: api,
+      data: {
+        qq: id,
+      },
+      callback: (res: any) => {
+        // 存储到sessionStorage中
+        response = res;
+      },
+    });
+
     if (response && response.data) {
       return response;
     } else {
@@ -272,15 +310,15 @@ export const deleteUpdateLogApi = async (id: number) =>
   await apiHttpClient.delete(`/updateLog/${id}`);
 
 /**
- * 获取ip地址，通过sohu接口
+ * 获取ip地址，通过sohu接口(开发环境)
  */
-export const getIpAddressBySohuApi = async () =>
+export const getIpAddressBySohuApiDev = async () =>
   await sohuHttpRequest.get(`/cityjson?ie=utf-8`);
 
 /**
- * 获取物理地址，通过百度地图接口
+ * 获取物理地址，通过百度地图接口(开发环境)
  */
-export const getRealAddressByBaiduMapApi = async (ip: string) =>
+export const getRealAddressByBaiduMapApiDev = async (ip: string = '') =>
   await baiduMapHttpRequest.get(
     `/location/ip?ak=N8aHMjLP374THnPfPyB89BPKK7TImh2z&ip=${ip}&coor=bd09ll`,
   );

@@ -1,5 +1,13 @@
 <script lang="ts" setup>
-import { onBeforeMount, ref, reactive, onMounted, computed } from 'vue';
+import {
+  onBeforeMount,
+  ref,
+  reactive,
+  onMounted,
+  computed,
+  nextTick,
+  watch,
+} from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import AppIcon from '@/components/common/app-icon/index.vue';
 import UserInfo from '@/components/user/info/index.vue';
@@ -15,18 +23,7 @@ import AppInfo from '@/components/common/info/index.vue';
 // import ArchiveList from '@/components/common/archive-list/index.vue';
 import MarqueeNotice from '@/components/common/marquee-notice/index.vue';
 import { useStore } from 'vuex';
-import {
-  getAnnounceListApi,
-  getIpAddressBySohuApi,
-  getRealAddressByBaiduMapApi,
-} from '@/api';
-import {
-  getSessionStroage,
-  getStroage,
-  setSessionStroage,
-  setStroage,
-} from '@/utils/localStorage';
-import { apiHttpClient } from '@/utils/apiHttpClient';
+import { getAnnounceListApi } from '@/api';
 
 const onClickScrollDown = () => {
   document.getElementById('positon')?.scrollIntoView({ behavior: 'smooth' });
@@ -96,27 +93,6 @@ onBeforeMount(async () => {
   }, 1000);
 
   store.commit('app/setLoading', false);
-});
-
-onMounted(async () => {
-  // 发送百度地图API请求获取真实地址，存储到LocalSession中
-  // 发送一条sohu请求得到IP地址，存储到Session中，并封装到请求头部中
-  const address = getStroage('address');
-  if (!address) {
-    try {
-      const res = await getRealAddressByBaiduMapApi(getSessionStroage('ip'));
-
-      const province = res.data.content.address_detail.province;
-      const city = res.data.content.address_detail.city;
-
-      // 存储到sessionStorage中
-      setStroage('address', { province: province, city: city });
-
-      // 封装到请求头部中
-    } catch (error) {
-      console.log(error);
-    }
-  }
 });
 </script>
 

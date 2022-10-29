@@ -23,6 +23,9 @@ let date: any;
 // 获取当前博客的内容
 store.commit('post/setQueryString', '');
 store.commit('post/setNextPage', 1);
+// 获取ip地址
+store.dispatch('app/getIpAddressAction');
+store.dispatch('app/getRealAddressAction');
 store.dispatch('post/getPosts');
 store.dispatch('post/getPostById', route.params.postId);
 store.dispatch('comment/getComments', { postId: route.params.postId });
