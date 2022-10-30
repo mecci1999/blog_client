@@ -61,7 +61,7 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
         apiHttpClient.defaults.headers.common['Ip'] = `${ip}`;
       } else {
         try {
-          const api = 'http://pv.sohu.com/cityjson';
+          const api = 'https://pv.sohu.com/cityjson';
 
           jsonp({
             url: api,

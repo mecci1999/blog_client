@@ -43,7 +43,7 @@ const onClickPostListTypeItem = (id: number, title?: string) => {
       <!-- <img class="post-list-item-media-img" :src="`http://${item?.bgImgUrl}`" /> -->
       <el-image
         style="width: 100%; height: 100%"
-        :src="`http://${item?.bgImgUrl}`"
+        :src="`https://${item?.bgImgUrl}`"
         fit="cover"
       >
         <template #error>
