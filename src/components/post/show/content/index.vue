@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { debug } from 'console';
 import { computed, defineProps, ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
@@ -16,8 +15,9 @@ const reg = /\\/g;
 const str = computed(() => props.content?.replace(reg, '')) as any;
 
 // 获取博客图片url数组
-const imgUrlReg = /(?<=(img[^>]*src="))[^"]*/g;
-const replaceReg = /(?=(<img[^>]*))[^>]*/;
+// const imgUrlReg = /(?<=(img[^>]*src="))[^"]*/g;
+const imgUrlReg = /https:\/\/api.darwin.fun(.*?)(.png|.jpeg|.jpg|.webp)/g;
+// const replaceReg = /(?=(<img[^>]*))[^>]*/;
 imgUrlList.value = str.value.match(imgUrlReg);
 store.commit('sidebar/setImageUrlList', imgUrlList.value);
 const contentRef = ref(null) as any;

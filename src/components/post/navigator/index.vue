@@ -48,7 +48,14 @@ const onClickBackJump = () => {
       v-if="!currentIsFirstPost"
       @click="onClickForwardJump"
     >
-      <img class="post-navigator-forward-img" src="@/assets/image/git.png" />
+      <img
+        class="post-navigator-forward-img"
+        :src="
+          getForwardPost?.bgImgUrl
+            ? `https://${getForwardPost?.bgImgUrl}`
+            : '@/assets/image/git.png'
+        "
+      />
       <div class="post-navigator-forward-shadow"></div>
       <div class="post-navigator-forward-text">
         <div class="post-navigator-forward-text-top">上一篇</div>
@@ -64,7 +71,11 @@ const onClickBackJump = () => {
     >
       <img
         class="post-navigator-back-img"
-        src="@/assets/image/r_statistics.jpeg"
+        :src="
+          getBackPost?.bgImgUrl
+            ? `https://${getBackPost?.bgImgUrl}`
+            : '@/assets/image/r_statistics.jpeg'
+        "
       />
       <div class="post-navigator-back-shadow"></div>
       <div class="post-navigator-back-text">

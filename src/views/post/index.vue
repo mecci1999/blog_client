@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref, watch, nextTick } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
-import UserInfo from '@/components/user/info/index.vue';
 import PostShowInfo from '@/components/post/show/info/index.vue';
 import PostShowContent from '@/components/post/show/content/index.vue';
 import PostShowFooter from '@/components/post/show/footer/index.vue';

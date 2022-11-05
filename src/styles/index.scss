@@ -163,6 +163,7 @@ html {
   }
 
   code {
+    width: 100%;
     display: inline-block;
     white-space: pre-wrap !important;
     padding: 2.2em 5px;
@@ -174,6 +175,10 @@ html {
     font-family: 'consolas', 'Menlo', 'PingFang SC', 'Microsoft YaHei',
       sans-serif !important;
     color: var(--mecci-theme-color);
+
+    .span {
+      word-break: break-all;
+    }
   }
 
   .button {
@@ -334,6 +339,7 @@ html {
       font-size: 0.9rem;
       margin: 0.8rem 0;
       line-height: 1.5;
+      word-break: break-word;
     }
 
     a {
@@ -353,6 +359,7 @@ html {
       padding: 0;
       margin: 0;
       font-size: 0.8rem;
+      word-break: break-word;
     }
 
     .button {

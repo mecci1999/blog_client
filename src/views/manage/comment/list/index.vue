@@ -66,7 +66,7 @@
       </div>
       <div class="app-management__comment-list-item__meta">
         <div class="app-management__comment-list-item__meta-provice">
-          {{ comment.province }}
+          {{ comment.province || '未知' }}
         </div>
         <div class="app-management__comment-list-item__meta-os">
           {{ comment.os }}

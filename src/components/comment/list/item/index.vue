@@ -69,7 +69,7 @@ const handleReplyComment = () => {
       <div class="comment-list-item-container-footer">
         <div class="comment-list-item-container-footer-address">
           <i class="comment-list-item-container-footer-address-icon"></i>
-          {{ item?.province }}
+          {{ item?.province || '未知' }}
         </div>
         <div class="comment-list-item-container-footer-os">
           <i class="comment-list-item-container-footer-os-icon"></i

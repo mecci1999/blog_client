@@ -19,6 +19,10 @@
       border-bottom: 1px solid var(--line-color);
       overflow: auto;
 
+      &-text {
+        word-break: break-all;
+      }
+
       &-reply {
         margin-top: 8px;
         font-size: 12px;
