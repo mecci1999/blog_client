@@ -146,31 +146,33 @@ html {
   }
 
   pre {
-    background: var(--code-background);
-    color: var(--code-text-color);
     font-family: Consolas;
     text-align: left;
     margin: 1em;
-    border-radius: 8px;
     counter-reset: line;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-    padding: 1rem 1rem;
     width: 100%;
+    background: var(--mecci-card-background);
+    color: var(--code-text-color);
+    margin: 0;
+    padding: 1rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--line-color);
   }
 
   code {
     width: 100%;
     display: inline-block;
-    white-space: pre-wrap !important;
+    overflow-x: auto;
+    white-space: nowrap !important;
     padding: 2.2em 5px;
     line-height: inherit;
     margin: 0 2px;
     max-width: inherit;
-    overflow: inherit;
     font-size: 0.8rem;
     font-family: 'consolas', 'Menlo', 'PingFang SC', 'Microsoft YaHei',
       sans-serif !important;
@@ -360,6 +362,8 @@ html {
       margin: 0;
       font-size: 0.8rem;
       word-break: break-word;
+      overflow-x: auto;
+      white-space: nowrap !important;
     }
 
     .button {

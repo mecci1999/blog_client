@@ -5,13 +5,43 @@
   &-info {
     width: 100%;
     height: max-content;
-    padding: 16px;
-    border: 1px solid var(--line-color);
     color: var(--primary-text-blog-color);
     font-weight: bold;
+    background-color: var(--mecci-card-background);
+    padding: 1rem 1.3rem;
+    overflow: hidden;
+    border: 1px solid var(--line-color);
+    transition: 0.3s;
+    border-radius: 12px;
+
+    &__header {
+      display: flex;
+      align-items: center;
+
+      &-sign {
+        background: var(--primary-font-color);
+        color: var(--primary-background);
+        padding: 0.2rem 0.5rem;
+        font-size: 0.7rem;
+        border-radius: 8px;
+        margin-right: 0.5rem;
+        font-weight: bold;
+        line-height: 1.5;
+        white-space: nowrap;
+      }
+    }
 
     &__content {
-      display: none;
+      // display: none;
+      padding-left: 0;
+      color: var(--primary-font-color);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-height: 1.2;
+      -webkit-box-orient: vertical;
+      font-size: 1rem;
+      font-weight: 700;
     }
 
     &-author {

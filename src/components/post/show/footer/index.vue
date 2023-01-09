@@ -27,33 +27,51 @@ const openQRcodePanel = () => {
 <template>
   <div class="post-show-footer">
     <div class="post-show-footer-info">
-      <div class="post-show-footer-info__content">{{ post?.title }}</div>
-      <div class="post-show-footer-info-author">
-        <i class="post-show-footer-info-author-icon"></i>
-        <span class="post-show-footer-info__title"> 文章作者：</span>
-        <span class="post-show-footer-info-author-text" @click="onClickToAbout"
-          >Darwin</span
-        >
+      <div class="post-show-footer-info__header">
+        <div class="post-show-footer-info__header-sign">转载</div>
+        <div class="post-show-footer-info__content">{{ post?.title }}</div>
       </div>
       <div class="post-show-footer-info-link">
         <i class="post-show-footer-info-link-icon"></i>
         <span class="post-show-footer-info__title"> 文章链接：</span>
         <a class="post-show-footer-info-link-text">{{ link }}</a>
       </div>
-      <div class="post-show-footer-info-transshipment">
-        <i class="post-show-footer-info-transshipment-icon"></i>
-        <span class="post-show-footer-info__title"> 版权声明：</span>
-        <span class="post-show-footer-info-transshipment-text">
-          本博客所有文章除特别声明外，转载时请注明来源<span
+      <div
+        class="post-show-footer-info__translate"
+        v-if="post?.types[0].id && post?.types[0].id == 6"
+      >
+        本文是转载或翻译文章，版权归原作者所有。建议访问原文，转载本文请联系原作者。原作者以及原文信息在本文结尾标注。
+      </div>
+      <div class="post-show-footer-info__item" v-else>
+        <div class="post-show-footer-info-author">
+          <i class="post-show-footer-info-author-icon"></i>
+          <span class="post-show-footer-info__title"> 文章作者：</span>
+          <span
             class="post-show-footer-info-author-text"
             @click="onClickToAbout"
-            >云分享</span
-          >，谢谢。<router-link
-            class="post-show-footer-info-transshipment-text-cc"
-            :to="{ name: 'copyright' }"
-            >版权协议</router-link
+            >Darwin</span
           >
-        </span>
+        </div>
+        <div class="post-show-footer-info-link">
+          <i class="post-show-footer-info-link-icon"></i>
+          <span class="post-show-footer-info__title"> 文章链接：</span>
+          <a class="post-show-footer-info-link-text">{{ link }}</a>
+        </div>
+        <div class="post-show-footer-info-transshipment">
+          <i class="post-show-footer-info-transshipment-icon"></i>
+          <span class="post-show-footer-info__title"> 版权声明：</span>
+          <span class="post-show-footer-info-transshipment-text">
+            本博客所有文章除特别声明外，转载时请注明来源<span
+              class="post-show-footer-info-author-text"
+              @click="onClickToAbout"
+              >云分享</span
+            >，谢谢。<router-link
+              class="post-show-footer-info-transshipment-text-cc"
+              :to="{ name: 'copyright' }"
+              >版权协议</router-link
+            >
+          </span>
+        </div>
       </div>
     </div>
     <div class="post-show-footer-share">
