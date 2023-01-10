@@ -112,7 +112,8 @@
       }
 
       &__date {
-        width: 80px;
+        width: 86px;
+        white-space: nowrap;
         background-color: var(--mobile-background);
         justify-content: flex-end;
       }
