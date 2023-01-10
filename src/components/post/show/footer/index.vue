@@ -28,10 +28,18 @@ const openQRcodePanel = () => {
   <div class="post-show-footer">
     <div class="post-show-footer-info">
       <div class="post-show-footer-info__header">
-        <div class="post-show-footer-info__header-sign">转载</div>
+        <div
+          class="post-show-footer-info__header-sign"
+          v-if="post?.types[0].id && post?.types[0].id == 6"
+        >
+          转载
+        </div>
         <div class="post-show-footer-info__content">{{ post?.title }}</div>
       </div>
-      <div class="post-show-footer-info-link">
+      <div
+        class="post-show-footer-info-link"
+        v-if="post?.types[0].id && post?.types[0].id == 6"
+      >
         <i class="post-show-footer-info-link-icon"></i>
         <span class="post-show-footer-info__title"> 文章链接：</span>
         <a class="post-show-footer-info-link-text">{{ link }}</a>
