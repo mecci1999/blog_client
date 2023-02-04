@@ -2,6 +2,7 @@
 import { onMounted, ref, reactive, computed } from 'vue';
 import NavBar from '@/components/navBar/index.vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 import AppFooter from '@/components/footer/index.vue';
 import {
   getRewardListApi,
@@ -11,8 +12,10 @@ import {
 import TimeLine from '@/components/common/time-line/index.vue';
 import { getAppDays, getCurrentDays } from '@/utils/getAppDays';
 import { time } from '@/utils/time';
+import { ElMessage } from 'element-plus';
 
 const store = useStore();
+const router = useRouter();
 // 获取用户信息
 const getUser = async () => {
   await store.dispatch('user/getUser');
@@ -33,6 +36,30 @@ const announceList = ref([]) as any;
 
 // 更新日志
 const updateLogList = ref([]) as any;
+
+// 问题弹窗
+const cakeDialog = ref(false);
+
+const form = reactive({
+  date: '',
+});
+
+// 打开弹窗
+const openDialog = () => {
+  cakeDialog.value = true;
+};
+
+// 跳转至生日礼物页面
+const handleJumpToGift = () => {
+  if (form.date === '128') {
+    cakeDialog.value = false;
+    router.push({ name: 'gift' });
+  } else {
+    cakeDialog.value = false;
+    ElMessage.error('抱歉，这份礼物不属于你！');
+  }
+  form.date = '';
+};
 
 // 更新日志
 const data = computed(() => store.getters['dashboard/appInfo']);
@@ -64,8 +91,22 @@ onMounted(async () => {
 <template>
   <div class="app-about">
     <NavBar />
+    <el-dialog v-model="cakeDialog" title="密码" width="50%">
+      <el-input v-model="form.date" />
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="cakeDialog = false">取消</el-button>
+          <el-button type="primary" @click="handleJumpToGift"> 确认 </el-button>
+        </span>
+      </template>
+    </el-dialog>
     <div class="app-about-main">
-      <div class="app-about-header">关于本站</div>
+      <div class="app-about-header">
+        <div class="app-about-header__title">关于本站</div>
+        <div class="app-about-header__cake" @click="openDialog">
+          <i class="app-about-header__cake-icon"></i>
+        </div>
+      </div>
       <div class="app-about-content">
         <div class="app-about-author">
           <div class="title1">你好，很高兴在这遇见你</div>

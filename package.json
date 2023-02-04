@@ -14,9 +14,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fireworks-js/vue": "^2.10.1",
     "axios": "0.27.2",
     "dayjs": "1.11.5",
     "element-plus": "2.2.5",
+    "fireworks-js": "^2.10.1",
     "lodash": "4.17.21",
     "query-string": "7.1.1",
     "showdown": "2.1.0",
