@@ -28,6 +28,5 @@ export const setSessionStroage = (key: string, value: any) => {
  */
 export const getSessionStroage = (key: string) => {
   const data = sessionStorage.getItem(key);
-
-  return data ? JSON.parse(data) : null;
+  return data && data !== 'undefined' ? JSON.parse(data) : null;
 };

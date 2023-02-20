@@ -61,18 +61,11 @@ export const appStoreModule: Module<AppStoreState, RootState> = {
         apiHttpClient.defaults.headers.common['Ip'] = `${ip}`;
       } else {
         try {
-          const api = 'https://pv.sohu.com/cityjson';
-
-          jsonp({
-            url: api,
-            callback: (res: any) => {},
-          });
-
           watch(
             () => window,
             (value: any) => {
-              if (value && value.returnCitySN) {
-                setSessionStroage('ip', value.returnCitySN.cip);
+              if (value) {
+                setSessionStroage('ip', value.ipAddress);
                 // 封装到请求头部中
                 apiHttpClient.defaults.headers.common['Ip'] = `${ip}`;
               }

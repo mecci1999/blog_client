@@ -68,7 +68,7 @@
   @media screen and (max-width: 768px) {
     & {
       background: var(--mobile-background) !important;
-
+      box-shadow: none !important;
       padding: 0 1rem;
 
       &-container-left-title {

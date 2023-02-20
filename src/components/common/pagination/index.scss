@@ -14,6 +14,7 @@
     justify-content: center;
     cursor: pointer;
     border: 1px solid var(--line-color);
+    color: var(--mecci-font-color);
     &:hover {
       border-color: var(--mecci-theme-color);
 
@@ -40,6 +41,7 @@
     height: 32px;
     border-radius: 50%;
     box-shadow: var(--primary-background-shadow);
+    color: var(--mecci-font-color);
     display: flex;
     align-items: center;
     justify-content: center;

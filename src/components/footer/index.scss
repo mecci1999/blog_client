@@ -41,6 +41,11 @@
         text-decoration: none;
         transition: all 0.2s ease 0s;
         overflow-wrap: break-word;
+        border: none;
+
+        &:hover {
+          border: none;
+        }
       }
     }
 
@@ -49,6 +54,11 @@
       margin-top: 16px;
       justify-content: center;
       align-items: center;
+      border: none;
+
+      &:hover {
+        border: none;
+      }
     }
 
     &-copyright {

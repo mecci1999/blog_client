@@ -99,7 +99,7 @@ onBeforeMount(async () => {
 <template>
   <div class="app-home">
     <NavBar />
-    <div
+    <!-- <div
       :class="[
         'bg',
         {
@@ -119,16 +119,18 @@ onBeforeMount(async () => {
           <AppIcon name="keyboard_arrow_down" size="32" color="#eee" />
         </div>
       </div>
-    </div>
+    </div> -->
     <div id="positon"></div>
     <main id="main" class="app-main">
       <MarqueeNotice :item="announceList[0]" />
       <div class="app-main-container">
         <div class="app-main-container-left">
-          <UserInfo :user="user" />
-          <TagsList :tags="tags" />
-          <!-- <ArchiveList :items="postAmount" /> -->
-          <AppInfo :item="info" />
+          <div class="app-main-container-left__main">
+            <UserInfo :user="user" />
+            <TagsList :tags="tags" />
+            <!-- <ArchiveList :items="postAmount" /> -->
+            <AppInfo :item="info" />
+          </div>
         </div>
         <div class="app-main-container-right">
           <PostTabBar :types="types" />

@@ -40,6 +40,10 @@
       align-items: center;
       border: none;
     }
+
+    &.shadow {
+      box-shadow: var(--mecci-shadow);
+    }
   }
 
   @media screen and (min-width: 1300px) {

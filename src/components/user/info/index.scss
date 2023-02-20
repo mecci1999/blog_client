@@ -193,6 +193,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border: none;
+
+      &:hover {
+        border: none;
+      }
 
       &-icon {
         color: var(--secondary-text-color);
@@ -212,6 +217,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border: none;
+
+      &:hover {
+        border: none;
+      }
 
       &-icon {
         color: var(--secondary-text-color);
@@ -231,6 +241,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border: none;
+
+      &:hover {
+        border: none;
+      }
 
       &-icon {
         color: var(--secondary-text-color);

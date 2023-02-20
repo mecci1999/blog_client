@@ -100,7 +100,7 @@ const handleJumpToTag = () => {
           ></i>
         </a>
       </el-tooltip>
-      <el-tooltip effect="dark" placement="top" content="微信号: mecci1999">
+      <el-tooltip effect="dark" placement="top" content="微信号: darwin_30">
         <a
           :href="user?.info.wechat"
           class="user-info-other-wechat"

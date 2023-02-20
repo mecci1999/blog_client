@@ -24,7 +24,7 @@ const lauch = ref(false);
 
 const fireworks = ref<InstanceType<typeof Fireworks>>();
 
-const music = ref(null) as any;
+// const music = ref(null) as any;
 
 const opening = ref(false);
 
@@ -90,7 +90,7 @@ async function startFireworks() {
 // 打开后面的页面
 const handleStart = () => {
   currentIndex.value === 3;
-  music.value.play();
+  // music.value.play();
   opening.value = true;
   left.value.style = 'transform: translateX(-100%);';
   right.value.style = 'transform: translateX(100%);';
@@ -118,7 +118,7 @@ const handleShowText = () => {
 onMounted(() => {});
 
 onUnmounted(() => {
-  music.value.pause();
+  // music.value.pause();
 });
 </script>
 
@@ -907,9 +907,9 @@ onUnmounted(() => {
     </div>
 
     <!-- 背景音乐 -->
-    <audio ref="music" loop autoplay>
+    <!-- <audio ref="music" loop autoplay>
       <source src="@/assets/music.mp3" type="audio/mpeg" />
-    </audio>
+    </audio> -->
   </div>
 </template>
 
