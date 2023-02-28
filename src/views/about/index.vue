@@ -103,9 +103,9 @@ onMounted(async () => {
     <div class="app-about-main">
       <div class="app-about-header">
         <div class="app-about-header__title">关于本站</div>
-        <div class="app-about-header__cake" @click="openDialog">
+        <!-- <div class="app-about-header__cake" @click="openDialog">
           <i class="app-about-header__cake-icon"></i>
-        </div>
+        </div> -->
       </div>
       <div class="app-about-content">
         <div class="app-about-author">

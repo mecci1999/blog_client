@@ -10,13 +10,16 @@
   height: 30px;
   opacity: 0.6;
   line-height: 2;
-  transform: translateY(2rem);
 
   &__mobile {
     font-size: 16px;
   }
 
   @media screen and (max-width: 768px) {
+    & {
+      transform: translateY(2rem);
+    }
+
     &__mobile {
       display: none;
     }

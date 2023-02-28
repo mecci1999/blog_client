@@ -17,6 +17,7 @@
     &__header {
       display: flex;
       align-items: center;
+      margin-bottom: 16px;
 
       &-sign {
         background: var(--primary-font-color);
@@ -390,9 +391,9 @@
           color: var(--primary-font-color);
           font-size: 0.7rem;
           line-height: 1rem;
-          overflow: hidden;
+          // overflow: hidden;
           display: -webkit-box;
-          -webkit-line-clamp: 2;
+          // -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
 
           // &-cc {

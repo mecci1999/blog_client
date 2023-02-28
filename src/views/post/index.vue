@@ -75,6 +75,7 @@ onMounted(() => {
         "
       />
       <div class="post-show-header-shadow"></div>
+      <div class="post-show-header-blur"></div>
       <div class="post-show-header-info">
         <div class="post-show-header-info-option">
           <div

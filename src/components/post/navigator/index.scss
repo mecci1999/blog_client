@@ -1,6 +1,7 @@
 .post-navigator {
   width: 90%;
-  max-width: 1500px;
+  // max-width: 1500px;
+  padding: 0 12%;
   margin: 0 auto;
   display: flex;
   height: 150px;
@@ -15,6 +16,11 @@
     position: relative;
     overflow: hidden;
     box-shadow: var(--primary-background-shadow);
+
+    &.only {
+      border-radius: 6px;
+      margin: 0;
+    }
 
     &:hover {
       .post-navigator-forward-shadow {
@@ -71,6 +77,11 @@
     position: relative;
     overflow: hidden;
     box-shadow: var(--primary-background-shadow);
+
+    &.only {
+      border-radius: 6px;
+      margin: 0;
+    }
 
     &:hover {
       .post-navigator-back-shadow {

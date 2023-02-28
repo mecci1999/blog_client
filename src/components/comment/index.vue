@@ -17,8 +17,10 @@ const props = defineProps({
 <template>
   <transition name="comment-panel">
     <div class="comment-panel">
-      <CommnetOperation :postId="postId" />
-      <CommentShow :comments="comments" />
+      <div class="comment-panel_container">
+        <CommnetOperation :postId="postId" />
+        <CommentShow :comments="comments" />
+      </div>
     </div>
   </transition>
 </template>

@@ -113,7 +113,7 @@
     // justify-content: center;
     // align-items: center;
     width: 100%;
-    max-width: 1500px;
+    // max-width: 1500px;
     margin-top: 1rem;
     display: flex;
     justify-content: center;
@@ -184,7 +184,7 @@
 
   &-container {
     width: 100%;
-    max-width: 1500px;
+    // max-width: 1500px;
 
     &-text {
       width: 100%;
@@ -199,7 +199,7 @@
 
       &-title {
         font-size: 36px;
-        font-weight: 700;
+        font-weight: 500;
         line-height: 1;
         color: var(--mecci-font-color);
       }
@@ -208,10 +208,11 @@
     p {
       font-size: 16px;
       line-height: 1.7;
-      font-weight: 400;
+      font-weight: 300;
       margin: 1rem 0;
       text-align: left;
       letter-spacing: 0.6px;
+      font-family: 'PingFangSC-Light', 'sans-serif';
       color: var(--mecci-font-color);
     }
 

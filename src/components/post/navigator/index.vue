@@ -44,7 +44,7 @@ const onClickBackJump = () => {
 <template>
   <div class="post-navigator">
     <div
-      class="post-navigator-forward"
+      :class="['post-navigator-forward', { only: currentIsEndPost }]"
       v-if="!currentIsFirstPost"
       @click="onClickForwardJump"
     >
@@ -65,7 +65,7 @@ const onClickBackJump = () => {
       </div>
     </div>
     <div
-      class="post-navigator-back"
+      :class="['post-navigator-back', { only: currentIsFirstPost }]"
       v-if="!currentIsEndPost"
       @click="onClickBackJump"
     >

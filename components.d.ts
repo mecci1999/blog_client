@@ -36,6 +36,7 @@ declare module '@vue/runtime-core' {
     ElTag: typeof import('element-plus/es')['ElTag']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     Footer: typeof import('./src/components/footer/index.vue')['default']
+    Helper: typeof import('./src/components/post/helper/index.vue')['default']
     Index: typeof import('./src/components/post/index/index.vue')['default']
     Inedx: typeof import('./src/components/post/list/item/inedx.vue')['default']
     Info: typeof import('./src/components/common/info/index.vue')['default']

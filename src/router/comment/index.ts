@@ -1,13 +1,13 @@
 import { RouteRecordRaw } from 'vue-router';
-import AppComment from '@/views/comment/index.vue';
+import AppComment from '@/components/common/loading/index.vue';
 
 /**
  * 定义路由
  */
 const routes: Array<RouteRecordRaw> = [
   {
-    name: 'comment',
-    path: '/comment',
+    name: 'loading',
+    path: '/loading',
     component: AppComment,
     meta: { title: '树洞 | 云分享' },
   },
