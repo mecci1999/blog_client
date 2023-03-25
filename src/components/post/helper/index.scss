@@ -1,2 +1,115 @@
 .post-helper {
+  position: fixed;
+  right: 32px;
+  bottom: 50%;
+  z-index: 999;
+
+  &__main {
+    position: relative;
+  }
+
+  &__button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--line-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mobile-background);
+    cursor: pointer;
+    color: var(--mecci-theme-color);
+    box-shadow: var(--mecci-theme-color) 0px 10px 30px 2px;
+    font-size: 20px;
+    font-weight: 300;
+    // animation: light 2s ease-in-out infinite;
+    &-icon {
+      font-size: 14px;
+    }
+    &:hover {
+      background-color: var(--mecci-theme-color);
+      color: #fff;
+    }
+  }
+
+  &__container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    height: max-content;
+    border: 1px solid var(--line-color);
+    border-radius: 8px;
+    background-color: var(--mobile-background);
+    padding: 16px;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 300px;
+  }
+
+  // 目录的动画
+  &__container-enter-active {
+    transition: 0.5s;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__container-enter-to {
+    width: 180px;
+    height: max-content;
+    border: 1px solid var(--line-color);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0;
+  }
+
+  // 按钮的动画
+  &__button-enter-active {
+    width: 180px;
+    height: 120px;
+    border-radius: 8px;
+    transition: 0.5s;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  &__button-enter-to {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  &__button-enter-active {
+    animation: none;
+  }
+
+  &__button-enter-to {
+    animation: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      bottom: 80px;
+    }
+  }
 }
+
+// @keyframes light {
+//   0% {
+//     box-shadow: var(--mecci-theme-color) 0px 10px 30px 0px;
+//   }
+
+//   50% {
+//     box-shadow: var(--mecci-theme-color) 0px 10px 30px 2px;
+//   }
+
+//   100% {
+//     box-shadow: var(--mecci-theme-color) 0px 10px 30px 0px;
+//   }
+// }

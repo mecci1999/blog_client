@@ -11,6 +11,7 @@ import { VITE_APP_CLIENT_BASE_URL } from '@/config';
 import AppFooter from '@/components/footer/index.vue';
 import PostNavigator from '@/components/post/navigator/index.vue';
 import { API_BASE_URL } from '@/config';
+import PostHepler from '@/components/post/helper/index.vue';
 
 const store = useStore();
 const route = useRoute();
@@ -18,6 +19,10 @@ const router = useRouter();
 const link = VITE_APP_CLIENT_BASE_URL() + route.path;
 let time = ref('');
 let date: any;
+const headerHeight = ref(0);
+const bottomHeight = ref(0);
+
+const ShowMain = ref(null) as any;
 
 // 获取当前博客的内容
 store.commit('post/setQueryString', '');
@@ -59,6 +64,12 @@ watch(post, (val) => {
 // 挂载时置顶
 onMounted(() => {
   window.scrollTo({ top: 0 });
+
+  nextTick(() => {
+    const rects = ShowMain.value.getClientRects()[0];
+    headerHeight.value = rects.top;
+    bottomHeight.value = Math.floor(rects.bottom);
+  });
 });
 </script>
 
@@ -99,7 +110,7 @@ onMounted(() => {
         <PostShowInfo :post="post" />
       </div>
     </header>
-    <main class="post-show-main">
+    <main class="post-show-main" ref="ShowMain">
       <div class="post-show-main-container">
         <PostShowContent :content="post.content" />
       </div>
@@ -109,6 +120,7 @@ onMounted(() => {
       </div>
     </main>
     <CommentPanel :comments="comments" :postId="post.id" />
+    <PostHepler :headerHeight="headerHeight" :bottomHeight="bottomHeight" />
     <PostNavigator />
     <AppFooter />
   </div>

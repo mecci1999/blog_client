@@ -1007,6 +1007,11 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+tocbot@^4.20.1:
+  version "4.20.1"
+  resolved "https://registry.npmmirror.com/tocbot/-/tocbot-4.20.1.tgz#be1e0206700e13c8060f5bedbd4a51c6653b80fa"
+  integrity sha512-as1pH/qL0EL7zmMheK+EaMPPmvC9pzEpR98dA7z4DWemUdySi6Ipnk0WIc6AyQegQ7C2nNDuAL0WIo44poeEUg==
+
 typescript@4.7.3:
   version "4.7.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
@@ -1079,6 +1084,11 @@ unplugin@^0.7.0:
     chokidar "^3.5.3"
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.4"
+
+v-click-outside@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npmmirror.com/v-click-outside/-/v-click-outside-3.2.0.tgz#850ac3f52d66d84b9f7e8002a1bcadcafec5534e"
+  integrity sha512-QD0bDy38SHJXQBjgnllmkI/rbdiwmq9RC+/+pvrFjYJKTn8dtp7Penf9q1lLBta280fYG2q53mgLhQ+3l3z74w==
 
 vite@2.9.12:
   version "2.9.12"
