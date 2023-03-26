@@ -20,17 +20,25 @@ const showMenu = ref(false);
 const progress = ref(0);
 
 const changeProcess = () => {
-  if (window.scrollY < props.headerHeight) {
-    return (progress.value = 0);
+  // if (window.scrollY < props.headerHeight) {
+  //   return (progress.value = 0);
+  // }
+  // if (window.scrollY > props.headerHeight + props.bottomHeight) {
+  //   return (progress.value = 100);
+  // }
+  // return (progress.value = Math.floor(
+  //   ((window.scrollY - props.headerHeight) /
+  //     (props.headerHeight + props.bottomHeight)) *
+  //     100,
+  // ));
+  if (window.scrollY < props.headerHeight && window.scrollY > 0) {
+    return (progress.value = Math.floor(
+      (window.scrollY / props.headerHeight) * 100,
+    ));
   }
-  if (window.scrollY > props.headerHeight + props.bottomHeight) {
+  if (window.scrollY >= props.headerHeight) {
     return (progress.value = 100);
   }
-  return (progress.value = Math.floor(
-    ((window.scrollY - props.headerHeight) /
-      (props.headerHeight + props.bottomHeight)) *
-      100,
-  ));
 };
 
 const handleClickButton = (e: MouseEvent) => {

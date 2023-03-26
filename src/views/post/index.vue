@@ -19,8 +19,8 @@ const router = useRouter();
 const link = VITE_APP_CLIENT_BASE_URL() + route.path;
 let time = ref('');
 let date: any;
-const headerHeight = ref(0);
-const bottomHeight = ref(0);
+const containerHeight = ref(0);
+// const bottomHeight = ref(0);
 
 const ShowMain = ref(null) as any;
 
@@ -66,9 +66,9 @@ onMounted(() => {
   window.scrollTo({ top: 0 });
 
   nextTick(() => {
-    const rects = ShowMain.value.getClientRects()[0];
-    headerHeight.value = rects.top;
-    bottomHeight.value = Math.floor(rects.bottom);
+    // const rects = ShowMain.value.getClientRects()[0];
+    // bottomHeight.value = Math.floor(rects.bottom);
+    containerHeight.value = ShowMain.value.scrollHeight;
   });
 });
 </script>
@@ -110,8 +110,8 @@ onMounted(() => {
         <PostShowInfo :post="post" />
       </div>
     </header>
-    <main class="post-show-main" ref="ShowMain">
-      <div class="post-show-main-container">
+    <main class="post-show-main">
+      <div class="post-show-main-container" ref="ShowMain">
         <PostShowContent :content="post.content" />
       </div>
       <div class="post-show-main-line"></div>
@@ -120,7 +120,7 @@ onMounted(() => {
       </div>
     </main>
     <CommentPanel :comments="comments" :postId="post.id" />
-    <PostHepler :headerHeight="headerHeight" :bottomHeight="bottomHeight" />
+    <PostHepler :headerHeight="containerHeight" />
     <PostNavigator />
     <AppFooter />
   </div>
