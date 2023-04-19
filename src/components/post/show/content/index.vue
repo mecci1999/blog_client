@@ -18,7 +18,7 @@ const str = computed(() => props.content?.replace(reg, '')) as any;
 // const imgUrlReg = /(?<=(img[^>]*src="))[^"]*/g;
 const imgUrlReg = /https:\/\/api.darwin.fun(.*?)(.png|.jpeg|.jpg|.webp)/g;
 // const replaceReg = /(?=(<img[^>]*))[^>]*/;
-imgUrlList.value = str.value.match(imgUrlReg);
+imgUrlList.value = str.value && str.value.match(imgUrlReg);
 store.commit('sidebar/setImageUrlList', imgUrlList.value);
 const contentRef = ref(null) as any;
 

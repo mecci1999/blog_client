@@ -100,7 +100,6 @@ const handleDelete = (postId: number) => {
 
 const handleEdit = (postId: number) => {
   emit('handleEdit', postId);
-  debugger;
 };
 </script>
 

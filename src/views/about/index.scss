@@ -203,6 +203,16 @@
         line-height: 1;
         color: var(--mecci-font-color);
       }
+
+      b {
+        background-color: var(--mecci-theme-color);
+        color: #fff;
+        font-size: 14px;
+        padding: 2px 4px;
+        margin: 0 4px;
+        border-radius: 6px;
+        font-weight: 300;
+      }
     }
 
     p {

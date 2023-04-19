@@ -56,7 +56,7 @@ const commentTipText = computed(() =>
         >
           <el-image
             style="width: 100%; height: 100%"
-            :src="`http://${post?.bgImgUrl}`"
+            :src="`https://${post?.bgImgUrl}`"
             fit="cover"
           >
             <template #error>

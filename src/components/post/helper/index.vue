@@ -57,7 +57,7 @@ onMounted(() => {
   window.addEventListener('scroll', changeProcess);
 
   tocbot.init({
-    headingSelector: 'h1,h2,h3,h4',
+    headingSelector: 'h1,h2,h3,h4,h5',
     contentSelector: '.post-show-content',
     tocSelector: '.post-helper__container',
     scrollSmoothOffset: -80,

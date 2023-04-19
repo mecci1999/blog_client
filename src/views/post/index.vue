@@ -61,15 +61,18 @@ watch(post, (val) => {
   }
 });
 
+watch(
+  () => ShowMain.value,
+  (val) => {
+    if (val.scrollHeight) {
+      containerHeight.value = ShowMain.value.scrollHeight;
+    }
+  },
+);
+
 // 挂载时置顶
 onMounted(() => {
   window.scrollTo({ top: 0 });
-
-  nextTick(() => {
-    // const rects = ShowMain.value.getClientRects()[0];
-    // bottomHeight.value = Math.floor(rects.bottom);
-    containerHeight.value = ShowMain.value.scrollHeight;
-  });
 });
 </script>
 
@@ -91,35 +94,35 @@ onMounted(() => {
         <div class="post-show-header-info-option">
           <div
             class="post-show-header-info-option-type"
-            v-for="type in post.types"
+            v-for="type in post?.types"
             :key="type.id"
             @click="onClickJumpToType(type)"
           >
-            {{ type.name }}
+            {{ type?.name }}
           </div>
           <div
             class="post-show-header-info-option-tag"
-            v-for="tag in post.tags"
+            v-for="tag in post?.tags"
             :key="tag.id"
             @click="onClickJumpToTag(tag)"
           >
-            #{{ tag.name }}
+            #{{ tag?.name }}
           </div>
         </div>
-        <h1 class="post-show-header-info-title">{{ post.title }}</h1>
+        <h1 class="post-show-header-info-title">{{ post?.title }}</h1>
         <PostShowInfo :post="post" />
       </div>
     </header>
     <main class="post-show-main">
       <div class="post-show-main-container" ref="ShowMain">
-        <PostShowContent :content="post.content" />
+        <PostShowContent :content="post?.content" />
       </div>
       <div class="post-show-main-line"></div>
       <div class="post-show-main-footer">
         <PostShowFooter :link="link" :post="post" />
       </div>
     </main>
-    <CommentPanel :comments="comments" :postId="post.id" />
+    <CommentPanel :comments="comments" :postId="post?.id" />
     <PostHepler :headerHeight="containerHeight" />
     <PostNavigator />
     <AppFooter />

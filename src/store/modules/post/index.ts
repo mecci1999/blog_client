@@ -214,9 +214,7 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
         sort,
         ...state.filter,
       };
-
       const getPostsQueryString = queryStringProcess(getPostsQueryObject);
-
       if (state.queryString !== getPostsQueryString) {
         commit('setNextPage', 1);
       }
