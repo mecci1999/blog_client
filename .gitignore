@@ -22,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# app
-.env*
-.env.development.*
-.env.production.*
