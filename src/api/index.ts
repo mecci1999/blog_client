@@ -322,3 +322,17 @@ export const getRealAddressByBaiduMapApiDev = async (ip: string = '') =>
   await baiduMapHttpRequest.get(
     `/location/ip?ak=N8aHMjLP374THnPfPyB89BPKK7TImh2z&ip=${ip}&coor=bd09ll`,
   );
+
+/**
+ * 获取评论列表
+ */
+export const getBannerList = async () =>
+  await apiHttpClient.get(`/banner/list`);
+
+/**
+ * 获取作品列表
+ */
+export const getPostList = async (data: {
+  pageIndex: number;
+  pageSize: number;
+}) => await apiHttpClient.post(`/post/list`, data);

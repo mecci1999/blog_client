@@ -6,8 +6,8 @@
   "author": "mecci",
   "license": "MIT",
   "scripts": {
-    "serve": "vite --port 8000 --host",
-    "start": "vite --port 8000 --host --mode production",
+    "serve": "vite --port 8080 --host",
+    "start": "vite --port 8080 --host --mode production",
     "build": "vue-tsc --noEmit && vite build",
     "build:dev": "vue-tsc --noEmit && vite build --mode development",
     "build:prod": "vue-tsc --noEmit && vite build --mode production",
@@ -23,6 +23,7 @@
     "query-string": "7.1.1",
     "showdown": "2.1.0",
     "socket.io-client": "4.5.2",
+    "swiper": "^11.0.1",
     "vue": "3.2.37",
     "vue-router": "4.0.16",
     "vuex": "4.0.2"

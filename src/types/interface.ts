@@ -85,3 +85,11 @@ export interface SearchResultType {
   postId: number;
   title: string;
 }
+
+export type PostItemType = {
+  _id: string;
+  name: string;
+  url: string;
+  description: string;
+  fileName: string;
+};

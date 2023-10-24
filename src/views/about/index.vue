@@ -17,9 +17,9 @@ import { ElMessage } from 'element-plus';
 const store = useStore();
 const router = useRouter();
 // 获取用户信息
-const getUser = async () => {
-  await store.dispatch('user/getUser');
-};
+// const getUser = async () => {
+//   await store.dispatch('user/getUser');
+// };
 
 let info = reactive({
   github: '',

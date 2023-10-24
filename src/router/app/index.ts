@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'home',
     path: '/',
     component: AppHome,
-    meta: { title: '首页 | 云分享' },
+    meta: { title: '顺丰FE' },
   },
 ];
 

@@ -67,10 +67,10 @@ export const userStoreModule: Module<UserStoreState, RootState> = {
     async getUser({ commit }) {
       commit('setLoading', true);
       try {
-        const response = await getUserInfo();
-        commit('setUser', response.data);
-        commit('setLoading', false);
-        return response;
+        // const response = await getUserInfo();
+        // commit('setUser', response.data);
+        // commit('setLoading', false);
+        // return response;
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const _error = error as any;
